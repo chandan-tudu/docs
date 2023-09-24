@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Add Images to an HTML Webpage: A Step-by-Step Guide</title>
+<meta name="description" content="In this step-by-step guide, we'll walk you through the process of adding images to your HTML webpage." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<article class="article-container">
+<div class="box"><h1>How to Add Images to an HTML Webpage: A Step-by-Step Guide</h1></div>
+<div class="img"><img src="https://source.unsplash.com/e616t35Vbeg/900x500" alt="Post Thumbnail of Add Images to an HTML Webpage" loading="lazy" width="900" height="500"></div>
+<p>Images are a crucial element of web design, as they enhance the visual appeal of a webpage and convey information effectively.</p>
+
+<p>To add images to your HTML webpage, you'll use the <code>&lt;img&gt;</code> element, which <strong>allows you to display images sourced from various locations</strong>, including your local file system and external URLs.</p>
+
+<p>In this step-by-step guide, we'll walk you through the process of adding images to your HTML webpage.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before you start, ensure you have the following:</p>
+
+<ul>
+<li>An HTML document that you want to add images to.</li>
+<li>Image files that you want to display (e.g., JPG, PNG, GIF).</li>
+<li>A text editor for writing HTML code.</li>
+</ul>
+
+<h2>Step 1: Prepare Your Image Files</h2>
+
+<p>First, make sure you have the image files you want to use ready. These can be images you've created or downloaded from the internet. Supported image formats include JPG, PNG, GIF, and others commonly used on the web.</p>
+
+<p>Place your image files in a directory (folder) on your computer, and remember the file names and file paths, as you'll need this information to reference the images in your HTML code.</p>
+
+<h2>Step 2: Write the HTML Code</h2>
+
+<p>To add an image to your HTML webpage, you'll use the <code>&lt;img&gt;</code> element. Here's the basic syntax:</p>
+
+<pre class="language-html"><code>&lt;img src="image-source" alt="alternative-text"&gt;
+</code></pre>
+
+<ul>
+<li><p><code>&lt;img&gt;</code>: This is the opening tag for the image element.</p></li>
+<li><p><code>src="image-source"</code>: The <code>src</code> attribute specifies the source (URL or file path) of the image you want to display.</p></li>
+<li><p><code>alt="alternative-text"</code>: The <code>alt</code> attribute provides alternative text for the image, which is displayed if the image cannot be loaded or for accessibility purposes.</p></li>
+</ul>
+
+<p>Here's an example of how to add an image to your HTML webpage:</p>
+
+<pre class="language-html"><code>&lt;img src="example.jpg" alt="Example Image"&gt;
+</code></pre>
+
+<p>In this example, replace <code>"example.jpg"</code> with the actual source (URL or file path) of your image, and <code>"Example Image"</code> with a brief and descriptive alternative text.</p>
+
+<h2>Step 3: Specify Image Dimensions (Optional)</h2>
+
+<p>You can use the <code>width</code> and <code>height</code> attributes to specify the dimensions of your image. This is optional but can be useful for controlling the image's size on your webpage. The values are specified in pixels (e.g., <code>width="300"</code>).</p>
+
+<pre class="language-html"><code>&lt;img src="example.jpg" alt="Example Image" width="300" height="200"&gt;
+</code></pre>
+
+<h2>Step 4: Save and Test Your Webpage</h2>
+
+<p>Save your HTML file with the added <code>&lt;img&gt;</code> element. Make sure the image file you specified in the <code>src</code> attribute is in the correct location relative to your HTML file or has a valid URL if it's an external image.</p>
+
+<p>Open your HTML file in a web browser. You should see the image displayed on your webpage along with the specified alternative text.</p>
+
+<h2>Multiple Images</h2>
+
+<p>To add multiple images to your webpage, simply use multiple <code>&lt;img&gt;</code> elements with different <code>src</code> attributes. For example:</p>
+
+<pre class="language-html"><code>&lt;img src="image1.jpg" alt="Image 1"&gt;
+&lt;img src="image2.jpg" alt="Image 2"&gt;
+&lt;img src="image3.jpg" alt="Image 3"&gt;
+</code></pre>
+
+<p>This will display three images sequentially on your webpage.</p>
+
+<h2>Conclusion</h2>
+
+<p>Adding images to an HTML webpage is a fundamental skill in web development. Whether you're designing a personal blog, an e-commerce site, or any other type of web application, images play a crucial role in conveying information and engaging your audience. By following the steps outlined in this guide, you can seamlessly incorporate images into your web content and enhance the overall user experience.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.js"></script>
+</body>
+</html>

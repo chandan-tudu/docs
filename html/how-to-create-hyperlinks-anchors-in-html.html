@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Create Hyperlinks (Anchors) in HTML?</title>
+<meta name="description" content="In this beginner's guide, we'll explore how to create hyperlinks in HTML, enabling you to link to other web pages , websites, files, and more." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<article class="article-container">
+<div class="box"><h1>How to Create Hyperlinks (Anchors) in HTML?</h1></div>
+<div class="img"><img src="https://source.unsplash.com/21ztbENjzeI/900x500" alt="Post Thumbnail of Create Hyperlinks (Anchors) in HTML" loading="lazy" width="900" height="500"></div>
+<p>Hyperlinks, often referred to as anchors or links, are an essential part of web development. They allow you to connect web pages, documents, and resources together, making the web a vast network of interconnected information.</p>
+
+<p>In this beginner's guide, we'll explore how to <strong>create hyperlinks in HTML</strong>, enabling you to <strong>link to other web pages</strong> , websites, files, and more.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before you begin, make sure you have:</p>
+
+<ul>
+<li>A text editor for writing HTML code.</li>
+<li>Basic knowledge of HTML tags and attributes.</li>
+</ul>
+
+<h2>Creating a Basic Hyperlink</h2>
+
+<p>To create a basic hyperlink in HTML, you'll use the <code>&lt;a&gt;</code> element (which stands for "anchor") and the <code>href</code> attribute (short for "hypertext reference"). Here's the basic syntax:</p>
+
+<pre class="language-html"><code>&lt;a href="URL"&gt;Link Text&lt;/a&gt;
+</code></pre>
+
+<ul>
+<li><p><code>&lt;a&gt;</code>: This is the opening tag for the anchor element.</p></li>
+<li><p><code>href="URL"</code>: The <code>href</code> attribute specifies the URL (Uniform Resource Locator) that the link points to. This URL can be the address of another web page, a file, an email address, or any other resource on the web.</p></li>
+<li><p><code>Link Text</code>: This is the visible text that users will see and click on to navigate to the linked resource.</p></li>
+</ul>
+
+<p>Here's a simple example that creates a link to the OpenAI website:</p>
+
+<pre class="language-html"><code>&lt;a href="https://www.openai.com"&gt;Visit OpenAI&lt;/a&gt;
+</code></pre>
+
+<h2>Linking to Other Web Pages</h2>
+
+<p>To link to another web page, you'll specify the URL of that page as the value of the <code>href</code> attribute. For example:</p>
+
+<pre class="language-html"><code>&lt;a href="https://www.example.com"&gt;Visit Example.com&lt;/a&gt;
+</code></pre>
+
+<p>Replace <code>"https://www.example.com"</code> with the actual URL of the web page you want to link to.</p>
+
+<h2>Linking to Email Addresses</h2>
+
+<p>You can also create links that open the user's email client to compose a new email. To do this, set the <code>href</code> attribute to an email address using the <code>mailto:</code> scheme:</p>
+
+<pre class="language-html"><code>&lt;a href="mailto:contact@example.com"&gt;Email Us&lt;/a&gt;
+</code></pre>
+
+<p>Replace <code>"contact@example.com"</code> with the email address you want to use.</p>
+
+<h2>Linking to Files</h2>
+
+<p>Hyperlinks can be used to link to various types of files, such as PDFs, images, and documents. To link to a file, specify the file's path or URL in the <code>href</code> attribute. Here's an example of linking to a PDF file:</p>
+
+<pre class="language-html"><code>&lt;a href="documents/myfile.pdf"&gt;Download PDF&lt;/a&gt;
+</code></pre>
+
+<p>In this example, <code>"documents/myfile.pdf"</code> is the relative path to the PDF file from the location of your HTML document.</p>
+
+<h2>Linking Within the Same Page (Internal Links)</h2>
+
+<p>You can create links that navigate to different sections of the same webpage by using the <code>href</code> attribute with a <code>#</code> followed by an anchor name or ID. For example:</p>
+
+<pre class="language-html"><code>&lt;a href="#section1"&gt;Jump to Section 1&lt;/a&gt;
+</code></pre>
+
+<p>In your HTML document, you would define a section like this:</p>
+
+<pre class="language-html"><code>&lt;h2 id="section1"&gt;Section 1&lt;/h2&gt;
+</code></pre>
+
+<p>This creates an internal link that, when clicked, scrolls the page to the specified section.</p>
+
+<h2>Opening Links in a New Tab/Window</h2>
+
+<p>By default, clicking a hyperlink in HTML opens the linked resource in the same tab or window. However, you can make the link open in a new tab or window by using the <code>target</code> attribute with the value "_blank." For example:</p>
+
+<pre class="language-html"><code>&lt;a href="https://www.example.com" target="_blank"&gt;Visit Example.com&lt;/a&gt;
+</code></pre>
+
+<h2>Conclusion</h2>
+
+<p>Creating hyperlinks is a fundamental skill in web development. With HTML's <code>&lt;a&gt;</code> element and the <code>href</code> attribute, you can connect your web pages to external resources, other web pages, email addresses, and even internal sections of the same page. Experiment with different types of links and enhance your web content by providing easy navigation for your users.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.js"></script>
+</body>
+</html>

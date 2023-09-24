@@ -159,6 +159,7 @@ pre code {
 img {
     max-width: 100%;
     max-height: 1080px;
+    height: auto;
     display: inline-block;
     border-radius: var(--radius);
 }

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Link to an External CSS Stylesheet in HTML</title>
+<meta name="description" content="In this guide, we will focus on how to link to an external CSS stylesheet in your HTML document." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<article class="article-container">
+<div class="box"><h1>How to Link to an External CSS Stylesheet in HTML</h1></div>
+<div class="img"><img src="https://source.unsplash.com/LkaMZj64KAM/900x500" alt="Post Thumbnail of Linking to an External CSS Stylesheet in HTML" loading="lazy" width="900" height="500"></div>
+<p>Cascading Style Sheets (CSS) are a fundamental part of web development, allowing you to control the design and layout of your HTML documents.</p>
+<p>To apply CSS styles to your HTML documents, you can use inline styles, internal stylesheets, or external stylesheets.</p>
+<p>In this guide, we will focus on how to <strong>link to an external CSS stylesheet in your HTML document</strong>. This approach keeps your HTML clean, separates content from presentation, and allows for better code organization and reusability.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before you start, ensure that you have the following:</p>
+
+<ul>
+<li>An HTML document that you want to style with CSS.</li>
+<li>An external CSS stylesheet (a <code>.css</code> file) ready for linking.</li>
+<li>A text editor for editing your HTML and CSS files.</li>
+</ul>
+
+<h2>Step 1: Create Your HTML Document</h2>
+
+<p>Begin by creating an HTML document that you want to style. You can use any text editor to create an HTML file. Here's a simple example:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Stylish Webpage&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to My Webpage&lt;/h1&gt;
+    &lt;p&gt;This is some content that we'll style using CSS.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Save this file with an <code>.html</code> extension, such as <code>index.html</code>.</p>
+
+<h2>Step 2: Create Your CSS Stylesheet</h2>
+
+<p>Next, create an external CSS stylesheet (a <code>.css</code> file) to define your styles. For example, you can create a file named <code>styles.css</code>. In this stylesheet, you can define the styles you want to apply to your HTML elements. Here's a simple example that changes the text color and adds a background color:</p>
+
+<pre class="language-css"><code>/* styles.css */
+
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+</code></pre>
+
+<h2>Step 3: Link the CSS Stylesheet to Your HTML Document</h2>
+
+<p>To apply the styles defined in your external CSS stylesheet to your HTML document, you need to link the stylesheet in the <code>&lt;head&gt;</code> section of your HTML file. Use the <code>&lt;link&gt;</code> element with the <code>rel</code> attribute set to "stylesheet" and the <code>href</code> attribute pointing to the location of your CSS file.</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Stylish Webpage&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to My Webpage&lt;/h1&gt;
+    &lt;p&gt;This is some content that we'll style using CSS.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In the <code>&lt;link&gt;</code> element:</p>
+
+<ul>
+<li><code>rel="stylesheet"</code> specifies that you are linking to a stylesheet.</li>
+<li><code>href="styles.css"</code> specifies the path to your external CSS file. Make sure the <code>href</code> attribute matches the actual filename and location of your stylesheet.</li>
+</ul>
+
+<h2>Step 4: Save and Test Your Webpage</h2>
+
+<p>Save both your HTML and CSS files in the same directory. Then, open your HTML file in a web browser. You should see your webpage styled according to the rules defined in your external CSS stylesheet.</p>
+
+<p>By linking an external CSS stylesheet to your HTML document, you can easily update and maintain your styles separately from your content, making your web development workflow more organized and efficient. As you become more experienced with CSS, you can use this approach to create complex and beautifully styled websites.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.js"></script>
+</body>
+</html>
