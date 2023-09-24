@@ -193,7 +193,7 @@ hr {
         font-size: 1.8rem;
     }
     pre code {
-        font-size: 1rem;
+        font-size: 15px;
     }
 
     code[class*='language-'],
