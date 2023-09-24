@@ -197,7 +197,7 @@ hr {
     }
 
     code[class*='language-'],
-    pre[class*='language-'] {
+    pre[class*='language-'] code {
         font-size: 15px;
     }
 }
