@@ -16,11 +16,11 @@ const createEl = (type, attr = {}) => {
 };
 if (findPreEl) {
     const prismScript = createEl('script', {
-        src: '',
+        src: 'https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/prism.js',
     });
     const prismStyle = createEl('link', {
         rel: 'stylesheet',
-        href: '',
+        href: 'https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/prism.min.css',
     });
 
     headEl.insertAdjacentElement('beforeend', prismStyle);
