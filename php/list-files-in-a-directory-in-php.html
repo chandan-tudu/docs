@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to List Files in a Directory in PHP</title>
+<meta name="description" content="In this comprehensive guide, we'll walk you through the process of listing files in a directory using PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<article class="article-container">
+<div class="box"><h1>How to List Files in a Directory in PHP: A Comprehensive Guide</h1></div>
+<div class="img"><img src="https://source.unsplash.com/05HLFQu8bFw/900x500" alt="Post Thumbnail of Listing Files in a Directory in PHP" loading="lazy" width="900" height="500"></div>
+<p>Listing files in a directory using PHP is a common operation in web development. Whether you're building a file management system, creating a gallery, or processing uploaded files, PHP provides powerful functions to interact with the file system.</p>
+
+<p>In this comprehensive guide, we'll walk you through the process of <strong>listing files in a directory using PHP</strong>, covering various methods and best practices.</p>
+
+<h2>1. <strong>Access the Directory</strong></h2>
+
+<p>Before you can list files in a directory, you need to access that directory using PHP. You can specify the directory's path using an absolute or relative path.</p>
+
+<h3>Example:</h3>
+
+<p>To access a directory named "uploads" located in the same directory as your PHP script, you can use a relative path:</p>
+
+<pre class="language-php"><code>$directory = 'uploads/';
+</code></pre>
+
+<p>For an absolute path, specify the full path to the directory:</p>
+
+<pre class="language-php"><code>$directory = '/var/www/html/uploads/';
+</code></pre>
+
+<h2>2. <strong>Use <code>scandir()</code> Function</strong></h2>
+
+<p>PHP's <code>scandir()</code> function is a simple way to list files and directories in a given directory. It returns an array containing the names of all files and directories found in the specified directory.</p>
+
+<h3>Syntax:</h3>
+
+<pre class="language-php"><code>$files = scandir($directory);
+</code></pre>
+
+<ul>
+<li><code>$directory</code>: The path to the directory you want to list files in.</li>
+<li><code>$files</code>: An array containing the names of files and directories.</li>
+</ul>
+
+<h3>Example:</h3>
+
+<pre class="language-php"><code>$directory = 'uploads/';
+$files = scandir($directory);
+
+foreach ($files as $file) {
+    echo $file . '&lt;br&gt;';
+}
+</code></pre>
+
+<p>This code will list all files and directories in the "uploads" directory.</p>
+
+<h2>3. <strong>Filter Out "." and ".." Entries</strong></h2>
+
+<p>When using <code>scandir()</code>, keep in mind that it includes the special entries "." (current directory) and ".." (parent directory) in the result. You'll often want to filter out these entries, as they are not actual files.</p>
+
+<h3>Example:</h3>
+
+<pre class="language-php"><code>$directory = 'uploads/';
+$files = scandir($directory);
+
+foreach ($files as $file) {
+    if ($file != '.' &amp;&amp; $file != '..') {
+        echo $file . '&lt;br&gt;';
+    }
+}
+</code></pre>
+
+<p>This code will exclude "." and ".." from the list of files and directories.</p>
+
+<h2>4. <strong>List Files Only</strong></h2>
+
+<p>If you want to list only files (not directories), you can filter the results using <code>is_file()</code>.</p>
+
+<h3>Example:</h3>
+
+<pre class="language-php"><code>$directory = 'uploads/';
+$files = scandir($directory);
+
+foreach ($files as $file) {
+    $filePath = $directory . $file;
+
+    if (is_file($filePath)) {
+        echo $file . '&lt;br&gt;';
+    }
+}
+</code></pre>
+
+<p>This code will list only files in the "uploads" directory.</p>
+
+<h2>5. <strong>List Directories Only</strong></h2>
+
+<p>Conversely, if you want to list only directories (not files), you can use <code>is_dir()</code>.</p>
+
+<h3>Example:</h3>
+
+<pre class="language-php"><code>$directory = 'uploads/';
+$files = scandir($directory);
+
+foreach ($files as $file) {
+    $filePath = $directory . $file;
+
+    if (is_dir($filePath) &amp;&amp; $file != '.' &amp;&amp; $file != '..') {
+        echo $file . '&lt;br&gt;';
+    }
+}
+</code></pre>
+
+<p>This code will list only directories in the "uploads" directory.</p>
+
+<h2>6. <strong>Recursive Directory Listing</strong></h2>
+
+<p>To list files in a directory and its subdirectories recursively, you can create a recursive function or use libraries like RecursiveDirectoryIterator and RecursiveIteratorIterator.</p>
+
+<h3>Example:</h3>
+
+<pre class="language-php"><code>function listFilesRecursive($directory) {
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+
+    foreach ($iterator as $file) {
+        if ($file-&gt;isFile()) {
+            echo $file-&gt;getPathname() . '&lt;br&gt;';
+        }
+    }
+}
+
+$directory = 'uploads/';
+listFilesRecursive($directory);
+</code></pre>
+
+<p>This code will list files in the "uploads" directory and all its subdirectories.</p>
+
+<h2>Conclusion</h2>
+
+<p>Listing files in a directory using PHP is a crucial skill for various web development tasks. Whether you need to display a list of downloadable files, organize uploaded content, or perform file-related operations, PHP's file system functions provide the tools you need. By following this comprehensive guide, you'll be able to navigate directories, filter files and directories, and even perform recursive directory listing, all with ease and confidence.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.js"></script>
+</body>
+</html>

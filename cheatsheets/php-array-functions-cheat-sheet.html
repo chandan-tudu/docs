@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PHP Array Function Cheat Sheet: A Comprehensive Reference Guide</title>
+<meta name="description" content="In this comprehensive cheat sheet, we'll provide a detailed reference guide to PHP's array functions, categorized by their common use cases." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<article class="article-container">
+<div class="box"><h1>PHP Array Function Cheat Sheet: A Comprehensive Reference Guide</h1></div>
+<div class="img"><img src="https://source.unsplash.com/4gKHjKG7ty4/900x500" alt="Post Thumbnail of PHP Array Functions Cheat Sheet" loading="lazy" width="900" height="500"></div>
+<p>Arrays are an integral part of PHP, and mastering array manipulation is essential for effective web development.</p>
+
+<p>PHP provides a rich set of array functions that make working with arrays more efficient and convenient.</p>
+
+<p>In this comprehensive cheat sheet, we'll provide a <strong>detailed reference guide to PHP's array functions</strong>, categorized by their common use cases.</p>
+
+<h2>Array Creation and Modification</h2>
+
+<h3>Creating Arrays</h3>
+
+<ol>
+<li><p><code>array()</code>: Creates an array.</p>
+
+<pre class="language-php"><code>$array = array(1, 2, 3);
+</code></pre></li>
+<li><p><code>range()</code>: Creates an array containing a range of elements.</p>
+
+<pre class="language-php"><code>$numbers = range(1, 5); // $numbers will be [1, 2, 3, 4, 5]
+</code></pre></li>
+</ol>
+
+<h3>Adding and Removing Elements</h3>
+
+<ol start="3">
+<li><p><code>array_push()</code>: Adds one or more elements to the end of an array.</p>
+
+<pre class="language-php"><code>$fruits = array("apple", "banana");
+array_push($fruits, "cherry"); // $fruits will be ["apple", "banana", "cherry"]
+</code></pre></li>
+<li><p><code>array_pop()</code>: Removes and returns the last element of an array.</p>
+
+<pre class="language-php"><code>$fruits = array("apple", "banana", "cherry");
+$lastFruit = array_pop($fruits); // $lastFruit will be "cherry"
+</code></pre></li>
+<li><p><code>array_shift()</code>: Removes and returns the first element of an array.</p>
+
+<pre class="language-php"><code>$fruits = array("apple", "banana", "cherry");
+$firstFruit = array_shift($fruits); // $firstFruit will be "apple"
+</code></pre></li>
+<li><p><code>array_unshift()</code>: Adds one or more elements to the beginning of an array.</p>
+
+<pre class="language-php"><code>$fruits = array("banana", "cherry");
+array_unshift($fruits, "apple"); // $fruits will be ["apple", "banana", "cherry"]
+</code></pre></li>
+</ol>
+
+<h2>Sorting and Filtering Arrays</h2>
+
+<h3>Sorting Arrays</h3>
+
+<ol start="7">
+<li><p><code>sort()</code>: Sorts an array in ascending order.</p>
+
+<pre class="language-php"><code>$numbers = array(3, 1, 2);
+sort($numbers); // $numbers will be [1, 2, 3]
+</code></pre></li>
+<li><p><code>rsort()</code>: Sorts an array in descending order.</p>
+
+<pre class="language-php"><code>$numbers = array(3, 1, 2);
+rsort($numbers); // $numbers will be [3, 2, 1]
+</code></pre></li>
+<li><p><code>asort()</code>: Sorts an associative array in ascending order, maintaining key-value associations.</p>
+
+<pre class="language-php"><code>$ages = array("John" =&gt; 30, "Alice" =&gt; 25, "Bob" =&gt; 35);
+asort($ages); // $ages will be ["Alice" =&gt; 25, "John" =&gt; 30, "Bob" =&gt; 35]
+</code></pre></li>
+<li><p><code>ksort()</code>: Sorts an associative array by keys.</p>
+
+<pre class="language-php"><code>$ages = array("John" =&gt; 30, "Alice" =&gt; 25, "Bob" =&gt; 35);
+ksort($ages); // $ages will be ["Alice" =&gt; 25, "Bob" =&gt; 35, "John" =&gt; 30]
+</code></pre></li>
+</ol>
+
+<h3>Filtering Arrays</h3>
+
+<ol start="11">
+<li><p><code>array_filter()</code>: Filters elements of an array using a callback function.</p>
+
+<pre class="language-php"><code>$numbers = array(1, 2, 3, 4, 5);
+$filtered = array_filter($numbers, function($element) {
+    return $element % 2 == 0;
+}); // $filtered will be [2, 4]
+</code></pre></li>
+<li><p><code>array_diff()</code>: Computes the difference between two or more arrays.</p>
+
+<pre class="language-php"><code>$array1 = array("a", "b", "c");
+$array2 = array("b", "c", "d");
+$difference = array_diff($array1, $array2); // $difference will be ["a"]
+</code></pre></li>
+</ol>
+
+<h2>Array Searching and Retrieval</h2>
+
+<h3>Searching Arrays</h3>
+
+<ol start="13">
+<li><p><code>in_array()</code>: Checks if a value exists in an array.</p>
+
+<pre class="language-php"><code>$fruits = array("apple", "banana", "cherry");
+$exists = in_array("banana", $fruits); // $exists will be true
+</code></pre></li>
+<li><p><code>array_search()</code>: Searches for a value in an array and returns the corresponding key.</p>
+
+<pre class="language-php"><code>$fruits = array("apple", "banana", "cherry");
+$key = array_search("banana", $fruits); // $key will be 1
+</code></pre></li>
+<li><p><code>array_keys()</code>: Returns all the keys in an array.</p>
+
+<pre class="language-php"><code>$person = array("name" =&gt; "John", "age" =&gt; 30);
+$keys = array_keys($person); // $keys will be ["name", "age"]
+</code></pre></li>
+<li><p><code>array_values()</code>: Returns all the values in an array.</p>
+
+<pre class="language-php"><code>$person = array("name" =&gt; "John", "age" =&gt; 30);
+$values = array_values($person); // $values will be ["John", 30]
+</code></pre></li>
+</ol>
+
+<h2>Slicing and Splicing Arrays</h2>
+
+<h3>Slicing Arrays</h3>
+
+<ol start="17">
+<li><p><code>array_slice()</code>: Returns a portion of an array.</p>
+
+<pre class="language-php"><code>$fruits = array("apple", "banana", "cherry", "date");
+$slice = array_slice($fruits, 1, 2); // $slice will be ["banana", "cherry"]
+</code></pre></li>
+<li><p><code>array_splice()</code>: Removes and returns elements</p>
+
+<p>from an array.</p>
+
+<pre class="language-php"><code>$fruits = array("apple", "banana", "cherry", "date");
+$removed = array_splice($fruits, 1, 2); // $removed will be ["banana", "cherry"], $fruits will be ["apple", "date"]
+</code></pre></li>
+</ol>
+
+<h2>Array Merging and Combining</h2>
+
+<h3>Merging Arrays</h3>
+
+<ol start="19">
+<li><p><code>array_merge()</code>: Merges one or more arrays.</p>
+
+<pre class="language-php"><code>$array1 = array("a", "b");
+$array2 = array("c", "d");
+$merged = array_merge($array1, $array2); // $merged will be ["a", "b", "c", "d"]
+</code></pre></li>
+<li><p><code>array_combine()</code>: Creates an array by using one array for keys and another for values.</p>
+
+<pre class="language-php"><code>$keys = array("name", "age");
+$values = array("John", 30);
+$combined = array_combine($keys, $values); // $combined will be ["name" =&gt; "John", "age" =&gt; 30]
+</code></pre></li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>This comprehensive PHP array function cheat sheet covers a wide range of array manipulation functions, categorized by their common use cases. Whether you're creating, modifying, sorting, searching, or slicing arrays, these functions will prove invaluable in your PHP development journey. Feel free to refer to this cheat sheet as you work on PHP projects and become more proficient in handling arrays in your applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.js"></script>
+</body>
+</html>

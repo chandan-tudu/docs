@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PHP Array Cheat Sheet: A Quick Reference Guide</title>
+<meta name="description" content="In this PHP array cheat sheet, we'll provide a quick reference guide to the most common array operations and functions." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<article class="article-container">
+<div class="box"><h1>PHP Array Cheat Sheet: A Quick Reference Guide</h1></div>
+<div class="img"><img src="https://source.unsplash.com/Q9y3LRuuxmg/900x500" alt="Post Thumbnail of PHP Array Cheat Sheet" loading="lazy" width="900" height="500"></div>
+<p>Arrays are essential data structures in PHP that allow you to store and manipulate collections of data.</p>
+
+<p>PHP provides various functions and methods for working with arrays, making it a versatile language for handling complex data structures.</p>
+
+<p>In this PHP array cheat sheet, we'll provide a <strong>quick reference guide to the most common array operations and functions</strong> to help you efficiently work with arrays in PHP.</p>
+
+<h2>Creating Arrays</h2>
+
+<h3>Create an Empty Array</h3>
+
+<pre class="language-php"><code>$emptyArray = [];
+</code></pre>
+
+<h3>Create an Indexed Array</h3>
+
+<pre class="language-php"><code>$colors = ["Red", "Green", "Blue"];
+</code></pre>
+
+<h3>Create an Associative Array</h3>
+
+<pre class="language-php"><code>$person = [
+    "first_name" =&gt; "John",
+    "last_name" =&gt; "Doe",
+    "age" =&gt; 30
+];
+</code></pre>
+
+<h3>Create a Multidimensional Array</h3>
+
+<pre class="language-php"><code>$matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+</code></pre>
+
+<h2>Accessing Array Elements</h2>
+
+<h3>Access by Index</h3>
+
+<pre class="language-php"><code>$colors[0]; // Returns "Red"
+</code></pre>
+
+<h3>Access by Key</h3>
+
+<pre class="language-php"><code>$person["first_name"]; // Returns "John"
+</code></pre>
+
+<h2>Modifying Arrays</h2>
+
+<h3>Add an Element</h3>
+
+<pre class="language-php"><code>$colors[] = "Yellow"; // Appends "Yellow" to the end of the array
+</code></pre>
+
+<h3>Update an Element</h3>
+
+<pre class="language-php"><code>$person["age"] = 35; // Updates the "age" key to 35
+</code></pre>
+
+<h3>Remove an Element</h3>
+
+<pre class="language-php"><code>unset($colors[1]); // Removes the element at index 1
+</code></pre>
+
+<h2>Array Functions</h2>
+
+<h3>Count the Number of Elements</h3>
+
+<pre class="language-php"><code>$count = count($colors); // Returns the number of elements in $colors
+</code></pre>
+
+<h3>Check if an Element Exists</h3>
+
+<pre class="language-php"><code>$exists = in_array("Red", $colors); // Returns true if "Red" exists in $colors
+</code></pre>
+
+<h3>Find the Keys of a Value</h3>
+
+<pre class="language-php"><code>$keys = array_keys($person, "Doe"); // Returns ["last_name"]
+</code></pre>
+
+<h3>Merge Two Arrays</h3>
+
+<pre class="language-php"><code>$mergedArray = array_merge($array1, $array2); // Merges $array1 and $array2
+</code></pre>
+
+<h3>Sort an Array</h3>
+
+<pre class="language-php"><code>sort($numbers); // Sorts $numbers in ascending order
+</code></pre>
+
+<h3>Reverse an Array</h3>
+
+<pre class="language-php"><code>$reversedArray = array_reverse($numbers); // Reverses the order of elements in $numbers
+</code></pre>
+
+<h3>Remove Duplicates from an Array</h3>
+
+<pre class="language-php"><code>$uniqueArray = array_unique($numbers); // Removes duplicate values from $numbers
+</code></pre>
+
+<h3>Extract a Slice of an Array</h3>
+
+<pre class="language-php"><code>$slice = array_slice($numbers, 2, 3); // Extracts a slice starting from index 2 with a length of 3
+</code></pre>
+
+<h3>Combine Two Arrays into an Associative Array</h3>
+
+<pre class="language-php"><code>$combinedArray = array_combine($keys, $values); // Combines $keys and $values into an associative array
+</code></pre>
+
+<h2>Iterating Through Arrays</h2>
+
+<h3>Using <code>foreach</code></h3>
+
+<pre class="language-php"><code>foreach ($colors as $color) {
+    echo $color . " ";
+}
+</code></pre>
+
+<h3>Using <code>for</code></h3>
+
+<pre class="language-php"><code>for ($i = 0; $i &lt; count($colors); $i++) {
+    echo $colors[$i] . " ";
+}
+</code></pre>
+
+<h3>Using <code>while</code></h3>
+
+<pre class="language-php"><code>$i = 0;
+while ($i &lt; count($colors)) {
+    echo $colors[$i] . " ";
+    $i++;
+}
+</code></pre>
+
+<p>This cheat sheet covers the most common PHP array operations and functions to help you work with arrays effectively. Keep this reference handy as you explore more complex array manipulations and become proficient in PHP array handling.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/ex.min.js"></script>
+</body>
+</html>
