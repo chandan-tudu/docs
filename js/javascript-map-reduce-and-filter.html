@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript Map, Reduce, and Filter: Array Methods</title>
+<meta name="description" content="In this comprehensive guide, we'll explore JavaScript's map(), reduce(), and filter() functions, understand how they work, and provide practical examples of their usage." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<article class="article-container">
+<div class="box"><h1>JavaScript Map, Reduce, and Filter: Array Methods</h1></div>
+<div class="img"><img src="https://source.unsplash.com/CrhsIRY3JWY/900x500" alt="Post Thumbnail of JavaScript Map, Reduce, and Filter" loading="lazy" width="900" height="500"></div>
+<p>JavaScript is a versatile programming language used extensively in web development. Among its many features, JavaScript provides powerful methods like <code>map()</code>, <code>reduce()</code>, and <code>filter()</code> that operate on arrays.</p>
+
+<p>These methods simplify data manipulation and transformation tasks, making them essential tools in a developer's toolkit.</p>
+
+<p>In this comprehensive guide, we'll explore JavaScript's <code>map()</code>, <code>reduce()</code>, and <code>filter()</code> functions, understand how they work, and provide practical examples of their usage.</p>
+
+<h2>JavaScript Arrays: The Foundation</h2>
+
+<p>Before diving into <code>map()</code>, <code>reduce()</code>, and <code>filter()</code>, let's briefly revisit JavaScript arrays. Arrays are ordered collections of data, often used to store lists of values. You can create arrays containing various data types, including numbers, strings, objects, and even other arrays.</p>
+
+<pre class="language-javascript"><code>const numbers = [1, 2, 3, 4, 5];
+const fruits = ['apple', 'banana', 'cherry'];
+const mixedData = [1, 'hello', { key: 'value' }];
+</code></pre>
+
+<h2>1. The <code>map()</code> Method</h2>
+
+<p>The <code>map()</code> method is used to transform each element of an array by applying a provided function to it. It returns a new array containing the results of applying the function to each element, without modifying the original array.</p>
+
+<h3>Syntax:</h3>
+
+<pre class="language-javascript"><code>const newArray = array.map((currentValue, index, array) =&gt; {
+    // Transform currentValue and return the result
+});
+</code></pre>
+
+<ul>
+<li><code>currentValue</code>: The current element being processed.</li>
+<li><code>index</code>: (Optional) The index of the current element.</li>
+<li><code>array</code>: (Optional) The array on which <code>map()</code> is called.</li>
+</ul>
+
+<h3>Example:</h3>
+
+<p>Let's double each number in an array:</p>
+
+<pre class="language-javascript"><code>const numbers = [1, 2, 3, 4, 5];
+const doubledNumbers = numbers.map((number) =&gt; number * 2);
+console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+</code></pre>
+
+<h2>2. The <code>reduce()</code> Method</h2>
+
+<p>The <code>reduce()</code> method reduces an array to a single value by applying a provided function to each element and accumulating the results. It takes an initial value and an accumulator function as arguments.</p>
+
+<h3>Syntax:</h3>
+
+<pre class="language-javascript"><code>const result = array.reduce((accumulator, currentValue, index, array) =&gt; {
+    // Update accumulator using currentValue and return it
+}, initialValue);
+</code></pre>
+
+<ul>
+<li><code>accumulator</code>: The accumulated value.</li>
+<li><code>currentValue</code>: The current element being processed.</li>
+<li><code>index</code>: (Optional) The index of the current element.</li>
+<li><code>array</code>: (Optional) The array on which <code>reduce()</code> is called.</li>
+<li><code>initialValue</code>: (Optional) The initial value of the accumulator.</li>
+</ul>
+
+<h3>Example:</h3>
+
+<p>Let's sum all numbers in an array:</p>
+
+<pre class="language-javascript"><code>const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((accumulator, number) =&gt; accumulator + number, 0);
+console.log(sum); // 15
+</code></pre>
+
+<h2>3. The <code>filter()</code> Method</h2>
+
+<p>The <code>filter()</code> method creates a new array containing all elements that pass a provided test. It returns a subset of the original array based on a given condition.</p>
+
+<h3>Syntax:</h3>
+
+<pre class="language-javascript"><code>const filteredArray = array.filter((currentValue, index, array) =&gt; {
+    // Return true to include currentValue in the filtered array
+});
+</code></pre>
+
+<ul>
+<li><code>currentValue</code>: The current element being processed.</li>
+<li><code>index</code>: (Optional) The index of the current element.</li>
+<li><code>array</code>: (Optional) The array on which <code>filter()</code> is called.</li>
+</ul>
+
+<h3>Example:</h3>
+
+<p>Let's filter out even numbers from an array:</p>
+
+<pre class="language-javascript"><code>const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter((number) =&gt; number % 2 === 0);
+console.log(evenNumbers); // [2, 4]
+</code></pre>
+
+<h2>Practical Use Cases</h2>
+
+<p>These methods are incredibly useful in various scenarios, such as:</p>
+
+<ul>
+<li><p><strong>Data Transformation</strong>: Use <code>map()</code> to transform data structures, like converting an array of objects into an array of specific properties.</p></li>
+<li><p><strong>Aggregation</strong>: Use <code>reduce()</code> to calculate sums, averages, or any other aggregated values from arrays of data.</p></li>
+<li><p><strong>Data Filtering</strong>: Use <code>filter()</code> to extract elements from an array that meet specific criteria, such as filtering out invalid data.</p></li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>JavaScript's <code>map()</code>, <code>reduce()</code>, and <code>filter()</code> methods are powerful tools for manipulating and transforming arrays. They enable developers to write concise and expressive code for common data processing tasks. By understanding how these methods work and practicing their usage, you'll become more proficient in handling arrays and performing complex data operations in JavaScript. Incorporate these methods into your projects to write cleaner and more efficient code.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/ex.min.js"></script>
+</body>
+</html>
