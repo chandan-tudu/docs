@@ -2,7 +2,7 @@ const rootEl = document.documentElement;
 const bodyEl = document.querySelector('body');
 const headEl = document.querySelector('head');
 const header = document.querySelector('.header');
-const findPreEl = document.querySelector("pre[class*='language-']");
+
 const moon =
     '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
 const sun =
@@ -14,18 +14,32 @@ const createEl = (type, attr = {}) => {
     }
     return el;
 };
-if (findPreEl) {
-    const prismScript = createEl('script', {
-        src: 'https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/prism.js',
-    });
-    const prismStyle = createEl('link', {
-        rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/gh/chandan-tudu/tutorials@master/assets/prism.min.css',
-    });
+// Load Scripts
+(function(){
+    const findPreEl = document.querySelector("pre[class*='language-']");
+    if (findPreEl) {
+        const prismScript = createEl('script', {
+            src: 'https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/prism.js',
+        });
+        const prismStyle = createEl('link', {
+            rel: 'stylesheet',
+            href: 'https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/prism.min.css',
+        });
+    
+        headEl.insertAdjacentElement('beforeend', prismStyle);
+        bodyEl.insertAdjacentElement('beforeend', prismScript);
+    }
 
-    headEl.insertAdjacentElement('beforeend', prismStyle);
-    bodyEl.insertAdjacentElement('beforeend', prismScript);
-}
+    const gTag = createEl('script',{
+        async:true,
+        src:'https://www.googletagmanager.com/gtag/js?id=UA-221022966-1'
+    });
+    const gTagCode = createEl('script',{
+        src:'https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/analytics.js'
+    });
+    bodyEl.insertAdjacentElement('beforeend', gTag);
+    bodyEl.insertAdjacentElement('beforeend', gTagCode);
+})();
 
 const navbar = createEl('div', {
     class: 'navbar',
