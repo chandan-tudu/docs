@@ -32,7 +32,7 @@ const createEl = (type, attr = {}) => {
 
     const gTag = createEl('script',{
         async:true,
-        src:'https://www.googletagmanager.com/gtag/js?id=UA-221022966-1'
+        src:'https://www.googletagmanager.com/gtag/js?id=G-1EGRP1HSLV'
     });
     const gTagCode = createEl('script',{
         src:'https://cdn.jsdelivr.net/gh/chandan-tudu/docs@master/assets/analytics.js'
