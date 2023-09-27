@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Difference Between Single and Double Quotes in PHP</title>
+<meta name="description" content="Here we will explore the differences between single and double quotes in PHP." />
+
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div><div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Difference Between Single and Double Quotes in PHP</h1></div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php-single-vs-double-quotes.png" alt="Difference Between Single and Double Quotes in PHP" loading="lazy" width="900" height="500"></div>
+<p>In PHP, both single and double quotes are used to define strings. However, they behave differently in terms of variable interpolation, escape sequences, and performance.</p>
+
+<p>Understanding the distinctions between single and double quotes is <strong>essential for effective string manipulation and code optimization</strong>.</p>
+
+<p>In this article, we'll explore the <strong>differences between single and double quotes in PHP</strong>.</p>
+
+<h2>1. Single Quotes ('...')</h2>
+
+<p>Single quotes are used to define <strong>literal strings</strong> in PHP. When you enclose a string within single quotes, PHP treats it as a plain text string, and no variable interpolation or escape sequence parsing occurs within the string. Here are some key characteristics of single-quoted strings:</p>
+
+<ol>
+<li><p><strong>No Variable Interpolation</strong>: Variables enclosed in single quotes are treated as literal strings. They will not be replaced with their values. For example:</p>
+
+<pre class="language-php"><code>$name = "John";
+echo 'Hello, $name!'; // Output: Hello, $name!
+</code></pre></li>
+<li><p><strong>Limited Escape Sequences</strong>: Single-quoted strings support only two escape sequences: <code>\'</code> (for a literal single quote) and <code>\\</code> (for a literal backslash). All other escape sequences, like <code>\n</code> for a newline or <code>\t</code> for a tab, are treated as plain text.</p>
+
+<pre class="language-php"><code>echo 'This is a single-quoted string with a single quote: \' and a backslash: \\';
+// Output: This is a single-quoted string with a single quote: ' and a backslash: \
+</code></pre></li>
+<li><p><strong>Performance</strong>: Single-quoted strings are slightly faster than double-quoted strings because PHP does not need to perform variable interpolation or escape sequence parsing.</p></li>
+</ol>
+
+<h2>2. Double Quotes ("...")</h2>
+
+<p>Double quotes are used to define <strong>interpolated strings</strong> in PHP. When you enclose a string within double quotes, PHP evaluates variables within the string and processes escape sequences. Here are the main characteristics of double-quoted strings:</p>
+
+<ol>
+<li><p><strong>Variable Interpolation</strong>: Variables enclosed in double quotes are replaced with their values. For example:</p>
+
+<pre class="language-php"><code>$name = "John";
+echo "Hello, $name!"; // Output: Hello, John!
+</code></pre></li>
+<li><p><strong>Escape Sequences</strong>: Double-quoted strings interpret escape sequences like <code>\n</code> for a newline or <code>\t</code> for a tab. They also recognize the escape sequences <code>\"</code> for a literal double quote and <code>\\</code> for a literal backslash.</p>
+
+<pre class="language-php"><code>echo "This is a double-quoted string with a newline: \n and a tab: \t";
+// Output: This is a double-quoted string with a newline:
+//         and a tab:     (actual newline and tab characters)
+</code></pre></li>
+<li><p><strong>Performance</strong>: Double-quoted strings are marginally slower than single-quoted strings due to the need for variable interpolation and escape sequence parsing.</p></li>
+</ol>
+
+<h2>3. Choosing Between Single and Double Quotes</h2>
+
+<p>The choice between single and double quotes depends on your specific needs:</p>
+
+<ul>
+<li><p><strong>Single Quotes</strong>: Use single quotes when you want to create literal strings that do not require variable interpolation or complex escape sequences. They can be slightly more efficient for simple text.</p></li>
+<li><p><strong>Double Quotes</strong>: Use double quotes when you need to include variables within the string or use escape sequences to format the string's content. Double-quoted strings provide more flexibility in constructing dynamic strings.</p></li>
+</ul>
+
+<p>Remember that both types of quotes are essential tools in PHP, and the choice depends on the context and requirements of your code.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

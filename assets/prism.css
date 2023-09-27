@@ -187,6 +187,10 @@ pre[class*='language-'] {
     color: #f7f1ff;
 }
 
+.language-json .token.property{
+    color: #f7f1ff;
+}
+
 .token.bold,
 .token.important {
     font-weight: 400;
