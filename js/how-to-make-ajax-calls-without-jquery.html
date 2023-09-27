@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Make AJAX Calls Without jQuery?</title>
+<meta name="description" content="Learn how to make AJAX calls without jQuery using the XMLHttpRequest object and the Fetch API." />
+
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Make AJAX Calls Without jQuery?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to Make AJAX Calls Without jQuery" loading="lazy" width="900" height="500"></div> -->
+<p>AJAX (Asynchronous JavaScript and XML) is a fundamental technology in modern web development that enables you to send and receive data from a server without requiring a full page reload.</p>
+
+<p>While jQuery has been a popular choice for simplifying AJAX calls, native JavaScript provides powerful tools for achieving the same results.</p>
+
+<p>In this comprehensive guide, we'll explore <strong>how to make AJAX calls without jQuery using the <a href="#xhr">XMLHttpRequest object</a> and the <a href="#fetch-api">Fetch API</a></strong>.</p>
+
+<h2>Understanding AJAX and Its Significance</h2>
+
+<p>AJAX is a web development technique that allows you to perform the following tasks seamlessly:</p>
+
+<ul>
+<li><strong>Retrieve Data:</strong> Fetch data from a server or an external source without the need to reload the entire web page.</li>
+<li><strong>Send Data:</strong> Send data to a server, often for processing or updating.</li>
+<li><strong>Update the DOM:</strong> Dynamically manipulate the web page's content based on data received from the server, creating interactive and responsive web applications.</li>
+</ul>
+
+<h2 id="xhr">XMLHttpRequest: The Classic Approach</h2>
+
+<h3>Step 1: Creating an XMLHttpRequest Object</h3>
+
+<p>To make an AJAX call with the XMLHttpRequest object, you must first create an instance of the object:</p>
+
+<pre class="language-javascript"><code>const xhr = new XMLHttpRequest();
+</code></pre>
+
+<h3>Step 2: Configuring the Request</h3>
+
+<p>Next, configure the request by specifying the HTTP method, URL, and whether the request should be asynchronous:</p>
+
+<pre class="language-javascript"><code>const method = 'GET'; // HTTP method (e.g., GET, POST)
+const url = 'https://api.example.com/data'; // URL of the resource
+xhr.open(method, url, true); // 'true' for asynchronous request
+</code></pre>
+
+<h3>Step 3: Handling the Response (Using xhr.onload)</h3>
+
+<p>Define a callback function using <code>xhr.onload</code> to handle the response when it arrives. This function executes when the request is complete:</p>
+
+<pre class="language-javascript"><code>xhr.onload = function () {
+  if (xhr.status === 200) {
+    // Successful response, handle data here
+    const responseData = JSON.parse(xhr.responseText);
+    console.log(responseData);
+  } else {
+    // Handle errors
+    console.error('Request failed:', xhr.status, xhr.statusText);
+  }
+};
+</code></pre>
+
+<h3>Alternative Step 3: Handling the Response (Using xhr.onreadystatechange)</h3>
+
+<p>Alternatively, you can use <code>xhr.onreadystatechange</code> to check for the ready state of the request and handle the response when it's complete:</p>
+
+<pre class="language-javascript"><code>xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200) {
+      // Successful response, handle data here
+      const responseData = JSON.parse(xhr.responseText);
+      console.log(responseData);
+    } else {
+      // Handle errors
+      console.error('Request failed:', xhr.status, xhr.statusText);
+    }
+  }
+};
+</code></pre>
+
+<p>In this example, we use <code>xhr.readyState</code> to check if the request is complete and <code>xhr.status</code> to check the HTTP status code.</p>
+
+<h3>Step 4: Sending the Request</h3>
+
+<p>Finally, send the AJAX request:</p>
+
+<pre class="language-javascript"><code>xhr.send();
+</code></pre>
+
+<h3>Full Code</h3>
+
+<pre class="language-javascript"><code>const xhr = new XMLHttpRequest();
+const method = 'GET'; // HTTP method (e.g., GET, POST)
+const url = 'https://api.example.com/data'; // URL of the resource
+
+xhr.open(method, url, true); // 'true' for asynchronous request
+
+xhr.onload = function () {
+  if (xhr.status === 200) {
+    // Successful response, handle data here
+    const responseData = JSON.parse(xhr.responseText);
+    console.log(responseData);
+  } else {
+    // Handle errors
+    console.error('Request failed:', xhr.status, xhr.statusText);
+  }
+};
+
+xhr.send();
+</code></pre>
+<hr>
+<h2 id="fetch-api">Fetch API: The Modern Approach</h2>
+
+<p>The Fetch API offers a cleaner and more modern way to make AJAX calls in JavaScript:</p>
+
+<h3>Step 1: Creating a Fetch Request</h3>
+
+<p>To initiate a Fetch request, specify the URL:</p>
+
+<pre class="language-javascript"><code>const fetchUrl = 'https://api.example.com/data';
+</code></pre>
+
+<h3>Step 2: Making the Fetch Request</h3>
+
+<p>Use the <code>fetch()</code> function to make the request and handle the response using Promises:</p>
+
+<pre class="language-javascript"><code>fetch(fetchUrl)
+  .then(response =&gt; {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Parse the response body as JSON
+  })
+  .then(data =&gt; {
+    // Handle the JSON data here
+    console.log(data);
+  })
+  .catch(error =&gt; {
+    // Handle errors here
+    console.error('Fetch error:', error);
+  });
+</code></pre>
+
+<h3>Make the Fetch with Async/Await and Try-Catch</h3>
+
+<p>Wrap the fetch operation in an async function and use try-catch to handle any potential errors:</p>
+
+<pre class="language-javascript"><code>async function fetchData() {
+  try {
+    const response = await fetch(fetchUrl);
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json(); // Parse the response body as JSON
+
+    // Handle the JSON data here
+    console.log(data);
+  } catch (error) {
+    // Handle fetch errors here
+    console.error('Fetch error:', error);
+  }
+}
+
+// Call the async function to initiate the fetch
+fetchData();
+</code></pre>
+
+<h2>Conclusion</h2>
+
+<p>Making AJAX calls without jQuery is essential for modern web development, as it provides greater control and efficiency.</p>
+
+<p>While jQuery simplifies the process, understanding how to use native JavaScript methods like XMLHttpRequest and the Fetch API is vital for building robust and customizable web applications.</p>
+
+<p>Whether you prefer the classic approach with XMLHttpRequest or the modern approach with the Fetch API, mastering these techniques empowers you to create dynamic and responsive web applications.</p>
+
+<p>These applications can seamlessly communicate with servers, delivering users a smooth and engaging web experience.</p>
+
+<p>By leveraging the full potential of native JavaScript, you're well-equipped to tackle various web development challenges and craft exceptional user interfaces.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>
