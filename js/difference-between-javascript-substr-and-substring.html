@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Difference Between JavaScript substr() and substring()</title>
+<meta name="description" content="In this article, we'll explore the distinctions between substr() and substring() to help you understand when to use each one in your JavaScript code." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Difference Between JavaScript substr() and substring()</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Difference Between JavaScript substr() and substring()" loading="lazy" width="900" height="500"></div> -->
+<p>JavaScript provides two similar-looking string methods: <code>substr()</code> and <code>substring()</code>, which are often used for extracting substrings from a given string.</p>
+
+<p>However, there are key differences in how these methods work. In this article, we'll explore the distinctions between <code>substr()</code> and <code>substring()</code> to help you understand when to use each one in your JavaScript code.</p>
+
+<h2><code>substr()</code>: Extract a Substring with a Starting Index and Length</h2>
+
+<p>The <code>substr()</code> method is used to extract a substring from a string based on a starting index and a specified length. Its syntax is as follows:</p>
+
+<pre class="language-javascript"><code>string.substr(startIndex, length);
+</code></pre>
+
+<ul>
+<li><code>startIndex</code>: An integer indicating the starting position of the substring. If negative, it counts from the end of the string.</li>
+<li><code>length</code> (optional): The length of the substring to extract. If omitted, the method extracts characters from the <code>startIndex</code> to the end of the string.</li>
+</ul>
+
+<p>Here's an example of how to use <code>substr()</code>:</p>
+
+<pre class="language-javascript"><code>const str = "Hello, World!";
+const substring = str.substr(7, 5); // Starts at index 7, extracts 5 characters
+console.log(substring); // Output: "World"
+</code></pre>
+
+<p>In this example, we start at index 7 ("W") and extract 5 characters, resulting in "World".</p>
+
+<h2><code>substring()</code>: Extract a Substring Between Two Indices</h2>
+
+<p>The <code>substring()</code> method is used to extract a substring from a string between two specified indices. Its syntax is as follows:</p>
+
+<pre class="language-javascript"><code>string.substring(startIndex, endIndex);
+</code></pre>
+
+<ul>
+<li><code>startIndex</code>: An integer indicating the starting position of the substring. If negative, it is treated as 0.</li>
+<li><code>endIndex</code>: An integer indicating the ending position of the substring. If negative, it is treated as 0. The substring includes characters up to, but not including, the character at the <code>endIndex</code>.</li>
+</ul>
+
+<p>Here's an example of how to use <code>substring()</code>:</p>
+
+<pre class="language-javascript"><code>const str = "Hello, World!";
+const substring = str.substring(7, 12); // Starts at index 7, ends at index 11
+console.log(substring); // Output: "World"
+</code></pre>
+
+<p>In this example, we specify the start index as 7 and the end index as 12. The substring includes characters from index 7 ("W") to index 11 ("d") but does not include the character at index 12.</p>
+
+<h2>Key Differences</h2>
+
+<ol>
+<li><p><strong>Parameter Meaning</strong>:</p>
+
+<ul>
+<li><code>substr()</code> uses a starting index and a length to define the substring.</li>
+<li><code>substring()</code> uses two indices to define the substring's start and end positions.</li>
+</ul></li>
+<li><p><strong>Handling Negative Indices</strong>:</p>
+
+<ul>
+<li><code>substr()</code> allows negative <code>startIndex</code> values, treating them as counting from the end of the string.</li>
+<li><code>substring()</code> treats negative indices as 0.</li>
+</ul></li>
+<li><p><strong>End Index Inclusivity</strong>:</p>
+
+<ul>
+<li><code>substr()</code> is inclusive of the <code>startIndex</code> but stops at the character before <code>startIndex + length</code>.</li>
+<li><code>substring()</code> is inclusive of the character at the <code>startIndex</code> but stops just before the character at the <code>endIndex</code>.</li>
+</ul></li>
+</ol>
+
+<h2>Which One to Choose?</h2>
+
+<p>The choice between <code>substr()</code> and <code>substring()</code> depends on your specific use case:</p>
+
+<ul>
+<li><p>Use <code>substr()</code> when you need to extract a substring starting from a particular index and with a specified length.</p></li>
+<li><p>Use <code>substring()</code> when you need to extract a substring between two specific indices.</p></li>
+</ul>
+
+<p>Both methods are useful for manipulating strings, and understanding their differences will help you select the appropriate method for your string manipulation tasks in JavaScript.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

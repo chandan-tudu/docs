@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Triggering Button Click with JavaScript on Enter Key Press</title>
+<meta name="description" content="In this guide, you will learn how to trigger a button click when the Enter key is pressed." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Triggering Button Click with JavaScript on Enter Key Press</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Triggering Button Click with JavaScript on Enter Key Press" loading="lazy" width="900" height="500"></div> -->
+<p>In web development, it's often necessary to create user-friendly interfaces that allow users to interact with elements using both keyboard and mouse inputs.</p>
+
+<p>One common requirement is to <strong>trigger a button click when the Enter key is pressed</strong>, providing an alternative way to interact with a form or perform an action. In this article, we'll explore how to achieve this using JavaScript.</p>
+
+<h2>The Scenario</h2>
+
+<p>Consider a web form with an input field and a submit button. Instead of clicking the submit button with the mouse, we want users to be able to press the Enter key while the input field is focused to trigger the same action. Let's walk through the steps to make this happen.</p>
+
+<h2>HTML Structure</h2>
+
+<p>First, let's set up the HTML structure for our form:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Button Click on Enter Key Press&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;input type="text" id="inputField" placeholder="Press Enter"&gt;
+  &lt;button id="submitButton"&gt;Submit&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>We have an input field with the id <code>inputField</code> and a submit button with the id <code>submitButton</code>.</p>
+
+<h2>JavaScript Implementation</h2>
+
+<p>To achieve the desired functionality, we'll use JavaScript to add event listeners to the input field and the button. Here's the JavaScript code:</p>
+
+<pre class="language-javascript"><code>// Get references to the input field and button
+const inputField = document.getElementById('inputField');
+const submitButton = document.getElementById('submitButton');
+
+// Add an event listener to the input field
+inputField.addEventListener('keyup', function(event) {
+  // Check if the key pressed is Enter (key code 13)
+  if (event.keyCode === 13) {
+    // Trigger the button's click event
+    submitButton.click();
+  }
+});
+
+// Add a click event listener to the button
+submitButton.addEventListener('click', function() {
+  alert('Button Clicked!');
+});
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>We use <code>getElementById</code> to obtain references to the input field and the submit button.</p></li>
+<li><p>An event listener is added to the input field for the <code>keyup</code> event. When a key is released, the event handler checks if the key code is <code>13</code>, which corresponds to the Enter key. If it is, the <code>click()</code> method of the submit button is called, effectively triggering the button's click event.</p></li>
+<li><p>Additionally, we add a click event listener to the submit button to demonstrate that clicking the button programmatically works as expected.</p></li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>By adding this simple JavaScript functionality, you can enhance the user experience of your web forms and interfaces. Users can now conveniently press the Enter key while focused on an input field to submit a form or perform a specific action, providing an alternative way to interact with your web application. This approach is not only user-friendly but also improves accessibility for users who rely on keyboard navigation.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

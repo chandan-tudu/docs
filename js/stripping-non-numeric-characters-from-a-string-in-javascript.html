@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stripping Non-Numeric Characters from a String in JavaScript</title>
+<meta name="description" content="In this guide, we will explore various methods and techniques to strip non-numeric characters from a string in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Stripping Non-Numeric Characters from a String in JavaScript</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Stripping Non-Numeric Characters from a String in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>When working with textual data in JavaScript, you may encounter situations where you need to extract or filter out numeric characters from a string while removing any non-numeric characters such as letters, symbols, or spaces.</p>
+
+<p>In this comprehensive guide, we will explore various methods and techniques to <strong>strip non-numeric characters from a string in JavaScript</strong>.</p>
+
+<h2>Using Regular Expressions</h2>
+
+<p>One of the most efficient and flexible ways to remove non-numeric characters from a string is by using regular expressions. Regular expressions provide powerful pattern matching capabilities. Here's how you can use a regular expression to achieve this:</p>
+
+<pre class="language-javascript"><code>function stripNonNumeric(str) {
+  // Use a regular expression to match non-numeric characters and replace them with an empty string
+  return str.replace(/[^0-9]/g, '');
+}
+
+const originalString = 'abc123xyz456'; // Sample string with non-numeric characters
+const numericString = stripNonNumeric(originalString);
+console.log(numericString); // Output: '123456'
+</code></pre>
+
+<p>In this example, the <code>stripNonNumeric</code> function takes an input string and uses the <code>replace()</code> method with a regular expression <code>/[^0-9]/g</code> to match all characters that are not digits (0-9) and replaces them with an empty string, effectively removing them from the string.</p>
+
+<h2>Using a Loop</h2>
+
+<p>If you prefer a non-regex approach or need more control over the stripping process, you can use a loop to iterate through the characters of the string and filter out the numeric ones. Here's an example using a loop:</p>
+
+<pre class="language-javascript"><code>function stripNonNumericLoop(str) {
+  let numericString = '';
+  for (let i = 0; i &lt; str.length; i++) {
+    if (!isNaN(parseInt(str[i]))) {
+      numericString += str[i];
+    }
+  }
+  return numericString;
+}
+
+const originalString = 'abc123xyz456'; // Sample string with non-numeric characters
+const numericString = stripNonNumericLoop(originalString);
+console.log(numericString); // Output: '123456'
+</code></pre>
+
+<p>In this example, the <code>stripNonNumericLoop</code> function iterates through each character in the input string. If the character is numeric (determined using <code>isNaN</code> and <code>parseInt</code>), it is appended to the <code>numericString</code>, effectively filtering out non-numeric characters.</p>
+
+<h2>Using ES6 <code>filter()</code> and <code>join()</code></h2>
+
+<p>A more modern approach uses the <code>filter()</code> method along with the <code>join()</code> method to filter and join numeric characters. Here's how you can do it:</p>
+
+<pre class="language-javascript"><code>function stripNonNumericFilter(str) {
+  const numericArray = Array.from(str).filter(char =&gt; !isNaN(parseInt(char)));
+  return numericArray.join('');
+}
+
+const originalString = 'abc123xyz456'; // Sample string with non-numeric characters
+const numericString = stripNonNumericFilter(originalString);
+console.log(numericString); // Output: '123456'
+</code></pre>
+
+<p>In this approach, we first convert the input string to an array of characters using <code>Array.from()</code>. Then, we use the <code>filter()</code> method to create a new array containing only the numeric characters. Finally, we join the filtered characters back together using <code>join('')</code> to form the numeric string.</p>
+
+<h2>Conclusion</h2>
+
+<p>Stripping non-numeric characters from a string in JavaScript can be accomplished using a variety of methods, depending on your specific needs and coding preferences. Regular expressions provide a concise and efficient way to achieve this task, while loops and array manipulation techniques offer flexibility and control. By understanding these methods, you can effectively process and manipulate textual data in your JavaScript applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

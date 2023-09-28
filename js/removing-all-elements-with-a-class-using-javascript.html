@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Removing All Elements with a Class Using JavaScript</title>
+<meta name="description" content="In this article, we will explore how to remove all elements with a certain class using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Removing All Elements with a Class Using JavaScript</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Removing All Elements with a Class Using JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>In web development, there are often situations where you need to manipulate the DOM (Document Object Model) to <strong>remove elements that share a specific class</strong>.</p>
+
+<p>This can be particularly useful for cleaning up a page, dynamically adjusting its content, or implementing interactive features.</p>
+
+<p>In this article, we will explore <strong>how to remove all elements with a certain class using JavaScript</strong>.</p>
+
+<h2>The Scenario</h2>
+
+<p>Consider a web page with multiple elements that have the same class, and you want to remove all of them with a single action. This scenario is common when you want to delete or hide specific content or elements based on user interactions or other dynamic factors.</p>
+
+<h2>JavaScript Approach</h2>
+
+<p>To remove all elements with a particular class in JavaScript, you can follow these steps:</p>
+
+<ol>
+<li><p>Use the <code>document.querySelectorAll()</code> method to select all elements with the specified class.</p></li>
+<li><p>Loop through the selected elements using the <code>forEach()</code> method and remove each element.</p></li>
+</ol>
+
+<p>Let's break down the process with an example:</p>
+
+<pre class="language-javascript"><code>// Get all elements with a specific class
+const elementsToRemove = document.querySelectorAll('.your-class-name');
+
+// Loop through the selected elements and remove each one
+elementsToRemove.forEach(element =&gt; {
+  element.remove();
+});
+</code></pre>
+
+<p>Here's what each part of the code does:</p>
+
+<ul>
+<li><p><code>document.querySelectorAll('.your-class-name')</code> selects all elements with the class name <code>'your-class-name'</code>. Replace <code>'your-class-name'</code> with the actual class name you want to target.</p></li>
+<li><p>The selected elements are stored in a NodeList, which is a collection of DOM elements.</p></li>
+<li><p>We use the <code>forEach()</code> method to iterate over the NodeList and remove each element using the <code>remove()</code> method.</p></li>
+</ul>
+
+<h2>Complete Example</h2>
+
+<p>Here's a complete example that demonstrates how to remove elements with a specific class:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Remove Elements by Class&lt;/title&gt;
+  &lt;style&gt;
+    .to-remove {
+      color: red;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p class="to-remove"&gt;This paragraph will be removed.&lt;/p&gt;
+  &lt;p class="to-remove"&gt;This paragraph will also be removed.&lt;/p&gt;
+  &lt;p&gt;This paragraph will stay.&lt;/p&gt;
+
+  &lt;button onclick="removeElementsByClass()"&gt;Remove Elements&lt;/button&gt;
+
+  &lt;script&gt;
+    function removeElementsByClass() {
+      // Get all elements with the class 'to-remove'
+      const elementsToRemove = document.querySelectorAll('.to-remove');
+
+      // Loop through the selected elements and remove each one
+      elementsToRemove.forEach(element =&gt; {
+        element.remove();
+      });
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We have two paragraphs, with one of them having the class <code>'to-remove'</code>. A button with the label "Remove Elements" is also included.</p></li>
+<li><p>When you click the "Remove Elements" button, the JavaScript function <code>removeElementsByClass()</code> is called. This function selects all elements with the class <code>'to-remove'</code> and removes them.</p></li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>Removing all elements with a specific class in JavaScript is a straightforward task that can be essential for maintaining the cleanliness and dynamism of your web pages. By utilizing <code>document.querySelectorAll()</code> and a simple loop, you can easily target and remove elements based on their class, allowing you to control and modify your web content dynamically as needed.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

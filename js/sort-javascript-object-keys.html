@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Sort JavaScript Object Keys?</title>
+<meta name="description" content="In this comprehensive guide, we'll explore how to sort JavaScript object keys." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Sorting JavaScript Object Keys: A Comprehensive Guide</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Sort JavaScript Object Keys" loading="lazy" width="900" height="500"></div> -->
+<p>Working with JavaScript objects is a fundamental aspect of web development, especially when dealing with data. Occasionally, you may need to <strong>sort the keys of an object alphabetically</strong> or in a specific order for display or processing.</p>
+<p>While JavaScript objects don't guarantee any particular order for their properties, you can sort their keys using various techniques.</p>
+<p>In this comprehensive guide, we'll explore how to sort JavaScript object keys.</p>
+
+<h2>Understanding JavaScript Objects</h2>
+
+<p>JavaScript objects are collections of key-value pairs, where keys are strings (or Symbols), and values can be of any data type. Here's a simple example of a JavaScript object:</p>
+
+<pre class="language-javascript"><code>const sampleObject = {
+  banana: 3,
+  apple: 1,
+  orange: 2,
+  pear: 4,
+};
+</code></pre>
+
+<p>In this example, the object has four properties: <code>banana</code>, <code>apple</code>, <code>orange</code>, and <code>pear</code>, with corresponding values.</p>
+
+<h2>Sorting Object Keys</h2>
+
+<p>To sort the keys of a JavaScript object, follow these steps:</p>
+
+<h3>Step 1: Get the Object Keys</h3>
+
+<p>The first step is to retrieve the keys of the object using the <code>Object.keys()</code> method. This method returns an array of the object's own enumerable property names.</p>
+
+<pre class="language-javascript"><code>const objectKeys = Object.keys(sampleObject);
+</code></pre>
+
+<p>Now, <code>objectKeys</code> contains an array of the object's keys, which are <code>['banana', 'apple', 'orange', 'pear']</code> in our example.</p>
+
+<h3>Step 2: Sort the Keys</h3>
+
+<p>Once you have the keys in an array, you can sort them. For alphabetical sorting, simply call the <code>sort()</code> method on the array:</p>
+
+<pre class="language-javascript"><code>objectKeys.sort(); // For alphabetical sorting
+</code></pre>
+
+<p>This will sort the keys alphabetically in ascending order. In our case, it will be <code>['apple', 'banana', 'orange', 'pear']</code>.</p>
+
+<p>If you need to sort the keys in a custom order, you can define a sorting function. For instance, to sort by the length of keys, you can use the following custom sorting function:</p>
+
+<pre class="language-javascript"><code>objectKeys.sort((a, b) =&gt; {
+  return a.length - b.length;
+});
+</code></pre>
+
+<p>This will sort the keys by their length, resulting in <code>['pear', 'apple', 'banana', 'orange']</code> for our example.</p>
+
+<h3>Step 3: Reconstruct the Object with Sorted Keys</h3>
+
+<p>Once the keys are sorted, you can create a new object with the sorted keys. Iterate through the sorted keys and add the corresponding values to the new object.</p>
+
+<pre class="language-javascript"><code>const sortedObject = {};
+for (const key of objectKeys) {
+  sortedObject[key] = sampleObject[key];
+}
+</code></pre>
+
+<p>Alternatively, you can use the <code>reduce()</code> method to achieve the same result more concisely:</p>
+
+<pre class="language-javascript"><code>const sortedObject = objectKeys.reduce((acc, key) =&gt; {
+  acc[key] = sampleObject[key];
+  return acc;
+}, {});
+</code></pre>
+
+<p>Now, <code>sortedObject</code> contains the properties of the original object, sorted based on the selected sorting criteria.</p>
+
+<h3>Step 4: Access the Sorted Object</h3>
+
+<p>You can now access and work with the sorted object as needed in your application.</p>
+
+<pre class="language-javascript"><code>console.log(sortedObject);
+</code></pre>
+
+<p>This code will display the sorted object, whether it's sorted alphabetically or using a custom order, depending on your chosen sorting method.</p>
+
+<h3>Full Code</h3>
+
+<p>Here's the complete code:</p>
+
+<pre class="language-javascript"><code>const sampleObject = {
+  banana: 3,
+  apple: 1,
+  orange: 2,
+  pear: 4,
+};
+
+const objectKeys = Object.keys(sampleObject);
+objectKeys.sort();
+
+const sortedObject = objectKeys.reduce((acc, key) =&gt; {
+  acc[key] = sampleObject[key];
+  return acc;
+}, {});
+
+console.log(sortedObject);
+</code></pre>
+
+<p>This code will sort the object keys alphabetically and produce the following output:</p>
+
+<pre class="language-javascript"><code>{
+  apple: 1,
+  banana: 3,
+  orange: 2,
+  pear: 4
+}
+</code></pre>
+
+<h2>Conclusion</h2>
+
+<p>Sorting JavaScript object keys is a valuable skill for developers working with data-driven web applications. While JavaScript objects do not inherently maintain any specific order for their properties, you can achieve order and predictability by following the steps outlined in this guide.</p>
+
+<p>By leveraging the <code>Object.keys()</code> method, array sorting techniques, and custom sorting functions, you can confidently sort object keys to meet the specific requirements of your web development projects. Whether you're organizing data for display, processing, or any other purpose, mastering this skill enhances your ability to work effectively with JavaScript objects.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

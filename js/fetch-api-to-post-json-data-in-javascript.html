@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to use Fetch API to POST JSON Data in JavaScript?</title>
+<meta name="description" content="In this article, we'll dive into how to use the Fetch API to send JSON data in a POST request in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to use Fetch API to POST JSON Data in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Fetch API to POST JSON Data in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>The Fetch API is a modern JavaScript API that allows you to make network requests, including sending data to a server and receiving responses.</p>
+
+<p>One common use case is sending JSON data to a server using the HTTP POST method. In this article, we'll dive into how to use the <strong>Fetch API to send JSON data in a POST request in JavaScript</strong>.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before we get started, make sure you have a basic understanding of JavaScript and a server-side environment that can handle incoming POST requests. You can use any server technology you prefer, such as Node.js with Express, PHP, Python, or others.</p>
+
+<h2>Sending a POST Request with JSON Data</h2>
+
+<p>Here are the steps to send JSON data in a POST request using the Fetch API:</p>
+
+<h3>1. Creating JSON Data</h3>
+
+<p>First, you need to create the JSON data that you want to send to the server. JSON (JavaScript Object Notation) is a lightweight data-interchange format that's easy for both humans and machines to read and write.</p>
+
+<pre class="language-javascript"><code>const jsonData = {
+  name: 'John Doe',
+  email: 'johndoe@example.com',
+};
+</code></pre>
+
+<h3>2. Configuring the Fetch Request</h3>
+
+<p>Next, you'll configure the Fetch request by specifying the URL, method (POST), headers, and the JSON data you want to send in the request body.</p>
+
+<pre class="language-javascript"><code>const url = 'https://example.com/api';
+const options = {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json', // Specify that you're sending JSON data
+  },
+  body: JSON.stringify(jsonData), // Convert JSON data to a string
+};
+</code></pre>
+
+<ul>
+<li><code>url</code>: Replace this with the URL of your server or API endpoint.</li>
+<li><code>method</code>: Set it to <code>'POST'</code> to indicate that you're making a POST request.</li>
+<li><code>headers</code>: Include the <code>'Content-Type'</code> header with the value <code>'application/json'</code> to specify that you're sending JSON data.</li>
+<li><code>body</code>: Convert your JSON data object to a JSON string using <code>JSON.stringify()</code>.</li>
+</ul>
+
+<h3>3. Making the Fetch Request</h3>
+
+<p>Now, it's time to make the Fetch request by passing in the URL and options you've configured.</p>
+
+<pre class="language-javascript"><code>fetch(url, options)
+  .then((response) =&gt; {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Parse the response body as JSON
+  })
+  .then((data) =&gt; {
+    console.log('Response:', data); // Handle the response data
+  })
+  .catch((error) =&gt; {
+    console.error('There was a problem with the fetch operation:', error);
+  });
+</code></pre>
+
+<ul>
+<li>The <code>fetch()</code> function returns a Promise that resolves to the response to the request.</li>
+<li>We first check if the response is OK (status code in the 200-299 range). If not, we throw an error.</li>
+<li>If the response is OK, we parse the response body as JSON using <code>response.json()</code>.</li>
+<li>Finally, we handle the response data in the second <code>.then()</code> block and catch any errors that may occur in the <code>.catch()</code> block.</li>
+</ul>
+
+<h2>Handling the Server-Side</h2>
+
+<p>On the server side, you need to have an endpoint that listens for incoming POST requests, parses the JSON data, and responds accordingly. The implementation of this server-side functionality depends on your chosen server technology.</p>
+
+<p>Here's a simple Node.js and Express example:</p>
+
+<pre class="language-javascript"><code>const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json()); // Middleware to parse JSON
+
+app.post('/api', (req, res) =&gt; {
+  const jsonData = req.body;
+  console.log('Received JSON data:', jsonData);
+  res.json({ message: 'Data received successfully' });
+});
+
+app.listen(port, () =&gt; {
+  console.log(`Server is running on port ${port}`);
+});
+</code></pre>
+
+<p>In this example, we use the <code>express.json()</code> middleware to parse incoming JSON data, and then we log the data and send a response.</p>
+
+<h2>Conclusion</h2>
+
+<p>Using the Fetch API to send JSON data in a POST request is a powerful way to interact with servers and APIs from your JavaScript applications. By following the steps outlined in this article, you can easily configure and make POST requests with JSON data and handle the server-side processing of that data. This is a fundamental skill for building modern web applications that communicate with APIs and back-end services.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

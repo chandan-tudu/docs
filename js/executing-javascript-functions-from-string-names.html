@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Execute JavaScript Functions from String Names</title>
+<!-- <meta name="description" content="In this guide, we'll explore various techniques and best practices for executing JavaScript functions from string names." /> -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Executing JavaScript Functions from String Names</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Executing JavaScript Functions from String Names" loading="lazy" width="900" height="500"></div> -->
+<p>In JavaScript, <strong>you can execute functions dynamically by their names, represented as strings</strong>.</p>
+
+<p>This powerful feature enables you to create flexible and dynamic code, such as invoking functions based on user input or configuration settings.</p>
+
+<p>In this comprehensive guide, we'll explore <strong>various techniques and best practices</strong> for executing JavaScript functions from string names.</p>
+
+<h2>The <code>eval()</code> Function (Avoid When Possible)</h2>
+
+<p>The <code>eval()</code> function is a built-in JavaScript function that allows you to execute code stored in a string. While it can execute functions by name, it is generally discouraged due to security and performance concerns. Using <code>eval()</code> can potentially execute arbitrary code, which poses security risks when dealing with untrusted input.</p>
+
+<p>However, for educational purposes, here is an example of how you can use <code>eval()</code> to execute a function from a string name:</p>
+
+<pre class="language-javascript"><code>function sayHello() {
+  console.log("Hello, world!");
+}
+
+const functionName = "sayHello";
+eval(functionName + "()");
+</code></pre>
+
+<p>In this example, we store the function name as a string in <code>functionName</code> and use <code>eval()</code> to execute the function with that name.</p>
+
+<h2>Using Bracket Notation to Access Functions</h2>
+
+<p>A safer and more recommended approach to executing functions by name is to store your functions in an object or a map, and then access and invoke them using bracket notation. This approach does not rely on <code>eval()</code> and is more secure.</p>
+
+<pre class="language-javascript"><code>const functionMap = {
+  sayHello: function () {
+    console.log("Hello, world!");
+  },
+  greet: function (name) {
+    console.log(`Hello, ${name}!`);
+  },
+};
+
+const functionName = "sayHello";
+if (functionName in functionMap) {
+  functionMap[functionName]();
+}
+
+const dynamicFunctionName = "greet";
+if (dynamicFunctionName in functionMap) {
+  functionMap[dynamicFunctionName]("Alice");
+}
+</code></pre>
+
+<p>In this example, we create an object <code>functionMap</code> that stores functions as properties. We then use bracket notation to access and execute functions based on their names stored in variables.</p>
+
+<h2>Using the <code>window</code> Object (Browser Environment)</h2>
+
+<p>In a browser environment, you can execute global functions using the <code>window</code> object. While this approach is straightforward, it should be used with caution, as it assumes that the function is global and can potentially lead to unexpected behavior or security issues.</p>
+
+<pre class="language-javascript"><code>function sayHello() {
+  console.log("Hello, world!");
+}
+
+const functionName = "sayHello";
+if (window[functionName]) {
+  window[functionName]();
+}
+</code></pre>
+
+<p>In this example, we access the global <code>sayHello</code> function using <code>window[functionName]</code> and execute it. Keep in mind that this approach may not work in non-browser environments.</p>
+
+<h2>Using the <code>Function</code> Constructor</h2>
+
+<p>Another way to execute functions by name is by using the <code>Function</code> constructor, which allows you to create functions dynamically. However, this method can be risky if you're dealing with untrusted input, as it evaluates code similarly to <code>eval()</code>.</p>
+
+<pre class="language-javascript"><code>function sayHello() {
+  console.log("Hello, world!");
+}
+
+const functionName = "sayHello";
+const dynamicFunction = new Function(functionName, "return " + functionName + "();");
+dynamicFunction()();
+</code></pre>
+
+<p>In this example, we create a new function <code>dynamicFunction</code> using the <code>Function</code> constructor and pass the function name as a parameter. This approach is less common and should be used with caution.</p>
+
+<h2>Conclusion</h2>
+
+<p>Executing JavaScript functions from string names is a powerful technique that can be used for various dynamic scenarios. While methods like <code>eval()</code> and the <code>Function</code> constructor offer flexibility, they come with security and performance concerns. The recommended and safer approach is to use objects or maps to store functions and access them dynamically through bracket notation. This approach provides better control and security while maintaining code flexibility. Always be cautious when executing functions by name, especially when dealing with user input or untrusted data, to prevent security vulnerabilities in your code.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

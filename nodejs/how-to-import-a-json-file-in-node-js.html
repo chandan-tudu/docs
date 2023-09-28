@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Import a JSON File in Node.js</title>
+<meta name="description" content="In this article, we'll explore how to import a JSON file in Node.js and discuss error handling for a smooth development experience." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">Node JS</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Import a JSON File in Node.js</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to Import a JSON File in Node.js" loading="lazy" width="900" height="500"></div> -->
+<p>Node.js is a versatile JavaScript runtime environment that allows you to work with various types of files, including JSON (JavaScript Object Notation) files.</p>
+
+<p>JSON is commonly used for configuration files, data storage, and API responses. In this article, we'll explore <strong>how to import a JSON file in Node.js</strong> and discuss error handling for a smooth development experience.</p>
+
+<h2>Importing JSON Files using <code>require</code> (CommonJS)</h2>
+
+<p>Node.js uses the CommonJS module system, and you can use the <code>require</code> function to import JSON files. Here's a step-by-step guide:</p>
+
+<ol>
+<li><p><strong>Create a JSON File</strong>: Start by creating a JSON file, for example, <code>data.json</code>, with some JSON data. This file can contain any JSON-formatted data.</p>
+
+<pre class="language-json"><code>// data.json
+{
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+</code></pre></li>
+<li><p><strong>Import the JSON File</strong>: In your Node.js script, use the <code>require</code> function to import the JSON data from the file:</p>
+
+<pre class="language-javascript"><code>const jsonData = require('./data.json');
+
+console.log(jsonData.name); // Output: John
+console.log(jsonData.age);  // Output: 30
+console.log(jsonData.city); // Output: New York
+</code></pre>
+
+<p>Make sure to provide the correct relative path to the JSON file in the <code>require</code> statement.</p></li>
+<li><p><strong>Error Handling</strong>: To handle errors that may occur during the file reading process, wrap the <code>require</code> statement in a <code>try...catch</code> block:</p>
+
+<pre class="language-javascript"><code>try {
+  const jsonData = require('./data.json');
+
+  console.log(jsonData.name); // Output: John
+  console.log(jsonData.age);  // Output: 30
+  console.log(jsonData.city); // Output: New York
+} catch (error) {
+  console.error('Error reading JSON file:', error);
+}
+</code></pre>
+
+<p>This ensures that your application gracefully handles issues with reading JSON files, such as missing or malformed files, and provides meaningful error messages for debugging.</p></li>
+</ol>
+
+<h2>Importing JSON Files using <code>import</code> (ES Modules)</h2>
+
+<p>Node.js introduced ES Modules support starting from version 14.13.0. With ES Modules, you can use the <code>import</code> statement to import JSON files. Here's how:</p>
+
+<ol>
+<li><p><strong>Enable ES Modules</strong>: In your project, make sure you have ES Modules enabled by adding <code>"type": "module"</code> to your <code>package.json</code> file:</p>
+
+<pre class="language-json"><code>// package.json
+{
+  "type": "module",
+  // ...
+}
+</code></pre></li>
+<li><p><strong>Create a JSON File</strong>: As before, create a JSON file with your data (e.g., <code>data.json</code>).</p></li>
+<li><p><strong>Import the JSON File</strong>: Use the <code>import</code> statement to import the JSON data:</p>
+
+<pre class="language-javascript"><code>import jsonData from './data.json';
+
+console.log(jsonData.name); // Output: John
+console.log(jsonData.age);  // Output: 30
+console.log(jsonData.city); // Output: New York
+</code></pre>
+
+<p>Ensure that you provide the correct relative path to the JSON file in the <code>import</code> statement.</p></li>
+<li><p><strong>Error Handling</strong>: To handle errors when importing JSON files using ES Modules, wrap the <code>import</code> statement in a <code>try...catch</code> block, similar to the CommonJS approach:</p>
+
+<pre class="language-javascript"><code>try {
+  import jsonData from './data.json';
+
+  console.log(jsonData.name); // Output: John
+  console.log(jsonData.age);  // Output: 30
+  console.log(jsonData.city); // Output: New York
+} catch (error) {
+  console.error('Error reading JSON file:', error);
+}
+</code></pre></li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>Importing JSON files in Node.js is a common task when working with configuration data, API responses, or any JSON-formatted data. You can choose between the CommonJS (<code>require</code>) and ES Modules (<code>import</code>) approaches based on your project's module system and Node.js version.</p>
+
+<p>By adding error handling to your import statements, you ensure that your Node.js application gracefully handles issues with reading JSON files, making it more robust and developer-friendly.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

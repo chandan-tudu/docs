@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checking if a Number is a Float or Integer in JavaScript</title>
+<meta name="description" content="How to check whether a number is a float or an integer in JavaScript" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Check if a Number is a Float or Integer in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Check if a Number is a Float or Integer in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>In JavaScript, numbers can be categorized into two main types: integers and floating-point numbers (floats).</p>
+
+<p>Integers are whole numbers without a decimal point, while floating-point numbers have decimal parts.</p>
+
+<p>There are several ways to determine <strong>whether a number is a float or an integer in JavaScript</strong>, and in this comprehensive guide, we will explore various methods and techniques to accomplish this task.</p>
+
+<h2>Using the Modulus Operator (%)</h2>
+
+<p>One of the simplest and most commonly used methods to check if a number is an integer is by using the modulus operator (<code>%</code>). The modulus operator calculates the remainder when one number is divided by another. If the remainder is 0, the number is an integer; otherwise, it's a float.</p>
+
+<pre class="language-javascript"><code>function isInteger(number) {
+  return number % 1 === 0;
+}
+
+console.log(isInteger(5));      // Output: true
+console.log(isInteger(5.5));    // Output: false
+console.log(isInteger(-10));    // Output: true
+console.log(isInteger(0.25));   // Output: false
+</code></pre>
+
+<p>In the <code>isInteger</code> function, we calculate the remainder when <code>number</code> is divided by <code>1</code>. If the remainder is <code>0</code>, the number is considered an integer.</p>
+
+<h2>Using the <code>Number.isInteger()</code> Method</h2>
+
+<p>JavaScript provides the <code>Number.isInteger()</code> method, which is a more explicit way to check if a value is an integer. It returns <code>true</code> if the value is an integer and <code>false</code> otherwise.</p>
+
+<pre class="language-javascript"><code>console.log(Number.isInteger(5));      // Output: true
+console.log(Number.isInteger(5.5));    // Output: false
+console.log(Number.isInteger(-10));    // Output: true
+console.log(Number.isInteger(0.25));   // Output: false
+</code></pre>
+
+<p>The <code>Number.isInteger()</code> method directly checks if the value passed to it is an integer, providing a clear and concise way to perform the check.</p>
+
+<h2>Using <code>parseInt()</code> and <code>parseFloat()</code></h2>
+
+<p>Another approach to distinguishing between floats and integers is by using the <code>parseInt()</code> and <code>parseFloat()</code> functions to parse a number as an integer or a float, respectively. You can then compare the parsed result with the original number to determine its type.</p>
+
+<pre class="language-javascript"><code>function isInteger(number) {
+  return parseInt(number) === number;
+}
+
+console.log(isInteger(5));      // Output: true
+console.log(isInteger(5.5));    // Output: false
+console.log(isInteger(-10));    // Output: true
+console.log(isInteger(0.25));   // Output: false
+</code></pre>
+
+<p>In this approach, we parse the number using <code>parseInt()</code> and compare it to the original number. If they match, the number is an integer.</p>
+
+<h2>Conclusion</h2>
+
+<p>Determining whether a number is a float or an integer in JavaScript can be achieved using various methods, including the modulus operator, the <code>Number.isInteger()</code> method, and parsing functions like <code>parseInt()</code> and <code>parseFloat()</code>. Depending on your specific use case and coding style, you can choose the method that best suits your needs. These techniques are essential when working with numeric data in JavaScript and can help ensure that your code behaves correctly based on the type of number you are dealing with.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

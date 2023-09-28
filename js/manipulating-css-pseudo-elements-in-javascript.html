@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Manipulate CSS Pseudo-Elements in JavaScript</title>
+<meta name="description" content="In this comprehensive guide, we'll explore how to manipulate CSS pseudo-elements in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Manipulating CSS Pseudo-Elements in JavaScript</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Manipulating CSS Pseudo-Elements in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Pseudo-elements in CSS, such as <code>::before</code> and <code>::after</code>, allow you to create and style virtual elements in your web page without adding extra markup to your HTML.</p>
+
+<p>While CSS is the primary language for styling pseudo-elements, JavaScript can also be used to dynamically manipulate and control them.</p>
+
+<p>In this comprehensive guide, we'll explore <strong>how to manipulate CSS pseudo-elements in JavaScript</strong>.</p>
+
+<h2>Understanding Pseudo-Elements</h2>
+
+<p>Before diving into JavaScript manipulation, let's briefly understand what pseudo-elements are and how they work in CSS.</p>
+
+<p>Pseudo-elements are used to style specific parts of an HTML element. They are prefixed with two colons (<code>::</code>) and are typically used with the <code>::before</code> and <code>::after</code> pseudo-elements. Here's a basic example:</p>
+
+<pre class="language-css"><code>p::before {
+  content: "Before Content: ";
+  color: red;
+}
+
+p::after {
+  content: "After Content: ";
+  color: blue;
+}
+</code></pre>
+
+<p>In this example, the <code>::before</code> and <code>::after</code> pseudo-elements are applied to all <code>&lt;p&gt;</code> elements. They insert content before and after the actual content of the <code>&lt;p&gt;</code> elements and apply different styles to that content.</p>
+
+<h2>JavaScript and Pseudo-Elements</h2>
+
+<p>JavaScript can be used to manipulate pseudo-elements by dynamically changing their styles, properties, or content. Here are some common tasks you can perform with JavaScript on pseudo-elements:</p>
+
+<h3>1. Changing Content</h3>
+
+<p>You can use JavaScript to dynamically change the content of pseudo-elements. For example, let's say you have a button that, when clicked, updates the <code>::before</code> content of a paragraph:</p>
+
+<pre class="language-html"><code>&lt;p id="myParagraph"&gt;This is a paragraph.&lt;/p&gt;
+&lt;button onclick="changeContent()"&gt;Change Content&lt;/button&gt;
+</code></pre>
+
+<pre class="language-javascript"><code>function changeContent() {
+  const paragraph = document.getElementById("myParagraph");
+  paragraph.style.setProperty("--before-content", '"New Content: "');
+}
+</code></pre>
+
+<p>In this example, clicking the button triggers the <code>changeContent</code> function, which changes the <code>::before</code> content of the paragraph.</p>
+
+<h3>2. Modifying Styles</h3>
+
+<p>JavaScript can be used to modify the styles of pseudo-elements dynamically. For instance, you can change the color of the <code>::after</code> content when a user interacts with an element:</p>
+
+<pre class="language-css"><code>p::after {
+  content: "After Content: ";
+  color: blue;
+}
+</code></pre>
+
+<pre class="language-javascript"><code>const paragraph = document.querySelector("p");
+
+paragraph.addEventListener("mouseover", () =&gt; {
+  paragraph.style.setProperty("--after-color", "green");
+});
+
+paragraph.addEventListener("mouseout", () =&gt; {
+  paragraph.style.setProperty("--after-color", "blue");
+});
+</code></pre>
+
+<p>In this example, when the mouse is over the paragraph, the color of the <code>::after</code> content changes to green, and it reverts to blue when the mouse is moved out.</p>
+
+<h3>3. Adding or Removing Pseudo-Elements</h3>
+
+<p>While you can't directly add or remove pseudo-elements with JavaScript (they are generated by CSS), you can achieve similar effects by toggling classes or using other CSS techniques. For example, you can toggle a class to show or hide pseudo-elements:</p>
+
+<pre class="language-html"><code>&lt;p class="show-before"&gt;This is a paragraph.&lt;/p&gt;
+&lt;button onclick="toggleBefore()"&gt;Toggle Before&lt;/button&gt;
+</code></pre>
+
+<pre class="language-css"><code>.show-before::before {
+  content: "Before Content: ";
+  color: red;
+}
+</code></pre>
+
+<pre class="language-javascript"><code>function toggleBefore() {
+  const paragraph = document.querySelector(".show-before");
+  paragraph.classList.toggle("show-before");
+}
+</code></pre>
+
+<p>In this example, clicking the button toggles the <code>show-before</code> class, which controls the display of the <code>::before</code> pseudo-element.</p>
+
+<h2>Limitations</h2>
+
+<p>While JavaScript can manipulate pseudo-elements, it's important to note some limitations:</p>
+
+<ol>
+<li><p><strong>Read-Only</strong>: Pseudo-elements are primarily read-only from JavaScript. You can change their styles and content, but you can't directly create or delete them.</p></li>
+<li><p><strong>Content Property</strong>: The <code>content</code> property, which defines the content of pseudo-elements, has some limitations when used with JavaScript. For instance, changing it to an empty string may not effectively remove the pseudo-element content.</p></li>
+<li><p><strong>Compatibility</strong>: Not all CSS properties can be manipulated via JavaScript for pseudo-elements. Some properties, like <code>::before</code> and <code>::after</code>, may have limited support for dynamic changes.</p></li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>Manipulating CSS pseudo-elements in JavaScript can add interactivity and dynamic behavior to your web pages. While JavaScript can change styles, content, and properties of pseudo-elements, it's important to be aware of the limitations and browser compatibility when working with these virtual elements. By using JavaScript judiciously in combination with CSS, you can create engaging and dynamic web experiences.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>
