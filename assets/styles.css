@@ -200,6 +200,10 @@ hr {
     border-top: 0;
 }
 
+.article-container :is(ul,ol) li{
+    margin-bottom: .5em;
+}
+
 @media (max-width: 700px) {
     body {
         font-size: 16px;

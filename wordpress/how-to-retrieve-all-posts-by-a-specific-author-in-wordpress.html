@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Retrieve All Posts by a Specific Author in WordPress</title>
+<meta name="description" content="In this guide, we will explore How to Retrieve All Posts by a Specific Author in WordPress." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">WORDPRESS</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Retrieve All Posts by a Specific Author in WordPress</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to Retrieve All Posts by a Specific Author in WordPress" loading="lazy" width="900" height="500"></div> -->
+<p>WordPress, the world's most popular content management system, empowers millions of websites and blogs worldwide. Its flexibility and extensibility make it a go-to platform for all types of web content.</p>
+
+<p>However, unlocking WordPress's full potential often requires delving into its advanced features, such as retrieving all posts by a specific author. In this article, we'll uncover the magic behind this process.</p>
+
+<h2>Why Retrieve Posts by a Specific Author?</h2>
+
+<p>Imagine you're building a website where you want to showcase the work of a particular author, journalist, or contributor. Or perhaps you're developing an author's portfolio or creating a dedicated page to highlight a team member's contributions. This is where retrieving all posts by a specific author becomes essential. WordPress offers several methods to achieve this, but we'll explore two common approaches.</p>
+
+<h2>Method 1: Using WP_Query</h2>
+
+<p>One powerful tool in the WordPress developer's toolkit is the <code>WP_Query</code> class. It allows you to construct custom queries to fetch posts based on various parameters, including author.</p>
+
+<h3>Step 1: Define the Author</h3>
+
+<p>Begin by defining the author whose posts you want to retrieve. Replace <code>1</code> with the author's ID you're interested in. You can find the author's ID by navigating to the Users section in the WordPress admin panel.</p>
+
+<pre class="language-php"><code>$author_id = 1; // Replace with the author's ID
+</code></pre>
+
+<h3>Step 2: Build the Query</h3>
+
+<p>Next, construct the query using <code>WP_Query</code>. Specify the <code>author</code>, <code>post_type</code>, and <code>posts_per_page</code> parameters in your query. In this example, we retrieve all posts, so we set <code>posts_per_page</code> to <code>-1</code>.</p>
+
+<pre class="language-php"><code>$args = array(
+    'author' =&gt; $author_id,
+    'post_type' =&gt; 'post',
+    'posts_per_page' =&gt; -1,
+);
+
+$author_posts = new WP_Query($args);
+</code></pre>
+
+<h3>Step 3: Loop Through Posts</h3>
+
+<p>With the query established, loop through the results and display the posts' content or perform any desired operations.</p>
+
+<pre class="language-php"><code>if ($author_posts-&gt;have_posts()) {
+    while ($author_posts-&gt;have_posts()) {
+        $author_posts-&gt;the_post();
+        // Display post content or perform operations
+        the_title();
+        the_content();
+    }
+} else {
+    // No posts found
+}
+
+wp_reset_postdata(); // Reset the query
+</code></pre>
+
+<h2>Method 2: Using get_posts Function</h2>
+
+<p>Alternatively, you can achieve the same result using the <code>get_posts</code> function, which provides a simpler way to retrieve posts.</p>
+
+<h3>Step 1: Define the Author</h3>
+
+<p>As before, start by defining the author whose posts you wish to retrieve.</p>
+
+<pre class="language-php"><code>$author_id = 1; // Replace with the author's ID
+</code></pre>
+
+<h3>Step 2: Construct the Query</h3>
+
+<p>Create the query using <code>get_posts</code>, specifying the <code>author</code>, <code>post_type</code>, and <code>numberposts</code> parameters. Here, we also retrieve all posts with <code>numberposts</code> set to <code>-1</code>.</p>
+
+<pre class="language-php"><code>$args = array(
+    'author' =&gt; $author_id,
+    'post_type' =&gt; 'post',
+    'numberposts' =&gt; -1,
+);
+
+$author_posts = get_posts($args);
+</code></pre>
+
+<h3>Step 3: Loop Through Posts</h3>
+
+<p>Loop through the retrieved posts and display their content or perform any desired actions.</p>
+
+<pre class="language-php"><code>foreach ($author_posts as $post) {
+    setup_postdata($post);
+    // Display post content or perform operations
+    the_title();
+    the_content();
+}
+
+wp_reset_postdata(); // Reset the query
+</code></pre>
+
+<h3>Conclusion</h3>
+
+<p>Retrieving all posts by a specific author in WordPress is a valuable skill, enabling you to create author-centric pages, showcase contributions, and build impressive portfolios. Whether you prefer using <code>WP_Query</code> for more advanced queries or the straightforward <code>get_posts</code> function, WordPress provides the tools to make it happen. So go ahead, unveil the magic behind WordPress's author-specific post retrieval and enhance your website's user experience and content presentation.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>
