@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Store Objects in localStorage and sessionStorage?</title>
+<meta name="description" content="In this guide, we'll explore how to store objects in localStorage and sessionStorage, along with best practices and use cases." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Storing Objects in localStorage and sessionStorage</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Storing Objects in localStorage and sessionStorage" loading="lazy" width="900" height="500"></div> -->
+<p>LocalStorage and sessionStorage are two widely-used web storage solutions in JavaScript, allowing developers to store data locally in a user's web browser.</p>
+
+<p>While these storage mechanisms primarily work with strings, you can store objects in them with some serialization and deserialization techniques.</p>
+
+<p>In this comprehensive guide, we'll explore how to <strong>store objects in localStorage and sessionStorage</strong>, along with best practices and use cases.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before diving into storing objects in web storage, ensure you have a basic understanding of HTML, JavaScript, and web browsers. You should also have a code editor and a web browser to test your code.</p>
+
+<h2>Understanding localStorage and sessionStorage</h2>
+
+<ul>
+<li><p><strong>localStorage</strong>: This storage mechanism allows you to store key-value pairs persistently across browser sessions. Data stored in localStorage remains available until explicitly removed by the user or cleared by your application.</p></li>
+<li><p><strong>sessionStorage</strong>: Similar to localStorage, sessionStorage stores key-value pairs, but the data is only available for the duration of a single page session. Once the user closes the tab or browser, sessionStorage data is cleared.</p></li>
+</ul>
+
+<h2>Storing Objects in localStorage</h2>
+
+<p>To store objects in localStorage, you need to serialize the object into a JSON string before saving it and deserialize it when retrieving it. Here's a step-by-step guide:</p>
+
+<h3>Step 1: Serializing the Object</h3>
+
+<p>To store an object in localStorage, convert it into a JSON string using <code>JSON.stringify()</code>:</p>
+
+<pre class="language-javascript"><code>const user = {
+    name: "John Doe",
+    email: "john@example.com",
+};
+
+const userJSON = JSON.stringify(user);
+localStorage.setItem("user", userJSON);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We create a JavaScript object <code>user</code> representing a user.</li>
+<li>We use <code>JSON.stringify(user)</code> to convert the object into a JSON string.</li>
+<li>We save the JSON string in localStorage using <code>localStorage.setItem()</code>.</li>
+</ul>
+
+<h3>Step 2: Deserializing the Object</h3>
+
+<p>To retrieve and use the object from localStorage, deserialize it back into a JavaScript object using <code>JSON.parse()</code>:</p>
+
+<pre class="language-javascript"><code>const storedUserJSON = localStorage.getItem("user");
+
+if (storedUserJSON) {
+    const storedUser = JSON.parse(storedUserJSON);
+    console.log("User's name:", storedUser.name);
+    console.log("User's email:", storedUser.email);
+} else {
+    console.log("No user data found.");
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We retrieve the JSON string from localStorage using <code>localStorage.getItem()</code>.</li>
+<li>If the JSON string exists, we parse it into a JavaScript object using <code>JSON.parse()</code> and access its properties.</li>
+</ul>
+
+<h2>Storing Objects in sessionStorage</h2>
+
+<p>Storing objects in sessionStorage is similar to localStorage. You serialize the object into a JSON string before saving it and deserialize it when retrieving it. Here's how you can do it:</p>
+
+<h3>Step 1: Serializing the Object</h3>
+
+<p>To store an object in sessionStorage, serialize it into a JSON string and save it:</p>
+
+<pre class="language-javascript"><code>const product = {
+    name: "Smartphone",
+    price: 499.99,
+};
+
+const productJSON = JSON.stringify(product);
+sessionStorage.setItem("product", productJSON);
+</code></pre>
+
+<p>In this code, we follow the same serialization process as with localStorage.</p>
+
+<h3>Step 2: Deserializing the Object</h3>
+
+<p>To retrieve and use the object from sessionStorage, deserialize it back into a JavaScript object:</p>
+
+<pre class="language-javascript"><code>const storedProductJSON = sessionStorage.getItem("product");
+
+if (storedProductJSON) {
+    const storedProduct = JSON.parse(storedProductJSON);
+    console.log("Product name:", storedProduct.name);
+    console.log("Product price:", storedProduct.price);
+} else {
+    console.log("No product data found.");
+}
+</code></pre>
+
+<p>This code is nearly identical to the localStorage example, but we use <code>sessionStorage</code> instead of <code>localStorage</code>.</p>
+
+<h2>Best Practices and Considerations</h2>
+
+<p>When storing objects in web storage, consider the following best practices:</p>
+
+<ol>
+<li><p><strong>Check for Browser Support</strong>: Always check if the user's browser supports localStorage and sessionStorage before using them.</p></li>
+<li><p><strong>Serialize and Deserialize</strong>: Use <code>JSON.stringify()</code> to serialize objects before storage and <code>JSON.parse()</code> to deserialize them when retrieved.</p></li>
+<li><p><strong>Data Validation</strong>: Ensure the data you're storing is valid and safe. Sanitize and validate the input data to prevent security vulnerabilities.</p></li>
+<li><p><strong>Storage Limits</strong>: Be aware of the storage limits imposed by browsers (usually around 5-10 MB for localStorage). Avoid storing excessively large or sensitive data.</p></li>
+<li><p><strong>Clearing Data</strong>: Provide a way for users to clear their stored data if needed. Respect user privacy and adhere to data retention policies.</p></li>
+<li><p><strong>Data Expiry</strong>: For session-specific data, consider clearing it manually when the session ends to avoid clutter.</p></li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>LocalStorage and sessionStorage are valuable tools for storing data locally in web applications. By understanding how to serialize and deserialize objects, you can use these storage mechanisms to store and retrieve complex data structures efficiently. Be mindful of best practices and consider the scope and lifecycle of your data when choosing between localStorage and sessionStorage for your web applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

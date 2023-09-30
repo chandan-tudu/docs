@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Shuffle Arrays in JavaScript?</title>
+<meta name="description" content="In this guide, we'll explore various techniques to shuffle arrays in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Shuffling Arrays in JavaScript: A Comprehensive Guide</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Shuffling Arrays in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p><strong>Shuffling an array in JavaScript</strong> means rearranging its elements in a random order. This is a common operation when working with games, quizzes, or any application where randomness is required.</p>
+
+<p>In this comprehensive guide, we'll explore various techniques to shuffle arrays in JavaScript.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before we dive into the methods for shuffling arrays, make sure you have a basic understanding of JavaScript and arrays. You should also have a code editor and a web browser for testing your code.</p>
+
+<h2>Method 1: Using the Fisher-Yates Shuffle Algorithm</h2>
+
+<p>The Fisher-Yates shuffle algorithm, also known as the Knuth shuffle, is a widely used method for shuffling arrays in JavaScript. It's an efficient and unbiased way to generate a random permutation of array elements.</p>
+
+<pre class="language-javascript"><code>function shuffleArray(array) {
+    for (let i = array.length - 1; i &gt; 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+const myArray = [1, 2, 3, 4, 5];
+shuffleArray(myArray);
+console.log(myArray); // Randomly shuffled array
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We define a <code>shuffleArray</code> function that takes an array as an argument.</li>
+<li>We iterate through the array in reverse order, starting from the last element (<code>i</code>) and going down to the first element.</li>
+<li>For each element at index <code>i</code>, we generate a random index <code>j</code> between 0 and <code>i</code>.</li>
+<li>We swap the elements at positions <code>i</code> and <code>j</code> using destructuring assignment, effectively shuffling the array randomly.</li>
+</ul>
+
+<p>The Fisher-Yates shuffle algorithm guarantees that every permutation of the array is equally likely.</p>
+
+<h2>Method 2: Using the <code>sort()</code> Method with a Random Comparator</h2>
+
+<p>You can also shuffle an array by creating a custom comparator function for the <code>sort()</code> method. This function assigns random values to the elements and then sorts them. While this method works, it's less efficient than the Fisher-Yates shuffle.</p>
+
+<pre class="language-javascript"><code>function shuffleArray(array) {
+    array.sort(() =&gt; Math.random() - 0.5);
+}
+
+const myArray = [1, 2, 3, 4, 5];
+shuffleArray(myArray);
+console.log(myArray); // Randomly shuffled array
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We define a <code>shuffleArray</code> function that takes an array as an argument.</li>
+<li>We use the <code>sort()</code> method with a comparator function that returns a random number between -0.5 and 0.5 for each comparison.</li>
+</ul>
+
+<p>While this method is simple, it's important to note that it can introduce bias in the shuffling, as not all permutations are equally likely.</p>
+
+<h2>Method 3: Using the <code>map()</code> Method with Random Values</h2>
+
+<p>Another approach to shuffle an array is to map each element to an object containing a random value and the original element. Then, you sort the array of objects based on the random values and extract the original elements.</p>
+
+<pre class="language-javascript"><code>function shuffleArray(array) {
+    const shuffled = array.map(value =&gt; ({ value, sortKey: Math.random() }));
+    shuffled.sort((a, b) =&gt; a.sortKey - b.sortKey);
+    return shuffled.map(entry =&gt; entry.value);
+}
+
+const myArray = [1, 2, 3, 4, 5];
+const shuffledArray = shuffleArray(myArray);
+console.log(shuffledArray); // Randomly shuffled array
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We define a <code>shuffleArray</code> function that takes an array as an argument.</li>
+<li>We use the <code>map()</code> method to transform each element into an object with a <code>value</code> and a random <code>sortKey</code>.</li>
+<li>We sort the array of objects based on the <code>sortKey</code>.</li>
+<li>Finally, we map the sorted objects back to their original values.</li>
+</ul>
+
+<p>This method ensures that all permutations are equally likely, but it's less efficient than the Fisher-Yates shuffle.</p>
+
+<h2>Conclusion</h2>
+
+<p>Shuffling arrays in JavaScript is a useful technique for introducing randomness into your applications. The Fisher-Yates shuffle algorithm is the most efficient and unbiased method for achieving this, but you can use other approaches depending on your specific requirements. Understanding these techniques allows you to work with shuffled data in your JavaScript projects and create more dynamic and engaging user experiences.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

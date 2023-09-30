@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Strip HTML Tags from Text Using Plain JavaScript?</title>
+<meta name="description" content="In this guide, we'll explore various techniques to Strip HTML Tags from Text Using Plain JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Stripping HTML Tags from Text Using Plain JavaScript</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Stripping HTML Tags from Text Using Plain JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>When working with HTML content, there are situations where you need to remove HTML tags from a given text. This process is often referred to as "stripping" HTML tags.</p>
+
+<p>Whether you want to extract plain text for displaying content or perform data processing, <strong>stripping HTML tags using plain JavaScript</strong> is a useful skill.</p>
+
+<p>In this comprehensive guide, we'll explore various techniques to accomplish this task.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before we proceed, make sure you have a basic understanding of HTML, JavaScript, and text manipulation. You should also have a code editor and a web browser for testing your code.</p>
+
+<h2>Method 1: Using a Regular Expression</h2>
+
+<p>One of the most common and efficient methods for removing HTML tags is by using a regular expression. Here's how you can do it:</p>
+
+<pre class="language-javascript"><code>function stripHTMLTags(input) {
+    return input.replace(/&lt;[^&gt;]*&gt;/g, "");
+}
+
+const htmlContent = "&lt;p&gt;This is &lt;strong&gt;HTML&lt;/strong&gt; content.&lt;/p&gt;";
+const plainText = stripHTMLTags(htmlContent);
+
+console.log(plainText); // Output: "This is HTML content."
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>The <code>stripHTMLTags</code> function takes an input string and uses the <code>replace</code> method with a regular expression (<code>/&lt;[^&gt;]*&gt;/g</code>) to match and replace all HTML tags with an empty string.</li>
+</ul>
+
+<h2>Method 2: Using a Temporary Element</h2>
+
+<p>Another approach is to create a temporary HTML element and set its <code>innerHTML</code> property to the input HTML content. Then, you can extract the text content of the element:</p>
+
+<pre class="language-javascript"><code>function stripHTMLTags(input) {
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = input;
+    return tempElement.textContent || tempElement.innerText || "";
+}
+
+const htmlContent = "&lt;p&gt;This is &lt;strong&gt;HTML&lt;/strong&gt; content.&lt;/p&gt;";
+const plainText = stripHTMLTags(htmlContent);
+
+console.log(plainText); // Output: "This is HTML content."
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We create a temporary <code>div</code> element using <code>document.createElement</code>.</li>
+<li>We set the <code>innerHTML</code> property of the element to the input HTML content.</li>
+<li>We retrieve the text content of the element using <code>textContent</code> or, if not supported, <code>innerText</code>.</li>
+</ul>
+
+<h2>Method 3: Using DOMParser</h2>
+
+<p>The <code>DOMParser</code> API provides a method to parse HTML content as a DOM tree. You can use it to remove HTML tags and extract plain text:</p>
+
+<pre class="language-javascript"><code>function stripHTMLTags(input) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(input, "text/html");
+    return doc.body.textContent || "";
+}
+
+const htmlContent = "&lt;p&gt;This is &lt;strong&gt;HTML&lt;/strong&gt; content.&lt;/p&gt;";
+const plainText = stripHTMLTags(htmlContent);
+
+console.log(plainText); // Output: "This is HTML content."
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We create a <code>DOMParser</code> instance and use it to parse the input HTML content.</li>
+<li>We access the <code>textContent</code> property of the <code>body</code> element of the parsed document to get the plain text.</li>
+</ul>
+
+<h2>Method 4: Using <code>innerText</code> (Limited Support)</h2>
+
+<p>For browsers that support the <code>innerText</code> property, you can directly use it to get the text content of an element, effectively stripping HTML tags:</p>
+
+<pre class="language-javascript"><code>function stripHTMLTags(input) {
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = input;
+    return tempElement.innerText;
+}
+
+const htmlContent = "&lt;p&gt;This is &lt;strong&gt;HTML&lt;/strong&gt; content.&lt;/p&gt;";
+const plainText = stripHTMLTags(htmlContent);
+
+console.log(plainText); // Output: "This is HTML content."
+</code></pre>
+
+<p>Keep in mind that the <code>innerText</code> property may not be supported in all browsers, so it's less reliable than the previous methods.</p>
+
+<h2>Conclusion</h2>
+
+<p>Stripping HTML tags from text using plain JavaScript is a valuable skill when you need to work with HTML content in a text-centric context. You can choose the method that best fits your project's requirements and browser compatibility. Whether you prefer regular expressions, temporary elements, the <code>DOMParser</code> API, or <code>innerText</code>, these techniques will help you efficiently extract plain text from HTML content.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

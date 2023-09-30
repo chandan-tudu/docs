@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Check a Radio Button and Verify its State in JavaScript</title>
+<meta name="description" content="In this guide, you will learn How to Check a Radio Button and Verify its State in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Check a Radio Button and Verify its State in JavaScript</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to Check a Radio Button and Verify its State in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Radio buttons are a fundamental component of HTML forms used to allow users to make a single selection from a set of options.</p>
+
+<p>In JavaScript, you may encounter situations where you need to programmatically <strong>check a radio button or verify its state</strong>. In this article, we'll explore both scenarios.</p>
+
+<h2>Checking a Radio Button Programmatically</h2>
+
+<p>To check a radio button programmatically, you need to access the radio button element in the DOM and set its <code>checked</code> property to <code>true</code>. Here's how you can do it:</p>
+
+<h3>HTML Structure</h3>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Checking a Radio Button in JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Radio Buttons&lt;/h2&gt;
+    &lt;input type="radio" id="radioButton1" name="radioGroup" value="option1"&gt; Option 1&lt;br&gt;
+    &lt;input type="radio" id="radioButton2" name="radioGroup" value="option2"&gt; Option 2&lt;br&gt;
+    &lt;input type="radio" id="radioButton3" name="radioGroup" value="option3"&gt; Option 3&lt;br&gt;
+
+    &lt;button id="checkRadioButton"&gt;Check Option 2&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3>JavaScript to Check a Radio Button</h3>
+
+<p>Here's the JavaScript code to check a specific radio button when a button is clicked:</p>
+
+<pre class="language-javascript"><code>// Get references to the radio button and button elements by their IDs
+const radioButton2 = document.getElementById("radioButton2");
+const checkRadioButtonButton = document.getElementById("checkRadioButton");
+
+// Add a click event listener to the button
+checkRadioButtonButton.addEventListener("click", () =&gt; {
+    // Check the radio button
+    radioButton2.checked = true;
+});
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We use <code>getElementById</code> to obtain references to the radio button with the ID <code>radioButton2</code> and the button with the ID <code>checkRadioButton</code>.</li>
+<li>We add a click event listener to the button. When the button is clicked, it triggers the function that sets the <code>checked</code> property of the radio button to <code>true</code>, effectively checking it.</li>
+</ul>
+
+<h2>Verifying the State of a Radio Button</h2>
+
+<p>To verify whether a radio button is checked, you can access its <code>checked</code> property. Here's how to do it:</p>
+
+<h3>JavaScript to Verify Radio Button State</h3>
+
+<p>Here's the JavaScript code to verify the state of a radio button:</p>
+
+<pre class="language-javascript"><code>// Get references to the radio button elements by their IDs
+const radioButton1 = document.getElementById("radioButton1");
+const radioButton2 = document.getElementById("radioButton2");
+const radioButton3 = document.getElementById("radioButton3");
+
+// Add a click event listener to each radio button
+radioButton1.addEventListener("click", () =&gt; {
+    if (radioButton1.checked) {
+        console.log("Option 1 is selected");
+    }
+});
+
+radioButton2.addEventListener("click", () =&gt; {
+    if (radioButton2.checked) {
+        console.log("Option 2 is selected");
+    }
+});
+
+radioButton3.addEventListener("click", () =&gt; {
+    if (radioButton3.checked) {
+        console.log("Option 3 is selected");
+    }
+});
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We use <code>getElementById</code> to obtain references to the radio buttons with IDs <code>radioButton1</code>, <code>radioButton2</code>, and <code>radioButton3</code>.</li>
+<li>We add click event listeners to each radio button. When a radio button is clicked, it triggers the respective function.</li>
+<li>Inside the event listener functions, we use an <code>if</code> statement to check the <code>checked</code> property of the radio button. If it's <code>true</code>, we log a message indicating that the corresponding option is selected.</li>
+</ul>
+
+<p>Now, when you click the radio buttons, you will see messages in the console indicating which option is selected.</p>
+
+<p>By following these examples, you can effectively check radio buttons programmatically and verify their states in your JavaScript-powered web applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

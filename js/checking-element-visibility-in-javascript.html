@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Check Element Visibility in JavaScript?</title>
+<meta name="description" content="In this comprehensive guide, we'll explore various methods to check the visibility of an element in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Checking Element Visibility in JavaScript</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Checking Element Visibility in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Determining <strong>whether an element is visible on a web page</strong> is a common task in web development.</p>
+
+<p>It's often used for various purposes, such as implementing lazy loading, animations, or conditionally triggering actions.</p>
+
+<p>In this comprehensive guide, we'll explore various methods to <strong>check the visibility of an element in JavaScript</strong>.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before diving into checking element visibility, make sure you have a basic understanding of HTML, CSS, and JavaScript. You should also have a code editor and a web browser for testing your code.</p>
+
+<h2>Method 1: Using <code>getBoundingClientRect()</code></h2>
+
+<p>The <code>getBoundingClientRect()</code> method returns a DOMRect object representing the size and position of an element relative to the viewport. You can use this method to check if an element is visible by comparing its position and dimensions.</p>
+
+<pre class="language-javascript"><code>const element = document.getElementById('myElement');
+const rect = element.getBoundingClientRect();
+
+if (
+    rect.top &gt;= 0 &amp;&amp;
+    rect.left &gt;= 0 &amp;&amp;
+    rect.bottom &lt;= (window.innerHeight || document.documentElement.clientHeight) &amp;&amp;
+    rect.right &lt;= (window.innerWidth || document.documentElement.clientWidth)
+) {
+    // Element is fully visible
+} else {
+    // Element is partially or fully out of view
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We get a reference to the element using <code>getElementById()</code>.</li>
+<li>We retrieve the element's dimensions and position within the viewport using <code>getBoundingClientRect()</code>.</li>
+<li>We check if the element is fully visible by comparing its top, left, bottom, and right coordinates with the viewport dimensions. If all conditions are met, the element is considered fully visible.</li>
+</ul>
+
+<h2>Method 2: Using <code>IntersectionObserver</code></h2>
+
+<p>The <code>IntersectionObserver</code> API is a modern and efficient way to monitor the visibility of elements as they intersect with the viewport or another specified element.</p>
+
+<pre class="language-javascript"><code>const element = document.getElementById('myElement');
+
+const observer = new IntersectionObserver(entries =&gt; {
+    entries.forEach(entry =&gt; {
+        if (entry.isIntersecting) {
+            // Element is visible
+        } else {
+            // Element is not visible
+        }
+    });
+});
+
+observer.observe(element);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We get a reference to the element using <code>getElementById()</code>.</li>
+<li>We create an <code>IntersectionObserver</code> instance and define a callback function that will be called whenever the element's visibility changes.</li>
+<li>Inside the callback, we check the <code>isIntersecting</code> property of the <code>entry</code> object to determine if the element is currently visible.</li>
+</ul>
+
+<h2>Method 3: Using <code>offsetTop</code> and <code>offsetLeft</code></h2>
+
+<p>You can also check an element's visibility by comparing its <code>offsetTop</code> and <code>offsetLeft</code> properties to zero, which indicates that the element is within the viewport.</p>
+
+<pre class="language-javascript"><code>const element = document.getElementById('myElement');
+
+if (element.offsetTop &gt;= 0 &amp;&amp; element.offsetLeft &gt;= 0) {
+    // Element is at least partially visible
+} else {
+    // Element is not visible
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We get a reference to the element using <code>getElementById()</code>.</li>
+<li>We check if the <code>offsetTop</code> and <code>offsetLeft</code> properties are greater than or equal to zero, which indicates that the element is at least partially visible.</li>
+</ul>
+
+<h2>Method 4: Using a Library (e.g., jQuery)</h2>
+
+<p>If you're using a library like jQuery, you can leverage its built-in methods for checking element visibility.</p>
+
+<pre class="language-javascript"><code>const $element = $('#myElement');
+
+if ($element.is(':visible')) {
+    // Element is visible
+} else {
+    // Element is not visible
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We select the element using jQuery's <code>$()</code> function.</li>
+<li>We use the <code>.is(':visible')</code> method to check if the element is visible.</li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>Checking element visibility in JavaScript is a crucial task for various web development scenarios. Depending on your project and preferences, you can choose from methods like <code>getBoundingClientRect()</code>, <code>IntersectionObserver</code>, <code>offsetTop</code> and <code>offsetLeft</code>, or use a library like jQuery. Understanding how to determine if an element is visible allows you to implement dynamic and responsive behaviors in your web applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

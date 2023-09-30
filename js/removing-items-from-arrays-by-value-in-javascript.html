@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Remove Items from Arrays by Value in JavaScript?</title>
+<meta name="description" content="In this comprehensive guide, we'll explore various methods to remove items from arrays by their values in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Removing Items from Arrays by Value in JavaScript</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Removing Items from Arrays by Value in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Manipulating arrays is a common task in JavaScript, and one common operation is removing specific items from an array based on their values.</p>
+
+<p>In this comprehensive guide, we'll explore various methods to <strong>remove items from arrays by their values in JavaScript</strong>.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before we dive into removing items from arrays, make sure you have a basic understanding of JavaScript and arrays. You should also have a code editor and a web browser for testing your code.</p>
+
+<h2>Method 1: Using <code>filter()</code></h2>
+
+<p>The <code>filter()</code> method creates a new array with all elements that pass a test provided by a callback function. To remove items from an array by value, you can use <code>filter()</code> to create a new array that excludes the items you want to remove.</p>
+
+<pre class="language-javascript"><code>const originalArray = [1, 2, 3, 4, 5];
+const valueToRemove = 3;
+
+const newArray = originalArray.filter((item) =&gt; item !== valueToRemove);
+
+console.log(newArray); // Output: [1, 2, 4, 5]
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We define an <code>originalArray</code> containing the values.</li>
+<li>We specify the <code>valueToRemove</code> that we want to remove from the array.</li>
+<li>We use <code>filter()</code> to create a new array <code>newArray</code> that includes only the items that do not match the <code>valueToRemove</code>.</li>
+</ul>
+
+<h2>Method 2: Using <code>splice()</code></h2>
+
+<p>The <code>splice()</code> method changes the contents of an array by removing or replacing existing elements. You can use it to remove items from an array by their values.</p>
+
+<pre class="language-javascript"><code>const originalArray = [1, 2, 3, 4, 5];
+const valueToRemove = 3;
+
+const indexToRemove = originalArray.indexOf(valueToRemove);
+
+if (indexToRemove !== -1) {
+    originalArray.splice(indexToRemove, 1);
+}
+
+console.log(originalArray); // Output: [1, 2, 4, 5]
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We use <code>indexOf()</code> to find the index of the <code>valueToRemove</code>.</li>
+<li>If the <code>valueToRemove</code> exists in the array (i.e., <code>indexOf()</code> returns a valid index), we use <code>splice()</code> to remove one element starting from that index.</li>
+</ul>
+
+<h2>Method 3: Using a <code>for</code> Loop</h2>
+
+<p>You can also remove items from an array by iterating through the array with a <code>for</code> loop and building a new array that excludes the items you want to remove.</p>
+
+<pre class="language-javascript"><code>const originalArray = [1, 2, 3, 4, 5];
+const valueToRemove = 3;
+
+const newArray = [];
+
+for (let i = 0; i &lt; originalArray.length; i++) {
+    if (originalArray[i] !== valueToRemove) {
+        newArray.push(originalArray[i]);
+    }
+}
+
+console.log(newArray); // Output: [1, 2, 4, 5]
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We initialize an empty <code>newArray</code>.</li>
+<li>We iterate through <code>originalArray</code> using a <code>for</code> loop.</li>
+<li>For each element, we check if it's not equal to the <code>valueToRemove</code>. If it's not equal, we add it to the <code>newArray</code>.</li>
+</ul>
+
+<h2>Method 4: Using the <code>forEach()</code> Method</h2>
+
+<p>The <code>forEach()</code> method iterates over the elements of an array and applies a callback function to each element. You can use it to build a new array that excludes the items you want to remove.</p>
+
+<pre class="language-javascript"><code>const originalArray = [1, 2, 3, 4, 5];
+const valueToRemove = 3;
+
+const newArray = [];
+
+originalArray.forEach((item) =&gt; {
+    if (item !== valueToRemove) {
+        newArray.push(item);
+    }
+});
+
+console.log(newArray); // Output: [1, 2, 4, 5]
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We initialize an empty <code>newArray</code>.</li>
+<li>We use <code>forEach()</code> to iterate through <code>originalArray</code>.</li>
+<li>For each element, we check if it's not equal to the <code>valueToRemove</code>. If it's not equal, we add it to the <code>newArray</code>.</li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>Removing items from arrays by their values is a common task in JavaScript. You can use methods like <code>filter()</code>, <code>splice()</code>, <code>for</code> loops, or <code>forEach()</code> to achieve this goal. The method you choose depends on your coding style and the specific requirements of your project. By understanding these techniques, you'll be better equipped to manipulate arrays in your JavaScript applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Create Multiline Strings in JavaScript?</title>
+<meta name="description" content="In this comprehensive guide, we'll explore various methods for creating multiline strings in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Creating Multiline Strings in JavaScript</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Creating Multiline Strings in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Multiline strings, also known as template literals, allow you to work with long or multiline text more conveniently in JavaScript.</p>
+
+<p>Prior to ES6 (ECMAScript 2015), creating multiline strings in JavaScript was cumbersome. However, ES6 introduced template literals, making it easier to work with multiline text.</p>
+
+<p>In this comprehensive guide, we'll explore various methods for <strong>creating multiline strings in JavaScript</strong>.</p>
+
+<h2>Prerequisites</h2>
+
+<p>Before we dive into creating multiline strings, ensure you have a basic understanding of JavaScript and ES6. You should also have a code editor and a web browser for testing your code.</p>
+
+<h2>Method 1: Using Template Literals (ES6)</h2>
+
+<p>ES6 introduced template literals, enclosed by backticks (&#96;) instead of single or double quotes. They allow you to create multiline strings effortlessly.</p>
+
+<pre class="language-javascript"><code>const multilineString = `
+    This is a multiline string.
+    It can span multiple lines.
+    No need for escape characters.
+`;
+
+console.log(multilineString);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We use backticks (&#96;) to define the multiline string.</li>
+<li>The string can span multiple lines without the need for escape characters like <code>\n</code>.</li>
+<li>Indentation is preserved, so be mindful of leading spaces if they matter in your use case.</li>
+</ul>
+
+<h2>Method 2: Using Concatenation (Pre-ES6)</h2>
+
+<p>Before ES6, you could create multiline strings by concatenating multiple string literals using the <code>+</code> operator:</p>
+
+<pre class="language-javascript"><code>const multilineString =
+    "This is a multiline string.\n" +
+    "It spans multiple lines.\n" +
+    "But requires escape characters.";
+
+console.log(multilineString);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We use the <code>+</code> operator to concatenate multiple string literals.</li>
+<li>To create newlines, we include the escape character <code>\n</code>.</li>
+</ul>
+
+<p>While this method works, it can become less readable and more error-prone when dealing with longer multiline strings.</p>
+
+<h2>Method 3: Using Array Joining (Pre-ES6)</h2>
+
+<p>Another approach before ES6 was to create an array of lines and then join them using the <code>.join()</code> method:</p>
+
+<pre class="language-javascript"><code>const lines = [
+    "This is a multiline string.",
+    "It spans multiple lines.",
+    "No need for escape characters."
+];
+
+const multilineString = lines.join("\n");
+
+console.log(multilineString);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We create an array of lines.</li>
+<li>We use the <code>.join()</code> method to join the lines with newline characters (<code>\n</code>).</li>
+</ul>
+
+<p>This method is more readable than simple concatenation and is especially useful when generating multiline strings dynamically.</p>
+
+<h2>Method 4: Using Escape Characters (Pre-ES6)</h2>
+
+<p>Before ES6, you could use escape characters like <code>\n</code> to insert newlines directly into a string:</p>
+
+<pre class="language-javascript"><code>const multilineString = "This is a multiline string.\nIt spans multiple lines.\nBut requires escape characters.";
+
+console.log(multilineString);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We use the <code>\n</code> escape character to create newlines within the string.</li>
+</ul>
+
+<p>This method is straightforward but can be less readable and harder to manage for longer multiline strings.</p>
+
+<h2>Conclusion</h2>
+
+<p>Creating multiline strings in JavaScript is essential for working with text that spans multiple lines. ES6 template literals provide the most elegant and readable way to accomplish this. However, if you're working in a pre-ES6 environment, concatenation, array joining, or escape characters are viable alternatives. Choose the method that best suits your project's requirements and coding style to efficiently handle multiline text in JavaScript.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>
