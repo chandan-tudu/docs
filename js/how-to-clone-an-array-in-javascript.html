@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Clone an Array in JavaScript?</title>
+<meta name="description" content="In this article, we will explore various methods for cloning arrays in JavaScript, along with practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Clone an Array in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to Clone an Array in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Working with arrays is a fundamental part of JavaScript development, and at times, you may need to clone an array to preserve its original state or create a copy for manipulation.</p>
+
+<p>Cloning an array <strong>ensures that changes made to the copy do not affect the original array</strong>. In this article, we will explore various methods for <strong>cloning arrays in JavaScript</strong>, along with practical examples.</p>
+
+<h2>Method 1: Using the Spread Operator (<code>...</code>)</h2>
+
+<p>The spread operator (<code>...</code>) is a concise and modern way to create a shallow copy of an array. It spreads the elements of the source array into a new array.</p>
+
+<p>Here's how you can use it to clone an array:</p>
+
+<pre class="language-javascript"><code>const originalArray = [1, 2, 3];
+const clonedArray = [...originalArray];
+</code></pre>
+
+<p>In this example, <code>clonedArray</code> will be a copy of <code>originalArray</code>, containing the same elements.</p>
+
+<h2>Method 2: Using the <code>slice()</code> Method</h2>
+
+<p>The <code>slice()</code> method is another simple way to clone an array. You can use it without any arguments to create a shallow copy of the entire array.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const originalArray = [1, 2, 3];
+const clonedArray = originalArray.slice();
+</code></pre>
+
+<p>The <code>clonedArray</code> will also be a copy of the <code>originalArray</code>.</p>
+
+<h2>Method 3: Using the <code>Array.from()</code> Method</h2>
+
+<p>The <code>Array.from()</code> method allows you to create a new array from an iterable object, including an existing array. You can use it to clone an array like this:</p>
+
+<pre class="language-javascript"><code>const originalArray = [1, 2, 3];
+const clonedArray = Array.from(originalArray);
+</code></pre>
+
+<p>This will produce a copy of <code>originalArray</code> stored in <code>clonedArray</code>.</p>
+
+<h2>Method 4: Using the <code>concat()</code> Method</h2>
+
+<p>The <code>concat()</code> method can be used to clone an array by concatenating it with an empty array (<code>[]</code>).</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const originalArray = [1, 2, 3];
+const clonedArray = [].concat(originalArray);
+</code></pre>
+
+<p>This approach effectively combines the elements of <code>originalArray</code> into a new array, creating a clone.</p>
+
+<h2>Method 5: Using the <code>JSON.parse()</code> and <code>JSON.stringify()</code> Methods</h2>
+
+<p>This method is primarily suitable for cloning arrays of primitive values. It involves converting the array to a JSON string using <code>JSON.stringify()</code>, and then parsing the JSON string back into an array using <code>JSON.parse()</code>.</p>
+
+<p>Here's how it works:</p>
+
+<pre class="language-javascript"><code>const originalArray = [1, 2, 3];
+const clonedArray = JSON.parse(JSON.stringify(originalArray));
+</code></pre>
+
+<p>While this method is effective, it may not work correctly for arrays containing non-primitive values (objects, functions, etc.) since JSON does not support all JavaScript data types.</p>
+
+<h2>Deep vs. Shallow Cloning</h2>
+
+<p>It's essential to understand the distinction between deep cloning and shallow cloning:</p>
+
+<ul>
+<li><p><strong>Shallow Cloning:</strong> Shallow cloning creates a new array that contains references to the same objects as the original array. Changes made to objects within the cloned array will affect the original array and vice versa. All methods mentioned above perform shallow cloning.</p></li>
+<li><p><strong>Deep Cloning:</strong> Deep cloning creates a new array with copies of all the objects within the original array. Changes made to objects within the cloned array do not affect the original array, and vice versa. Achieving deep cloning typically requires custom code or third-party libraries.</p></li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>Cloning arrays is a crucial operation in JavaScript, allowing you to work with data copies while preserving the original data. The methods mentioned in this article provide various options for creating shallow clones of arrays. Depending on your specific needs and coding style, you can choose the method that best suits your requirements. Understanding these techniques will help you manipulate arrays effectively and avoid unintended side effects when working with JavaScript data structures.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

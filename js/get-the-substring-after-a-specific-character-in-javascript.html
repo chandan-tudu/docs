@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Get the Substring After a Specific Character in JavaScript?</title>
+<meta name="description" content="Learn How to extract a substring from a larger string that comes after a specific character or delimiter." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Get the Substring After a Specific Character in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Get the Substring After a Specific Character in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>In JavaScript, there are various scenarios where you might need to <strong>extract a substring</strong> from a larger string that comes <strong>after a specific character or delimiter</strong>.</p>
+
+<p>Whether you're parsing text, working with URLs, or manipulating data, knowing how to get the substring after a specific character is a valuable skill.</p>
+
+<p>In this article, we'll explore different methods and techniques for achieving this in JavaScript.</p>
+
+<h2>Using the <code>split()</code> Method</h2>
+
+<p>The <code>split()</code> method in JavaScript allows you to split a string into an array of substrings based on a specified delimiter. To get the substring after a specific character, you can use <code>split()</code> and select the appropriate element from the resulting array.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const originalString = "Hello, World!";
+const delimiter = ",";
+
+const substrings = originalString.split(delimiter);
+const substringAfter = substrings[1].trim();
+
+console.log(substringAfter); // Output: "World!"
+</code></pre>
+
+<p>In this example, we first split the <code>originalString</code> by the comma (<code>,</code>) delimiter, resulting in an array of substrings. We then extract the desired substring by accessing the appropriate element (<code>substrings[1]</code>) and trim any leading or trailing whitespace using the <code>trim()</code> method.</p>
+
+<h2>Using the <code>substring()</code> Method</h2>
+
+<p>The <code>substring()</code> method allows you to extract a portion of a string between two specified indices. To get the substring after a specific character, you can find the index of that character and use it as the starting point for the <code>substring()</code> method.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const originalString = "Hello, World!";
+const delimiter = ",";
+
+const index = originalString.indexOf(delimiter);
+
+if (index !== -1) {
+  const substringAfter = originalString.substring(index + delimiter.length);
+  console.log(substringAfter); // Output: " World!"
+}
+</code></pre>
+
+<p>In this example, we use <code>indexOf(delimiter)</code> to find the index of the comma (<code>,</code>) delimiter. Then, we use <code>substring()</code> to extract the portion of the string that comes after the delimiter. Note that we add the length of the delimiter to ensure that we get the substring after the comma, not including the comma itself.</p>
+
+<h2>Using Regular Expressions</h2>
+
+<p>Regular expressions provide a powerful way to manipulate strings in JavaScript. You can use regular expressions to match and extract substrings after a specific character or pattern.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const originalString = "Hello, World!";
+const delimiter = ",";
+
+const regex = new RegExp(`(?&lt;=${delimiter})[^${delimiter}]+`);
+const match = originalString.match(regex);
+
+if (match) {
+  const substringAfter = match[0].trim();
+  console.log(substringAfter); // Output: "World!"
+}
+</code></pre>
+
+<p>In this example, we create a regular expression using <code>new RegExp()</code> that matches text after the comma (<code>,</code>). The <code>match()</code> method is then used to find the first matching substring. Finally, we trim any leading or trailing whitespace from the matched substring.</p>
+
+<h2>Using the <code>split()</code> Method with Array Destructuring</h2>
+
+<p>In modern JavaScript, you can also use array destructuring to get the substring after a specific character when splitting a string. This approach allows you to directly assign the result to a variable.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const originalString = "Hello, World!";
+const delimiter = ",";
+
+const [, substringAfter] = originalString.split(delimiter).map((s) =&gt; s.trim());
+
+console.log(substringAfter); // Output: "World!"
+</code></pre>
+
+<p>In this example, we split the <code>originalString</code> using the comma (<code>,</code>) delimiter and use <code>map()</code> to trim whitespace from each resulting substring. By using array destructuring, we can assign the second element of the resulting array (which is the substring after the comma) directly to the <code>substringAfter</code> variable.</p>
+
+<h2>Conclusion</h2>
+
+<p>Getting the substring after a specific character in JavaScript is a common operation in many applications. Whether you prefer using the <code>split()</code> method, the <code>substring()</code> method, regular expressions, or array destructuring, JavaScript provides various options to extract the desired substring efficiently and accurately. The choice of method depends on your specific use case and coding style.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

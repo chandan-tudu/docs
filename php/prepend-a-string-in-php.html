@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Prepend a String in PHP?</title>
+<meta name="description" content="Adding additional text or characters to the beginning of an existing string in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Prepend a String in PHP?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Prepend a String in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>Prepending a string in PHP means <strong>adding additional text or characters to the beginning of an existing string</strong>.</p>
+
+<p>This operation can be useful when you need to insert content at the <strong>start of a string</strong> or modify strings dynamically in your PHP applications.</p>
+
+<p>In this article, we'll explore different methods to <strong>prepend a string in PHP</strong>.</p>
+
+<h2>1. Using the Concatenation Operator (<code>.</code>)</h2>
+
+<p>The most straightforward way to prepend a string in PHP is by using the concatenation operator (<code>.</code>). This operator allows you to combine two or more strings into a single string.</p>
+
+<p>Here's an example of how to use <code>.</code> to prepend a string:</p>
+
+<pre class="language-php"><code>$originalString = "world!";
+$prependString = "Hello, ";
+
+$resultString = $prependString . $originalString;
+
+echo $resultString;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Hello, world!
+</code></pre>
+
+<p>In this example, we concatenate the <code>$prependString</code> to the beginning of the <code>$originalString</code> using the <code>.</code> operator.</p>
+
+<h2>2. Using the <code>.=</code> Assignment Operator</h2>
+
+<p>PHP also provides the <code>.=</code> assignment operator, which allows you to prepend a string to an existing string variable. This operator is useful when you want to update an existing string without creating a new variable.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$originalString = "world!";
+$prependString = "Hello, ";
+
+$originalString = $prependString . $originalString;
+
+echo $originalString;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Hello, world!
+</code></pre>
+
+<p>In this example, the <code>.=</code> operator prepends the <code>$prependString</code> to the beginning of the <code>$originalString</code>, updating the value of <code>$originalString</code> in place.</p>
+
+<h2>3. Using Double Quotes (<code>" "</code>) for Variable Interpolation</h2>
+
+<p>When working with double-quoted strings (<code>" "</code>), you can directly interpolate variables and expressions within the string. This allows you to prepend values to a string by including them within the string itself.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$originalString = "world!";
+$prependString = "Hello, ";
+
+$resultString = "$prependString$originalString";
+
+echo $resultString;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Hello, world!
+</code></pre>
+
+<p>In this example, we include the variables <code>$prependString</code> and <code>$originalString</code> within the double-quoted string, and PHP automatically replaces them with their values.</p>
+
+<h2>4. Using Arrays and <code>implode()</code></h2>
+
+<p>If you have an array of strings that you want to prepend to a single string, you can use the <code>implode()</code> function.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$stringArray = ["world!", "Hello, "];
+
+$resultString = implode("", $stringArray);
+
+echo $resultString;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Hello, world!
+</code></pre>
+
+<p>In this example, we have an array of strings, and <code>implode("", $stringArray)</code> concatenates them into a single string.</p>
+
+<h2>Conclusion</h2>
+
+<p>Prepending a string in PHP is a fundamental operation when building dynamic content or modifying strings dynamically. Whether you prefer the concatenation operator (<code>.</code>), the <code>.=</code> assignment operator, double-quoted strings for variable interpolation, or arrays with <code>implode()</code>, PHP offers a variety of methods to accomplish this task. Choose the method that best suits your coding style and the complexity of your string manipulation needs.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

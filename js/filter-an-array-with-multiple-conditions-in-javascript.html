@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Filter an Array with Multiple Conditions in JavaScript?</title>
+<meta name="description" content="In this article, we'll explore various techniques for filtering an array with multiple conditions in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Filter an Array with Multiple Conditions in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Filter an Array with Multiple Conditions in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Working with arrays is a fundamental part of JavaScript programming. Often, you'll encounter situations where you need to <strong>filter an array based on multiple conditions</strong> or criteria.</p>
+
+<p>In this article, we'll explore various techniques for <strong>filtering an array with multiple conditions in JavaScript</strong>.</p>
+
+<h2>Understanding the <code>filter()</code> Method</h2>
+
+<p>JavaScript provides the <code>filter()</code> method, which is designed specifically for filtering arrays. The <code>filter()</code> method creates a new array with all elements that pass a given test (provided as a callback function). To filter an array with multiple conditions, you can combine these conditions in a single callback function.</p>
+
+<p>Here's a basic example of how the <code>filter()</code> method works:</p>
+
+<pre class="language-javascript"><code>const numbers = [1, 2, 3, 4, 5, 6];
+
+const evenNumbers = numbers.filter((number) =&gt; {
+  return number % 2 === 0;
+});
+
+console.log(evenNumbers); // [2, 4, 6]
+</code></pre>
+
+<p>In this example, we use the <code>filter()</code> method to create a new array <code>evenNumbers</code> containing only the even numbers from the <code>numbers</code> array.</p>
+
+<h2>Filtering with Multiple Conditions</h2>
+
+<p>To filter an array with multiple conditions, you can write a callback function that checks all the desired conditions. You can use logical operators like <code>&amp;&amp;</code> (AND) and <code>||</code> (OR) to combine conditions as needed.</p>
+
+<p>Let's say you have an array of objects representing products, and you want to filter out products that are both in stock and have a price less than $50. Here's how you can do it:</p>
+
+<pre class="language-javascript"><code>const products = [
+  { name: 'Product A', price: 40, inStock: true },
+  { name: 'Product B', price: 60, inStock: true },
+  { name: 'Product C', price: 30, inStock: false },
+  { name: 'Product D', price: 70, inStock: false },
+];
+
+const filteredProducts = products.filter((product) =&gt; {
+  return product.inStock &amp;&amp; product.price &lt; 50;
+});
+
+console.log(filteredProducts);
+</code></pre>
+
+<p>In this example, we use the <code>filter()</code> method with a callback function that checks if both <code>product.inStock</code> is <code>true</code> (using the <code>&amp;&amp;</code> operator) and <code>product.price</code> is less than <code>$50</code>. The <code>filteredProducts</code> array will contain products that meet both conditions.</p>
+
+<h2>Using Separate Filter Steps</h2>
+
+<p>Another approach is to use separate <code>filter()</code> steps for each condition and combine the results. This approach can make your code more readable and maintainable, especially if you have complex conditions.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const products = [
+  { name: 'Product A', price: 40, inStock: true },
+  { name: 'Product B', price: 60, inStock: true },
+  { name: 'Product C', price: 30, inStock: false },
+  { name: 'Product D', price: 70, inStock: false },
+];
+
+const inStockProducts = products.filter((product) =&gt; product.inStock);
+const affordableProducts = products.filter((product) =&gt; product.price &lt; 50);
+
+const filteredProducts = inStockProducts.filter((product) =&gt; {
+  return affordableProducts.includes(product);
+});
+
+console.log(filteredProducts);
+</code></pre>
+
+<p>In this example, we first filter the products that are in stock and those with prices less than $50 separately. Then, we use the <code>includes()</code> method to filter the products that are both in stock and affordable. This approach provides more flexibility and readability, especially when dealing with complex conditions.</p>
+
+<h2>Using the <code>reduce()</code> Method</h2>
+
+<p>While the <code>filter()</code> method is the most common choice for filtering arrays, you can also use the <code>reduce()</code> method to achieve the same result with multiple conditions. This method involves accumulating values that meet the conditions.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const products = [
+  { name: 'Product A', price: 40, inStock: true },
+  { name: 'Product B', price: 60, inStock: true },
+  { name: 'Product C', price: 30, inStock: false },
+  { name: 'Product D', price: 70, inStock: false },
+];
+
+const filteredProducts = products.reduce((result, product) =&gt; {
+  if (product.inStock &amp;&amp; product.price &lt; 50) {
+    result.push(product);
+  }
+  return result;
+}, []);
+
+console.log(filteredProducts);
+</code></pre>
+
+<p>In this example, we use the <code>reduce()</code> method to accumulate products that meet the conditions (in stock and price less than $50) into the <code>filteredProducts</code> array.</p>
+
+<h2>Conclusion</h2>
+
+<p>Filtering an array with multiple conditions in JavaScript is a common and important operation in many applications. The <code>filter()</code> method is a powerful tool for accomplishing this task by allowing you to define custom callback functions that check all the necessary conditions. Whether you combine conditions in a single callback or use separate filter steps, JavaScript provides flexible options for filtering arrays based on your specific requirements.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

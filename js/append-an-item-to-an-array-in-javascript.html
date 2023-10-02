@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Append an Item to an Array in JavaScript?</title>
+<meta name="description" content="In this article, we will explore different methods for appending items to arrays in JavaScript, along with practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Append an Item to an Array in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Append an Item to an Array in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>JavaScript is a versatile and widely-used programming language that offers various ways to manipulate arrays, one of the most fundamental data structures. Appending an item to an array is a common operation when working with lists of data.</p>
+
+<p>In this article, we will explore <strong>different methods for appending items to arrays in JavaScript</strong>, along with practical examples.</p>
+
+<h2>1. Using the <code>push()</code> Method</h2>
+
+<p>The <code>push()</code> method is the simplest and most commonly used way to append an item to the end of an array. Here's how it works:</p>
+
+<pre class="language-javascript"><code>const myArray = [1, 2, 3];
+myArray.push(4);
+</code></pre>
+
+<p>In this example, we start with an array <code>myArray</code> containing <code>[1, 2, 3]</code>. We then use <code>push(4)</code> to add the number <code>4</code> to the end of the array, resulting in <code>myArray</code> now being <code>[1, 2, 3, 4]</code>.</p>
+
+<h2>2. Using the Spread Operator (<code>...</code>)</h2>
+
+<p>The spread operator (<code>...</code>) is a more modern approach to appending items to an array. It creates a new array by spreading the elements of the existing array and adding the new item at the end. Here's an example:</p>
+
+<pre class="language-javascript"><code>const myArray = [1, 2, 3];
+const newItem = 4;
+const newArray = [...myArray, newItem];
+</code></pre>
+
+<p>In this case, <code>myArray</code> remains unchanged, and a new array <code>newArray</code> is created with the contents <code>[1, 2, 3, 4]</code>.</p>
+
+<h2>3. Using the Concatenation Operator (<code>concat()</code>)</h2>
+
+<p>The <code>concat()</code> method can be used to concatenate two or more arrays, effectively appending the items from one array to another. Here's how you can use it to append an item:</p>
+
+<pre class="language-javascript"><code>const myArray = [1, 2, 3];
+const newItem = 4;
+const newArray = myArray.concat(newItem);
+</code></pre>
+
+<p>Again, a new array <code>newArray</code> is created with the contents <code>[1, 2, 3, 4]</code>. The original array <code>myArray</code> remains unchanged.</p>
+
+<h2>4. Using the <code>unshift()</code> Method</h2>
+
+<p>While <code>push()</code> appends an item to the end of an array, the <code>unshift()</code> method adds an item to the beginning of an array. Here's how to use it:</p>
+
+<pre class="language-javascript"><code>const myArray = [2, 3, 4];
+myArray.unshift(1);
+</code></pre>
+
+<p>In this example, <code>myArray</code> goes from <code>[2, 3, 4]</code> to <code>[1, 2, 3, 4]</code>.</p>
+
+<h2>5. Using the Bracket Notation</h2>
+
+<p>You can also append an item to an array using bracket notation to specify the index where the new item should be added. If the index is greater than or equal to the array's length, the item will be appended to the end. Here's an example:</p>
+
+<pre class="language-javascript"><code>const myArray = [1, 2, 3];
+myArray[myArray.length] = 4;
+</code></pre>
+
+<p>After this operation, <code>myArray</code> will be <code>[1, 2, 3, 4]</code>.</p>
+
+<h2>Conclusion</h2>
+
+<p>Appending an item to an array in JavaScript is a fundamental operation that you will encounter frequently in your coding journey. Depending on your coding style and the specific requirements of your project, you can choose from various methods to achieve this. Whether you prefer the simplicity of <code>push()</code>, the elegance of the spread operator, or another method altogether, understanding these techniques will help you manipulate arrays effectively in JavaScript.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

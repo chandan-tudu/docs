@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Get the Last Character of a String in PHP?</title>
+<meta name="description" content="In this article, we'll explore different approaches to get the last character of a string in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Get the Last Character of a String in PHP?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Get the Last Character of a String in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>In PHP, there are multiple ways to <strong>retrieve the last character of a string</strong>. Whether you need to perform some specific operations on the last character or simply display it, PHP provides various functions and techniques to accomplish this task.</p>
+
+<p>In this article, we'll explore different approaches to <strong>get the last character of a string in PHP</strong>.</p>
+
+<h2>1. Using the <code>substr()</code> Function</h2>
+
+<p>The <code>substr()</code> function in PHP is a versatile tool for working with substrings. To get the last character of a string, you can use <code>substr()</code> along with a negative offset.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "Hello, World!";
+$lastCharacter = substr($inputString, -1);
+
+echo $lastCharacter;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>!
+</code></pre>
+
+<p>In this example, <code>substr($inputString, -1)</code> extracts the last character of the <code>$inputString</code> variable by using a negative offset of <code>-1</code>.</p>
+
+<h2>2. Using the <code>mb_substr()</code> Function for Multibyte Strings</h2>
+
+<p>If you're working with multibyte character encodings like UTF-8, it's important to use the <code>mb_substr()</code> function to ensure proper handling of multibyte characters.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "こんにちは、世界！";
+$lastCharacter = mb_substr($inputString, -1);
+
+echo $lastCharacter;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>！
+</code></pre>
+
+<p>In this example, <code>mb_substr($inputString, -1)</code> extracts the last character of the multibyte string <code>$inputString</code> using a negative offset.</p>
+
+<h2>3. Using String Length and Indexing</h2>
+
+<p>You can also get the last character of a string by calculating its length and using array-like indexing.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "Hello, World!";
+$stringLength = strlen($inputString);
+$lastCharacter = $inputString[$stringLength - 1];
+
+echo $lastCharacter;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>!
+</code></pre>
+
+<p>In this example, <code>strlen($inputString)</code> calculates the length of the string, and then we access the last character using array indexing with <code>$stringLength - 1</code>.</p>
+
+<h2>4. Using <code>mb_strlen()</code> and Indexing for Multibyte Strings</h2>
+
+<p>For multibyte strings, you should use the <code>mb_strlen()</code> function to calculate the length of the string, followed by indexing.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "こんにちは、世界！";
+$stringLength = mb_strlen($inputString);
+$lastCharacter = $inputString[$stringLength - 1];
+
+echo $lastCharacter;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>！
+</code></pre>
+
+<p>In this example, we first calculate the length of the multibyte string using <code>mb_strlen($inputString)</code>, and then we access the last character using array indexing with <code>$stringLength - 1</code>.</p>
+
+<h2>5. Using <code>substr()</code> for a Custom Number of Characters</h2>
+
+<p>If you need to get a specific number of characters from the end of a string, you can modify the <code>substr()</code> approach accordingly.</p>
+
+<p>Here's an example that retrieves the last 3 characters:</p>
+
+<pre class="language-php"><code>$inputString = "Hello, World!";
+$lastThreeCharacters = substr($inputString, -3);
+
+echo $lastThreeCharacters;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>d!!
+</code></pre>
+
+<p>In this example, <code>substr($inputString, -3)</code> extracts the last three characters of the string.</p>
+
+<h2>6. Using <code>mb_substr()</code> for a Custom Number of Characters in Multibyte Strings</h2>
+
+<p>For multibyte strings, use the <code>mb_substr()</code> function with a negative offset to extract a specific number of characters from the end.</p>
+
+<p>Here's an example that retrieves the last 3 characters from a multibyte string:</p>
+
+<pre class="language-php"><code>$inputString = "こんにちは、世界！";
+$lastThreeCharacters = mb_substr($inputString, -3);
+
+echo $lastThreeCharacters;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>世界！
+</code></pre>
+
+<p>In this example, <code>mb_substr($inputString, -3)</code> extracts the last three characters of the multibyte string.</p>
+
+<h2>Conclusion</h2>
+
+<p>Getting the last character or a specific number of characters from the end of a string in PHP can be achieved using various methods, depending on whether you're working with single-byte or multibyte character encodings. Understanding these techniques allows you to manipulate and work with the last characters of strings effectively in your PHP applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

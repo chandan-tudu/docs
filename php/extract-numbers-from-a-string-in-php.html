@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Extract Numbers from a String in PHP?</title>
+<meta name="description" content="PHP offers several methods and functions to help you extract numbers from a string effectively." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Extract Numbers from a String in PHP?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Extract Numbers from a String in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>When working with text data in PHP, you might need to <strong>extract numerical values from a string</strong>. This is a common task in data processing, such as parsing user input or extracting data from strings containing mixed content.</p>
+
+<p>PHP offers several methods and functions to help you extract numbers from a string effectively. In this article, we'll explore different approaches to achieve this task.</p>
+
+<h2>1. Using Regular Expressions with <code>preg_match_all()</code></h2>
+
+<p>Regular expressions are a powerful way to match and extract specific patterns from strings. You can use the <code>preg_match_all()</code> function in PHP to find and extract all numbers from a given string.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "The price of the product is $99.99, and the discount is 20%.";
+preg_match_all('/\d+\.\d+|\d+/', $inputString, $matches);
+
+print_r($matches[0]);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; 99.99
+    [1] =&gt; 20
+)
+</code></pre>
+
+<p>In this example, the regular expression <code>/\d+\.\d+|\d+/</code> is used to match and extract numbers from the <code>$inputString</code>. It captures both decimal numbers (with or without a decimal point) and whole numbers.</p>
+
+<h2>2. Using <code>preg_replace()</code> to Remove Non-Numeric Characters</h2>
+
+<p>Another approach to extract numbers from a string is to use <code>preg_replace()</code> to remove all non-numeric characters, leaving only the numbers.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "The price of the product is $99.99, and the discount is 20%.";
+$numericString = preg_replace('/[^0-9.]+/', '', $inputString);
+
+echo $numericString;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>999920
+</code></pre>
+
+<p>In this example, the <code>preg_replace('/[^0-9.]+/', '', $inputString)</code> statement replaces all non-numeric characters (including decimal points) with an empty string, effectively leaving only the numbers.</p>
+
+<h2>3. Using <code>filter_var()</code> to Extract Numbers from URLs</h2>
+
+<p>If you need to extract numbers from a URL or a specific portion of a string, you can use the <code>filter_var()</code> function with the <code>FILTER_SANITIZE_NUMBER_FLOAT</code> filter.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$url = "https://example.com/product/12345";
+$productID = filter_var($url, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+
+echo $productID;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>12345
+</code></pre>
+
+<p>In this example, <code>FILTER_SANITIZE_NUMBER_FLOAT</code> is used with the <code>FILTER_FLAG_ALLOW_FRACTION</code> flag to extract numbers (including decimals) from the URL.</p>
+
+<h2>4. Using a Custom Function with <code>preg_replace_callback()</code></h2>
+
+<p>You can also create a custom callback function and use <code>preg_replace_callback()</code> to extract numbers with more specific conditions or formatting requirements.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "The phone numbers are +1 (123) 456-7890 and +44 20 1234 5678.";
+function extractNumbers($matches) {
+    return str_replace(['(', ')', ' '], '', $matches[0]);
+}
+$numericString = preg_replace_callback('/\+\d+\s?\(?\d+\)?\s?\d+\s?\d+/', 'extractNumbers', $inputString);
+
+echo $numericString;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>+11234567890+442012345678
+</code></pre>
+
+<p>In this example, we defined the <code>extractNumbers()</code> function to remove parentheses and spaces from the matched phone number patterns. We then used <code>preg_replace_callback()</code> to extract the formatted phone numbers from the input string.</p>
+
+<h2>Conclusion</h2>
+
+<p>Extracting numbers from a string in PHP can be achieved using various methods, depending on your specific requirements and formatting. Regular expressions, <code>preg_replace()</code>, <code>filter_var()</code>, and custom functions provide flexibility for different scenarios. Understanding these techniques allows you to effectively extract numerical values from strings in your PHP applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

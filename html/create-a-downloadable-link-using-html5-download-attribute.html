@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Create a Downloadable Link using HTML5 Download Attribute?</title>
+<meta name="description" content="In this article, we will explore the download attribute in detail, including its syntax, use cases, and examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">HTML</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Create a Downloadable Link using HTML5 Download Attribute</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Create a Downloadable Link using HTML5 Download Attribute" loading="lazy" width="900" height="500"></div> -->
+<p>HTML (Hypertext Markup Language) is the backbone of the web. It provides a standardized way to structure and present content on the internet.</p>
+
+<p>One of the lesser-known, but highly useful, attributes in HTML is the <code>download</code> attribute. This attribute <strong>allows you to control the downloading of files directly</strong> from a web page.</p>
+
+<p>In this article, we will explore the <code>download</code> attribute in detail, including its syntax, use cases, and examples.</p>
+
+<h2>Syntax of the <code>download</code> Attribute</h2>
+
+<p>The <code>download</code> attribute is typically used with the <code>&lt;a&gt;</code> (anchor) element, which is commonly used for creating hyperlinks. Here's the basic syntax of the <code>download</code> attribute:</p>
+
+<pre class="language-html"><code>&lt;a href="file-path" download="new-file-name"&gt;Link Text&lt;/a&gt;
+</code></pre>
+
+<ul>
+<li><code>href</code>: This attribute specifies the URL of the file you want to make available for download.</li>
+<li><code>download</code>: This attribute tells the browser to download the linked file instead of navigating to it.</li>
+<li><code>new-file-name</code> (optional): You can provide a new name for the downloaded file. If you omit this attribute, the browser will use the original file name.</li>
+</ul>
+
+<h2>Use Cases of the <code>download</code> Attribute</h2>
+
+<p>The <code>download</code> attribute can be incredibly useful in various scenarios:</p>
+
+<h3>1. Downloadable Files</h3>
+
+<p>You can use the <code>download</code> attribute to create download links for various file types such as PDFs, images, documents, and more. For example:</p>
+
+<pre class="language-html"><code>&lt;a href="example.pdf" download="my-document.pdf"&gt;Download PDF&lt;/a&gt;
+&lt;a href="image.jpg" download&gt;Download Image&lt;/a&gt;
+</code></pre>
+
+<p>In the first example, clicking "Download PDF" will prompt the user to download the "example.pdf" file with the name "my-document.pdf." In the second example, the browser will download the "image.jpg" file with its original name.</p>
+
+<h3>2. Enhancing User Experience</h3>
+
+<p>The <code>download</code> attribute can enhance the user experience by allowing users to download important files directly from your web page. This can save users the hassle of navigating to a separate download page or right-clicking to save a file.</p>
+
+<h3>3. Renaming Files</h3>
+
+<p>When you provide a custom name for the downloaded file using the <code>download</code> attribute, you give users a better idea of what they are downloading. This can be particularly useful when the original file name is cryptic or lengthy.</p>
+
+<h3>4. Preventing Navigation</h3>
+
+<p>By default, when you click on a link, the browser navigates to the linked URL. However, with the <code>download</code> attribute, you can prevent navigation and ensure that the file is downloaded instead. This is especially helpful when linking to files that you don't want users to view in the browser directly.</p>
+
+<h2>Browser Support</h2>
+
+<p>The <code>download</code> attribute is widely supported by modern web browsers, including Chrome, Firefox, Safari, Edge, and Opera. However, it's always a good practice to provide alternative methods for downloading files in case a user's browser does not support this attribute.</p>
+
+<h2>Examples</h2>
+
+<p>Let's look at a few practical examples of how to use the <code>download</code> attribute:</p>
+
+<h3>1. Downloading a PDF File</h3>
+
+<pre class="language-html"><code>&lt;a href="example.pdf" download="my-document.pdf"&gt;Download PDF&lt;/a&gt;
+</code></pre>
+
+<p>In this example, clicking "Download PDF" will download the "example.pdf" file with the name "my-document.pdf."</p>
+
+<h3>2. Downloading an Image</h3>
+
+<pre class="language-html"><code>&lt;a href="image.jpg" download&gt;Download Image&lt;/a&gt;
+</code></pre>
+
+<p>This link will download the "image.jpg" file with its original name.</p>
+
+<h3>3. Preventing Navigation</h3>
+
+<pre class="language-html"><code>&lt;a href="document.docx" download&gt;Download Document&lt;/a&gt;
+</code></pre>
+
+<p>Clicking "Download Document" will download the "document.docx" file without navigating to it.</p>
+
+<h2>Conclusion</h2>
+
+<p>The HTML <code>download</code> attribute is a powerful tool for controlling file downloads on your web pages. It allows you to specify the file to be downloaded, provide a custom name for the downloaded file, and prevent navigation to the file. By using this attribute wisely, you can offer a more user-friendly and efficient experience for your website visitors, especially when it comes to downloading files.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

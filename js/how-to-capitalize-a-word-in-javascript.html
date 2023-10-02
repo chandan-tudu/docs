@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Capitalize a Word in JavaScript?</title>
+<meta name="description" content="JavaScript provides several methods to capitalize words or strings, and in this article, we will explore various approaches." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Capitalize a Word in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to Capitalize a Word in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p><strong>Capitalizing words in JavaScript</strong> is a common task when you want to change the case of text to make it more presentable or readable.</p>
+
+<p>JavaScript provides several methods to <strong>capitalize words or strings</strong>, and in this article, we will explore various approaches and techniques to achieve this.</p>
+
+<h2>Understanding Capitalization</h2>
+
+<p>Capitalization typically refers to making the first letter of a word uppercase (capital) while leaving the rest of the letters in lowercase. This is commonly used in titles, headings, or to standardize text input.</p>
+
+<h3>Example of Capitalization:</h3>
+
+<ul>
+<li>Original: "javascript is awesome"</li>
+<li>Capitalized: "Javascript is awesome"</li>
+</ul>
+
+<h2>Method 1: Using the <code>toUpperCase()</code> and <code>toLowerCase()</code> Methods</h2>
+
+<p>JavaScript provides the <code>toUpperCase()</code> and <code>toLowerCase()</code> methods for strings, which can be used in combination to capitalize the first letter of a word.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>function capitalizeWord(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+
+const originalWord = "javascript";
+const capitalizedWord = capitalizeWord(originalWord);
+</code></pre>
+
+<p>In this example, the <code>capitalizeWord</code> function capitalizes the first letter of the word while converting the remaining letters to lowercase.</p>
+
+<h2>Method 2: Using Regular Expressions</h2>
+
+<p>Regular expressions can be employed to capitalize the first letter of a word by matching the first character and replacing it with its uppercase version.</p>
+
+<pre class="language-javascript"><code>function capitalizeWord(word) {
+  return word.replace(/^\w/, (c) =&gt; c.toUpperCase());
+}
+
+const originalWord = "javascript";
+const capitalizedWord = capitalizeWord(originalWord);
+</code></pre>
+
+<p>In this example, the regular expression <code>^\w</code> matches the first character of the word (<code>^</code> denotes the start of the string, and <code>\w</code> matches a word character), and the <code>replace()</code> method replaces it with its uppercase version.</p>
+
+<h2>Method 3: Using String Concatenation</h2>
+
+<p>Another simple method is to concatenate the uppercase first letter with the remaining lowercase letters of the word.</p>
+
+<pre class="language-javascript"><code>function capitalizeWord(word) {
+  return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
+
+const originalWord = "javascript";
+const capitalizedWord = capitalizeWord(originalWord);
+</code></pre>
+
+<p>This approach directly manipulates the characters of the string to achieve capitalization.</p>
+
+<h2>Method 4: Using a Third-Party Library</h2>
+
+<p>If you are working with more complex capitalization requirements, such as title case (capitalizing the first letter of each word in a sentence), you might consider using a third-party library like <code>lodash</code>.</p>
+
+<pre class="language-javascript"><code>const _ = require('lodash');
+
+const originalText = "javascript is awesome";
+const capitalizedText = _.startCase(originalText);
+</code></pre>
+
+<p>In this example, the <code>startCase</code> function from <code>lodash</code> capitalizes the first letter of each word in the input text.</p>
+
+<h2>Conclusion</h2>
+
+<p>Capitalizing words in JavaScript is a straightforward task that can be accomplished using various techniques. Depending on your specific use case and requirements, you can choose the method that suits your needs best. Whether it's using the <code>toUpperCase()</code> and <code>toLowerCase()</code> methods, regular expressions, string concatenation, or third-party libraries, JavaScript provides the tools to manipulate text and make it more presentable or readable in your applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

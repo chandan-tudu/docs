@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Remove White Spaces at the Beginning/End of a String in PHP</title>
+<meta name="description" content="To clean up such strings by removing the leading and trailing white spaces, you can use various PHP functions." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Remove White Spaces at the Beginning/End of a String in PHP</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Remove White Spaces at the Beginning/End of a String in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>In PHP, it's common to encounter <strong>strings that have extra white spaces</strong> (such as spaces, tabs, or newlines) at the beginning or end.</p>
+
+<p>These white spaces can affect the appearance and functionality of your application.</p>
+
+<p>To clean up such strings by <strong>removing the leading and trailing white spaces</strong>, you can use various PHP functions. In this article, we will explore different methods to achieve this.</p>
+
+<h2>1. Using <code>trim()</code></h2>
+
+<p>The <code>trim()</code> function in PHP is the most straightforward way to remove white spaces at the beginning and end of a string. It trims both leading and trailing white spaces.</p>
+
+<pre class="language-php"><code>$string = "   Hello, world!   ";
+$cleanedString = trim($string);
+
+echo "Original String: '$string'&lt;br&gt;";
+echo "Cleaned String: '$cleanedString'";
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Original String: '   Hello, world!   '
+Cleaned String: 'Hello, world!'
+</code></pre>
+
+<p>In this example, <code>trim($string)</code> removes all leading and trailing white spaces from the string.</p>
+
+<h2>2. Using <code>ltrim()</code> and <code>rtrim()</code></h2>
+
+<p>If you want to remove white spaces only from the beginning (left) or end (right) of a string, you can use the <code>ltrim()</code> and <code>rtrim()</code> functions, respectively.</p>
+
+<h3>ltrim()</h3>
+
+<p>The <code>ltrim()</code> function removes white spaces from the beginning of a string (the left side).</p>
+
+<pre class="language-php"><code>$string = "   Hello, world!   ";
+$cleanedString = ltrim($string);
+
+echo "Original String: '$string'&lt;br&gt;";
+echo "Cleaned String: '$cleanedString'";
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Original String: '   Hello, world!   '
+Cleaned String: 'Hello, world!   '
+</code></pre>
+
+<p>In this example, <code>ltrim($string)</code> removes only the leading white spaces.</p>
+
+<h3>rtrim()</h3>
+
+<p>The <code>rtrim()</code> function removes white spaces from the end of a string (the right side).</p>
+
+<pre class="language-php"><code>$string = "   Hello, world!   ";
+$cleanedString = rtrim($string);
+
+echo "Original String: '$string'&lt;br&gt;";
+echo "Cleaned String: '$cleanedString'";
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Original String: '   Hello, world!   '
+Cleaned String: '   Hello, world!'
+</code></pre>
+
+<p>In this example, <code>rtrim($string)</code> removes only the trailing white spaces.</p>
+
+<h2>3. Using Regular Expressions with <code>preg_replace()</code></h2>
+
+<p>If you need more advanced control over the types of white spaces you want to remove, you can use regular expressions with <code>preg_replace()</code>.</p>
+
+<pre class="language-php"><code>$string = " \t Hello, world! \n ";
+$cleanedString = preg_replace('/^\s+|\s+$/u', '', $string);
+
+echo "Original String: '$string'&lt;br&gt;";
+echo "Cleaned String: '$cleanedString'";
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Original String: '   Hello, world!
+ '
+Cleaned String: 'Hello, world!'
+</code></pre>
+
+<p>In this example, the regular expression <code>/^\s+|\s+$/u</code> is used with <code>preg_replace()</code> to remove all leading (<code>^\s+</code>) and trailing (<code>\s+$/</code>) white spaces. The <code>u</code> modifier is used for Unicode support.</p>
+
+<h2>Conclusion</h2>
+
+<p>Removing white spaces from the beginning and end of a string is a common operation when working with user input, data from external sources, or formatted text. PHP provides several functions and techniques to clean up strings by removing leading and trailing white spaces. Choose the method that best fits your specific needs and coding style to ensure your strings are properly sanitized and ready for further processing or display.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

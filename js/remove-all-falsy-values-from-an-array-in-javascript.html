@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Remove All Falsy Values from an Array in JavaScript?</title>
+<meta name="description" content="In this article, we'll explore different techniques to remove all falsy values from an array in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Remove All Falsy Values from an Array in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Remove All Falsy Values from an Array in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>In JavaScript, you often encounter arrays that contain a mix of truthy and falsy values. Falsy values include <code>undefined</code>, <code>null</code>, <code>false</code>, <code>0</code>, <code>NaN</code>, and an empty string (<code>""</code>).</p>
+
+<p><strong>Removing falsy values from an array</strong> is a common operation when you want to clean up your data.</p>
+
+<p>In this article, we'll explore different techniques to <strong>remove all falsy values from an array in JavaScript</strong>.</p>
+
+<h2>Using the <code>filter()</code> Method</h2>
+
+<p>The <code>filter()</code> method is a built-in array method in JavaScript that creates a new array containing all elements that pass a provided test. To remove falsy values from an array, you can use the <code>filter()</code> method with a callback function that checks if each element is truthy.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const array = [1, 0, "hello", "", false, true, null, undefined, NaN];
+
+const filteredArray = array.filter((element) =&gt; !!element);
+
+console.log(filteredArray);
+// Output: [1, "hello", true]
+</code></pre>
+
+<p>In this example, we use the <code>filter()</code> method with a callback function that checks if each element is truthy by converting it to a boolean using the double negation operator (<code>!!</code>). The resulting <code>filteredArray</code> contains only the truthy values from the original array.</p>
+
+<h2>Using a <code>for...of</code> Loop</h2>
+
+<p>You can also remove falsy values from an array by iterating through it using a <code>for...of</code> loop and adding the truthy elements to a new array.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const array = [1, 0, "hello", "", false, true, null, undefined, NaN];
+const filteredArray = [];
+
+for (const element of array) {
+  if (element) {
+    filteredArray.push(element);
+  }
+}
+
+console.log(filteredArray);
+// Output: [1, "hello", true]
+</code></pre>
+
+<p>In this example, we initialize an empty array called <code>filteredArray</code> and use a <code>for...of</code> loop to iterate through the original <code>array</code>. We add elements to <code>filteredArray</code> only if they are truthy, effectively removing falsy values.</p>
+
+<h2>Using the <code>reduce()</code> Method</h2>
+
+<p>The <code>reduce()</code> method can also be used to remove falsy values from an array. You can use <code>reduce()</code> to accumulate the truthy elements into a new array.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const array = [1, 0, "hello", "", false, true, null, undefined, NaN];
+
+const filteredArray = array.reduce((acc, element) =&gt; {
+  if (element) {
+    acc.push(element);
+  }
+  return acc;
+}, []);
+
+console.log(filteredArray);
+// Output: [1, "hello", true]
+</code></pre>
+
+<p>In this example, we use the <code>reduce()</code> method to accumulate truthy elements into the <code>filteredArray</code>. The initial value for the accumulator (<code>acc</code>) is an empty array. We check if each element is truthy, and if it is, we push it onto the accumulator.</p>
+
+<h2>Using the <code>Boolean</code> Constructor</h2>
+
+<p>Another concise way to remove falsy values from an array is by using the <code>Boolean</code> constructor function as the filtering criteria. The <code>Boolean</code> constructor returns <code>true</code> for truthy values and <code>false</code> for falsy values. When used with the <code>filter()</code> method, it effectively filters out all falsy elements.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const array = [1, 0, "hello", "", false, true, null, undefined, NaN];
+
+const filteredArray = array.filter(Boolean);
+
+console.log(filteredArray);
+// Output: [1, "hello", true]
+</code></pre>
+
+<p>In this example, we use the <code>filter()</code> method with the <code>Boolean</code> constructor as the callback function. This method will remove all falsy elements from the original array.</p>
+
+<h2>Conclusion</h2>
+
+<p>Removing falsy values from an array in JavaScript is a common task when working with data. Depending on your preference and coding style, you can choose one of the methods described in this article. Whether you use <code>filter()</code>, a <code>for...of</code> loop, <code>reduce()</code>, or the <code>Boolean</code> constructor, each approach provides an effective way to clean up your array and keep only the truthy values.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

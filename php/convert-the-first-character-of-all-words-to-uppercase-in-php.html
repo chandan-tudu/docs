@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Convert the First Character of All Words to Uppercase in PHP?</title>
+<meta name="description" content="In this article, we'll explore different approaches to convert the first character of all words to uppercase in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Convert the First Character of All Words to Uppercase in PHP?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Convert the First Character of All Words to Uppercase in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>When working with text data in PHP, you may come across situations where you need to <strong>capitalize the first character of each word in a string</strong>.</p>
+
+<p>This operation is often required for formatting names, titles, or any textual data where proper capitalization is important.</p>
+
+<p>In this article, we'll explore different approaches to <strong>convert the first character of all words to uppercase in PHP</strong>.</p>
+
+<h2>Using <code>ucwords()</code></h2>
+
+<p>The <code>ucwords()</code> function in PHP is a convenient way to capitalize the first character of each word in a string. It treats a space as the word separator and capitalizes the first letter of each word.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "hello world";
+
+// Capitalize the first character of each word using ucwords()
+$capitalizedString = ucwords($inputString);
+
+echo $capitalizedString;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Hello World
+</code></pre>
+
+<p>In this example, the <code>ucwords()</code> function capitalized the first letter of each word in the <code>$inputString</code> variable.</p>
+
+<h2>Using <code>str_replace()</code> and <code>ucfirst()</code></h2>
+
+<p>Another approach to capitalize the first character of each word is to use a combination of <code>str_replace()</code> and <code>ucfirst()</code> functions. This method allows you to have more control over the capitalization process.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "hello world";
+
+// Split the input string into an array of words
+$words = explode(" ", $inputString);
+
+// Capitalize the first character of each word using ucfirst()
+$capitalizedWords = array_map('ucfirst', $words);
+
+// Join the words back into a string using str_replace()
+$capitalizedString = implode(" ", $capitalizedWords);
+
+echo $capitalizedString;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Hello World
+</code></pre>
+
+<p>In this example, we first used <code>explode(" ", $inputString)</code> to split the input string into an array of words. Then, we applied <code>ucfirst()</code> to each word in the array using <code>array_map()</code>. Finally, we used <code>implode(" ", $capitalizedWords)</code> to join the words back into a single string.</p>
+
+<h2>Using a Custom Function with <code>preg_replace_callback()</code></h2>
+
+<p>If you need to handle more complex cases, such as words separated by different delimiters or special characters, you can use a custom function with <code>preg_replace_callback()</code>. This method allows you to define your own logic for capitalizing the first character of each word.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$inputString = "hello, world; welcome-to_php";
+
+// Define a custom callback function to capitalize words
+function capitalizeWords($matches) {
+    return ucfirst($matches[0]);
+}
+
+// Use preg_replace_callback() to capitalize words
+$capitalizedString = preg_replace_callback('/\b\w+\b/', 'capitalizeWords', $inputString);
+
+echo $capitalizedString;
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Hello, World; Welcome-to_php
+</code></pre>
+
+<p>In this example, we defined the <code>capitalizeWords()</code> callback function to capitalize words. The regular expression <code>/\b\w+\b/</code> matches individual words, and <code>preg_replace_callback()</code> applies the custom callback to each match.</p>
+
+<h2>Conclusion</h2>
+
+<p>Converting the first character of all words to uppercase in PHP can be achieved using various methods, such as <code>ucwords()</code>, <code>str_replace()</code> and <code>ucfirst()</code>, or a custom function with <code>preg_replace_callback()</code>. The choice of method depends on your specific requirements and the complexity of the text data you're working with. Understanding these techniques allows you to format text data with proper capitalization in your PHP applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

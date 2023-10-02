@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use Shorthand for if-else Statements in JavaScript?</title>
+<meta name="description" content="In this article, we'll explore how to use shorthand for if-else statements in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Use Shorthand for if-else Statements in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Shorthand for if-else Statements in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>In JavaScript, the traditional if-else statement is a fundamental control structure used for making decisions in your code.</p>
+
+<p>However, JavaScript also <strong>provides a shorthand way to write if-else statements</strong>, making your code more concise and readable.</p>
+
+<p>In this article, we'll explore how to use <strong>shorthand for if-else statements in JavaScript</strong>.</p>
+
+<h2>The Traditional if-else Statement</h2>
+
+<p>Before diving into shorthand techniques, let's first review how the traditional if-else statement works in JavaScript.</p>
+
+<pre class="language-javascript"><code>if (condition) {
+  // Code to execute if the condition is true
+} else {
+  // Code to execute if the condition is false
+}
+</code></pre>
+
+<p>In the above structure, the code inside the first block will execute if the condition in the parentheses evaluates to true. Otherwise, the code inside the second block (the else block) will execute if the condition is false.</p>
+
+<h2>Using the Ternary Operator (<code>? :</code>)</h2>
+
+<p>The ternary operator, also known as the conditional operator, provides a concise way to write if-else statements in a single line of code. It has the following syntax:</p>
+
+<pre class="language-javascript"><code>condition ? trueExpression : falseExpression;
+</code></pre>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const isRaining = true;
+
+const weatherMessage = isRaining ? "Bring an umbrella" : "Enjoy the sunshine";
+
+console.log(weatherMessage);
+</code></pre>
+
+<p>In this example, the ternary operator checks if <code>isRaining</code> is true. If it is, it assigns the string "Bring an umbrella" to the <code>weatherMessage</code> variable; otherwise, it assigns "Enjoy the sunshine." The result is then logged to the console.</p>
+
+<p>The ternary operator is particularly useful for assigning values to variables based on conditions in a concise manner.</p>
+
+<h2>Using Short-Circuit Evaluation</h2>
+
+<p>Short-circuit evaluation is another shorthand technique that leverages JavaScript's logical operators (<code>&amp;&amp;</code> and <code>||</code>) to achieve conditional behavior. These operators can be used to replace if-else statements in specific scenarios.</p>
+
+<h3>Using <code>&amp;&amp;</code> for Logical AND</h3>
+
+<p>You can use the <code>&amp;&amp;</code> operator to execute code when a condition is true and provide a default value when it's false.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const isLoggedIn = false;
+
+const username = isLoggedIn &amp;&amp; "John Doe";
+
+console.log(username); // Output: false
+</code></pre>
+
+<p>In this example, <code>username</code> will be assigned the string "John Doe" only if <code>isLoggedIn</code> is true. If <code>isLoggedIn</code> is false, <code>username</code> will be assigned <code>false</code>.</p>
+
+<h3>Using <code>||</code> for Logical OR</h3>
+
+<p>The <code>||</code> operator can be used to provide a fallback value when a condition is false.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const userName = null;
+const defaultName = "Guest";
+
+const displayName = userName || defaultName;
+
+console.log(displayName); // Output: Guest
+</code></pre>
+
+<p>In this example, <code>displayName</code> is assigned the value of <code>userName</code> if it exists and is truthy. If <code>userName</code> is <code>null</code>, <code>undefined</code>, or any falsy value, it defaults to "Guest."</p>
+
+<h2>Using Function Expressions</h2>
+
+<p>You can also use function expressions as a shorthand for executing code conditionally. This approach is particularly useful when you need to perform more complex operations based on a condition.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const isEven = (number) =&gt; number % 2 === 0;
+
+const checkNumber = (number) =&gt; {
+  return isEven(number) ? "Even" : "Odd";
+};
+
+console.log(checkNumber(4)); // Output: Even
+console.log(checkNumber(7)); // Output: Odd
+</code></pre>
+
+<p>In this example, we define a <code>checkNumber</code> function that uses a function expression to return "Even" if the <code>isEven</code> function returns true and "Odd" if it returns false.</p>
+
+<h2>Conclusion</h2>
+
+<p>Shorthand techniques for if-else statements in JavaScript can help you write more concise and readable code, making your codebase easier to maintain. Whether you prefer using the ternary operator, short-circuit evaluation with <code>&amp;&amp;</code> and <code>||</code>, or function expressions, JavaScript provides various options for simplifying conditional logic in your applications. It's important to choose the approach that best suits your specific use case and coding style.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

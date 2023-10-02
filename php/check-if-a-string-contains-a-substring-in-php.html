@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Check if a String Contains a Substring in PHP?</title>
+<meta name="description" content="PHP provides several ways to check if a string contains a substring." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Check if a String Contains a Substring in PHP?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Check if a String Contains a Substring in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>Checking whether a <strong>string contains a specific substring</strong> is a common task in PHP programming.</p>
+
+<p>You might need to perform this operation when searching for keywords in text, validating user input, or manipulating strings.</p>
+
+<p><strong>PHP provides several ways to check if a string contains a substring</strong>, and in this article, we'll explore different methods for accomplishing this.</p>
+
+<h2>1. Using the <code>strpos()</code> Function</h2>
+
+<p>The <code>strpos()</code> function in PHP allows you to find the position of the first occurrence of a substring within a string. If the substring is found, it returns the position as an integer; otherwise, it returns <code>false</code>.</p>
+
+<p>Here's how to use <code>strpos()</code> to check if a string contains a substring:</p>
+
+<pre class="language-php"><code>$string = "This is a sample string.";
+$substring = "sample";
+
+if (strpos($string, $substring) !== false) {
+    echo "The string contains the substring.";
+} else {
+    echo "The string does not contain the substring.";
+}
+</code></pre>
+
+<p>In this example, <code>strpos($string, $substring)</code> searches for the <code>$substring</code> within <code>$string</code>. If it returns a value that is not equal to <code>false</code>, it means the substring was found.</p>
+
+<h2>2. Using the <code>stripos()</code> Function for Case-Insensitive Search</h2>
+
+<p>If you need to perform a case-insensitive search, you can use the <code>stripos()</code> function, which works similarly to <code>strpos()</code> but ignores character case.</p>
+
+<pre class="language-php"><code>$string = "This is a sample string.";
+$substring = "SAMPLE";
+
+if (stripos($string, $substring) !== false) {
+    echo "The string contains the substring.";
+} else {
+    echo "The string does not contain the substring.";
+}
+</code></pre>
+
+<p>In this example, the case of the substring doesn't matter, as <code>stripos()</code> performs a case-insensitive search.</p>
+
+<h2>3. Using the <code>strstr()</code> Function</h2>
+
+<p>The <code>strstr()</code> function can be used to check if a string contains a substring and retrieve the portion of the string that follows the substring.</p>
+
+<pre class="language-php"><code>$string = "This is a sample string.";
+$substring = "sample";
+
+if (strstr($string, $substring) !== false) {
+    echo "The string contains the substring.";
+} else {
+    echo "The string does not contain the substring.";
+}
+</code></pre>
+
+<p>In this case, <code>strstr($string, $substring)</code> returns the substring found in the string or <code>false</code> if the substring is not present.</p>
+
+<h2>4. Using Regular Expressions with <code>preg_match()</code></h2>
+
+<p>If you need to perform more complex substring searches, regular expressions with the <code>preg_match()</code> function can be a powerful option.</p>
+
+<pre class="language-php"><code>$string = "The quick brown fox jumps over the lazy dog.";
+$pattern = "/quick\s+brown/";
+
+if (preg_match($pattern, $string)) {
+    echo "The string contains the substring.";
+} else {
+    echo "The string does not contain the substring.";
+}
+</code></pre>
+
+<p>In this example, the regular expression pattern <code>/quick\s+brown/</code> searches for the substring "quick brown" with one or more spaces in between. If the pattern is found in the string, <code>preg_match()</code> returns true.</p>
+
+<h2>5. Using <code>strpos()</code> for Arrays of Substrings</h2>
+
+<p>If you want to check if a string contains any of the substrings from an array, you can loop through the array and use <code>strpos()</code> inside the loop.</p>
+
+<pre class="language-php"><code>$string = "This is a sample string.";
+$substrings = ["sample", "test", "example"];
+
+foreach ($substrings as $substring) {
+    if (strpos($string, $substring) !== false) {
+        echo "The string contains the substring '$substring'.&lt;br&gt;";
+    } else {
+        echo "The string does not contain the substring '$substring'.&lt;br&gt;";
+    }
+}
+</code></pre>
+
+<p>This approach allows you to check multiple substrings against the same string.</p>
+
+<h2>Conclusion</h2>
+
+<p>Checking if a string contains a substring is a common operation in PHP, and the choice of method depends on your specific requirements. Whether you use <code>strpos()</code> for simple searches, <code>stripos()</code> for case-insensitive searches, <code>strstr()</code> for substring retrieval, <code>preg_match()</code> for complex patterns, or loop through an array of substrings, PHP provides versatile options for handling substring checks in your applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Calculate Percentage between Two Numbers in JavaScript?</title>
+<meta name="description" content="In this article, we'll explore different methods for calculating the percentage between two numbers in JavaScript, along with practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Calculate Percentage between Two Numbers in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Calculate Percentage between Two Numbers in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p><strong>Calculating percentages</strong> is a common task in many JavaScript applications, especially when dealing with data analysis, statistics, or creating dynamic web pages.</p>
+
+<p>In this article, we'll explore different methods for <strong>calculating the percentage between two numbers in JavaScript</strong>, along with practical examples.</p>
+
+<h2>Understanding Percentage Calculation</h2>
+
+<p>Before we dive into the methods, let's clarify how percentage calculation works. In mathematics, a percentage is a ratio or fraction expressed as a portion of 100. To calculate the percentage between two numbers, you typically follow this formula:</p>
+
+<pre class="language-plaintext"><code>Percentage = (Part / Whole) * 100
+</code></pre>
+
+<ul>
+<li><code>Part</code>: The smaller value or portion you want to find the percentage of.</li>
+<li><code>Whole</code>: The larger value or the total reference point.</li>
+</ul>
+
+<h2>Method 1: Using Simple Division</h2>
+
+<p>The most straightforward way to calculate the percentage between two numbers is by performing simple division and then multiplying by 100. This method works when you want to find the percentage of one number relative to another.</p>
+
+<pre class="language-javascript"><code>const part = 25;
+const whole = 100;
+
+const percentage = (part / whole) * 100;
+</code></pre>
+
+<p>In this example, <code>percentage</code> will be 25% because 25 is 25% of 100.</p>
+
+<h2>Method 2: Using a Custom Function</h2>
+
+<p>You can create a custom JavaScript function to calculate percentages to make your code more reusable and readable. Here's an example of a <code>calculatePercentage</code> function:</p>
+
+<pre class="language-javascript"><code>function calculatePercentage(part, whole) {
+  return (part / whole) * 100;
+}
+
+const part = 25;
+const whole = 100;
+
+const percentage = calculatePercentage(part, whole);
+</code></pre>
+
+<p>This approach is particularly useful when you need to calculate percentages multiple times in your code.</p>
+
+<h2>Method 3: Using Template Literals for Formatting</h2>
+
+<p>When displaying calculated percentages, you can use template literals to format the output with a specified number of decimal places. This is helpful for presenting percentages with precision.</p>
+
+<pre class="language-javascript"><code>const part = 25;
+const whole = 100;
+
+const percentage = (part / whole) * 100;
+
+const formattedPercentage = `${percentage.toFixed(2)}%`;
+</code></pre>
+
+<p>In this example, <code>formattedPercentage</code> will be <code>"25.00%"</code>, displaying the percentage with two decimal places.</p>
+
+<h2>Method 4: Using a Predefined Function</h2>
+
+<p>JavaScript provides the <code>Intl.NumberFormat</code> object, which allows you to format numbers, including percentages, with localization support. This method is especially useful when you need to display percentages in different locales.</p>
+
+<pre class="language-javascript"><code>const part = 25;
+const whole = 100;
+
+const percentage = (part / whole) * 100;
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'percent',
+  minimumFractionDigits: 2,
+});
+
+const formattedPercentage = formatter.format(percentage);
+</code></pre>
+
+<p>Here, <code>formattedPercentage</code> will be <code>"25.00%"</code>. You can adjust the locale and formatting options to suit your needs.</p>
+
+<h2>Conclusion</h2>
+
+<p>Calculating percentages between two numbers is a fundamental operation in various JavaScript applications, from data analysis to creating dynamic user interfaces. Depending on your specific requirements and the context of your code, you can choose from these methods to calculate and format percentages effectively. Whether it's simple division, custom functions, template literals for formatting, or using the <code>Intl.NumberFormat</code> object for localization support, JavaScript provides the tools to handle percentage calculations with precision and flexibility.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

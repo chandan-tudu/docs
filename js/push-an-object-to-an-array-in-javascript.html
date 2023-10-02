@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Push an Object to an Array in JavaScript?</title>
+<meta name="description" content="In this article, we will explore various methods for pushing an object into an array in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Push an Object to an Array in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Push an Object to an Array in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Arrays and objects are two fundamental data types in JavaScript, each serving different purposes. Arrays are used to store ordered collections of values, while objects are used to store key-value pairs.</p>
+
+<p>Sometimes, you may need to <strong>push an object into an array</strong>, whether you want to add new data to an existing array or build an array of objects dynamically.</p>
+
+<p>In this article, we will explore various methods for <strong>pushing an object into an array in JavaScript</strong>.</p>
+
+<h2>Using the <code>push()</code> Method</h2>
+
+<p>The <code>push()</code> method is the simplest and most common way to add an object to an array in JavaScript. It appends one or more elements to the end of an array and returns the new length of the array.</p>
+
+<p>Here's how you can use it to push an object into an array:</p>
+
+<pre class="language-javascript"><code>const myArray = [];
+const myObject = { name: "John", age: 30 };
+
+myArray.push(myObject);
+
+console.log(myArray);
+</code></pre>
+
+<p>In this example, we initialize an empty array <code>myArray</code> and create an object <code>myObject</code>. We then use the <code>push()</code> method to add <code>myObject</code> to <code>myArray</code>. The resulting array will contain <code>myObject</code> as its first element.</p>
+
+<h2>Using the Spread Operator (<code>...</code>)</h2>
+
+<p>The spread operator (<code>...</code>) is a more modern and concise way to add an object to an array. It creates a shallow copy of an existing array while allowing you to add new elements.</p>
+
+<p>Here's how you can use it to push an object into an array:</p>
+
+<pre class="language-javascript"><code>const myArray = [];
+const myObject = { name: "John", age: 30 };
+
+const newArray = [...myArray, myObject];
+
+console.log(newArray);
+</code></pre>
+
+<p>In this example, we create an empty array <code>myArray</code> and an object <code>myObject</code>. We then use the spread operator to create a new array <code>newArray</code> that contains all the elements from <code>myArray</code> followed by <code>myObject</code>. The result is a new array with <code>myObject</code> added at the end.</p>
+
+<h2>Using the <code>concat()</code> Method</h2>
+
+<p>The <code>concat()</code> method is another option for adding an object to an array. It creates a new array by concatenating the elements of two or more arrays.</p>
+
+<p>Here's how you can use it to push an object into an array:</p>
+
+<pre class="language-javascript"><code>const myArray = [];
+const myObject = { name: "John", age: 30 };
+
+const newArray = myArray.concat(myObject);
+
+console.log(newArray);
+</code></pre>
+
+<p>In this example, we create an empty array <code>myArray</code> and an object <code>myObject</code>. We then use the <code>concat()</code> method to create a new array <code>newArray</code> by concatenating <code>myArray</code> and <code>myObject</code>. The result is a new array with <code>myObject</code> added at the end.</p>
+
+<h2>Using the <code>unshift()</code> Method</h2>
+
+<p>The <code>unshift()</code> method is similar to <code>push()</code>, but it adds elements to the beginning of an array instead of the end.</p>
+
+<p>Here's how you can use it to push an object into an array:</p>
+
+<pre class="language-javascript"><code>const myArray = [];
+const myObject = { name: "John", age: 30 };
+
+myArray.unshift(myObject);
+
+console.log(myArray);
+</code></pre>
+
+<p>In this example, we create an empty array <code>myArray</code> and an object <code>myObject</code>. We then use the <code>unshift()</code> method to add <code>myObject</code> to the beginning of <code>myArray</code>. The resulting array will contain <code>myObject</code> as its first element.</p>
+
+<h2>Conclusion</h2>
+
+<p>Adding an object to an array in JavaScript is a common operation when working with data collections. Depending on your coding style and requirements, you can choose from the methods mentioned above. Whether you prefer the simplicity of <code>push()</code>, the conciseness of the spread operator (<code>...</code>), the versatility of <code>concat()</code>, or the ability to add objects at the beginning of the array using <code>unshift()</code>, JavaScript provides the tools to manipulate arrays and objects effectively in your applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

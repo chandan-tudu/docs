@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Get the Class Name of an Object in JavaScript?</title>
+<meta name="description" content="In this article, we'll explore different methods to get the class name of an object in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Get the Class Name of an Object in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Get the Class Name of an Object in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>In JavaScript, you might need to <strong>retrieve the class name of an object</strong>, especially when you're working with object-oriented programming (OOP) or debugging your code.</p>
+
+<p>JavaScript doesn't provide a built-in method to directly obtain the class name of an object, as you might find in some other programming languages like Java or Python. However, you can still achieve this task using various techniques.</p>
+
+<p>In this article, we'll explore different methods to <strong>get the class name of an object in JavaScript</strong>.</p>
+
+<h2>Understanding JavaScript Classes</h2>
+
+<p>Before we dive into the methods for getting the class name of an object, it's important to understand that JavaScript is a prototype-based language, and it doesn't have classes in the same way as class-based languages like Java or Python. JavaScript uses constructor functions and prototypes to create and inherit objects. Objects in JavaScript don't inherently have a class name property like class-based objects.</p>
+
+<h2>Method 1: Using the <code>constructor</code> Property</h2>
+
+<p>In JavaScript, objects created using constructor functions have a <code>constructor</code> property that refers to the constructor function itself. You can use this property to infer the class name of an object.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>function MyClass() {
+  // Constructor function
+}
+
+const myObject = new MyClass();
+
+const className = myObject.constructor.name;
+
+console.log(className); // "MyClass"
+</code></pre>
+
+<p>In this example, we define a constructor function <code>MyClass</code> and create an object <code>myObject</code> using that constructor. We then use the <code>constructor</code> property to access the constructor function and its <code>name</code> property to retrieve the class name.</p>
+
+<p>Please note that this method works only for objects created using constructor functions, and it won't work for objects created using object literals or other means.</p>
+
+<h2>Method 2: Using the <code>instanceof</code> Operator</h2>
+
+<p>The <code>instanceof</code> operator in JavaScript allows you to check if an object is an instance of a particular constructor function or class. While it doesn't directly give you the class name, you can use it to infer the class name indirectly.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>function MyClass() {
+  // Constructor function
+}
+
+const myObject = new MyClass();
+
+if (myObject instanceof MyClass) {
+  console.log('myObject is an instance of MyClass');
+} else {
+  console.log('myObject is not an instance of MyClass');
+}
+</code></pre>
+
+<p>In this example, we use the <code>instanceof</code> operator to check if <code>myObject</code> is an instance of <code>MyClass</code>. If the condition is true, you can conclude that the class name of <code>myObject</code> is <code>"MyClass"</code>.</p>
+
+<h2>Method 3: Using Custom Properties</h2>
+
+<p>While not a built-in method, you can add custom properties to your objects to store class names if needed. This approach can be helpful in situations where you need to manage class names for objects manually.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>function MyClass() {
+  // Constructor function
+}
+
+const myObject = new MyClass();
+myObject.className = 'MyClass';
+
+console.log(myObject.className); // "MyClass"
+</code></pre>
+
+<p>In this example, we create a custom property <code>className</code> and set it to the desired class name for the object. This approach provides flexibility but requires manual management of class names.</p>
+
+<h2>Conclusion</h2>
+
+<p>While JavaScript doesn't have a direct built-in mechanism to retrieve the class name of an object, you can use the <code>constructor</code> property, the <code>instanceof</code> operator, or custom properties to infer or store class names when needed. Understanding the structure of your code and the context in which you are working will help you choose the most appropriate method for getting the class name of an object in your JavaScript applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

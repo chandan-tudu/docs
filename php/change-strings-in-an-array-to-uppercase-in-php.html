@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Change Strings in an Array to Uppercase in PHP?</title>
+<meta name="description" content="In this article, we'll explore different techniques to Changing strings in an array to uppercase in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Change Strings in an Array to Uppercase in PHP?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Change Strings in an Array to Uppercase in PHP" loading="lazy" width="900" height="500"></div> -->
+<p><strong>Changing strings in an array to uppercase in PHP</strong> is a common operation when you need to standardize the case of text data.</p>
+
+<p>Whether you're processing user input, database records, or any other source of text, PHP provides several methods to <strong>convert strings to uppercase</strong>. In this article, we'll explore different techniques to achieve this task.</p>
+
+<h2>1. Using a Loop to Convert Strings to Uppercase</h2>
+
+<p>One of the most straightforward ways to change strings in an array to uppercase is by iterating through the array and applying the <code>strtoupper()</code> function to each element.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>// Sample array of strings
+$names = ["Alice", "Bob", "Charlie"];
+
+// Iterate through the array and convert strings to uppercase
+foreach ($names as $key =&gt; $name) {
+    $names[$key] = strtoupper($name);
+}
+
+print_r($names);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; ALICE
+    [1] =&gt; BOB
+    [2] =&gt; CHARLIE
+)
+</code></pre>
+
+<p>In this example, we used a <code>foreach</code> loop to go through each element of the <code>$names</code> array and applied <code>strtoupper()</code> to convert the strings to uppercase.</p>
+
+<h2>2. Using <code>array_map()</code> with <code>strtoupper()</code></h2>
+
+<p>The <code>array_map()</code> function in PHP allows you to apply a callback function to each element of an array and return the modified array. You can use it in combination with <code>strtoupper()</code> to convert strings in an array to uppercase.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>// Sample array of strings
+$names = ["Alice", "Bob", "Charlie"];
+
+// Use array_map() to convert strings to uppercase
+$uppercaseNames = array_map('strtoupper', $names);
+
+print_r($uppercaseNames);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; ALICE
+    [1] =&gt; BOB
+    [2] =&gt; CHARLIE
+)
+</code></pre>
+
+<p>In this example, <code>array_map('strtoupper', $names)</code> applies the <code>strtoupper()</code> function to each element of the <code>$names</code> array, resulting in an array where all strings are converted to uppercase.</p>
+
+<h2>3. Using a <code>for</code> Loop</h2>
+
+<p>If you want more control over the array elements and their positions, you can use a <code>for</code> loop to iterate through the array and convert the strings to uppercase.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>// Sample array of strings
+$names = ["Alice", "Bob", "Charlie"];
+
+// Get the array length
+$arrayLength = count($names);
+
+// Use a for loop to convert strings to uppercase
+for ($i = 0; $i &lt; $arrayLength; $i++) {
+    $names[$i] = strtoupper($names[$i]);
+}
+
+print_r($names);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; ALICE
+    [1] =&gt; BOB
+    [2] =&gt; CHARLIE
+)
+</code></pre>
+
+<p>In this example, we used a <code>for</code> loop to iterate through the elements of the <code>$names</code> array and applied <code>strtoupper()</code> to each element, converting them to uppercase.</p>
+
+<h2>4. Using <code>array_walk()</code> with a Custom Callback</h2>
+
+<p>The <code>array_walk()</code> function allows you to modify the elements of an array by applying a custom callback function to each element. You can use it to convert strings to uppercase by defining your own callback.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>// Sample array of strings
+$names = ["Alice", "Bob", "Charlie"];
+
+// Define a custom callback function to convert to uppercase
+function convertToUppercase(&amp;$value, $key) {
+    $value = strtoupper($value);
+}
+
+// Use array_walk() with the custom callback
+array_walk($names, 'convertToUppercase');
+
+print_r($names);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; ALICE
+    [1] =&gt; BOB
+    [2] =&gt; CHARLIE
+)
+</code></pre>
+
+<p>In this example, we defined the <code>convertToUppercase()</code> callback function, which converts a string to uppercase. We then used <code>array_walk()</code> with this custom callback to modify the elements of the <code>$names</code> array.</p>
+
+<h2>Conclusion</h2>
+
+<p>Changing strings in an array to uppercase in PHP can be accomplished using various methods, including loops, <code>array_map()</code>, and <code>array_walk()</code>. The method you choose depends on your specific requirements and coding style preferences. Understanding these techniques allows you to efficiently manipulate and standardize text data within arrays in your PHP applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

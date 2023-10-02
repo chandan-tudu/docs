@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pretty JSON Output in JavaScript</title>
+<meta name="description" content="In this article, we will explore various techniques and methods to achieve a pretty JSON output in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Pretty JSON Output in JavaScript</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Pretty JSON Output in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate.</p>
+
+<p>However, JSON data can sometimes be difficult to read when it's not formatted in a visually appealing way. In such cases, you may want to pretty-print or format JSON to make it more readable.</p>
+
+<p>In this article, we will explore various techniques and methods to achieve a <strong>pretty JSON output in JavaScript</strong>.</p>
+
+<h2>Understanding Pretty Printing</h2>
+
+<p>Pretty printing, also known as beautifying or formatting, is the process of reformatting JSON data to make it more visually pleasing and human-readable. This involves adding whitespace, line breaks, and indentation to the JSON structure without altering its content.</p>
+
+<p>Here's an example of an unformatted JSON object:</p>
+
+<pre class="language-json"><code>{
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+</code></pre>
+
+<p>And here's the same JSON object after pretty printing:</p>
+
+<pre class="language-json"><code>{
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+</code></pre>
+
+<p>Pretty printing helps developers and analysts read, edit, and debug JSON data more efficiently.</p>
+
+<h2>Using <code>JSON.stringify()</code> with Indentation</h2>
+
+<p>In JavaScript, you can use the <code>JSON.stringify()</code> method with additional parameters to pretty print JSON. The third argument, <code>space</code>, allows you to specify the number of spaces or a string for indentation.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const data = {
+  name: "John",
+  age: 30,
+  city: "New York",
+};
+
+const prettyJSON = JSON.stringify(data, null, 2);
+console.log(prettyJSON);
+</code></pre>
+
+<p>In this example, we pass <code>null</code> as the second argument (replacer function) and <code>2</code> as the third argument (the number of spaces for indentation). The resulting <code>prettyJSON</code> will have two spaces of indentation for each level of nesting.</p>
+
+<h2>Using <code>JSON.stringify()</code> with Tab Indentation</h2>
+
+<p>If you prefer using tabs for indentation, you can pass a tab character (<code>\t</code>) as the third argument to <code>JSON.stringify()</code>.</p>
+
+<pre class="language-javascript"><code>const data = {
+  name: "John",
+  age: 30,
+  city: "New York",
+};
+
+const prettyJSON = JSON.stringify(data, null, '\t');
+console.log(prettyJSON);
+</code></pre>
+
+<p>In this case, the resulting JSON will be indented with tabs instead of spaces.</p>
+
+<h2>Custom Pretty Printing Function</h2>
+
+<p>If you need more control over the pretty printing process, you can create a custom function to format the JSON data as you like. Here's an example:</p>
+
+<pre class="language-javascript"><code>function prettyPrintJSON(data, indentation = 2) {
+  return JSON.stringify(data, null, indentation);
+}
+
+const data = {
+  name: "John",
+  age: 30,
+  city: "New York",
+};
+
+const prettyJSON = prettyPrintJSON(data);
+console.log(prettyJSON);
+</code></pre>
+
+<p>This <code>prettyPrintJSON()</code> function allows you to specify the desired indentation level.</p>
+
+<h2>Using Third-Party Libraries</h2>
+
+<p>There are several third-party JavaScript libraries and packages available that provide advanced pretty printing options for JSON data. Some popular options include:</p>
+
+<ul>
+<li><p><strong><code>js-beautify</code></strong>: This is a popular JavaScript library that can pretty-print JSON and other code formats.</p></li>
+<li><p><strong><code>json-stringify-pretty-compact</code></strong>: A lightweight library that formats JSON with various options for compactness and prettiness.</p></li>
+<li><p><strong><code>prettier</code></strong>: A widely used code formatter that supports multiple languages, including JSON. It provides advanced options for formatting code.</p></li>
+</ul>
+
+<p>To use these libraries, you'll need to install them via npm or yarn and follow their respective documentation for configuration and usage.</p>
+
+<h2>Conclusion</h2>
+
+<p>Pretty printing JSON in JavaScript is a valuable technique for enhancing the readability of JSON data. The built-in <code>JSON.stringify()</code> method, when used with indentation parameters, provides a straightforward way to format JSON data. Additionally, custom functions and third-party libraries offer more flexibility and advanced formatting options. Whether you're working on debugging, documentation, or improving the readability of your code, pretty printing JSON can be a helpful tool in your JavaScript development toolkit.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

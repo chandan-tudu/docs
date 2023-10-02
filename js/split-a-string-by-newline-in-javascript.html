@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Split a String by Newline in JavaScript?</title>
+<meta name="description" content="In this article, we'll explore how to split a string by newline in JavaScript using different methods." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Split a String by Newline in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Split a String by Newline in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Working with strings is a common task in JavaScript, and sometimes you need to split a string into smaller parts based on a specific delimiter.</p>
+
+<p>One common requirement is *plitting a string into an array of substrings <strong>separated by newline characters</strong>.</p>
+
+<p>In this article, we'll explore how to <strong>split a string by newline in JavaScript</strong> using different methods.</p>
+
+<h2>Using the <code>split()</code> Method</h2>
+
+<p>The <code>split()</code> method is a built-in JavaScript method for splitting a string into an array of substrings based on a specified delimiter. To split a string by newline, you can pass <code>'\n'</code> as the delimiter to the <code>split()</code> method.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const multilineString = "Line 1\nLine 2\nLine 3";
+
+const lines = multilineString.split('\n');
+
+console.log(lines);
+</code></pre>
+
+<p>In this example, the <code>multilineString</code> is split into an array of lines using <code>'\n'</code> as the delimiter. The resulting <code>lines</code> array contains three elements, each representing a line from the original string.</p>
+
+<h2>Handling Different Newline Characters</h2>
+
+<p>In JavaScript, there are multiple newline characters, including <code>'\n'</code> (line feed), <code>'\r'</code> (carriage return), and <code>'\r\n'</code> (a combination of carriage return and line feed). If you need to split a string by any of these newline characters, you can use a regular expression as the delimiter.</p>
+
+<p>Here's how to split a string by any newline character:</p>
+
+<pre class="language-javascript"><code>const multilineString = "Line 1\nLine 2\rLine 3\r\nLine 4";
+
+const lines = multilineString.split(/\r?\n/);
+
+console.log(lines);
+</code></pre>
+
+<p>In this example, we use the regular expression <code>/\r?\n/</code> as the delimiter. This pattern matches both <code>'\n'</code>, <code>'\r'</code>, and <code>'\r\n'</code>, allowing you to split the string regardless of the newline character used.</p>
+
+<h2>Trimming Whitespace</h2>
+
+<p>Sometimes, you may want to remove leading and trailing whitespace from each line after splitting the string. You can achieve this by using the <code>trim()</code> method in combination with <code>map()</code>.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const multilineString = "  Line 1  \n Line 2 \n  Line 3  ";
+
+const lines = multilineString.split('\n').map(line =&gt; line.trim());
+
+console.log(lines);
+</code></pre>
+
+<p>In this example, we first split the <code>multilineString</code> by <code>'\n'</code>, creating an array of lines. Then, we use the <code>map()</code> method to iterate over each line and apply the <code>trim()</code> method to remove any leading or trailing whitespace.</p>
+
+<h2>Splitting Lines from Textarea Input</h2>
+
+<p>If you want to split lines from the content of a textarea element in a web page, you can access the textarea's <code>value</code> property and then split the string as shown earlier.</p>
+
+<p>Here's an example using HTML and JavaScript:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Split String by Newline&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;textarea id="inputText"&gt;&lt;/textarea&gt;
+  &lt;button onclick="splitText()"&gt;Split&lt;/button&gt;
+  &lt;pre id="output"&gt;&lt;/pre&gt;
+
+  &lt;script&gt;
+    function splitText() {
+      const inputText = document.getElementById("inputText").value;
+      const lines = inputText.split('\n').map(line =&gt; line.trim());
+      document.getElementById("output").textContent = JSON.stringify(lines, null, 2);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example, we have an HTML textarea element with an associated button. The <code>splitText()</code> function reads the text from the textarea, splits it by newline, trims whitespace, and displays the result in a <code>&lt;pre&gt;</code> element.</p>
+
+<h2>Conclusion</h2>
+
+<p>Splitting a string by newline characters in JavaScript is a common operation, and the <code>split()</code> method provides a straightforward way to accomplish this task. You can also handle different newline characters and trim whitespace from each line as needed. Whether you're working with multiline strings, user input, or textareas in a web application, knowing how to split strings by newline is a valuable skill for JavaScript developers.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

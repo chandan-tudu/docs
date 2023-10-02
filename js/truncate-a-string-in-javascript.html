@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Truncate a String in JavaScript?</title>
+<meta name="description" content="In this article, we'll explore different methods and techniques to truncate a string in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Truncate a String in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Truncate a String in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Truncating a string in JavaScript means reducing its length to a specified maximum number of characters while preserving its meaning and readability.</p>
+
+<p>This is a common operation when displaying text in user interfaces, blog excerpts, or generating summaries.</p>
+
+<p>In this article, we'll explore different methods and techniques to <strong>truncate a string in JavaScript</strong>.</p>
+
+<h2>Using String Slice</h2>
+
+<p>The <code>slice()</code> method in JavaScript allows you to extract a portion of a string starting from a specified index. To truncate a string to a certain length, you can use <code>slice()</code> along with the desired length as the endpoint.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>function truncateString(str, maxLength) {
+  if (str.length &gt; maxLength) {
+    return str.slice(0, maxLength) + "...";
+  }
+  return str;
+}
+
+const originalString = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+const maxLength = 30;
+
+const truncatedString = truncateString(originalString, maxLength);
+
+console.log(truncatedString); // Output: "Lorem ipsum dolor sit amet..."
+</code></pre>
+
+<p>In this example, the <code>truncateString</code> function takes an input string <code>str</code> and a <code>maxLength</code>. If the length of the input string exceeds the <code>maxLength</code>, it uses <code>slice()</code> to truncate the string to the desired length and appends ellipsis ("...") to indicate that the string has been truncated.</p>
+
+<h2>Using String Substr</h2>
+
+<p>The <code>substr()</code> method is another way to truncate a string by specifying the starting index and the length of the substring you want to extract.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>function truncateString(str, maxLength) {
+  if (str.length &gt; maxLength) {
+    return str.substr(0, maxLength) + "...";
+  }
+  return str;
+}
+
+const originalString = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+const maxLength = 30;
+
+const truncatedString = truncateString(originalString, maxLength);
+
+console.log(truncatedString); // Output: "Lorem ipsum dolor sit amet..."
+</code></pre>
+
+<p>In this example, the <code>truncateString</code> function is similar to the previous example but uses the <code>substr()</code> method instead of <code>slice()</code> to achieve the same result.</p>
+
+<h2>Using String Substring</h2>
+
+<p>The <code>substring()</code> method is similar to <code>slice()</code> but accepts two indices as arguments: the start index and the end index (not the length). To truncate a string to a certain length using <code>substring()</code>, you need to calculate the end index based on the desired length.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>function truncateString(str, maxLength) {
+  if (str.length &gt; maxLength) {
+    return str.substring(0, maxLength) + "...";
+  }
+  return str;
+}
+
+const originalString = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+const maxLength = 30;
+
+const truncatedString = truncateString(originalString, maxLength);
+
+console.log(truncatedString); // Output: "Lorem ipsum dolor sit amet..."
+</code></pre>
+
+<p>In this example, the <code>truncateString</code> function uses <code>substring()</code> to achieve the same truncation effect as in the previous examples.</p>
+
+<h2>Using Regular Expressions</h2>
+
+<p>Regular expressions can be a powerful tool for truncating a string based on specific patterns or conditions. In this example, we'll use a regular expression to truncate a string while ensuring that words are not cut in the middle.</p>
+
+<pre class="language-javascript"><code>function truncateString(str, maxLength) {
+  if (str.length &gt; maxLength) {
+    const truncated = str.substr(0, maxLength);
+    return truncated.replace(/\s+\S*$/, '...');
+  }
+  return str;
+}
+
+const originalString = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+const maxLength = 30;
+
+const truncatedString = truncateString(originalString, maxLength);
+
+console.log(truncatedString); // Output: "Lorem ipsum dolor sit amet..."
+</code></pre>
+
+<p>In this example, the <code>truncateString</code> function first truncates the string to the desired length using <code>substr()</code>. Then, it uses a regular expression (<code>/\s+\S*$/</code>) to find the last space character followed by non-space characters at the end of the truncated string and replaces it with ellipsis ("..."). This ensures that words are not cut in the middle while truncating the string.</p>
+
+<h2>Conclusion</h2>
+
+<p>Truncating a string in JavaScript is a common operation when dealing with text data in web development. Whether you choose to use <code>slice()</code>, <code>substr()</code>, <code>substring()</code>, or regular expressions, the method you use depends on your specific requirements and coding style. Keep in mind that when truncating strings, it's essential to provide meaningful and readable summaries while preserving the overall context and content of the text.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

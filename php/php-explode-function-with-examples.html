@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PHP explode() Function with Examples</title>
+<meta name="description" content="In this article, we'll explore the PHP explode() function with examples to illustrate its usage and versatility." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>PHP explode() Function with Examples</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of PHP explode() Function with Examples" loading="lazy" width="900" height="500"></div> -->
+<p>The <strong>explode() function in PHP</strong> is a valuable tool for splitting a string into an array based on a specified delimiter.</p>
+
+<p>This can be particularly useful when working with data that is stored as a single string with distinct values separated by a common character or sequence.</p>
+
+<p>In this article, we'll explore the <strong>PHP explode() function with examples</strong> to illustrate its usage and versatility.</p>
+
+<h2>Syntax of the <code>explode()</code> function</h2>
+
+<p>The explode() function in PHP has the following syntax:</p>
+
+<pre class="language-php"><code>array explode(string $delimiter, string $string, int $limit = PHP_INT_MAX)
+</code></pre>
+
+<ul>
+<li><code>$delimiter</code>: This parameter specifies the character or string that will be used as the delimiter to split the input string.</li>
+<li><code>$string</code>: The input string that you want to split into an array.</li>
+<li><code>$limit</code> (optional): This parameter allows you to limit the number of elements in the resulting array. If omitted, it defaults to <code>PHP_INT_MAX</code>, which means no limit.</li>
+</ul>
+
+<h2>Example 1: Basic Usage of the <code>explode()</code> function</h2>
+
+<p>Let's start with a simple example of how to use <code>explode()</code> to split a string into an array:</p>
+
+<pre class="language-php"><code>$fruits = "apple,banana,cherry";
+$fruitArray = explode(",", $fruits);
+
+print_r($fruitArray);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [1] =&gt; banana
+    [2] =&gt; cherry
+)
+</code></pre>
+
+<p>In this example, the <code>explode(",", $fruits)</code> statement splits the <code>$fruits</code> string into an array using a comma as the delimiter. Each element in the resulting array corresponds to a part of the original string separated by commas.</p>
+
+<h2>Example 2: Limiting the Number of Elements</h2>
+
+<p>You can use the optional <code>$limit</code> parameter to control the number of elements in the resulting array. Here's an example:</p>
+
+<pre class="language-php"><code>$colors = "red,green,blue,yellow";
+$colorArray = explode(",", $colors, 2);
+
+print_r($colorArray);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; red
+    [1] =&gt; green,blue,yellow
+)
+</code></pre>
+
+<p>In this example, we specified a limit of <code>2</code> elements. As a result, the string was split into two parts at the first occurrence of the delimiter (comma), and the remaining portion was treated as a single element in the array.</p>
+
+<h2>Example 3: Splitting a URL</h2>
+
+<p><code>explode()</code> is commonly used to parse URLs or file paths. Here's an example of how to split a URL into its components:</p>
+
+<pre class="language-php"><code>$url = "https://www.example.com/products/electronics/laptop";
+$urlParts = explode("/", $url);
+
+print_r($urlParts);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; https:
+    [1] =&gt;
+    [2] =&gt; www.example.com
+    [3] =&gt; products
+    [4] =&gt; electronics
+    [5] =&gt; laptop
+)
+</code></pre>
+
+<p>In this example, we used a forward slash (<code>/</code>) as the delimiter to split the URL into an array of its components, such as the protocol, domain, and path segments.</p>
+
+<h2>Example 4: Splitting a Multiline String</h2>
+
+<p>You can also use <code>explode()</code> to split a multiline string into an array of lines. Here's an example:</p>
+
+<pre class="language-php"><code>$multilineText = "Line 1\nLine 2\nLine 3";
+$lines = explode("\n", $multilineText);
+
+print_r($lines);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; Line 1
+    [1] =&gt; Line 2
+    [2] =&gt; Line 3
+)
+</code></pre>
+
+<p>In this example, we used the newline character (<code>\n</code>) as the delimiter to split the multiline text into an array of lines.</p>
+
+<h2>Example 5: Handling Whitespace Separators</h2>
+
+<p><code>explode()</code> can also handle whitespace as a separator. Here's an example of splitting a string using spaces:</p>
+
+<pre class="language-php"><code>$sentence = "This is a sample sentence";
+$words = explode(" ", $sentence);
+
+print_r($words);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; This
+    [1] =&gt; is
+    [2] =&gt; a
+    [3] =&gt; sample
+    [4] =&gt; sentence
+)
+</code></pre>
+
+<p>In this example, we used a space as the delimiter to split the sentence into an array of words.</p>
+
+<h2>Conclusion</h2>
+
+<p>The <code>explode()</code> function in PHP is a versatile tool for splitting strings into arrays. Whether you're parsing URLs, processing CSV data, or breaking down multiline text, explode() simplifies the task of separating data into manageable parts. Understanding how to use explode() is essential for handling text-based data efficiently in PHP applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

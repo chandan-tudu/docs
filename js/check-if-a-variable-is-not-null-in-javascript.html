@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Check if a Variable is Not NULL in JavaScript?</title>
+<meta name="description" content="In this article, we'll explore different methods for checking if a variable is not null in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Check if a Variable is Not NULL in JavaScript?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Check if a Variable is Not NULL in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>In JavaScript, it's common to check whether a variable has a value, especially when dealing with user input, API responses, or data from various sources.</p>
+
+<p>While JavaScript doesn't have a concept of "NULL" like some other programming languages, you can <strong>check if a variable is not set, is <code>null</code>, or <code>undefined</code></strong> using various techniques.</p>
+
+<p>In this article, we'll explore different methods for <strong>checking if a variable is not null in JavaScript</strong>.</p>
+
+<h2>Understanding <code>null</code> and <code>undefined</code></h2>
+
+<p>In JavaScript, both <code>null</code> and <code>undefined</code> represent the absence of a value, but they are used in slightly different contexts:</p>
+
+<ul>
+<li><p><code>null</code>: It is a special value in JavaScript that represents the intentional absence of any object value. Developers can assign <code>null</code> to a variable or object property to indicate that it has no meaningful value.</p></li>
+<li><p><code>undefined</code>: It is a primitive value in JavaScript that indicates a variable has been declared but has not been assigned a value. It is also used as the default return value of a function that doesn't explicitly return anything.</p></li>
+</ul>
+
+<h2>Method 1: Using the Equality Operator (<code>==</code>)</h2>
+
+<p>You can use the equality operator (<code>==</code>) to check if a variable is not <code>null</code>. When you compare a variable to <code>null</code> using <code>==</code>, JavaScript considers <code>null</code> and <code>undefined</code> as equal. This means that if a variable is either <code>null</code> or <code>undefined</code>, the equality comparison will return <code>true</code>.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>let myVariable = null;
+
+if (myVariable == null) {
+  console.log("myVariable is null or undefined.");
+} else {
+  console.log("myVariable has a value.");
+}
+</code></pre>
+
+<p>In this example, the variable <code>myVariable</code> is <code>null</code>, so the condition evaluates to <code>true</code>, and the message "myVariable is null or undefined." is logged.</p>
+
+<h2>Method 2: Using the Identity Operator (<code>===</code>)</h2>
+
+<p>If you want to check specifically for <code>null</code> and exclude <code>undefined</code>, you should use the identity operator (<code>===</code>). The identity operator checks both the value and the type of a variable, ensuring that it is exactly equal to <code>null</code>.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>let myVariable = null;
+
+if (myVariable === null) {
+  console.log("myVariable is null.");
+} else {
+  console.log("myVariable is not null.");
+}
+</code></pre>
+
+<p>In this example, the condition <code>myVariable === null</code> evaluates to <code>true</code> because <code>myVariable</code> is <code>null</code>. If <code>myVariable</code> were <code>undefined</code>, the condition would evaluate to <code>false</code>.</p>
+
+<h2>Method 3: Using the <code>!=</code> and <code>!==</code> Operators</h2>
+
+<p>To check if a variable is not <code>null</code>, you can also use the inequality operators (<code>!=</code> and <code>!==</code>). These operators allow you to test if a variable is not equal to <code>null</code>.</p>
+
+<p>Here's an example with the inequality operator (<code>!=</code>):</p>
+
+<pre class="language-javascript"><code>let myVariable = null;
+
+if (myVariable != null) {
+  console.log("myVariable is not null.");
+} else {
+  console.log("myVariable is null or undefined.");
+}
+</code></pre>
+
+<p>In this example, the condition <code>myVariable != null</code> evaluates to <code>false</code> because <code>myVariable</code> is <code>null</code>. If <code>myVariable</code> were <code>undefined</code>, the condition would evaluate to <code>true</code>.</p>
+
+<p>Similarly, you can use the strict inequality operator (<code>!==</code>) to check if a variable is not <code>null</code>, excluding <code>undefined</code>.</p>
+
+<h2>Method 4: Using Conditional (Ternary) Operator</h2>
+
+<p>The conditional (ternary) operator is a concise way to check if a variable is not <code>null</code> and assign a value based on the condition.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>let myVariable = null;
+
+let result = myVariable !== null ? "myVariable is not null." : "myVariable is null or undefined.";
+
+console.log(result);
+</code></pre>
+
+<p>In this example, we use the ternary operator to assign the value of <code>result</code> based on whether <code>myVariable</code> is not <code>null</code>.</p>
+
+<h2>Method 5: Using <code>typeof</code> Operator</h2>
+
+<p>The <code>typeof</code> operator can be used to check if a variable is defined and not <code>null</code>. It returns a string indicating the data type of the variable. If the variable is not declared or <code>null</code>, it will return <code>"undefined"</code>.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>let myVariable = null;
+
+if (typeof myVariable !== "undefined" &amp;&amp; myVariable !== null) {
+  console.log("myVariable is not null or undefined.");
+} else {
+  console.log("myVariable is either null or undefined.");
+}
+</code></pre>
+
+<p>In this example, we first use <code>typeof</code> to check if <code>myVariable</code> is not <code>"undefined"</code>, and then we use <code>myVariable !== null</code> to check if it's not <code>null</code>.</p>
+
+<h2>Conclusion</h2>
+
+<p>Checking if a variable is not <code>null</code> in JavaScript is a common task when handling data and user inputs. Depending on your specific requirements and coding style, you can choose from the methods mentioned above. Whether you prefer using the equality</p>
+
+<p>operator (<code>==</code>), the identity operator (<code>===</code>), the inequality operators (<code>!=</code> and <code>!==</code>), the ternary operator, or the <code>typeof</code> operator, JavaScript provides various options to handle null and undefined values in your code effectively.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>
