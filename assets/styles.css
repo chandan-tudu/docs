@@ -260,7 +260,7 @@ hr {
 }
 
 .article-container :is(ul,ol) li{
-    margin-bottom: .4em;
+    margin-bottom: .7em;
 }
 
 @media (max-width: 700px) {
