@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Delete an Element from an Array in PHP</title>
+<meta name="description" content="In this article, we'll explore several methods to delete elements from an array in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Delete an Element from an Array in PHP</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Delete an Element from an Array in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>Arrays are a fundamental data structure in PHP, and being able to manipulate them is an essential skill for any PHP developer. One common task is <strong>deleting elements from an array</strong>, whether it's to remove unwanted data or reorganize the array.</p>
+
+<p>In this article, we'll explore several methods to <strong>delete elements from an array in PHP</strong>.</p>
+
+<h2 id="method-1-using-unset-">Method 1: Using unset()</h2>
+
+<p>The <strong>unset() function in PHP</strong> is a <strong>straightforward way to remove an element from an array</strong>. You specify the array and the element's key or index, and <code>unset()</code> takes care of the removal.</p>
+
+<p>Here's an example of how to use <code>unset()</code> to delete an element from an array:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana", "cherry"];
+
+// Remove the element at index 1 (banana)
+unset($fruits[1]);
+
+print_r($fruits);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [2] =&gt; cherry
+)
+</code></pre>
+
+<p>In this example, we use <code>unset($fruits[1])</code> to remove the element at index 1 (which contains "banana") from the <code>$fruits</code> array. The remaining elements are reindexed, leaving no gap.</p>
+
+<hr />
+
+<h2 id="method-2-using-array-splice-">Method 2: Using array_splice()</h2>
+
+<p>The <code>array_splice()</code> function provides a flexible way to remove elements from an array by specifying the start position and the number of elements to remove.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana", "cherry"];
+
+// Remove one element starting from index 1 (banana)
+array_splice($fruits, 1, 1);
+
+print_r($fruits);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [1] =&gt; cherry
+)
+</code></pre>
+
+<p>In this example, we remove one element starting from index 1 (which contains "banana") from the <code>$fruits</code> array. Like <code>unset()</code>, <code>array_splice()</code> also reindexes the array.</p>
+
+<hr />
+
+<h2 id="method-3-using-array-filter-">Method 3: Using array_filter()</h2>
+
+<p>The <code>array_filter()</code> function allows you to filter an array based on a callback function. You can use this function to exclude elements from an array based on specific criteria.</p>
+
+<p>Here's an example of how to use <code>array_filter()</code> to delete elements from an array:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana", "cherry"];
+
+// Remove elements containing the letter 'a'
+$fruits = array_filter($fruits, function($fruit) {
+    return stripos($fruit, 'a') === false;
+});
+
+print_r($fruits);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [1] =&gt; banana
+)
+</code></pre>
+
+<ol>
+<li>In this example, we use <code>array_filter()</code> with a callback function that checks if the element contains the letter 'a'.</li>
+<li>Any element meeting the condition is removed from the array.</li>
+</ol>
+
+<hr />
+
+<h2 id="method-4-using-array-values-reindexing-">Method 4: Using array_values() (Reindexing)</h2>
+
+<p>After deleting elements using methods like <code>unset()</code> or <code>array_splice()</code>, the array may have gaps in the indices.</p>
+
+<p>To reindex the array and remove these gaps, you can use the <code>array_values()</code> function.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana", "cherry"];
+
+// Remove the element at index 1 (banana)
+unset($fruits[1]);
+
+// Reindex the array
+$fruits = array_values($fruits);
+
+print_r($fruits);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [1] =&gt; cherry
+)
+</code></pre>
+
+<ol>
+<li>In this example, we first use <code>unset()</code> to remove the element at index 1 (which contains "banana").</li>
+<li>Then, we reindex the array using <code>array_values()</code>. This ensures that the remaining elements are reindexed sequentially.</li>
+</ol>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Deleting elements from an array in PHP is a common and essential operation. Depending on your needs and coding style, you can choose the most suitable method. Whether it's using <code>unset()</code> for direct removal, <code>array_splice()</code> for more precise control, <code>array_filter()</code> for conditional removal, or <code>array_values()</code> for reindexing, these methods provide the flexibility to manipulate arrays effectively in your PHP applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

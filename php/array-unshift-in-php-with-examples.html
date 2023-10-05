@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What is array_unshift() in PHP with Examples?</title>
+<meta name="description" content="In this article, we will explore how to use array_unshift() in PHP, its syntax, and practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>What is array_unshift() in PHP with Examples?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of array_unshift() in PHP with Examples" loading="lazy" width="900" height="500"></div> -->
+<p>In PHP, the <strong>array_unshift() function</strong> is used to <strong>add one or more elements to the beginning</strong> of an array.</p>
+
+<p>This function allows you to prepend elements to the front of an array, which can be particularly useful in various situations.</p>
+
+<p>In this article, we will explore how to use array_unshift() in PHP, its syntax, and practical examples.</p>
+
+<h2>1. Syntax of array_unshift()</h2>
+
+<p>The <code>array_unshift()</code> function has the following syntax:</p>
+
+<pre class="language-php"><code>array_unshift(array &amp;$array, mixed $value1 [, mixed $value2 [, mixed $... ]]): int
+</code></pre>
+
+<ul>
+<li><code>array &amp;$array</code>: A reference to the array to which you want to prepend elements.</li>
+<li><code>mixed $value1</code>: The first value to prepend to the array.</li>
+<li><code>mixed $value2</code>, <code>mixed $...</code>: Optional additional values to prepend to the array.</li>
+</ul>
+
+<p>The function returns the new number of elements in the array after the operation.</p>
+
+<h2>2. Using array_unshift() to Prepend Elements</h2>
+
+<p>Here's an example of how to use <code>array_unshift()</code> to prepend elements to an array:</p>
+
+<pre class="language-php"><code>$colors = ["green", "blue", "yellow"];
+array_unshift($colors, "red", "orange");
+
+print_r($colors);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; red
+    [1] =&gt; orange
+    [2] =&gt; green
+    [3] =&gt; blue
+    [4] =&gt; yellow
+)
+</code></pre>
+
+<p>In this example, we start with an array <code>$colors</code> containing three elements. We use <code>array_unshift()</code> to prepend the elements "red" and "orange" to the beginning of the array. As a result, the array now contains five elements, with the newly added elements at the front.</p>
+
+<h2>3. Prepending Multiple Elements with array_unshift()</h2>
+
+<p>You can also use <code>array_unshift()</code> to prepend multiple elements at once. Here's an example:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana"];
+$moreFruits = ["orange", "grape"];
+array_unshift($fruits, ...$moreFruits);
+
+print_r($fruits);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; orange
+    [1] =&gt; grape
+    [2] =&gt; apple
+    [3] =&gt; banana
+)
+</code></pre>
+
+<p>In this example, we have two arrays: <code>$fruits</code> and <code>$moreFruits</code>. We use the spread operator (<code>...</code>) to prepend the elements from <code>$moreFruits</code> to the beginning of <code>$fruits</code>. The result is a combined array with all elements, and the newly added elements are at the front.</p>
+
+<h2>4. Practical Use Cases for array_unshift()</h2>
+
+<p>The <code>array_unshift()</code> function is handy in various scenarios, such as:</p>
+
+<ol>
+<li><p><strong>Adding Items to a Stack</strong>: You can use it to implement a stack data structure, where you add elements to the top of the stack.</p></li>
+<li><p><strong>Inserting Items at the Beginning</strong>: When you need to insert items at the beginning of an existing list or queue, this function is helpful.</p></li>
+<li><p><strong>Prepending Default Values</strong>: You can prepend default values to an array before adding or merging other values.</p></li>
+<li><p><strong>Creating Dynamic Lists</strong>: It's useful for creating dynamic lists that start with predefined elements.</p></li>
+</ol>
+
+<h2>Considerations</h2>
+
+<ul>
+<li><p>Be aware that <code>array_unshift()</code> modifies the original array directly. If you need to preserve the original array, make a copy before using this function.</p></li>
+<li><p>The function returns the new number of elements in the array after the operation, which can be useful for tracking changes.</p></li>
+<li><p>While <code>array_unshift()</code> is efficient for small arrays, it can be less efficient for large arrays because it requires shifting all existing elements to make room for the new ones.</p></li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p><code>array_unshift()</code> in PHP is a valuable function for adding elements to the beginning of an array. It's versatile and useful in various programming scenarios. Understanding how to use <code>array_unshift()</code> can help you efficiently manage arrays and data structures in your PHP applications, making it a valuable tool in your programming toolbox.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

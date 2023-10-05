@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Merge Two Arrays Keeping Original Keys in PHP</title>
+<meta name="description" content="In this article, we'll explore different methods to merge two arrays while retaining their original keys in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Merge Two Arrays Keeping Original Keys in PHP</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Merge Two Arrays Keeping Original Keys in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>Merging two arrays while <strong>preserving their original keys</strong> is a common task in PHP.</p>
+
+<p>It allows you to combine data from multiple arrays without reindexing the elements.</p>
+
+<p>In this article, we'll explore different methods to <strong>merge two arrays while retaining their original keys in PHP</strong>.</p>
+
+<h2 id="method-1-using-the-operator">Method 1: Using the <code>+</code> Operator</h2>
+
+<p>One straightforward way to merge two arrays while preserving their original keys is by using the <code>+</code> operator.</p>
+
+<p>This operator combines two arrays, and if there are duplicate keys, it retains the value from the left-hand array (the first array).</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$array1 = ["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 3];
+$array2 = ["b" =&gt; 4, "d" =&gt; 5, "e" =&gt; 6];
+
+$result = $array1 + $array2;
+
+print_r($result);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [a] =&gt; 1
+    [b] =&gt; 2
+    [c] =&gt; 3
+    [d] =&gt; 5
+    [e] =&gt; 6
+)
+</code></pre>
+
+<p>In this example, we have two arrays, <code>$array1</code> and <code>$array2</code>, with some overlapping keys.</p>
+
+<p>When we use the <code>+</code> operator to merge them, it retains the values from <code>$array1</code> for keys "a," "b," and "c" and adds the values from <code>$array2</code> for keys "d" and "e."</p>
+
+<hr />
+
+<h2 id="method-2-using-the-array-merge-function">Method 2: Using the array_merge() Function</h2>
+
+<p>The <code>array_merge()</code> function in PHP can also be used to merge two arrays while preserving their original keys.</p>
+
+<p>This function merges two or more arrays into a new array, and it retains the keys and values of all the arrays.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$array1 = ["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 3];
+$array2 = ["b" =&gt; 4, "d" =&gt; 5, "e" =&gt; 6];
+
+$result = array_merge($array1, $array2);
+
+print_r($result);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [a] =&gt; 1
+    [b] =&gt; 4
+    [c] =&gt; 3
+    [d] =&gt; 5
+    [e] =&gt; 6
+)
+</code></pre>
+
+<p>In this example, <code>array_merge($array1, $array2)</code> combines the two arrays into a new array while preserving their original keys.</p>
+
+<p>When there are duplicate keys, it retains the value from the last array (in this case, <code>$array2</code>).</p>
+
+<hr />
+
+<h2 id="method-3-using-the-array-replace-function">Method 3: Using the array_replace() Function</h2>
+
+<p>The <code>array_replace()</code> function is another option for merging arrays while keeping their original keys.</p>
+
+<p>This function replaces the values of the first array with the values from the following arrays, and it also preserves the keys.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$array1 = ["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 3];
+$array2 = ["b" =&gt; 4, "d" =&gt; 5, "e" =&gt; 6];
+
+$result = array_replace($array1, $array2);
+
+print_r($result);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [a] =&gt; 1
+    [b] =&gt; 4
+    [c] =&gt; 3
+    [d] =&gt; 5
+    [e] =&gt; 6
+)
+</code></pre>
+
+<p>In this example, <code>array_replace($array1, $array2)</code> combines the two arrays into a new array while preserving their original keys.</p>
+
+<p>Similar to <code>array_merge()</code>, when there are duplicate keys, it retains the value from the last array (in this case, <code>$array2</code>).</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Merging two arrays while retaining their original keys is a common operation in PHP. You can choose the method that best suits your requirements.</p>
+
+<p>Whether you prefer using the <code>+</code> operator for simplicity, <code>array_merge()</code> for more control, or <code>array_replace()</code> for value replacement, these methods enable you to combine data from multiple arrays while preserving the structure and keys of the original arrays.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

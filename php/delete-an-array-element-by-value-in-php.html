@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Delete an Array Element by Value in PHP</title>
+<meta name="description" content="In this article, we will explore various methods for deleting array elements by their values in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Delete an Array Element by Value in PHP</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Delete an Array Element by Value in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>In PHP, arrays are a versatile and commonly used data structure. You may often <strong>need to remove specific elements</strong> from an array <strong>by their values</strong>.</p>
+
+<p>In this article, we will explore various methods for <strong>deleting array elements by their values in PHP</strong>.</p>
+
+<h2 id="the-array-search-function">The array_search() Function</h2>
+
+<p>The <code>array_search()</code> function in PHP allows you to search for a value within an array and retrieve its corresponding key if it exists.</p>
+
+<p>If the value is found, <code>array_search()</code> returns the key; otherwise, it returns <code>false</code>.</p>
+
+<p>Here's the basic syntax of <code>array_search()</code>:</p>
+
+<pre class="language-php"><code>array_search($value, $array)
+</code></pre>
+
+<ul>
+<li><code>$value</code>: The value you want to find within the array.</li>
+<li><code>$array</code>: The array in which you want to search for the value.</li>
+</ul>
+<hr>
+<h2 id="1-using-array-search-with-unset-to-delete-by-value">1. Using array_search() with unset() to Delete by Value</h2>
+
+<p>To delete an array element by its value, you can follow these steps:</p>
+
+<ol>
+<li>Use <code>array_search()</code> to find the key of the element you want to delete.</li>
+<li>Check if <code>array_search()</code> returns a valid key (i.e., it's not <code>false</code>).</li>
+<li>If a valid key is found, use <code>unset()</code> to remove the element associated with that key from the array.</li>
+</ol>
+
+<p>Let's see an example:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana", "cherry", "date"];
+$valueToRemove = "banana";
+
+$key = array_search($valueToRemove, $fruits);
+
+if ($key !== false) {
+    unset($fruits[$key]);
+}
+
+print_r($fruits);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [2] =&gt; cherry
+    [3] =&gt; date
+)
+</code></pre>
+
+<p>In this example:</p>
+
+<ol>
+<li><p>We use <code>array_search($valueToRemove, $fruits)</code> to find the key associated with the value "banana" in the <code>$fruits</code> array.</p></li>
+<li><p>We check if <code>array_search()</code> returns a valid key (not <code>false</code>). If it does, it means the value was found in the array.</p></li>
+<li><p>Inside the <code>if</code> block, we use <code>unset($fruits[$key])</code> to delete the element from the <code>$fruits</code> array. The key <code>$key</code> corresponds to the position of "banana" in the array.</p></li>
+</ol>
+
+<p>As a result, the element with the specified value ("banana") is removed from the array, and the array is re-indexed.</p>
+
+<hr />
+
+<h2 id="2-using-array-filter-method-in-a-new-array-">2. Using array_filter() method (get a new Array)</h2>
+
+<p>The <code>array_filter()</code> function in PHP allows you to filter an array based on a callback function.</p>
+
+<p>You can use this function to exclude elements from an array based on specific criteria, including their values, and it will <strong>not affect the original array</strong>, it returns a new array.</p>
+
+<p>Here's an example of how to use <code>array_filter()</code> to delete array elements by value:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana", "cherry", "date"];
+
+$valueToRemove = "banana";
+
+$newFruits = array_filter($fruits, function ($fruit) use ($valueToRemove) {
+    return $fruit !== $valueToRemove;
+});
+
+print_r($fruits);
+print_r($newFruits);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [1] =&gt; banana
+    [2] =&gt; cherry
+    [3] =&gt; date
+)
+
+Array
+(
+    [0] =&gt; apple
+    [2] =&gt; cherry
+    [3] =&gt; date
+)
+</code></pre>
+
+<ol>
+<li>In this example, we use <code>array_filter()</code> with a callback function that checks if each element in the array is not equal to the value we want to remove (<code>"banana"</code> in this case).</li>
+<li>Elements that meet the condition are retained, while the element with the specified value is excluded from the resulting array.</li>
+</ol>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Performing array delete by value using <code>array_search()</code> and <code>unset()</code> is a useful technique in PHP. It allows you to efficiently remove specific elements from an array based on their values, making it a valuable tool in array manipulation tasks within your PHP applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

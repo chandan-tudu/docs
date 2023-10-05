@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Get the Last Key of an Array in PHP</title>
+<meta name="description" content="In this tutorial, we'll explore different methods to retrieve the last key of an array in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Get the Last Key of an Array in PHP</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Get the Last Key of an Array in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>In PHP, there are several ways to <strong>retrieve the last key of an array</strong>, depending on your specific use case and the version of PHP you are using. In this tutorial, we'll explore different methods to accomplish this task.</p>
+
+<h2>1. Using end() and key()</h2>
+
+<p>One of the simplest ways to get the last key of an array is by using the <code>end()</code> and <code>key()</code> functions. Here's how you can do it:</p>
+
+<pre class="language-php"><code>&lt;?php
+// Sample array
+$fruits = array(
+    "apple" =&gt; "red",
+    "banana" =&gt; "yellow",
+    "cherry" =&gt; "red",
+    "date" =&gt; "brown"
+);
+
+// Move the internal pointer to the end of the array
+end($fruits);
+
+// Get the key of the current element (which is now the last element)
+$lastKey = key($fruits);
+
+// Output the last key
+echo "The last key is: " . $lastKey;
+?&gt;
+</code></pre>
+
+<p>In this example, we first use <code>end()</code> to move the internal array pointer to the last element, and then we use <code>key()</code> to retrieve the key of the last element.</p>
+
+<h2>2. Using array_slice() to get Array Last Key</h2>
+
+<p>Another way to get the last key of an array is by using <code>array_slice()</code>. Here's an example:</p>
+
+<pre class="language-php"><code>&lt;?php
+// Sample array
+$fruits = array(
+    "apple" =&gt; "red",
+    "banana" =&gt; "yellow",
+    "cherry" =&gt; "red",
+    "date" =&gt; "brown"
+);
+
+// Get the last element of the array using array_slice
+$lastElement = array_slice($fruits, -1, 1, true);
+
+// Extract the key of the last element
+$lastKey = key($lastElement);
+
+// Output the last key
+echo "The last key is: " . $lastKey;
+?&gt;
+</code></pre>
+
+<p>In this example, we use <code>array_slice()</code> to extract the last element of the array and then use <code>key()</code> to retrieve its key. The <code>true</code> parameter in <code>array_slice()</code> ensures that the keys are preserved in the result.</p>
+
+<h2>3. Using array_keys() and end()</h2>
+
+<p>You can also use <code>array_keys()</code> along with <code>end()</code> to get the last key. Here's how:</p>
+
+<pre class="language-php"><code>&lt;?php
+// Sample array
+$fruits = array(
+    "apple" =&gt; "red",
+    "banana" =&gt; "yellow",
+    "cherry" =&gt; "red",
+    "date" =&gt; "brown"
+);
+
+// Get an array of keys
+$keys = array_keys($fruits);
+
+// Get the last key from the array of keys
+$lastKey = end($keys);
+
+// Output the last key
+echo "The last key is: " . $lastKey;
+?&gt;
+</code></pre>
+
+<p>In this example, we first use <code>array_keys()</code> to get an array of all keys and then use <code>end()</code> to retrieve the last key from that array.</p>
+
+<h2>4. Using PHP 7.3+ Syntax to get Last Key of array</h2>
+
+<p>Starting from PHP 7.3, you can also use the <code>array_key_last()</code> function to directly get the last key of an array:</p>
+
+<pre class="language-php"><code>&lt;?php
+// Sample array
+$fruits = array(
+    "apple" =&gt; "red",
+    "banana" =&gt; "yellow",
+    "cherry" =&gt; "red",
+    "date" =&gt; "brown"
+);
+
+// Get the last key using array_key_last()
+$lastKey = array_key_last($fruits);
+
+// Output the last key
+echo "The last key is: " . $lastKey;
+?&gt;
+</code></pre>
+
+<p>This method is the <strong>most straightforward and concise way to get the last key in PHP</strong> 7.3 and later.</p>
+
+<p>Choose the method that best suits your code and PHP version, and you'll be able to easily retrieve the last key of an array in PHP.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

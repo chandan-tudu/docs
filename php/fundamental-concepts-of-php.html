@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fundamental Concepts of PHP</title>
+<meta name="description" content="In this article, we'll explore the fundamental concepts of PHP to provide you with a solid foundation for understanding how it works and how to use it effectively." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>Fundamental Concepts of PHP</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Fundamental Concepts of PHP" loading="lazy" width="900" height="500"></div> -->
+<p>PHP (Hypertext Preprocessor) is a widely-used open-source scripting language primarily designed for web development.</p>
+
+<p>It's a versatile language that can be embedded within HTML code or used in standalone PHP files. PHP is known for its simplicity, flexibility, and broad community support.</p>
+
+<p>In this article, we'll explore the fundamental concepts of PHP to provide you with a solid foundation for understanding how it works and how to use it effectively.</p>
+
+<h2 id="1-basic-syntax-and-structure">1. Basic Syntax and Structure</h2>
+
+<p>PHP code is typically embedded within HTML, enclosed in special tags:</p>
+
+<pre class="language-php"><code>&lt;?php
+// PHP code goes here
+?&gt;
+</code></pre>
+
+<p>You can also use the shorthand <code>&lt;?</code> and <code>?&gt;</code> tags for embedding PHP code.</p>
+
+<pre class="language-php"><code>&lt;?
+// PHP code goes here
+?&gt;
+</code></pre>
+
+<p>Every PHP statement ends with a semicolon <code>;</code>. PHP is not case-sensitive, but it's a best practice to use lowercase for function names and variables and uppercase for constants.</p>
+
+<h2 id="2-variables">2. Variables</h2>
+
+<p>Variables in PHP are used to store and manipulate data. Variable names start with the dollar sign <code>$</code>, followed by the name (e.g., <code>$name</code>, <code>$age</code>). PHP variables are loosely typed, meaning you don't need to declare their data type explicitly.</p>
+
+<pre class="language-php"><code>$name = "John";
+$age = 30;
+</code></pre>
+
+<h2 id="3-data-types">3. Data Types</h2>
+
+<p>PHP supports various data types, including:</p>
+
+<ul>
+<li><strong>Integers</strong>: Whole numbers (e.g., <code>$count = 10</code>).</li>
+<li><strong>Floats</strong>: Decimal numbers (e.g., <code>$price = 19.99</code>).</li>
+<li><strong>Strings</strong>: Text (e.g., <code>$name = "Alice"</code>).</li>
+<li><strong>Booleans</strong>: True or false (e.g., <code>$isTrue = true</code>).</li>
+<li><strong>Arrays</strong>: Ordered lists of values (e.g., <code>$colors = ["red", "green", "blue"]</code>).</li>
+<li><strong>Objects</strong>: Instances of user-defined classes.</li>
+<li><strong>Null</strong>: A variable with no value.</li>
+</ul>
+
+<h2 id="4-operators">4. Operators</h2>
+
+<p>PHP provides various operators for performing operations on variables and values. These include arithmetic operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>), comparison operators (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>), logical operators (<code>&amp;&amp;</code>, <code>||</code>, <code>!</code>), and more.</p>
+
+<pre class="language-php"><code>$x = 10;
+$y = 5;
+$sum = $x + $y; // 15
+$isEqual = ($x == $y); // false
+</code></pre>
+
+<h2 id="5-control-structures">5. Control Structures</h2>
+
+<p>Control structures in PHP allow you to control the flow of your code. Common control structures include:</p>
+
+<ul>
+<li><strong>Conditional Statements</strong>: <code>if</code>, <code>else</code>, <code>elseif</code>, and <code>switch</code> statements for making decisions based on conditions.</li>
+<li><strong>Loops</strong>: <code>for</code>, <code>while</code>, <code>do...while</code>, and <code>foreach</code> loops for repetitive tasks.</li>
+<li><strong>Functions</strong>: Define reusable code blocks with functions.</li>
+</ul>
+
+<pre class="language-php"><code>if ($age &lt; 18) {
+    echo "You are a minor.";
+} else {
+    echo "You are an adult.";
+}
+</code></pre>
+
+<h2 id="6-arrays">6. Arrays</h2>
+
+<p>Arrays are a fundamental data structure in PHP. You can create indexed arrays (numeric keys), associative arrays (key-value pairs), and multidimensional arrays (arrays within arrays).</p>
+
+<pre class="language-php"><code>// Indexed array
+$colors = ["red", "green", "blue"];
+
+// Associative array
+$person = [
+    "name" =&gt; "Alice",
+    "age" =&gt; 25
+];
+
+// Multidimensional array
+$matrix = [
+    [1, 2, 3],
+    [4, 5, 6]
+];
+</code></pre>
+
+<h2 id="7-functions">7. Functions</h2>
+
+<p>Functions allow you to group and reuse code. You can define your own functions or use built-in functions. Functions are declared using <code>function</code> keyword.</p>
+
+<pre class="language-php"><code>function greet($name) {
+    echo "Hello, $name!";
+}
+
+greet("John"); // Output: Hello, John!
+</code></pre>
+
+<h2 id="8-superglobals">8. Superglobals</h2>
+
+<p>Superglobals are built-in PHP arrays that provide access to global variables, form data, sessions, and more. Common superglobals include <code>$_GET</code>, <code>$_POST</code>, <code>$_SESSION</code>, <code>$_COOKIE</code>, <code>$_FILES</code>, and <code>$_SERVER</code>.</p>
+
+<pre class="language-php"><code>$userAgent = $_SERVER['HTTP_USER_AGENT'];
+</code></pre>
+
+<h2 id="9-error-handling">9. Error Handling</h2>
+
+<p>PHP offers mechanisms for error handling, including <code>try...catch</code> blocks for handling exceptions and the <code>error_reporting</code> and <code>ini_set</code> functions to control error reporting.</p>
+
+<pre class="language-php"><code>try {
+    // Code that may throw an exception
+} catch (Exception $e) {
+    // Handle the exception
+}
+</code></pre>
+
+<h2 id="10-file-handling">10. File Handling</h2>
+
+<p>PHP allows you to read and write files on the server using functions like <code>fopen</code>, <code>fwrite</code>, <code>fread</code>, and <code>fclose</code>. You can also manipulate directories with functions like <code>mkdir</code> and <code>rmdir</code>.</p>
+
+<pre class="language-php"><code>$file = fopen("example.txt", "r");
+$content = fread($file, filesize("example.txt"));
+fclose($file);
+</code></pre>
+
+<h2 id="11-database-connectivity">11. Database Connectivity</h2>
+
+<p>PHP can connect to various databases like MySQL, PostgreSQL, and SQLite using extensions like PDO or MySQLi. You can perform database operations like querying, inserting, updating, and deleting data.</p>
+
+<pre class="language-php"><code>$pdo = new PDO("mysql:host=localhost;dbname=mydb", "username", "password");
+$query = "SELECT * FROM users";
+$result = $pdo-&gt;query($query);
+</code></pre>
+
+<h2 id="12-sessions-and-cookies">12. Sessions and Cookies</h2>
+
+<p>PHP allows you to manage sessions and cookies for maintaining user state across requests. You can use <code>$_SESSION</code> for sessions and <code>setcookie()</code> for cookies.</p>
+
+<pre class="language-php"><code>// Starting a session
+session_start();
+
+// Setting a session variable
+$_SESSION['user_id'] = 123;
+
+// Setting a cookie
+setcookie("username", "john_doe", time() + 3600, "/");
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>These fundamental concepts of PHP provide a strong foundation for building dynamic web applications and services. As you become more familiar with PHP, you can explore more advanced topics like object-oriented programming, frameworks (e.g., Laravel, Symfony), and integrating PHP with databases and APIs. With its versatility and extensive community support, PHP remains a popular choice for web development.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

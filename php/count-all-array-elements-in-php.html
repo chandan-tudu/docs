@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Count All Array Elements in PHP</title>
+<!-- <meta name="description" content="In this article, we will explore different ways to count all array elements in PHP." /> -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Count All Array Elements in PHP</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Count All Array Elements in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>When working with arrays in PHP, you might need to determine the <strong>total number of elements within the array</strong>.</p>
+
+<p>Counting the elements is a fundamental operation, and PHP provides various methods to achieve this.</p>
+
+<p>In this article, we will explore different ways to <strong>count all array elements in PHP</strong>.</p>
+
+<h2 id="the-php-count-function">The PHP count() Function</h2>
+
+<p>The simplest and most common way to <strong>count all elements in an array</strong> is by <strong>using the built-in count() function</strong>. This function <strong>returns the number of elements</strong> in an array.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana", "cherry", "date"];
+
+$count = count($fruits);
+
+echo "Total number of elements: " . $count;
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Total number of elements: 4
+</code></pre>
+
+<p>In this example, we use <code>count($fruits)</code> to count the number of elements in the <code>$fruits</code> array and store the result in the <code>$count</code> variable. We then print the total number of elements using <code>echo</code>.</p>
+
+<hr />
+
+<h2 id="the-sizeof-function">The sizeof() function</h2>
+
+<p>In PHP, the <code>sizeof()</code> function is an <strong>alias</strong> for the <code>count()</code> function.</p>
+
+<p>Both <code>sizeof()</code> and <code>count()</code> serve the same purpose: they are used to count the number of elements in an array or the properties in an object. These functions return the same result, making them interchangeable.</p>
+
+<p>Here's an example of using <code>sizeof()</code> to count the elements in an array:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana", "cherry", "date"];
+
+$count = sizeof($fruits);
+
+echo "Total number of elements: " . $count;
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Total number of elements: 4
+</code></pre>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

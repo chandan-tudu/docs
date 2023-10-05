@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Array Push a Value with a Key in PHP?</title>
+<meta name="description" content="This article will explain how to array push a value with a key in PHP and explore alternative methods to achieve this." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Array Push a Value with a Key in PHP?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Array Push a Value with a Key in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>In PHP, arrays are a fundamental data structure used for storing and manipulating collections of data.</p>
+
+<p>While the <code>array_push()</code> function is commonly used to add elements to the end of a numeric-indexed (indexed) array, you may encounter situations where you need to <strong>add values with associated keys</strong> to an associative array.</p>
+
+<p>This article will explain how to <strong>array push a value with a key in PHP</strong> and explore alternative methods to achieve this.</p>
+
+<h2>Understanding Associative Arrays</h2>
+
+<p>In PHP, an associative array is a type of array where <strong>each element is associated with a unique key</strong>, instead of being indexed numerically.</p>
+
+<p>These keys can be strings, integers, or other data types, and they are used to access the corresponding values.</p>
+
+<p>Unlike numeric-indexed arrays, associative arrays <strong>allow you to define custom keys</strong>.</p>
+
+<p>Here's an example of an associative array:</p>
+
+<pre class="language-php"><code>$person = [
+    "first_name" =&gt; "John",
+    "last_name" =&gt; "Doe",
+    "age" =&gt; 30
+];
+</code></pre>
+
+<p>In this example, <code>"first_name"</code>, <code>"last_name"</code>, and <code>"age"</code> are keys, and <code>"John"</code>, <code>"Doe"</code>, and <code>30</code> are their respective values.</p>
+<hr>
+<h2>1. Using Square Brackets <code>[]</code> to Add Key-Value Pairs in PHP Array</h2>
+
+<p>To add key-value pairs to an associative array in PHP, you can use square brackets <code>[]</code> along with the assignment operator <code>=</code>.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$person = [];
+$person["first_name"] = "John";
+$person["last_name"] = "Doe";
+$person["age"] = 30;
+
+print_r($person);
+</code></pre>
+
+<p>Output:</p>
+<pre><code>Array
+(
+    [first_name] => John
+    [last_name] => Doe  
+    [age] => 30
+)</code></pre>
+
+<p>In this example, we start with an empty associative array <code>$person</code> and then use square brackets to assign values to specific keys.</p>
+<hr>
+<h2>2. Using the <code>+=</code> Operator</h2>
+
+<p>The <code>+=</code> operator allows you to combine an existing associative array with a new key-value pair, effectively adding it to the array.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$person = [];
+$person += ["first_name" =&gt; "John"];
+$person += ["last_name" =&gt; "Doe"];
+$person += ["age" =&gt; 30];
+
+print_r($person);
+</code></pre>
+<p>Output:</p>
+<pre><code>Array
+(
+    [first_name] => John
+    [last_name] => Doe  
+    [age] => 30
+)</code></pre>
+
+<p>In this example, each use of the <code>+=</code> operator combines the existing array <code>$person</code> with a new key-value pair.</p>
+
+<h2>Conclusion</h2>
+
+<p>In PHP, associative arrays allow you to work with key-value pairs, providing flexibility and organization for your data.</p>
+
+<p>While <code>array_push()</code> is designed for numeric-indexed arrays, adding key-value pairs to an associative array is typically done using square brackets <code>[]</code>, the <code>+=</code> operator.</p>
+
+<p>These methods allow you to add values with associated keys to an associative array efficiently, ensuring that your data remains structured and accessible in your PHP code.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

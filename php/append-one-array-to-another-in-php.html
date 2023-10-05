@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Append One Array to Another in PHP?</title>
+<meta name="description" content="In this article, we will explore various methods for appending one array to another in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Append One Array to Another in PHP?</h1></div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Append One Array to Another in PHP" loading="lazy" width="900" height="500"></div> -->
+<p>Arrays are fundamental data structures in PHP, and you often need to <strong>combine</strong> or <strong>append</strong> them to create larger arrays or merge data from different sources.</p>
+
+<p>In this article, we will explore various methods for <strong>appending one array to another in PHP</strong>.</p>
+
+<h2 id="1-using-the-array-merge-function">1. Using the array_merge() Function</h2>
+
+<p>The <code>array_merge()</code> function in PHP is a straightforward way to append one array to another. It takes two or more arrays as arguments and returns a new array that is a combination of all the arrays.</p>
+
+<p>Here's an example of how to use <code>array_merge()</code> to append one array to another:</p>
+
+<pre class="language-php"><code>$array1 = ["apple", "banana", "cherry"];
+$array2 = ["date", "fig", "grape"];
+
+$result = array_merge($array1, $array2);
+
+print_r($result);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [1] =&gt; banana
+    [2] =&gt; cherry
+    [3] =&gt; date
+    [4] =&gt; fig
+    [5] =&gt; grape
+)
+</code></pre>
+
+<p>In this example, we have two arrays, <code>$array1</code> and <code>$array2</code>. The <code>array_merge()</code> function combines them into a single array called <code>$result</code>.</p>
+
+<hr />
+
+<h2 id="2-using-the-operator">2. Using the <code>+</code> Operator</h2>
+
+<p>PHP allows you to use the <code>+</code> operator to merge arrays. When you use the <code>+</code> operator between two arrays, it appends the elements from the second array to the first array, but only if the keys in the second array do not already exist in the first array. This prevents overwriting existing values.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$array1 = ["a" =&gt; "apple", "b" =&gt; "banana", "c" =&gt; "cherry"];
+$array2 = ["b" =&gt; "blueberry", "d" =&gt; "date", "e" =&gt; "elderberry"];
+
+$result = $array1 + $array2;
+
+print_r($result);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [a] =&gt; apple
+    [b] =&gt; banana
+    [c] =&gt; cherry
+    [d] =&gt; date
+    [e] =&gt; elderberry
+)
+</code></pre>
+
+<p>In this example, we have two arrays, <code>$array1</code> and <code>$array2</code>. When we use the <code>+</code> operator to merge them, the keys "b," "d," and "e" from <code>$array2</code> are added to <code>$array1</code>, but the existing values for "b" and "c" in <code>$array1</code> are not overwritten.</p>
+
+<hr />
+
+<h2 id="3-using-the-array-push-function">3. Using the array_push() Function</h2>
+
+<p>The <code>array_push()</code> function in PHP is typically used to add one or more elements to the end of an array.</p>
+
+<p>However, you can use it to append one array to another by iterating through the second array and pushing each element onto the first array.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$array1 = ["apple", "banana", "cherry"];
+$array2 = ["date", "fig", "grape"];
+
+foreach ($array2 as $element) {
+    array_push($array1, $element);
+}
+
+print_r($array1);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [1] =&gt; banana
+    [2] =&gt; cherry
+    [3] =&gt; date
+    [4] =&gt; fig
+    [5] =&gt; grape
+)
+</code></pre>
+
+<p>In this example, we use a <code>foreach</code> loop to iterate through <code>$array2</code>, and for each element, we use <code>array_push()</code> to add it to the end of <code>$array1</code>. This effectively appends <code>$array2</code> to <code>$array1</code>.</p>
+
+<hr />
+
+<h2 id="4-using-the-array-splice-function">4. Using the array_splice() Function</h2>
+
+<p>The <code>array_splice()</code> function in PHP can also be used to append one array to another.</p>
+
+<p>It allows you to insert the elements from one array into another array <strong>at a specified position</strong>.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$array1 = ["apple", "banana", "cherry"];
+$array2 = ["date", "fig", "grape"];
+
+array_splice($array1, count($array1), 0, $array2);
+
+print_r($array1);
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [1] =&gt; banana
+    [2] =&gt; cherry
+    [3] =&gt; date
+    [4] =&gt; fig
+    [5] =&gt; grape
+)
+</code></pre>
+
+<p>In this example, we use <code>array_splice()</code> to insert the elements from <code>$array2</code> at the end of <code>$array1</code>.</p>
+
+<p>The <code>count($array1)</code> argument specifies the position at which to insert the elements (at the end), and <code>0</code> specifies that no elements should be removed from <code>$array1</code>.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Appending one array to another is a common operation in PHP, and there are multiple methods to achieve it. You can choose the method that best suits your needs and coding style. Whether you prefer using <code>array_merge()</code>, the <code>+</code> operator, <code>array_push()</code>, or <code>array_splice()</code>, understanding these techniques will help you effectively manipulate and combine arrays in your PHP applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>
