@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Implement Callbacks in PHP?</title>
+<meta name="description" content="In this article, we'll explore how to implement callbacks in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Implement Callbacks in PHP?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Implement Callbacks in PHP" loading="lazy" width="900" height="500"></div>
+<p>Callbacks in PHP allow you to pass a function as an argument to another function, which can then call the passed function at an appropriate time.</p>
+
+<p>This is a powerful concept in programming, often used in scenarios like event handling, custom sorting, and extensibility.</p>
+
+<p>In this article, we'll explore how to <strong>implement callbacks in PHP</strong>. Let's Start -</p>
+
+<hr />
+
+<h2 id="step-1-defining-callback-functions">Step 1: Defining Callback Functions</h2>
+
+<p>In PHP, <strong>functions are first-class citizens</strong>, which means you can use them as parameters to other functions.</p>
+
+<p>To define a callback function, <em>create a regular PHP function</em> that can be <em>called from another function</em>. Here's an example:</p>
+
+<pre class="language-php"><code>function myCallbackFunction($value) {
+    return $value * 2;
+}
+</code></pre>
+
+<p>In this example, we've defined a callback function named <code>myCallbackFunction</code> that simply doubles the value passed to it.</p>
+
+<h2 id="step-2-implementing-callbacks">Step 2: Implementing Callbacks</h2>
+
+<p>The most common use case for callbacks is when you want to apply a custom operation on each element of an array.</p>
+
+<p>You can use functions like <code>array_map()</code> to achieve this. Here's an example:</p>
+
+<pre class="language-php"><code>$numbers = [1, 2, 3, 4, 5];
+
+// Implement a callback function using array_map
+$doubledNumbers = array_map("myCallbackFunction", $numbers);
+
+print_r($doubledNumbers);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 4
+    [2] =&gt; 6
+    [3] =&gt; 8
+    [4] =&gt; 10
+)
+</code></pre>
+
+<p>In this example, we use the <code>array_map()</code> function to apply the <code>myCallbackFunction</code> to each element of the <code>$numbers</code> array, effectively doubling each value.</p>
+
+<hr />
+
+<h2 id="anonymous-functions-closures-">Anonymous Functions (Closures)</h2>
+
+<p>PHP also <strong>supports anonymous functions</strong>, also known as closures. These are functions without a specific name and can be defined inline.</p>
+
+<p>Anonymous functions are useful when you need a simple, one-time-use callback function.</p>
+
+<p><strong>Here's an example:</strong></p>
+
+<pre class="language-php"><code>$numbers = [1, 2, 3, 4, 5];
+
+// Implement an anonymous function using array_map
+$doubledNumbers = array_map(function($value) {
+    return $value * 2;
+}, $numbers);
+
+print_r($doubledNumbers);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 4
+    [2] =&gt; 6
+    [3] =&gt; 8
+    [4] =&gt; 10
+)
+</code></pre>
+
+<p>In this example, we use an anonymous function as the callback directly within the <code>array_map()</code> call.</p>
+
+<hr />
+
+<h2 id="using-built-in-callback-functions">Using Built-In Callback Functions</h2>
+
+<p>PHP provides several built-in functions that accept callback functions as arguments.</p>
+
+<p>For instance, the <code>usort()</code> function allows you to sort an array using a custom comparison function:</p>
+
+<pre class="language-php"><code>$fruits = ['apple', 'banana', 'cherry', 'date', 'fig'];
+
+// Implement a custom sorting callback using usort
+usort($fruits, function($a, $b) {
+    return strlen($a) - strlen($b);
+});
+
+print_r($fruits);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [0] =&gt; fig
+    [1] =&gt; apple
+    [2] =&gt; banana
+    [3] =&gt; cherry
+    [4] =&gt; date
+)
+</code></pre>
+
+<p>In this example, we use an anonymous function to define the custom sorting logic for the <code>usort()</code> function.</p>
+
+<hr />
+
+<h2 id="passing-functions-as-callbacks">Passing Functions as Callbacks</h2>
+
+<p>You can also pass existing functions as callbacks. Here's an example using the <code>array_filter()</code> function:</p>
+
+<pre class="language-php"><code>$numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Define a callback function
+function isEven($number) {
+    return $number % 2 == 0;
+}
+
+// Implement the callback function using array_filter
+$evenNumbers = array_filter($numbers, "isEven");
+
+print_r($evenNumbers);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [1] =&gt; 2
+    [3] =&gt; 4
+    [5] =&gt; 6
+    [7] =&gt; 8
+    [9] =&gt; 10
+)
+</code></pre>
+
+<p>In this example, we define the <code>isEven</code> function and then pass it as a callback to <code>array_filter()</code> to filter out even numbers.</p>
+
+<hr />
+
+<h2 id="callbacks-in-object-oriented-programming">Callbacks in Object-Oriented Programming</h2>
+
+<p>Callbacks are widely used in object-oriented programming. In PHP, you can <strong>pass methods of objects as callbacks</strong>.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>class Calculator {
+    public function add($a, $b) {
+        return $a + $b;
+    }
+}
+
+$calculator = new Calculator();
+
+// Use an object method as a callback
+$result = call_user_func([$calculator, "add"], 5, 3);
+
+echo "Result: " . $result;
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Result: 8
+</code></pre>
+
+<p>In this example, we create an instance of the <code>Calculator</code> class and use the <code>call_user_func()</code> function to call its <code>add</code> method as a callback.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Callbacks in PHP allow you to pass functions as arguments to other functions, providing flexibility and extensibility in your code.</p>
+
+<p>You can use named functions, anonymous functions, or even object methods as callbacks.</p>
+
+<p>Understanding how to implement callbacks is essential for various programming tasks, from data manipulation to event handling and custom sorting.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

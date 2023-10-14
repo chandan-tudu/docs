@@ -92,7 +92,9 @@ svg {
     position: relative;
     padding: 20px;
 }
-
+.footer{
+    display:none;
+}
 .article-container {
     background: var(--bg-color2);
     padding: 20px 50px;
@@ -313,6 +315,10 @@ hr {
     color: var(--color);
     text-decoration: underline double;
     user-select: none;
+}
+.logo:hover{
+    text-decoration: underline double;
+    color: var(--link-color);
 }
 
 .theme-switch {

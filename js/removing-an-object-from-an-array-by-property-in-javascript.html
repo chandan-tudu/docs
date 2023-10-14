@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Removing an Object from an Array by Property in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to remove an object from an array by property in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Removing an Object from an Array by Property in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Removing an Object from an Array by Property in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In JavaScript, it's a common task to <strong>remove an object from an array based on a specific property's value</strong>.</p>
+
+<p>To accomplish this, you can utilize the <code>filter()</code> method, which creates a new array by filtering out elements that meet certain criteria.</p>
+
+<p>This method enables you to exclude objects from the original array by specifying a property and its associated value.</p>
+
+<p>In this article, we'll explore how to remove an object from an array by property in JavaScript.</p>
+
+<h2 id="using-the-filter-method">Using the filter() Method</h2>
+
+<p>The <code>filter()</code> method is a powerful tool for manipulating arrays in JavaScript.</p>
+
+<p>It allows you to create a new array that only includes elements that satisfy a given condition.</p>
+
+<p>To remove an object from an array by a specific property, you can define the condition in a function provided to the <code>filter()</code> method.</p>
+
+<h3>Here's a step-by-step guide to achieving this:</h3>
+
+<ol>
+<li><p>Create a function, let's call it <code>removeObjectByProperty</code>, that takes three parameters:</p>
+
+<ul>
+<li><code>arr</code>: The original array from which you want to remove an object.</li>
+<li><code>property</code>: The name of the property you want to filter by.</li>
+<li><code>value</code>: The value of the property that you want to remove.</li>
+</ul></li>
+<li><p>Inside the <code>removeObjectByProperty</code> function, use the <code>filter()</code> method to create a new array that includes all elements from the original array except those that match the specified property and value.</p></li>
+</ol>
+
+<p>Here's an example of how to remove an object from an array by property:</p>
+
+<pre class="language-javascript"><code>function removeObjectByProperty(arr, property, value) {
+    return arr.filter((item) =&gt; item[property] !== value);
+}
+
+const originalArray = [
+    { id: 1, name: 'Alice' },
+    { id: 2, name: 'Bob' },
+    { id: 3, name: 'Charlie' },
+];
+
+const propertyToRemoveBy = 'id';
+const valueToRemove = 2;
+
+const newArray = removeObjectByProperty(
+    originalArray,
+    propertyToRemoveBy,
+    valueToRemove
+);
+
+console.log(newArray);
+</code></pre>
+
+<p>In this example, we use the <code>removeObjectByProperty</code> function to remove an object from the <code>originalArray</code> based on the <code>id</code> property with a value of 2.</p>
+
+<p>The result, stored in <code>newArray</code>, contains all objects from the <code>originalArray</code> except the one with an <code>id</code> of 2.</p>
+
+<p>Remember that the <code>filter()</code> method doesn't modify the original array; it creates a new array with the filtered elements.</p>
+
+<p>If you want to update the original array, you can reassign the result back to the original array variable, as shown in the example.</p>
+
+<hr />
+
+<p>Using the <code>filter()</code> method to remove objects by property is a versatile and efficient approach, allowing you to filter arrays based on your specific criteria.</p>
+
+<p>This technique is useful in various scenarios, such as managing data from user inputs, filtering data based on specific attributes, and more.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

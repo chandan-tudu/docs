@@ -19,7 +19,7 @@
 <div class="nav-links"><ul><li><a href="./index.html">JavaScript</a></li></ul></div>
 <article class="article-container">
 <div class="box"><h1>Aborting Ajax Requests Using JavaScript</h1></div>
-<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Aborting Ajax Requests Using JavaScript" loading="lazy" width="900" height="500"></div> -->
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Aborting Ajax Requests Using JavaScript" loading="lazy" width="900" height="500"></div>
 <p>In web development, making asynchronous requests using AJAX (Asynchronous JavaScript and XML) is a common practice to fetch data from a server without reloading the entire page.</p>
 
 <p>However, there are situations where you might need to cancel or abort these requests. In this comprehensive guide, we'll explore various methods for <strong>aborting AJAX requests using JavaScript</strong>.</p>
@@ -37,8 +37,8 @@
 <li><p><strong>Concurrency Control</strong>: In situations where you have multiple AJAX requests that depend on each other, you might need to abort or cancel requests when a more recent one is initiated.</p></li>
 <li><p><strong>Performance Optimization</strong>: Aborting requests can help improve the performance of your web application by reducing unnecessary network traffic.</p></li>
 </ol>
-
-<h2>Method 1: Using the <code>abort()</code> Method (XMLHttpRequest)</h2>
+<hr>
+<h2 id="xhr">Method 1: Using the <code>abort()</code> Method (XMLHttpRequest)</h2>
 
 <p>In the past, when XMLHttpRequest (XHR) was the primary method for making AJAX requests, you could abort a request by using the <code>abort()</code> method associated with the XHR object.</p>
 
@@ -69,8 +69,8 @@ xhr.abort();
 <li>We create an XHR object, configure it, and set up event listeners for successful responses (<code>onload</code>) and errors (<code>onerror</code>).</li>
 <li>To abort the request, we simply call the <code>abort()</code> method on the XHR object.</li>
 </ul>
-
-<h2>Method 2: Using the <code>AbortController</code> (Fetch API)</h2>
+<hr>
+<h2 id="fetch-api">Method 2: Using the <code>AbortController</code> (Fetch API)</h2>
 
 <p>With the introduction of the Fetch API, a more modern and flexible way to make AJAX requests, you can use the <code>AbortController</code> and <code>AbortSignal</code> to abort fetch requests.</p>
 
@@ -106,44 +106,28 @@ controller.abort();
 <li>When making the fetch request, we pass the <code>signal</code> to the <code>fetch()</code> options.</li>
 <li>To abort the request, we call the <code>abort()</code> method on the controller.</li>
 </ul>
+<hr>
 
-<h2>Method 3: Using a Wrapper Library (e.g., Axios)</h2>
+<h2 id="axios">Method 3: Using a Wrapper Library (e.g., Axios)</h2>
 
-<p>If you prefer to use a library like Axios for making AJAX requests, it provides built-in support for request cancellation.</p>
+<p>If you prefer to use a library like Axios for making AJAX requests, You need to do the same thing as the Method 2 (Fetch API) for request cancellation.</p>
+<p>Here is an Example:</p>
 
-<pre class="language-javascript"><code>import axios from 'axios';
+<pre class="language-javascript"><code>const controller = new AbortController();
 
-const source = axios.CancelToken.source();
-
-axios.get('https://api.example.com/data', {
-    cancelToken: source.token
-})
-    .then(response =&gt; {
-        // Handle the response
-    })
-    .catch(error =&gt; {
-        if (axios.isCancel(error)) {
-            // Handle the request being canceled
-        } else {
-            // Handle other errors
-        }
-    });
-
-// To cancel the request:
-source.cancel('Request canceled by the user.');
+axios.get('/foo/bar', {
+    signal: controller.signal
+}).then(function(response) {
+    //...
+});
+// cancel the request
+controller.abort()
 </code></pre>
-
-<p>In this code:</p>
-
-<ul>
-<li>We create a CancelToken source using <code>axios.CancelToken.source()</code>.</li>
-<li>When making the Axios request, we specify the <code>cancelToken</code> option.</li>
-<li>To cancel the request, we call <code>source.cancel()</code> with an optional cancellation reason.</li>
-</ul>
-
+<hr>
 <h2>Conclusion</h2>
 
-<p>Aborting AJAX requests is a crucial feature for managing the behavior and performance of your web applications. Depending on your project and preferences, you can choose between the classic XMLHttpRequest with the <code>abort()</code> method, the modern Fetch API with <code>AbortController</code>, or a library like Axios with built-in cancellation support. Understanding how to control and manage your AJAX requests can lead to more responsive and efficient web applications.</p>
+<p>Aborting AJAX requests is a crucial feature for managing the behavior and performance of your web applications.</p>
+<p>Depending on your project and preferences, you can choose between the classic XMLHttpRequest with the <code>abort()</code> method, and the Axios or modern Fetch API with <code>AbortController</code>.</p>
 </article>
 <div class="footer" id="footer"></div>
 <script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>

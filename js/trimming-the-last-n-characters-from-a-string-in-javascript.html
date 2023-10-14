@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Trim the Last N Characters from a String in JavaScript</title>
+<meta name="description" content="In this article, we will explore two methods for trimming the last N characters from a string." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Trimming the Last N Characters from a String in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Trimming the Last N Characters from a String in JavaScript" loading="lazy" width="900" height="500"></div>
+<h1 id="trimming-the-last-n-characters-from-a-string-in-javascript">Trimming the Last N Characters from a String in JavaScript</h1>
+
+<p>In JavaScript, you may encounter scenarios where you need to trim or remove the last N characters from a string.</p>
+
+<p>Whether you are working with user inputs, file names, or other data, this is a common task that can be accomplished using JavaScript's string manipulation methods.</p>
+
+<p>In this article, we will explore <strong>two methods for trimming the last N characters from a string</strong>.</p>
+
+<h2 id="using-the-slice-method">Using the slice() Method</h2>
+
+<p>The <code>slice()</code> method is a powerful tool for manipulating strings in JavaScript.</p>
+
+<p>To trim the last N characters from a string, you can use this method with the following syntax:</p>
+
+<pre class="language-javascript"><code>string.slice(0, -N);
+</code></pre>
+
+<ul>
+<li><code>string</code>: The original string you want to trim.</li>
+<li><code>N</code>: The number of characters to remove from the end of the string.</li>
+</ul>
+
+<p>Here's an example of how to use the <code>slice()</code> method to trim the last N characters:</p>
+
+<pre class="language-javascript"><code>function trimLastNCharacters(inputString, N) {
+    return inputString.slice(0, -N);
+}
+
+const originalString = 'Hello, World!';
+const trimmedString = trimLastNCharacters(originalString, 6);
+
+console.log(trimmedString); // Output: "Hello, "
+</code></pre>
+
+<p>In this example, the <code>trimLastNCharacters</code> function takes the <code>originalString</code> and trims the last 6 characters, resulting in the string "Hello."</p>
+
+<h2 id="using-the-substring-method">Using the substring() Method</h2>
+
+<p>The <code>substring()</code> method is another option for trimming the last N characters from a string. It has a different syntax compared to <code>slice()</code>:</p>
+
+<pre class="language-javascript"><code>string.substring(0, string.length - N);
+</code></pre>
+
+<ul>
+<li><code>string</code>: The original string you want to trim.</li>
+<li><code>N</code>: The number of characters to remove from the end of the string.</li>
+</ul>
+
+<p>Here's an example of how to use the <code>substring()</code> method:</p>
+
+<pre class="language-javascript"><code>function trimLastNCharacters(inputString, N) {
+    return inputString.substring(0, inputString.length - N);
+}
+
+const originalString = 'Hello, World!';
+const trimmedString = trimLastNCharacters(originalString, 6);
+
+console.log(trimmedString); // Output: "Hello, "
+</code></pre>
+
+<p>In this example, the <code>trimLastNCharacters</code> function trims the last 6 characters of the <code>originalString</code>, producing the same result as the previous example.</p>
+
+<p>Both the <code>slice()</code> and <code>substring()</code> methods achieve the same result, allowing you to remove the last N characters from a string. You can choose the method that best fits your coding style or requirements.</p>
+
+<p><strong>Remember to include checks</strong> to ensure that <code>N</code> is <strong>not greater than the length of the input string</strong> to prevent unexpected behavior or errors.</p>
+<hr />
+<p>In summary, trimming the last N characters from a string in JavaScript can be accomplished using the <code>slice()</code> or <code>substring()</code> method. These techniques are useful when dealing with various data manipulation tasks, such as file names, user inputs, or text processing.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

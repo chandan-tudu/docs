@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+    <html lang="en-US">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PHP: Sorting an Array of Strings in Natural and Standard Orders</title>
+        <meta name="description" content="In this article, we'll explore how to sort an array of strings in both natural and standard orders using PHP." />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+        <meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+    </head>
+
+    <body>
+        <div class="header" id="header"></div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="./index.html">PHP</a></li>
+            </ul>
+        </div>
+        <article class="article-container">
+            <div class="box">
+                <h1>PHP: Sorting an Array of Strings in Natural and Standard Orders</h1>
+            </div>
+            <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of PHP: Sorting an Array of Strings in Natural and Standard Orders" loading="lazy" width="900" height="500"></div>
+<p>When working with arrays of strings in PHP, you may need to sort them in different ways, such as in <strong>natural order</strong> or <strong>standard alphabetical</strong> order.</p>
+
+<p>Sorting in natural order considers the numerical values within strings, while standard sorting treats all characters equally.</p>
+
+<p>In this article, we'll explore how to <strong>sort an array of strings in both natural and standard orders using PHP</strong>.</p>
+
+<h2 id="1-sorting-in-natural-order">1. Sorting in Natural Order</h2>
+
+<p>Sorting an array of strings in natural order means considering the numerical values within the strings.</p>
+
+<p>This is particularly useful when dealing with filenames, version numbers, or any string containing numbers.</p>
+
+<p>PHP provides the <code>natsort()</code> function for sorting in natural order. Here's an example:</p>
+
+<pre class="language-php"><code>$fruits = ["apple10", "apple2", "banana11", "banana1", "cherry9", "cherry10"];
+
+// Sort the array in natural order
+natsort($fruits);
+
+// Print the sorted array
+print_r($fruits);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [1] =&gt; apple2
+    [0] =&gt; apple10
+    [3] =&gt; banana1
+    [2] =&gt; banana11
+    [4] =&gt; cherry9
+    [5] =&gt; cherry10
+)
+</code></pre>
+
+<p>In this example, <code>natsort($fruits)</code> sorts the array of strings in natural order, resulting in the values being ordered by their numerical parts as well.</p>
+
+<hr />
+
+<h2 id="2-sorting-in-standard-order">2. Sorting in Standard Order</h2>
+
+<p>Sorting an array of strings in standard order treats all characters equally and sorts them based on their ASCII values. This is the default behavior of PHP's <code>sort()</code> function.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-php"><code>$fruits = ["apple", "banana", "cherry", "date", "fig"];
+
+// Sort the array in standard order
+sort($fruits);
+
+// Print the sorted array
+print_r($fruits);
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Array
+(
+    [0] =&gt; apple
+    [1] =&gt; banana
+    [2] =&gt; cherry
+    [3] =&gt; date
+    [4] =&gt; fig
+)
+</code></pre>
+
+<p>In this example, <code>sort($fruits)</code> sorts the array of strings in standard alphabetical order.</p>
+
+<hr />
+
+<h2 id="choosing-the-right-sorting-order">Choosing the Right Sorting Order</h2>
+
+<p>Deciding whether to use natural or standard sorting depends on your specific use case.</p>
+
+<ol>
+<li>Natural sorting is ideal when you want to sort strings containing numbers in a way that makes numerical sense.</li>
+<li>Standard sorting is suitable for general alphabetical sorting.</li>
+</ol>
+
+<p>Keep in mind that when using natural sorting, the <strong>comparison is case-sensitive by default</strong>. If you want <strong>case-insensitive natural sorting</strong>, you can use <code>natcasesort()</code> instead of <code>natsort()</code>.</p>
+        </article>
+        <div class="footer" id="footer"></div>
+        <script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+    </body>
+
+    </html>

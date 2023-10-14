@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PHP Program to Print an Arithmetic Progression Series</title>
+<meta name="description" content="PHP Program to Print an Arithmetic Progression Series Using Inbuilt Functions." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>PHP Program to Print an Arithmetic Progression Series</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of PHP Program to Print an Arithmetic Progression Series" loading="lazy" width="900" height="500"></div>
+<p>An arithmetic progression (AP) is a sequence of numbers in which the difference between any two consecutive terms is constant.</p>
+
+<p>In this PHP program, we'll use inbuilt functions to <strong>generate and print an arithmetic progression series</strong>.</p>
+
+<p>We'll also <strong>allow the user to specify the starting term</strong>, <strong>common difference</strong>, and the <strong>number of terms</strong> in the series.</p>
+
+<h2 id="php-program-to-print-an-arithmetic-progression-series">PHP Program to Print an Arithmetic Progression Series</h2>
+
+<p>Here's the PHP program to print an arithmetic progression series using inbuilt functions:</p>
+
+<pre class="language-php"><code>&lt;?php
+// ap_series.php
+
+// Function to generate and print an AP series
+function printAP($a, $d, $n) {
+    // Calculate the first 'n' terms of the AP series
+    $apSeries = range($a, $a + ($n - 1) * $d, $d);
+
+    // Print the AP series
+    echo "Arithmetic Progression Series: ";
+    echo implode(', ', $apSeries);
+}
+
+// Input from the user
+$startTerm = readline("Enter the first term (a): ");
+$commonDifference = readline("Enter the common difference (d): ");
+$numberOfTerms = readline("Enter the number of terms (n): ");
+
+// Convert input to integers
+$startTerm = intval($startTerm);
+$commonDifference = intval($commonDifference);
+$numberOfTerms = intval($numberOfTerms);
+
+// Call the function to print the AP series
+printAP($startTerm, $commonDifference, $numberOfTerms);
+?&gt;
+</code></pre>
+
+<h2 id="how-the-program-works">How the Program Works</h2>
+
+<ol>
+<li>We define a function called <code>printAP($a, $d, $n)</code> that takes three arguments: the first term <code>a</code>, the common difference <code>d</code>, and the number of terms <code>n</code>.</li>
+<li>Inside the function, we calculate the first 'n' terms of the arithmetic progression series using the <code>range()</code> function. The <code>range()</code> function generates a range of values from the first term to the last term with the given step (common difference) between them.</li>
+<li>We then print the generated arithmetic progression series using the <code>echo</code> statement and <code>implode()</code> function to convert the array into a comma-separated string.</li>
+<li>Next, we take user input for the first term, common difference, and the number of terms using <code>readline()</code>. We convert the input to integers using <code>intval()</code>.</li>
+<li>Finally, we call the <code>printAP()</code> function with the user-provided values to generate and print the arithmetic progression series.</li>
+</ol>
+
+<h2 id="running-the-program">Running the Program</h2>
+
+<p>To run this program, save it to a PHP file (e.g., <code>ap_series.php</code>) and execute it using the PHP command-line interface:</p>
+
+<pre><code>php ap_series.php
+</code></pre>
+
+<p>The program will prompt you to enter the first term, common difference, and the number of terms in the arithmetic progression series. After entering the values, the program will display the generated series.</p>
+
+<h2 id="example-output">Example Output</h2>
+
+<p>Here's an example of running the program:</p>
+
+<pre><code>Enter the first term (a): 2
+Enter the common difference (d): 3
+Enter the number of terms (n): 5
+Arithmetic Progression Series: 2, 5, 8, 11, 14
+</code></pre>
+
+<p>In this example, we entered the first term <code>2</code>, the common difference <code>3</code>, and the number of terms <code>5</code>, resulting in the arithmetic progression series <code>2, 5, 8, 11, 14</code>.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

@@ -45,7 +45,10 @@ const navbar = createEl('div', {
     class: 'navbar',
 });
 
-const logo = createEl('span', { class: 'logo' });
+const logo = createEl('a', { 
+    class: 'logo',
+    href:'https://www.devbabu.com'
+});
 logo.innerText = 'DevBabu.Com';
 
 const themeBtn = createEl('button', { class: 'theme-switch' });

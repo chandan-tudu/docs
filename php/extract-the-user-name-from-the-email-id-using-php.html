@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Extract the User Name from the Email ID Using PHP</title>
+<meta name="description" content="In this article, we'll explore how to extract the user name from an email ID using PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Extract the User Name from the Email ID Using PHP</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Extract the User Name from the Email ID Using PHP" loading="lazy" width="900" height="500"></div>
+<p>In many web applications, it's common to store and display user information, including the user's name and email address.</p>
+
+<p>Often, you need to <strong>extract the user name from the email ID</strong> to personalize the user's experience.</p>
+
+<p>In this article, we'll explore how to extract the user name from an email ID using PHP.</p>
+
+<h2 id="extracting-the-user-name">Extracting the User Name</h2>
+
+<p>To extract the user name from an email ID in PHP, you can use a combination of string manipulation functions.</p>
+
+<p>The user name is typically the part of the email address before the "@" symbol.</p>
+
+<p>Here's a simple PHP function to extract the user name from an email ID:</p>
+
+<pre class="language-php"><code>function extractUserNameFromEmail($email) {
+    // Split the email address by "@" symbol
+    $parts = explode('@', $email);
+
+    // The user name is the first part of the split
+    $userName = $parts[0];
+
+    return $userName;
+}
+
+// Example usage
+$email = "user@example.com";
+$userName = extractUserNameFromEmail($email);
+
+echo "User Name: " . $userName;
+</code></pre>
+
+<p>In this example, the <code>extractUserNameFromEmail</code> function -</p>
+
+<ol>
+<li>takes an email address as input</li>
+<li>splits it using <code>explode('@', $email)</code>,</li>
+<li>and returns the first part of the resulting array, which is the user name.</li>
+</ol>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>User Name: user
+</code></pre>
+
+<p>The program correctly extracts the user name "user" from the email address "user@example.com."</p>
+
+<hr />
+
+<h2 id="additional-considerations">Additional Considerations</h2>
+
+<p>Keep in mind that this is a simple example that assumes the email address is well-formed and contains only one "@" symbol.</p>
+
+<p>In real-world scenarios, email addresses can vary in format and structure. You may need to implement more robust parsing and validation if you expect diverse email formats.</p>
+
+<p>Additionally, some email addresses may contain special characters or international characters. Handling such cases may require additional considerations.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

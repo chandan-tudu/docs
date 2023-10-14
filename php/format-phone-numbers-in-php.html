@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Format Phone Numbers in PHP?</title>
+<meta name="description" content="In this article, we'll explore how to format phone numbers in PHP using various techniques." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Format Phone Numbers in PHP?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Format Phone Numbers in PHP" loading="lazy" width="900" height="500"></div>
+<p>Formatting phone numbers in PHP is a common task, especially when working on web applications that display contact information.</p>
+
+<p>Properly formatted phone numbers are not only more readable but also ensure a consistent and professional appearance.</p>
+
+<p>In this article, we'll explore how to <strong>format phone numbers in PHP</strong> using various techniques.</p>
+
+<h2 id="method-1-using-regular-expressions">Method 1: Using Regular Expressions</h2>
+
+<p>One way to format phone numbers is to use regular expressions to match and reformat the numbers.</p>
+
+<p>Regular expressions allow you to define patterns that match specific formats within strings.</p>
+
+<p>Here's an example of how to format a phone number with a regular expression:</p>
+
+<pre class="language-php"><code>function formatPhoneNumber($phoneNumber) {
+    // Remove all non-digit characters
+    $phoneNumber = preg_replace('/\D/', '', $phoneNumber);
+
+    // Add the desired formatting
+    if (strlen($phoneNumber) == 10) {
+        return preg_replace('/(\d{3})(\d{3})(\d{4})/', '($1) $2-$3', $phoneNumber);
+    } elseif (strlen($phoneNumber) == 11) {
+        return preg_replace('/(\d)(\d{3})(\d{3})(\d{4})/', '$1 ($2) $3-$4', $phoneNumber);
+    } else {
+        return $phoneNumber; // Cannot format, return as is
+    }
+}
+
+$phoneNumber = "1234567890";
+$formattedNumber = formatPhoneNumber($phoneNumber);
+echo "Formatted Phone Number: " . $formattedNumber;
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Formatted Phone Number: (123) 456-7890
+</code></pre>
+
+<p>In this example, the <code>formatPhoneNumber()</code> function uses regular expressions to remove non-digit characters and format the phone number as "(123) 456-7890." It can handle both 10-digit and 11-digit numbers.</p>
+
+<hr />
+
+<h2 id="method-2-using-substr-and-string-concatenation">Method 2: Using substr() and String Concatenation</h2>
+
+<p>Another approach to format phone numbers is by using string manipulation functions like <code>substr()</code> and concatenation.</p>
+
+<p>Here's an example of how to format a phone number using <code>substr()</code>:</p>
+
+<pre class="language-php"><code>function formatPhoneNumber($phoneNumber) {
+    $phoneNumber = preg_replace('/\D/', '', $phoneNumber);
+
+    if (strlen($phoneNumber) == 10) {
+        return "(" . substr($phoneNumber, 0, 3) . ") " . substr($phoneNumber, 3, 3) . "-" . substr($phoneNumber, 6, 4);
+    } elseif (strlen($phoneNumber) == 11) {
+        return $phoneNumber[0] . " (" . substr($phoneNumber, 1, 3) . ") " . substr($phoneNumber, 4, 3) . "-" . substr($phoneNumber, 7, 4);
+    } else {
+        return $phoneNumber; // Cannot format, return as is
+    }
+}
+
+$phoneNumber = "123-456-7890";
+$formattedNumber = formatPhoneNumber($phoneNumber);
+echo "Formatted Phone Number: " . $formattedNumber;
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Formatted Phone Number: (123) 456-7890
+</code></pre>
+
+<p>In this example, the <code>formatPhoneNumber()</code> function uses <code>substr()</code> to extract and concatenate the desired parts of the phone number to create the formatting.</p>
+
+<hr />
+
+<h2 id="method-3-using-number-format-">Method 3: Using number_format()</h2>
+
+<p>You can also use the <code>number_format()</code> function to format phone numbers. While this function is primarily designed for formatting numbers, it can be adapted for phone numbers.</p>
+
+<p>Here's an example of how to format a phone number using <code>number_format()</code>:</p>
+
+<pre class="language-php"><code>function formatPhoneNumber($phoneNumber) {
+    $phoneNumber = preg_replace('/\D/', '', $phoneNumber);
+
+    if (strlen($phoneNumber) == 10) {
+        $formattedNumber = number_format($phoneNumber, 0, '', ''); // Format as plain number
+        return "(".substr($formattedNumber, 0, 3).") ".substr($formattedNumber, 3, 3)."-".substr($formattedNumber, 6, 4);
+    } elseif (strlen($phoneNumber) == 11) {
+        $formattedNumber = number_format($phoneNumber, 0, '', ''); // Format as plain number
+        return $formattedNumber[0]." (".substr($formattedNumber, 1, 3).") ".substr($formattedNumber, 4, 3)."-".substr($formattedNumber, 7, 4);
+    } else {
+        return $phoneNumber; // Cannot format, return as is
+    }
+}
+
+$phoneNumber = "1-234-567-8901";
+$formattedNumber = formatPhoneNumber($phoneNumber);
+echo "Formatted Phone Number: " . $formattedNumber;
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Formatted Phone Number: (234) 567-8901
+</code></pre>
+
+<p>In this example, the <code>formatPhoneNumber()</code> function first removes non-digit characters, then uses <code>number_format()</code> to format the number, and finally applies the desired formatting.</p>
+
+<hr />
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Formatting phone numbers in PHP is essential for maintaining a consistent and professional appearance in your applications. The choice of method for formatting depends on your specific needs and preferences.</p>
+
+<p>Regular expressions provide powerful pattern matching capabilities, while string manipulation functions and <code>number_format()</code> offer alternative approaches to formatting phone numbers.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

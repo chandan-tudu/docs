@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Sort an Array of Objects by Object Fields in PHP?</title>
+<meta name="description" content="In this article, we'll explore how to sort an array of objects by object fields in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
+<article class="article-container">
+<div class="box"><h1>How to Sort an Array of Objects by Object Fields in PHP?</h1></div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Sort an Array of Objects by Object Fields in PHP" loading="lazy" width="900" height="500"></div>
+<p>In PHP, you often work with arrays of objects that need to be <strong>sorted based on the values of their object properties</strong>.</p>
+
+<p>Sorting such arrays is a common task in web development when you want to display data in a specific order or perform other data manipulation tasks.</p>
+
+<p>In this article, we'll explore how to <strong>sort an array of objects by object fields in PHP</strong>.</p>
+
+<h2 id="method-1-using-usort-to-sort-an-array-of-objects-by-object-fields">Method 1: Using "usort()" to Sort an Array of Objects by Object Fields</h2>
+
+<p>The <code>usort()</code> function in PHP allows you to sort an array using a custom comparison function.</p>
+
+<p>You can define a comparison function that compares the desired object property or field of two objects and sorts the array accordingly.</p>
+
+<p>Here's an example of how to use <code>usort()</code> to sort an array of objects by an object field:</p>
+
+<pre class="language-php"><code>class Person {
+    public $name;
+    public $age;
+
+    public function __construct($name, $age) {
+        $this-&gt;name = $name;
+        $this-&gt;age = $age;
+    }
+}
+
+$people = [
+    new Person("Alice", 30),
+    new Person("Bob", 25),
+    new Person("Charlie", 35),
+    new Person("David", 22)
+];
+
+// Define a custom comparison function
+function compareByAge($a, $b) {
+    return $a-&gt;age - $b-&gt;age;
+}
+
+// Sort the array of objects by age
+usort($people, "compareByAge");
+
+// Print the sorted array
+foreach ($people as $person) {
+    echo "Name: " . $person-&gt;name . ", Age: " . $person-&gt;age . "\n";
+}
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Name: David, Age: 22
+Name: Bob, Age: 25
+Name: Alice, Age: 30
+Name: Charlie, Age: 35
+</code></pre>
+
+<p>In this example, we have an array of <code>Person</code> objects, and we want to sort them by the <code>age</code> property.</p>
+
+<ol>
+<li>We define a custom comparison function <code>compareByAge($a, $b)</code> that compares the <code>age</code> property of two objects.</li>
+<li>We then use <code>usort()</code> to sort the array of objects based on this custom comparison function.</li>
+</ol>
+
+<hr />
+
+<h2 id="method-2-using-anonymous-functions-php-5-3-">Method 2: Using Anonymous Functions (PHP 5.3+)</h2>
+
+<p>In PHP 5.3 and later versions, you can use anonymous functions (also known as closures) to define custom comparison functions directly within the <code>usort()</code> call.</p>
+
+<p>This approach is convenient when you need to sort an array of objects by a specific property without defining a separate function.</p>
+
+<h3 id="here-s-an-example-using-an-anonymous-function-">Here's an example using an anonymous function:</h3>
+
+<pre class="language-php"><code>class Person {
+    public $name;
+    public $age;
+
+    public function __construct($name, $age) {
+        $this-&gt;name = $name;
+        $this-&gt;age = $age;
+    }
+}
+
+$people = [
+    new Person("Alice", 30),
+    new Person("Bob", 25),
+    new Person("Charlie", 35),
+    new Person("David", 22)
+];
+
+// Sort the array of objects by age using an anonymous function
+usort($people, function($a, $b) {
+    return $a-&gt;age - $b-&gt;age;
+});
+
+// Print the sorted array
+foreach ($people as $person) {
+    echo "Name: " . $person-&gt;name . ", Age: " . $person-&gt;age . "\n";
+}
+</code></pre>
+
+<p><strong>Output:</strong> (Same as Method 1)</p>
+
+<p>In this example, we use an anonymous function as the comparison function directly within the <code>usort()</code> call to sort the array of objects by the <code>age</code> property.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Sorting an array of objects by object fields in PHP is a common operation in web development. You can use the <code>usort()</code> function with a custom comparison function or an anonymous function to achieve this.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>
