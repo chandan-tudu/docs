@@ -30,7 +30,7 @@
 
 <p>Here's an example:</p>
 
-<pre class="language-php"><code>$inputString = "The price of the product is $99.99, and the discount is 20%.";
+<pre class="language-php"><code>$inputString = 'The price of the product is $99.99, and the discount is 20%.';
 preg_match_all('/\d+\.\d+|\d+/', $inputString, $matches);
 
 print_r($matches[0]);
@@ -53,59 +53,71 @@ print_r($matches[0]);
 
 <p>Here's an example:</p>
 
-<pre class="language-php"><code>$inputString = "The price of the product is $99.99, and the discount is 20%.";
-$numericString = preg_replace('/[^0-9.]+/', '', $inputString);
+<pre class="language-php"><code>$inputString = 'The price of the product is $99.99, and the discount is 20%.';
 
-echo $numericString;
+$integer = preg_replace('/[^0-9]+/', '', $inputString);
+$double = preg_replace('/[^0-9.]+/', '', $inputString);
+
+echo $integer . PHP_EOL;
+echo $double . PHP_EOL;
 </code></pre>
 
 <p>Output:</p>
 
-<pre><code>999920
-</code></pre>
+<pre><code>999920  
+99.9920.</code></pre>
 
 <p>In this example, the <code>preg_replace('/[^0-9.]+/', '', $inputString)</code> statement replaces all non-numeric characters (including decimal points) with an empty string, effectively leaving only the numbers.</p>
 
 <h2>3. Using <code>filter_var()</code> to Extract Numbers from URLs</h2>
 
-<p>If you need to extract numbers from a URL or a specific portion of a string, you can use the <code>filter_var()</code> function with the <code>FILTER_SANITIZE_NUMBER_FLOAT</code> filter.</p>
+<p>PHP's <code>filter_var</code> function can be utilized to filter and extract numeric values from a string.</p>
+<p>This approach is particularly useful if you're dealing with numbers that follow a specific format. For instance, you can extract numbers following the format of a URL:</p>
 
 <p>Here's an example:</p>
 
-<pre class="language-php"><code>$url = "https://example.com/product/12345";
-$productID = filter_var($url, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+<pre class="language-php"><code>$string = "Visit https://example.com/2023 for more information.";
+$filtered = filter_var($string, FILTER_SANITIZE_NUMBER_INT);
 
-echo $productID;
+echo $filtered;    
 </code></pre>
 
 <p>Output:</p>
 
-<pre><code>12345
-</code></pre>
+<pre><code>2023</code></pre>
 
-<p>In this example, <code>FILTER_SANITIZE_NUMBER_FLOAT</code> is used with the <code>FILTER_FLAG_ALLOW_FRACTION</code> flag to extract numbers (including decimals) from the URL.</p>
+<p>In this example, <code>FILTER_SANITIZE_NUMBER_INT</code> is used to <strong>filter out integer numbers</strong> from the string. The result will be "2023."</p>
 
-<h2>4. Using a Custom Function with <code>preg_replace_callback()</code></h2>
+<h2>4. Using a Custom Functions</h2>
 
-<p>You can also create a custom callback function and use <code>preg_replace_callback()</code> to extract numbers with more specific conditions or formatting requirements.</p>
+<p>You can also create custom functions to extract numbers from a string. This approach is particularly useful if you have specific requirements for extracting numeric values.</p>
 
-<p>Here's an example:</p>
+<h4>Here's an example function:</h4>
 
-<pre class="language-php"><code>$inputString = "The phone numbers are +1 (123) 456-7890 and +44 20 1234 5678.";
-function extractNumbers($matches) {
-    return str_replace(['(', ')', ' '], '', $matches[0]);
+<pre class="language-php"><code>function extractNumbers($string) {
+    $matches = [];
+    preg_match_all("/\d+(\.\d+)?/", $string, $matches);
+    return $matches[0];
 }
-$numericString = preg_replace_callback('/\+\d+\s?\(?\d+\)?\s?\d+\s?\d+/', 'extractNumbers', $inputString);
 
-echo $numericString;
-</code></pre>
+$string = "The product IDs are P123, P456, and P789. Their prices are $12.99, $24.95, and $30.00.";
+$numbers = extractNumbers($string);
+
+print_r($numbers);</code></pre>
 
 <p>Output:</p>
 
-<pre><code>+11234567890+442012345678
-</code></pre>
+<pre><code>Array
+(
+    [0] => 123
+    [1] => 456
+    [2] => 789
+    [3] => 12.99
+    [4] => 24.95
+    [5] => 30.00
+)</code></pre>
 
-<p>In this example, we defined the <code>extractNumbers()</code> function to remove parentheses and spaces from the matched phone number patterns. We then used <code>preg_replace_callback()</code> to extract the formatted phone numbers from the input string.</p>
+<p>In this example, the <code>extractNumbers()</code> function encapsulates the regular expression matching process. It returns an array of numeric values found in the input string.</p>
 
 <h2>Conclusion</h2>
 
