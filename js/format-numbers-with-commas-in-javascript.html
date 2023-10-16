@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Format Numbers with Commas in JavaScript</title>
+<meta name="description" content="In this article, we'll explore various methods for formatting numbers with commas in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Format Numbers with Commas in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Format Numbers with Commas in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Formatting <strong>numbers with commas</strong> is a common task in JavaScript when you want to make large numbers more readable, especially when displaying them to users. For example, you might want to format the number 1000000 as "1,000,000".</p>
+
+<p>In this article, we'll explore various methods for <strong>formatting numbers with commas in JavaScript</strong>.</p>
+
+<h2 id="1-using-tolocalestring-method">1. Using toLocaleString() method</h2>
+
+<p>JavaScript provides the <code>toLocaleString</code> method for formatting numbers based on the user's locale.</p>
+
+<p>It automatically adds commas as thousands separators. Here's how to use it:</p>
+
+<pre class="language-javascript"><code>const number = 1000000;
+const formattedNumber = number.toLocaleString();
+
+console.log(formattedNumber); // Output: "1,000,000"
+</code></pre>
+
+<p>The <code>toLocaleString</code> method is an excellent choice when you want to format numbers according to the user's locale.</p>
+
+<p>It can handle different decimal separators and thousands separators based on the user's settings.</p>
+
+<hr />
+
+<h2 id="2-using-custom-functions">2. Using Custom Functions</h2>
+
+<p>If you want more control over the formatting or need to format numbers in a specific way, you can create custom functions. Here's an example:</p>
+
+<pre class="language-javascript"><code>function formatNumberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+const number = 1000000;
+const formattedNumber = formatNumberWithCommas(number);
+
+console.log(formattedNumber); // Output: "1,000,000"
+</code></pre>
+
+<p>In this example, the <code>formatNumberWithCommas</code> function converts the number to a string and uses a regular expression to insert commas as thousands separators.</p>
+
+<hr />
+
+<h2 id="3-using-the-intl-numberformat-object">3. Using the Intl.NumberFormat Object</h2>
+
+<p>The <code>Intl.NumberFormat</code> object is a powerful way to format numbers with fine-grained control. You can specify the locale, style, and other formatting options. Here's an example:</p>
+
+<pre class="language-javascript"><code>const number = 1000000;
+const formatter = new Intl.NumberFormat('en-US');
+const formattedNumber = formatter.format(number);
+
+console.log(formattedNumber); // Output: "1,000,000"
+</code></pre>
+
+<p>The <code>Intl.NumberFormat</code> object allows you to format numbers based on specific locales and provides various options for customization.</p>
+
+<hr />
+
+<h2 id="4-handling-decimals-numbers">4. Handling Decimals Numbers</h2>
+
+<p>If you need to format numbers with decimals and commas as thousands separators, you can combine the methods mentioned above. Here's an example:</p>
+
+<pre class="language-javascript"><code>function formatNumberWithCommasAndDecimals(number) {
+    const parts = number.toFixed(2).split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parts.join('.');
+}
+
+const number = 1234567.89;
+const formattedNumber = formatNumberWithCommasAndDecimals(number);
+
+console.log(formattedNumber); // Output: "1,234,567.89"
+</code></pre>
+
+<p>In this example, we first format the integer part with commas using the custom <code>formatNumberWithCommas</code> function and then add the decimal part back to the formatted integer part.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Formatting numbers with commas in JavaScript is a straightforward task, and you have several options to choose from. You can use the <code>toLocaleString</code> method for simplicity, create custom functions for specific formatting needs, or utilize the <code>Intl.NumberFormat</code> object for fine-grained control. Depending on your requirements, you can format numbers with or without decimals and thousands separators, making your data more user-friendly and accessible.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

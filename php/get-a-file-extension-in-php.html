@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Get a File Extension in PHP</title>
+<meta name="description" content="In this article, we'll explore several methods to get the file extension in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Get a File Extension in PHP</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Get a File Extension in PHP" loading="lazy" width="900" height="500"></div>
+<p>When working with files in PHP, it's often necessary to <strong>retrieve the file extension</strong>.</p>
+
+<p>File extensions are essential for identifying the type of data contained in a file and for determining how to process or display it.</p>
+
+<p>In this article, we'll explore several methods to get the file extension in PHP.</p>
+
+<h2 id="1-using-the-pathinfo-function">1. Using the "pathinfo" Function</h2>
+
+<p>PHP provides a built-in function called <code>pathinfo</code> that allows you to easily extract information from a file path, including the file extension.</p>
+
+<p>Here's how you can use <code>pathinfo</code> to get the file extension:</p>
+
+<pre class="language-php"><code>$filePath = 'example.txt';
+$pathInfo = pathinfo($filePath);
+$extension = $pathInfo['extension'];
+
+echo $extension; // Output: "txt"
+</code></pre>
+
+<p>In this example:</p>
+
+<ol>
+<li>We have a variable, <code>$filePath</code>, containing the path to the file, including the filename and its extension.</li>
+<li>We use the <code>pathinfo</code> function to extract information about the file, including the file extension.</li>
+<li>The <code>pathinfo</code> function returns an associative array containing various information, and we access the <code>extension</code> element to get the file extension.</li>
+</ol>
+
+<p>This method is simple and effective, making it a popular choice for retrieving file extensions.</p>
+
+<hr />
+
+<h2 id="2-using-strrchr-and-substr-">2. Using "strrchr" and "substr"</h2>
+
+<p>You can also use the combination of the <code>strrchr</code> and <code>substr</code> functions to get the file extension from a file path. Here's an example:</p>
+
+<pre class="language-php"><code>$filePath = 'example.txt';
+$extension = substr(strrchr($filePath, '.'), 1);
+
+echo $extension; // Output: "txt"
+</code></pre>
+
+<p>In this example:</p>
+
+<ol>
+<li>We have the variable <code>$filePath</code>, which contains the file path.</li>
+<li>We use the <code>strrchr</code> function to find the last occurrence of a period (.), which is commonly used to separate the filename from the file extension. The result will be the file extension and everything after the period.</li>
+<li>Next, we use the <code>substr</code> function to remove the period from the result by extracting the substring starting from the second character (index 1) to the end.</li>
+</ol>
+
+<p>This method is a bit more concise and can be useful when you need to quickly extract the file extension without additional information.</p>
+
+<hr />
+
+<h2 id="3-using-regular-expressions">3. Using Regular Expressions</h2>
+
+<p>If you're working with more complex file paths and want to ensure you're getting the extension, you can use regular expressions.</p>
+
+<p><strong>Here's an example:</strong></p>
+
+<pre class="language-php"><code>$filePath = 'folder/subfolder/example.txt';
+$pattern = '/\.([a-z0-9]+)$/i';
+
+preg_match($pattern, $filePath, $matches);
+$extension = $matches[1];
+
+echo $extension; // Output: "txt"
+</code></pre>
+
+<p>In this example:</p>
+
+<ol>
+<li>We have a variable, <code>$filePath</code>, which contains the file path.</li>
+<li>We define a regular expression pattern that matches a period (.) followed by one or more alphanumeric characters at the end of the string. The <code>$</code> symbol denotes the end of the string, ensuring we get the extension at the end of the path.</li>
+<li>We use <code>preg_match</code> to search for the pattern in the file path and store the matches in the <code>$matches</code> array.</li>
+<li>The extension is retrieved from the first capturing group (enclosed in parentheses) in the regular expression, which is indexed as <code>$matches[1]</code>.</li>
+</ol>
+
+<p>This method is flexible and can be adapted to various file path formats.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Retrieving the file extension is a common operation when working with files in PHP. Whether you use the <code>pathinfo</code> function, a combination of <code>strrchr</code> and <code>substr</code>, or regular expressions, you can easily extract the file extension from a file path.</p>
+
+<p>The method you choose depends on your specific requirements and the complexity of the file paths you're working with.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

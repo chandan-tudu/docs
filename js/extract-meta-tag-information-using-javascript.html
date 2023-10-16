@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Extract Meta Tag Information Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to extract meta tag information using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Extract Meta Tag Information Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Extract Meta Tag Information Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Meta tags in HTML play a crucial role in providing additional information about a web page to search engines, social media platforms, and browsers.</p>
+
+<p>These tags can contain data like page titles, descriptions, keywords, and more. In some cases, you may want to extract and manipulate these meta tag values using JavaScript.</p>
+
+<p>In this article, we'll explore how to <strong>extract meta tag information using JavaScript</strong>.</p>
+
+<h2 id="accessing-meta-tags-in-html">Accessing Meta Tags in HTML</h2>
+
+<p>Before you can extract meta tag information, you need to access the meta tags in the HTML document. Meta tags are typically located within the <code>&lt;head&gt;</code> section of an HTML document.</p>
+
+<p>Here's a basic example of what HTML meta tags might look like:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta
+            name="description"
+            content="This is a sample description for a web page."
+        /&gt;
+        &lt;meta name="keywords" content="sample, meta, tags, HTML, JavaScript" /&gt;
+        &lt;meta name="author" content="John Doe" /&gt;
+        &lt;title&gt;Sample Web Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- Page content goes here --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example, we have three meta tags (<code>description</code>, <code>keywords</code>, and <code>author</code>) and a title tag.</p>
+
+<hr />
+
+<h2 id="extracting-meta-tag-information">Extracting Meta Tag Information</h2>
+
+<p>You can extract the content of meta tags using JavaScript. Here's a basic script to extract the <code>description</code> meta tag's content:</p>
+
+<pre class="language-javascript"><code>// Get all meta tags in the HTML document
+const metaTags = document.getElementsByTagName('meta');
+
+// Define the name of the meta tag you want to extract
+const targetMetaTagName = 'description';
+
+let descriptionContent = '';
+
+// Loop through the meta tags and find the target meta tag by name
+for (let i = 0; i &lt; metaTags.length; i++) {
+    if (metaTags[i].getAttribute('name') === targetMetaTagName) {
+        descriptionContent = metaTags[i].getAttribute('content');
+        break; // Stop looping once the target meta tag is found
+    }
+}
+
+console.log(descriptionContent);
+</code></pre>
+
+<p>In this script:</p>
+
+<ol>
+<li>We start by getting all the <code>&lt;meta&gt;</code> tags in the HTML document using <code>document.getElementsByTagName('meta')</code>.</li>
+<li>We specify the name of the target meta tag we want to extract (<code>description</code> in this case).</li>
+<li>We iterate through the meta tags to find the one with the matching <code>name</code> attribute.</li>
+<li>Once the target meta tag is found, we extract its <code>content</code> attribute and store it in the <code>descriptionContent</code> variable.</li>
+<li>Finally, we log the <code>descriptionContent</code> to the console.</li>
+</ol>
+
+<p>You can use a similar approach to extract other meta tags or extend the script to handle multiple meta tags.</p>
+
+<hr />
+
+<h2 id="handling-meta-tags-with-different-attributes">Handling Meta Tags with Different Attributes</h2>
+
+<p>Not all meta tags have the <code>name</code> attribute. Some may use <code>property</code> or <code>http-equiv</code> attributes.</p>
+
+<p>To extract those tags, you can adjust the script to search for the desired attribute:</p>
+
+<pre class="language-javascript"><code>// Get all meta tags in the HTML document
+const metaTags = document.getElementsByTagName('meta');
+
+// Define the attribute name and value you want to extract
+const targetAttributeName = 'name';
+const targetAttributeValue = 'description';
+
+let descriptionContent = '';
+
+// Loop through the meta tags and find the target meta tag by attribute
+for (let i = 0; i &lt; metaTags.length; i++) {
+    if (
+        metaTags[i].getAttribute(targetAttributeName) === targetAttributeValue
+    ) {
+        descriptionContent = metaTags[i].getAttribute('content');
+        break; // Stop looping once the target meta tag is found
+    }
+}
+
+console.log(descriptionContent);
+</code></pre>
+
+<p>This script allows you to search for meta tags with different attributes, making it more versatile.</p>
+
+<hr />
+
+<p>In summary, extracting meta tag information using JavaScript involves accessing the HTML document's meta tags and searching for the target meta tag by name or attribute. Once found, you can retrieve the content and use it for various purposes, such as displaying meta tag information or optimizing web page SEO.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

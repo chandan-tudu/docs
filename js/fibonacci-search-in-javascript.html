@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fibonacci Search in JavaScript: Efficient Searching in Sorted Arrays</title>
+<meta name="description" content="In this article, we will explore the Fibonacci Search algorithm and implement it in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JS</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Fibonacci Search in JavaScript: Efficient Searching in Sorted Arrays</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Fibonacci Search in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Fibonacci Search is an algorithm used for searching elements in a sorted array. It is an improved version of binary search that divides the array into two parts using Fibonacci numbers, leading to more efficient searches.</p>
+
+<p>In this article, we will explore the <strong>Fibonacci Search algorithm and implement it in JavaScript</strong>.</p>
+
+<h2 id="understanding-fibonacci-search">Understanding Fibonacci Search</h2>
+
+<p>Fibonacci Search is based on the Fibonacci sequence, where each number is the sum of the two preceding ones. The algorithm works as follows:</p>
+
+<ol>
+<li><p><strong>Calculate Fibonacci Numbers</strong>: Calculate a series of Fibonacci numbers that are greater than or equal to the length of the array. You need to keep track of the two largest Fibonacci numbers (let's call them Fm and Fm-1).</p></li>
+<li><p><strong>Set the Offset</strong>: Initialize an offset variable to 0.</p></li>
+<li><p><strong>Search</strong>: Compare the target element with the middle element of the current range.</p></li>
+<li><p><strong>If Found</strong>: If the target element is found, return the index.</p></li>
+<li><p><strong>If Not Found</strong>: If the target element is smaller than the middle element, reduce the range to the left half and adjust the Fibonacci numbers and offset accordingly. If it's larger, reduce the range to the right half.</p></li>
+<li><p><strong>Repeat</strong>: Repeat steps 3-5 until the element is found or the range becomes empty.</p></li>
+</ol>
+
+<h3 id="let-s-implement-fibonacci-search-in-javascript-">Let's implement Fibonacci Search in JavaScript:</h3>
+
+<pre class="language-javascript"><code>function fibonacciSearch(arr, target) {
+    const length = arr.length;
+    let fibMMinus2 = 0; // (m-2)'th Fibonacci number
+    let fibMMinus1 = 1; // (m-1)'th Fibonacci number
+    let fibM = fibMMinus1 + fibMMinus2; // m'th Fibonacci number
+
+    // Find the smallest Fibonacci number greater than or equal to the array length
+    while (fibM &lt; length) {
+        fibMMinus2 = fibMMinus1;
+        fibMMinus1 = fibM;
+        fibM = fibMMinus1 + fibMMinus2;
+    }
+
+    let offset = -1; // Initialize the offset
+
+    while (fibM &gt; 1) {
+        // Calculate the index
+        const i = Math.min(offset + fibMMinus2, length - 1);
+
+        if (arr[i] &lt; target) {
+            // Move the Fibonacci numbers and offset
+            fibM = fibMMinus1;
+            fibMMinus1 = fibMMinus2;
+            fibMMinus2 = fibM - fibMMinus1;
+            offset = i;
+        } else if (arr[i] &gt; target) {
+            // Move the Fibonacci numbers and offset
+            fibM = fibMMinus2;
+            fibMMinus1 = fibMMinus1 - fibMMinus2;
+            fibMMinus2 = fibM - fibMMinus1;
+        } else {
+            return i; // Element found, return its index
+        }
+    }
+
+    // If the element is not found, return -1
+    return arr[offset + 1] === target ? offset + 1 : -1;
+}
+
+// Example usage
+const sortedArray = [2, 4, 8, 16, 32, 64, 128, 256];
+const targetElement = 32;
+const result = fibonacciSearch(sortedArray, targetElement);
+
+if (result !== -1) {
+    console.log(`Element found at index ${result}`);
+} else {
+    console.log('Element not found in the array');
+}
+</code></pre>
+
+<pre><code>Element found at index 4</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We first calculate the Fibonacci numbers that are greater than or equal to the length of the array.</li>
+<li>We use the Fibonacci numbers to determine the search range and adjust them as we compare the target element with the middle element in the range.</li>
+<li>If the target element is found, we return its index. If not, we return -1 to indicate that the element is not in the array.</li>
+</ul>
+
+<hr />
+
+<h2 id="efficiency-and-use-cases">Efficiency and Use Cases</h2>
+
+<p>Fibonacci Search is an efficient searching algorithm, especially when dealing with large datasets and the location of the target element is unknown.</p>
+
+<p>It provides a more balanced search range than binary search and, on average, makes fewer comparisons.</p>
+
+<p>However, it's important to note that the search range adjustment using Fibonacci numbers can be computationally expensive, so its efficiency depends on the specific use case.</p>
+
+<hr />
+
+<p>In conclusion, Fibonacci Search is a valuable algorithm for searching elements in sorted arrays, especially when the array's size is unknown.</p>
+
+<p>By leveraging the Fibonacci sequence, it offers an effective approach for finding elements efficiently.</p>
+
+<p>Understanding and using this algorithm can be beneficial in scenarios where efficient search operations are critical.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

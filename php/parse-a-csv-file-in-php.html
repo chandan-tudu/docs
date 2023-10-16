@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Parse a CSV File in PHP?</title>
+<meta name="description" content="In this article, we'll explore how to parse a CSV file in PHP using different methods." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Parse a CSV File in PHP?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Parse a CSV File in PHP" loading="lazy" width="900" height="500"></div>
+<p>Comma-Separated Values (CSV) files are a common way to store and exchange tabular data.</p>
+
+<p>In PHP, you can easily parse CSV files to work with their contents, whether you need to read data from a CSV file, process it, or import it into a database.</p>
+
+<p>In this article, we'll explore how to <strong>parse a CSV file in PHP using different methods</strong>.</p>
+
+<h2 id="1-using-fgetcsv-function">1. Using "fgetcsv" function</h2>
+
+<p>The <code>fgetcsv</code> function is a straightforward way to read and parse a CSV file line by line. Here's a simple example:</p>
+
+<pre class="language-php"><code>$file = fopen('example.csv', 'r'); // Open the CSV file for reading
+
+if ($file !== false) {
+    while (($row = fgetcsv($file)) !== false) {
+        // $row is an array containing the CSV columns
+        print_r($row);
+    }
+
+    fclose($file); // Close the CSV file
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ol>
+<li>We use <code>fopen</code> to open the CSV file for reading, specifying the file's name and the read mode ('r').</li>
+<li>Inside the <code>while</code> loop, we use <code>fgetcsv</code> to read a line from the CSV file. It returns an array where each element corresponds to a column in the CSV.</li>
+<li>We can then process the data in the <code>$row</code> array as needed.</li>
+<li>Finally, we close the file using <code>fclose</code>.</li>
+</ol>
+
+<hr />
+
+<h2 id="2-using-str-getcsv-with-file-contents">2. Using "str_getcsv" with File Contents</h2>
+
+<p>If you have the entire CSV file contents as a string, you can use the <code>str_getcsv</code> function to parse it. Here's an example:</p>
+
+<pre class="language-php"><code>$csvData = file_get_contents('example.csv'); // Read the CSV file into a string
+$rows = str_getcsv($csvData, "\n"); // Split the CSV into rows
+
+foreach ($rows as $row) {
+    $columns = str_getcsv($row); // Split the row into columns
+    print_r($columns);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ol>
+<li>We use <code>file_get_contents</code> to read the CSV file and store its contents in the <code>$csvData</code> variable.</li>
+<li>We split the CSV into rows using <code>str_getcsv</code> by specifying "\n" (newline) as the delimiter. This gives us an array of rows.</li>
+<li>We then iterate through the rows and split each row into columns using <code>str_getcsv</code> without a delimiter. This allows it to automatically detect and split columns using commas.</li>
+<li>Finally, we can process the data in the <code>$columns</code> array.</li>
+</ol>
+
+<hr />
+
+<h2 id="3-using-fgetcsv-with-stream-context">3. Using <code>fgetcsv</code> with Stream Context</h2>
+
+<p>If you need to fetch a CSV file from a URL or other external source, you can use <code>fgetcsv</code> with a stream context to open and parse it. Here's an example:</p>
+
+<pre class="language-php"><code>$csvURL = 'https://example.com/data.csv'; // Replace with the CSV file's URL
+$context = stream_context_create(['http' =&gt; ['header' =&gt; 'User-Agent: PHP']]);
+
+$file = fopen($csvURL, 'r', false, $context);
+
+if ($file !== false) {
+    while (($row = fgetcsv($file)) !== false) {
+        print_r($row);
+    }
+
+    fclose($file);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ol>
+<li>We specify the CSV file's URL in the <code>$csvURL</code> variable.</li>
+<li>We create a stream context using <code>stream_context_create</code>. In this example, we also set a User-Agent header to identify the request as coming from PHP.</li>
+<li>We use <code>fopen</code> with the stream context to open the remote CSV file for reading.</li>
+<li>The parsing and processing of the CSV data within the <code>while</code> loop are similar to the first method.</li>
+</ol>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Parsing CSV files in PHP is a fundamental task when working with tabular data. Whether you have a local CSV file or need to fetch it from an external source, PHP provides several methods for reading and processing the CSV data.</p>
+
+<p>The method you choose depends on your specific use case and the source of the CSV data. Understanding how to parse CSV files in PHP is essential for working with data efficiently and accurately.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

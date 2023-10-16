@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exponential Search in JavaScript: Efficiently Finding Elements in Sorted Arrays</title>
+<meta name="description" content="In this article, we will explore Exponential Search, a search algorithm that combines elements of binary search and exponential growth to locate elements within a sorted array using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Exponential Search in JavaScript: Efficiently Finding Elements in Sorted Arrays</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Exponential Search in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Searching for a specific element in a sorted array is a common task in computer science and programming. While linear search works well for small datasets, binary search is more efficient for larger arrays.</p>
+
+<p>However, what if you <strong>don't know the size of the array</strong> and still <strong>want an efficient way to search?</strong> That's where Exponential Search comes into play.</p>
+
+<p>In this article, we will explore Exponential Search, a search algorithm that combines elements of binary search and exponential growth to locate elements within a sorted array using JavaScript.</p>
+
+<h2 id="understanding-exponential-search">Understanding Exponential Search</h2>
+
+<p>Exponential Search, also known as "exponential binary search," is an algorithm that effectively combines the power of binary search with the flexibility of dynamically determining the search range.</p>
+
+<p>It is particularly useful when the size of the array is unknown, making it more efficient than linear search for large datasets.</p>
+
+<p>Exponential Search can be broken down into <strong>two main steps</strong>:</p>
+
+<ol>
+<li><strong>Determining a Search Range</strong>: The first step of Exponential Search involves finding a search range within which the target element might be located. Instead of specifying a fixed search range, Exponential Search dynamically adjusts this range by doubling it in each iteration.</li>
+<li><strong>Binary Search within the Range</strong>: Once the search range is established, Exponential Search uses binary search to efficiently locate the target element within that range.</li>
+</ol>
+
+<p>Now, let's delve into a practical implementation of Exponential Search in JavaScript.</p>
+<hr>
+<h2 id="implementing-exponential-search-in-javascript">Implementing Exponential Search in JavaScript</h2>
+
+<p>We will use JavaScript to implement Exponential Search. First, we need to implement a helper function for binary search, and then we'll create the Exponential Search function.</p>
+
+<p><strong>Here's the code:</strong></p>
+
+<pre class="language-javascript"><code>// Helper function to perform binary search
+function binarySearch(arr, left, right, target) {
+    if (right &gt;= left) {
+        const mid = left + Math.floor((right - left) / 2);
+
+        if (arr[mid] === target) return mid;
+
+        if (arr[mid] &gt; target) {
+            return binarySearch(arr, left, mid - 1, target);
+        } else {
+            return binarySearch(arr, mid + 1, right, target);
+        }
+    }
+    return -1; // Target not found
+}
+
+// Exponential Search function
+function exponentialSearch(arr, target) {
+    const length = arr.length;
+
+    if (arr[0] === target) return 0; // Check if the target is the first element
+
+    let i = 1;
+    while (i &lt; length &amp;&amp; arr[i] &lt;= target) {
+        i = i * 2;
+    }
+
+    // Perform binary search within the range
+    return binarySearch(arr, i / 2, Math.min(i, length - 1), target);
+}
+
+// Example usage
+const sortedArray = [2, 4, 8, 16, 32, 64, 128, 256];
+const targetElement = 32;
+const result = exponentialSearch(sortedArray, targetElement);
+
+if (result !== -1) {
+    console.log(`Element found at index ${result}`);
+} else {
+    console.log('Element not found in the array');
+}
+</code></pre>
+
+<p><strong>In this code:</strong></p>
+
+<ul>
+<li>The <code>binarySearch</code> function is a typical binary search algorithm that searches for the target element within a specified range.</li>
+<li>The <code>exponentialSearch</code> function determines a search range by repeatedly doubling the index <code>i</code> until it either exceeds the target element or reaches the end of the array.</li>
+<li>It then calls the <code>binarySearch</code> function within that range to locate the target element.</li>
+<li>Finally, it provides feedback about whether the target element was found or not.</li>
+</ul>
+
+<hr />
+
+<h2 id="efficiency-and-use-cases">Efficiency and Use Cases</h2>
+
+<p>Exponential Search can be more efficient than linear search when dealing with large datasets, especially when the target element is located near the beginning of the array.</p>
+
+<p>However, it's important to note that binary search is more efficient when you have a well-defined search range.</p>
+
+<p>In cases where you don't know the array size and still want an efficient search algorithm, Exponential Search is a valuable tool.</p>
+
+<hr />
+
+<p>In conclusion, Exponential Search is a useful algorithm for finding elements in sorted arrays when the array's size is unknown.</p>
+
+<p>By combining the concepts of exponential growth and binary search, it offers a balanced approach for efficiently locating elements.</p>
+
+<p>Understanding and using this algorithm can be valuable in scenarios where efficient search operations are crucial, providing a flexible and reliable way to find elements in sorted data.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

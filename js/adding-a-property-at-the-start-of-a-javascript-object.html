@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Adding a Property at the "Start" of a JavaScript Object</title>
+<meta name="description" content="In this article, we'll explore how to add a property at the start of a JavaScript object." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Adding a Property at the "Start" of a JavaScript Object</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Adding a Property at the Start of a JavaScript Object" loading="lazy" width="900" height="500"></div>
+<p>In JavaScript, objects are versatile data structures used to store key-value pairs.</p>
+
+<p>However, it's important to understand that <strong>JavaScript objects do not guarantee a specific order</strong> for their properties.</p>
+
+<p>Despite this, you might occasionally want to add a property at what can be perceived as the "start" of an object, which might appear first when iterating over its properties.</p>
+
+<p>While JavaScript does not provide a direct method for controlling property order, you can achieve a similar result by using ES6 features, such as computed property names and the <code>Object.assign()</code> method.</p>
+
+<p>In this article, we'll explore how to <strong>add a property at the "start" of a JavaScript object</strong>.</p>
+
+<h2 id="understanding-property-order-in-javascript-objects">Understanding Property Order in JavaScript Objects</h2>
+
+<p>JavaScript objects are collections of key-value pairs, but they are inherently unordered. This means that the order in which properties are added to an object does not determine their order when iterating over the object. JavaScript engines do not guarantee a specific property order.</p>
+
+<p>However, modern JavaScript engines often iterate over object properties in the order they were added, giving the appearance of order in some cases.</p>
+
+<p>While this behavior may work in practice, it is not standardized in the ECMAScript specification, so it is generally unwise to rely on property order for critical program logic.</p>
+
+<hr />
+
+<h2 id="adding-a-property-at-the-start-">Adding a Property at the "Start"</h2>
+
+<p>To add a property at the "start" of a JavaScript object, you can use the <code>Object.assign()</code> method and computed property names, an ES6 feature that allows you to create object properties with dynamic names.</p>
+
+<h3 id="here-s-a-step-by-step-guide-">Here's a step-by-step guide:</h3>
+
+<ol>
+<li>Create an object to which you want to add a property.</li>
+</ol>
+
+<pre class="language-javascript"><code>const myObject = {
+    existingProperty: 'existingValue',
+};
+</code></pre>
+
+<ol start="2">
+<li>Define the new property and its value in variables.</li>
+</ol>
+
+<pre class="language-javascript"><code>const propertyToAdd = 'newProperty';
+const valueToAdd = 'newValue';
+</code></pre>
+
+<ol start="3">
+<li>Use <code>Object.assign()</code> to create a new object by combining the existing object with the new property using a computed property name.</li>
+</ol>
+
+<pre class="language-javascript"><code>const updatedObject = Object.assign({ [propertyToAdd]: valueToAdd }, myObject);
+</code></pre>
+
+<p>In this example, <code>[propertyToAdd]</code> is a computed property name, and it dynamically sets the property name to the value of <code>propertyToAdd</code>.</p>
+
+<p>The result is a new object, <code>updatedObject</code>, with the new property at the "start."</p>
+
+<pre class="language-javascript"><code>console.log(updatedObject); // Output: { newProperty: 'newValue', existingProperty: 'existingValue' }
+</code></pre>
+
+<p>This code snippet will log the <code>updatedObject</code> to the console.</p>
+
+<hr />
+
+<p>Keep in mind that this approach is a workaround, and it leverages the observed behavior of some JavaScript engines. While it may work for your specific use case, you should avoid relying on property order for critical program logic. If you need specific property order, consider using an array of objects where order is guaranteed. JavaScript's object properties are best suited for situations where order is not essential, and you're concerned with key-value associations.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>
