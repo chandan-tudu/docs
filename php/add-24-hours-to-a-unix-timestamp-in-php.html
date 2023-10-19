@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Add 24 Hours to a Unix Timestamp in PHP?</title>
+<meta name="description" content="In this article, we'll explore how to add 24 hours to a Unix timestamp in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Add 24 Hours to a Unix Timestamp in PHP?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Add 24 Hours to a Unix Timestamp in PHP" loading="lazy" width="900" height="500"></div>
+<p>In PHP, you may encounter scenarios where you need to add a specific amount of time, such as 24 hours, to a Unix timestamp.</p>
+
+<p>This is common when you want to calculate a future date and time based on a given timestamp. In this article, we'll explore how to <strong>add 24 hours to a Unix timestamp in PHP</strong>.</p>
+
+<p>To add 24 hours to a Unix timestamp in PHP, you can follow these steps:</p>
+
+<ol>
+<li>Obtain the original Unix timestamp.</li>
+<li>Use the <code>strtotime()</code> function or the <code>DateTime</code> class to create a new timestamp representing the added time.</li>
+<li>Display the new timestamp or format it as a human-readable date and time.</li>
+</ol>
+
+<p>Let's look at both methods:</p>
+
+<h2 id="1-using-strtotime-function">1. Using "strtotime()" function</h2>
+
+<p>The <code>strtotime()</code> function is a simple and straightforward way to add hours to a Unix timestamp. You can pass a date string with the additional hours to the function, and it will return a new timestamp. Here's an example of adding 24 hours to a Unix timestamp:</p>
+
+<pre class="language-php"><code>$originalTimestamp = time(); // Current Unix timestamp
+$addedHours = 24;
+$newTimestamp = strtotime("+$addedHours hours", $originalTimestamp);
+
+echo "Original Timestamp: $originalTimestamp\n";
+echo "New Timestamp: $newTimestamp";
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We obtain the current Unix timestamp using the <code>time()</code> function.</li>
+<li>The <code>$addedHours</code> variable is set to 24 to represent 24 hours.</li>
+<li>We use <code>strtotime()</code> to create a new timestamp by adding the specified hours to the original timestamp.</li>
+</ul>
+
+<p>This method allows you to easily add hours to a timestamp, making it a useful choice for simple calculations.</p>
+
+<hr />
+
+<h2 id="2-using-the-datetime-class">2. Using the "DateTime" Class</h2>
+
+<p>The <code>DateTime</code> class in PHP provides a more versatile and object-oriented approach for date and time manipulation.</p>
+
+<p>You can create a <code>DateTime</code> object from the original timestamp and then use the <code>add()</code> method to add hours. Here's an example:</p>
+
+<pre class="language-php"><code>$originalTimestamp = time(); // Current Unix timestamp
+$addedHours = 24;
+$dateTime = new DateTime("@$originalTimestamp");
+$dateTime-&gt;add(new DateInterval("PT{$addedHours}H"));
+
+$newTimestamp = $dateTime-&gt;getTimestamp();
+
+echo "Original Timestamp: $originalTimestamp\n";
+echo "New Timestamp: $newTimestamp";
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We create a <code>DateTime</code> object from the original Unix timestamp using the <code>DateTime()</code> constructor.</li>
+<li>We specify the number of hours to add and use the <code>add()</code> method with a <code>DateInterval</code> object.</li>
+<li>Finally, we retrieve the new timestamp using the <code>getTimestamp()</code> method.</li>
+</ul>
+
+<p>The <code>DateTime</code> class offers more control and flexibility for date and time operations and is a preferred choice for more complex tasks.</p>
+
+<hr />
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Adding hours to a Unix timestamp in PHP is a common operation when working with date and time data. You can choose between the <code>strtotime()</code> function for simplicity and the <code>DateTime</code> class for more advanced date manipulation. Select the method that best suits your specific requirements and the complexity of your task.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

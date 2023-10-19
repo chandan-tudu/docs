@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Get Time Difference in Minutes in PHP?</title>
+<meta name="description" content="In this article, we'll explore how to calculate the time difference in minutes using PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Get Time Difference in Minutes in PHP</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Get Time Difference in Minutes in PHP" loading="lazy" width="900" height="500"></div>
+<p>Calculating the <strong>time difference between two dates or timestamps</strong> is a common task in PHP, especially when working with scheduling, event management, or tracking time intervals.</p>
+
+<p>In this article, we'll explore how to calculate the time difference in minutes using PHP.</p>
+
+<p>To calculate the time difference in minutes, you can follow these steps:</p>
+
+<ol>
+<li>Convert the two dates or timestamps to <code>DateTime</code> objects.</li>
+<li>Calculate the difference between the two <code>DateTime</code> objects.</li>
+<li>Extract the minutes from the difference.</li>
+</ol>
+
+<p>Here's a step-by-step guide:</p>
+
+<h2 id="1-convert-dates-or-timestamps-to-datetime-objects">1. Convert Dates or Timestamps to "DateTime" Objects</h2>
+
+<p>You need to convert the given dates or timestamps to <code>DateTime</code> objects for further calculations. The <code>DateTime</code> class in PHP makes this conversion easy.</p>
+
+<p>Here's an example of how to convert two timestamps to <code>DateTime</code> objects:</p>
+
+<pre class="language-php"><code>$timestamp1 = 1633113600; // First timestamp
+$timestamp2 = 1633119000; // Second timestamp
+
+$date1 = new DateTime("@$timestamp1");
+$date2 = new DateTime("@$timestamp2");
+</code></pre>
+
+<p>In this example, we create <code>DateTime</code> objects from the Unix timestamps <code>$timestamp1</code> and <code>$timestamp2</code>. The <code>@</code> symbol is used to denote that the number is a timestamp.</p>
+
+<h2 id="2-calculate-the-time-difference">2. Calculate the Time Difference</h2>
+
+<p>To calculate the time difference between the two <code>DateTime</code> objects, you can use the <code>diff()</code> method.</p>
+
+<p>This method returns a <code>DateInterval</code> object, which represents the difference between two dates. Here's how to calculate the difference:</p>
+
+<pre class="language-php"><code>$interval = $date1-&gt;diff($date2);
+</code></pre>
+
+<h2 id="3-extract-minutes-from-the-difference">3. Extract Minutes from the Difference</h2>
+
+<p>To get the time difference in minutes, you can extract the minutes component from the <code>DateInterval</code> object. Here's how to do it:</p>
+
+<pre class="language-php"><code>$minutesDifference = $interval-&gt;i;
+</code></pre>
+
+<p>In this code, we use the <code>i</code> property of the <code>DateInterval</code> object to obtain the minutes component of the difference.</p>
+
+<h2 id="complete-example">Complete Example</h2>
+
+<p>Here's a complete example that calculates the time difference in minutes between two timestamps:</p>
+
+<pre class="language-php"><code>$timestamp1 = 1633113600; // First timestamp
+$timestamp2 = 1633119000; // Second timestamp
+
+$date1 = new DateTime("@$timestamp1");
+$date2 = new DateTime("@$timestamp2");
+
+$interval = $date1-&gt;diff($date2);
+
+// print_r($interval);
+
+$minutesDifference = $interval-&gt;days * 24 * 60;
+$minutesDifference += $interval-&gt;h * 60;
+$minutesDifference += $interval-&gt;i;
+
+echo "Time Difference: $minutesDifference minutes";
+</code></pre>
+
+<p><strong>Output:</strong></p>
+
+<pre><code>Time Difference: 90 minutes
+</code></pre>
+
+<p>In this example, the code first converts the timestamps to <code>DateTime</code> objects, calculates the time difference, and finally extracts and displays the difference in minutes.</p>
+
+<hr />
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Calculating the time difference in minutes between two dates or timestamps is a useful task in many PHP applications. By using the <code>DateTime</code> class and the <code>diff()</code> method, you can easily obtain the time difference and work with it in your PHP code. This is particularly valuable for applications that involve scheduling, event management, and time tracking.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

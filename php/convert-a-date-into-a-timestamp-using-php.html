@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Convert a Date into a Timestamp using PHP</title>
+<meta name="description" content="In this article, we'll explore how to convert a date into a timestamp using PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Convert a Date into a Timestamp using PHP</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Convert a Date into a Timestamp using PHP" loading="lazy" width="900" height="500"></div>
+<p>In PHP, you may often need to convert a date, which is provided in a human-readable format, into a Unix timestamp.</p>
+
+<p>A Unix timestamp is a numeric representation of a date and time, which is especially useful for date calculations and comparisons.</p>
+
+<p>In this article, we'll explore how to <strong>convert a date into a timestamp using PHP</strong>.</p>
+
+<p>To convert a date into a timestamp in PHP, you can use the <code>strtotime()</code> function or the <code>DateTime</code> class. Both methods allow you to convert a date string into a Unix timestamp. Here's how to use each method:</p>
+
+<h2 id="using-strtotime-function">Using "strtotime()" function</h2>
+
+<p>The <code>strtotime()</code> function in PHP is a straightforward way to convert a date string into a Unix timestamp.</p>
+
+<p>You simply pass the date string as an argument, and it returns the corresponding timestamp. Here's an example:</p>
+
+<pre class="language-php"><code>$dateString = "2023-10-15 14:30:00"; // Replace with your date string
+$timestamp = strtotime($dateString);
+
+echo "Timestamp: $timestamp"; // Output: Timestamp: 1697373000
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We define a date string in the format "Y-m-d H:i:s" (year-month-day hour:minute:second).</li>
+<li>We use the <code>strtotime()</code> function to convert the date string into a Unix timestamp.</li>
+<li>The timestamp is then displayed.</li>
+</ul>
+
+<p>The <code>strtotime()</code> function can handle a wide range of date and time formats, making it very flexible for parsing dates.</p>
+
+<hr />
+
+<h2 id="using-the-datetime-class">Using the "DateTime" Class</h2>
+
+<p>The <code>DateTime</code> class in PHP is a powerful and object-oriented way to work with dates and times.</p>
+
+<p>You can create a <code>DateTime</code> object from a date string and then use the <code>getTimestamp()</code> method to obtain the Unix timestamp.</p>
+
+<p><strong>Here's an example:</strong></p>
+
+<pre class="language-php"><code>$dateString = "2023-10-15 14:30:00"; // Replace with your date string
+$dateTime = new DateTime($dateString);
+$timestamp = $dateTime-&gt;getTimestamp();
+
+echo "Timestamp: $timestamp"; // Output: Timestamp: 1697373000
+</code></pre>
+
+<p><strong>In this code:</strong></p>
+
+<ul>
+<li>We create a <code>DateTime</code> object by passing the date string as a constructor argument.</li>
+<li>We use the <code>getTimestamp()</code> method to retrieve the Unix timestamp from the <code>DateTime</code> object.</li>
+<li>The timestamp is then displayed.</li>
+</ul>
+
+<p>The <code>DateTime</code> class is more versatile and provides additional features for working with dates and times, making it a preferred choice when dealing with date manipulation.</p>
+
+<hr />
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Converting a date into a Unix timestamp is a common task in PHP, especially when dealing with date-based calculations or interacting with databases that store dates as timestamps.</p>
+
+<p>You can use the <code>strtotime()</code> function for a quick conversion or the <code>DateTime</code> class for a more robust and object-oriented approach. Choose the method that best fits your needs and the complexity of your date-related tasks.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

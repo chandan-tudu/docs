@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Change Date Format in PHP?</title>
+<meta name="description" content="In this article, we'll explore how to change the date format in PHP using the date() function and the DateTime class." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Change Date Format in PHP?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Change Date Format in PHP" loading="lazy" width="900" height="500"></div>
+<p>Working with <strong>date formats</strong> is a common task in web development. PHP provides several functions and classes to manipulate and format dates to meet your specific requirements.</p>
+
+<p>In this article, we'll explore how to <strong>change the date format in PHP</strong> using the <code>date()</code> function and the <code>DateTime</code> class.</p>
+
+<h2 id="1-using-the-date-function">1. Using the date() Function</h2>
+
+<p>The <code>date()</code> function is the most <strong>straightforward way to change the format</strong> of a date in PHP.</p>
+
+<p>It allows you to format a date according to your needs by specifying a format string. Here's a basic example of how to change the date format using <code>date()</code>:</p>
+
+<pre class="language-php"><code>&lt;?php
+$originalDate = "2023-10-02"; // Example date in the format "Y-m-d"
+$newDateFormat = date("d/m/Y", strtotime($originalDate)); // Desired format: "d/m/Y"
+echo "Original Date: $originalDate&lt;br&gt;";
+echo "New Date Format: $newDateFormat";
+?&gt;
+</code></pre>
+<pre><code>Original Date: 2023-10-02  
+New Date Format: 02/10/2023</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>We start with an original date in the "Y-m-d" format, which is a common date format in PHP.</li>
+<li>We use <code>strtotime()</code> to convert the original date into a Unix timestamp, which is necessary for the <code>date()</code> function.</li>
+<li>We call <code>date()</code> with the format string "d/m/Y" to change the date format to "d/m/Y."</li>
+</ul>
+
+<p>Here are some common <a href="https://tinyurl.com/5945rprp" rel="nofollow noopener noreferrer" target="_blank">format characters</a> you can use with the <code>date()</code> function:</p>
+
+<ul>
+<li><code>Y</code>: Four-digit year (e.g., 2023)</li>
+<li><code>m</code>: Month with leading zeros (01 to 12)</li>
+<li><code>d</code>: Day of the month with leading zeros (01 to 31)</li>
+<li><code>H</code>: Hour in 24-hour format with leading zeros (00 to 23)</li>
+<li><code>i</code>: Minutes with leading zeros (00 to 59)</li>
+<li><code>s</code>: Seconds with leading zeros (00 to 59)</li>
+</ul>
+
+<p>You can customize the format string to achieve the desired date format.</p>
+
+<hr />
+
+<h2 id="2-using-the-datetime-class">2.Using the DateTime Class</h2>
+
+<p>The <code>DateTime</code> class provides a more powerful and flexible way to manipulate and format dates in an object-oriented manner.</p>
+
+<p>Here's how to change the date format using the <code>DateTime</code> class:</p>
+
+<pre class="language-php"><code>&lt;?php
+$originalDate = "2023-10-02";
+$dateTime = new DateTime($originalDate);
+$newDateFormat = $dateTime-&gt;format("d F, Y");
+echo "Original Date: $originalDate&lt;br&gt;";
+echo "New Date Format: $newDateFormat";
+?&gt;
+</code></pre>
+<pre><code>Original Date: 2023-10-02  
+New Date Format: 02 October, 2023</code></pre>
+
+<p>In this example, we create a <code>DateTime</code> object from the original date, and then we use the <code>format()</code> method to change the date format.</p>
+
+<p>Using the <code>DateTime</code> class is especially useful when you need to perform more advanced operations with dates, such as adding or subtracting days, working with time zones, or comparing dates.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Changing the date format in PHP is a common task when working with date values. The <code>date()</code> function and the <code>DateTime</code> class provide flexible and powerful methods to achieve this. You can choose the one that best suits your needs and coding style.</p>
+
+<p>Whether you need simple date formatting or complex date manipulations, PHP offers the tools to handle various date-related tasks efficiently.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

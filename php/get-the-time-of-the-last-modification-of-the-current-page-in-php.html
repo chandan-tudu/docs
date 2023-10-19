@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Get the Time of the Last Modification of the Current Page in PHP</title>
+<meta name="description" content="In this article, we'll explore how to get the time of the last modification of the current page in PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Get the Time of the Last Modification of the Current Page in PHP</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Get the Time of the Last Modification of the Current Page in PHP" loading="lazy" width="900" height="500"></div>
+<p>In PHP, you can retrieve the time of the <strong>last modification of the current page</strong> using the filemtime() function.</p>
+
+<p>This is useful when you want to display or log the last modification time of the page or for various other purposes like caching and version tracking.</p>
+
+<p>In this article, we'll explore how to get the time of the last modification of the current page in PHP.</p>
+
+<h2 id="using-filemtime-function">Using filemtime() function</h2>
+
+<p>The <code>filemtime()</code> function in PHP is used to retrieve the last modification time of a file.</p>
+
+<p>To get the last modification time of the current PHP page, you can use <code>$_SERVER['SCRIPT_FILENAME']</code> to access the current page's filename.</p>
+
+<p><strong>Here's an example:</strong></p>
+
+<pre class="language-php"><code>$filePath = $_SERVER['SCRIPT_FILENAME'];
+$lastModificationTime = filemtime($filePath);
+$lastModificationDateTime = date("Y-m-d H:i:s", $lastModificationTime);
+
+echo "Last Modification Time: $lastModificationDateTime";</code></pre>
+
+<p><strong>In this code:</strong></p>
+
+<ul>
+<li>We use <code>$_SERVER['SCRIPT_FILENAME']</code> to obtain the filename of the current page.</li>
+<li>The <code>filemtime()</code> function is then used to get the last modification time of the page by passing the filename as an argument.</li>
+<li>We format the obtained timestamp into a human-readable date and time format using the <code>date()</code> function.</li>
+</ul>
+
+<p>When you run this code on your PHP page, it will display the last modification time in the "Y-m-d H:i:s" format.</p>
+
+<h2 id="example-output">Example Output</h2>
+
+<p>For example, if you run this code on a PHP page that was last modified on October 1, 2023, at 14:30:00, the output would be:</p>
+
+<pre><code>Last Modification Time: 2023-10-01 14:30:00
+</code></pre>
+
+<p>This output represents the last modification time of the current page.</p>
+
+<h2 id="note">Note</h2>
+
+<p>Keep in mind that the <code>filemtime()</code> function provides the last modification time based on the server's filesystem. If the file is cached or the server doesn't accurately track modifications, the result may not always reflect the last actual modification time of the PHP script.</p>
+
+<hr />
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Retrieving the last modification time of the current page in PHP is a valuable task for various purposes, such as tracking changes, displaying version information, or optimizing caching strategies.</p>
+
+<p>Using the <code>filemtime()</code> function in combination with <code>$_SERVER['SCRIPT_FILENAME']</code>, you can easily obtain and display the last modification time of the current PHP page.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>

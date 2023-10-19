@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Convert DateTime to String using PHP</title>
+<meta name="description" content="n this article, we'll explore how to convert a DateTime object to a string using PHP." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Convert DateTime to String using PHP</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Convert DateTime to String using PHP" loading="lazy" width="900" height="500"></div>
+<p>In PHP, you often need to work with dates and times, converting them to different formats for various purposes, such as displaying on a web page, storing in a database, or performing calculations. PHP provides several ways to convert a <code>DateTime</code> object to a string with the desired format.</p>
+
+<p>In this article, we'll explore how to <strong>convert a DateTime object to a string using PHP</strong>.</p>
+
+<hr />
+
+<h2 id="1-using-the-format-method">1. Using the format() Method</h2>
+
+<p>The <code>DateTime</code> class in PHP provides the <code>format()</code> method, which allows you to convert a <code>DateTime</code> object to a string in the desired format.</p>
+
+<p>Here's a basic example of how to use the <code>format()</code> method:</p>
+
+<pre class="language-php"><code>&lt;?php
+$dateTime = new DateTime("2023-10-02 14:30:00");
+$formattedDate = $dateTime-&gt;format("Y-m-d H:i:s");
+echo "Formatted Date: $formattedDate";
+?&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>We create a <code>DateTime</code> object from a date and time string.</li>
+<li>We use the <code>format()</code> method to convert the <code>DateTime</code> object to a string with the desired format, "Y-m-d H:i:s."</li>
+</ul>
+
+<p>The format string can contain various format characters, such as "Y" for the year, "m" for the month, "d" for the day, "H" for the hour, "i" for the minute, and "s" for the second.</p>
+
+<p>You can customize the format string to achieve the format you need.</p>
+
+<h3 id="common-format-characters">Common Format Characters</h3>
+
+<p>Here are some common format characters you can use with the <code>format()</code> method:</p>
+
+<ul>
+<li><code>Y</code>: Four-digit year (e.g., 2023)</li>
+<li><code>m</code>: Month with leading zeros (01 to 12)</li>
+<li><code>d</code>: Day of the month with leading zeros (01 to 31)</li>
+<li><code>H</code>: Hour in 24-hour format with leading zeros (00 to 23)</li>
+<li><code>i</code>: Minutes with leading zeros (00 to 59)</li>
+<li><code>s</code>: Seconds with leading zeros (00 to 59)</li>
+</ul>
+
+<h2 id="2-using-date-format-function">2. Using date_format() Function</h2>
+
+<p>PHP provides the <code>date_format()</code> function as a shorthand way to format a <code>DateTime</code> object.</p>
+
+<p>This function is an alias for the <code>format()</code> method of the <code>DateTime</code> class, and it can be used in a more concise manner:</p>
+
+<pre class="language-php"><code>&lt;?php
+$dateTime = new DateTime("2023-10-02 14:30:00");
+$formattedDate = date_format($dateTime, "Y-m-d H:i:s");
+echo "Formatted Date: $formattedDate";
+?&gt;
+</code></pre>
+
+<p>The result is the same as using the <code>format()</code> method directly on the <code>DateTime</code> object.</p>
+
+<hr />
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Converting a <code>DateTime</code> object to a string in PHP is a common operation when working with date and time values.</p>
+
+<p>Whether you use the <code>format()</code> method of the <code>DateTime</code> class or the <code>date_format()</code> function, PHP provides a straightforward way to achieve this.</p>
+
+<p>The flexibility to customize the format allows you to obtain date and time strings in various formats to suit your application's needs.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+</html>
