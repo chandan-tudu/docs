@@ -354,6 +354,31 @@ hr {
     color: var(--color);
     text-decoration-thickness: inherit;
 }
+
+.sheet:is(ol,ul){
+    /* border:1px solid red; */
+    padding-left: 0;
+    list-style-type: none;
+    margin-bottom: 2em;
+    counter-reset: rowNumber;
+   
+}
+
+.sheet:is(ol,ul)>li{
+    /* border: 1px solid red; */
+    margin: 2em 0;
+    background-color: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 20px; position: relative;
+}
+.sheet:is(ol,ul)>li>:first-child::before{
+    margin-right: 5px;
+    content: counter(rowNumber) ".";
+    counter-increment: rowNumber;
+ 
+}
+
+
 @media (max-width:750px) {
     .post-list{
         grid-template-columns: repeat(2,1fr);
