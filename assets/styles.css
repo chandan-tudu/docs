@@ -367,7 +367,7 @@ hr {
 .sheet:is(ol,ul)>li{
     /* border: 1px solid red; */
     margin: 2em 0;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, .1);
     padding: 20px; position: relative;
 }
