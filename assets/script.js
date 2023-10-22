@@ -47,7 +47,7 @@ const navbar = createEl('div', {
 
 const logo = createEl('a', { 
     class: 'logo',
-    href:'https://www.devbabu.com'
+    href:'https://www.devbabu.com/docs/index.html'
 });
 logo.innerText = 'DevBabu.Com';
 

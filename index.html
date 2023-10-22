@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+    <title>DevBabu Docs: All Categories</title>
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+    <meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
+<style>
+    .logo{
+        text-align: center;
+    }
+    h1 {
+        text-align: center;
+    }
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        justify-content: center;
+    }
+    .cards_item {
+        display: flex;
+        padding: 1rem;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 0.25rem;
+        box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .card a {
+        display: flex;
+    }
+    .card img {
+        transition: transform 0.2s;
+    }
+    .card img:hover {
+        transform: scale(1.1);
+    }
+    @media (min-width: 40rem) {
+        .cards_item {
+            width: 50%;
+        }
+    }
+
+    @media (min-width: 56rem) {
+        .cards_item {
+            width: 33.3333%;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <a href="https://www.devbabu.com">DevBabu.Com</a>
+        </div>
+        <h1>All Categories</h1>
+        <div class="cards">
+            <div class="cards_item">
+                <div class="card">
+                    <a href="./html/index.html"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html.jpg" alt="HTML"></a>
+                </div>
+            </div>
+            <!-- <div class="cards_item">
+                <div class="card">
+                    <a href="./css/index.html"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/css.jpg" alt="CSS"></a>
+                </div>
+            </div> -->
+            <div class="cards_item">
+                <div class="card">
+                    <a href="./js/index.html"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="JavaScript"></a>
+                </div>
+            </div>
+            <div class="cards_item">
+                <div class="card">
+                    <a href="./php/index.html"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="PHP"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
