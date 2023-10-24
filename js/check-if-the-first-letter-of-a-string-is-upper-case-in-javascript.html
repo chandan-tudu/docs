@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript: Check if the First Letter of a String is Upper Case</title>
+<meta name="description" content="In this detailed guide, we will explore several methods to check if the first letter of a string is in uppercase in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Check if the First Letter of a String is Upper Case in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Check if the First Letter of a String is Upper Case in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In JavaScript, there are various scenarios where you may need to determine if the <strong>first letter of a string is in uppercase or not</strong>.</p>
+
+<p>This can be particularly useful for data validation, formatting, or capitalization checks.</p>
+
+<p>In this detailed guide, we will explore several methods to check if the first letter of a string is in uppercase in JavaScript.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-using-regular-expressions">Using Regular Expressions</a></li>
+<li><a href="#3-using-string-methods">Using String Methods</a></li>
+<li><a href="#4-handling-edge-cases">Handling Edge Cases</a></li>
+<li><a href="#5-conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<p>Checking if the first letter of a string is uppercase involves examining the character at the beginning of the string and ensuring it is within the uppercase ASCII range (A-Z). We'll explore methods that allow you to perform this check in JavaScript.</p>
+
+<h2 id="2-using-regular-expressions">2. Using Regular Expressions</h2>
+
+<p>Regular expressions provide a <em>concise and powerful way</em> to check if the first letter of a string is uppercase.</p>
+
+<p>You can use the <code>.test()</code> method with a regular expression that matches uppercase letters.</p>
+
+<p>Here's how you can do it:</p>
+
+<pre class="language-javascript"><code>function isFirstLetterUpperCase(inputString) {
+    const regex = /^[A-Z]/; // Matches an uppercase letter at the beginning
+    return regex.test(inputString);
+}
+
+const myString = 'Hello, world';
+if (isFirstLetterUpperCase(myString)) {
+    console.log('The first letter is uppercase.');
+} else {
+    console.log('The first letter is not uppercase.');
+}
+</code></pre>
+
+<p>This code uses a regular expression <code>^[A-Z]</code>, which matches an uppercase letter at the beginning of the string.</p>
+
+<h2 id="3-using-string-methods">3. Using String Methods</h2>
+
+<p>You can also use JavaScript string methods to check if the first letter of a string is in uppercase.</p>
+
+<p>One common approach is to compare the first character to its uppercase version.</p>
+
+<p>Here's an example using the <code>.charAt()</code> method:</p>
+
+<pre class="language-javascript"><code>function isFirstLetterUpperCase(inputString) {
+    return inputString.charAt(0) === inputString.charAt(0).toUpperCase();
+}
+
+const myString = 'Hello, world';
+if (isFirstLetterUpperCase(myString)) {
+    console.log('The first letter is uppercase.');
+} else {
+    console.log('The first letter is not uppercase.');
+}
+</code></pre>
+
+<p>In this code, we compare the first character with its uppercase version using the <code>toUpperCase</code> method.</p>
+
+<h2 id="4-handling-edge-cases">4. Handling Edge Cases</h2>
+
+<p>When checking the first letter of a string for uppercase, consider edge cases such as empty strings or strings that contain non-alphabet characters. You can add additional checks to handle these scenarios gracefully.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>function isFirstLetterUpperCase(inputString) {
+    if (inputString.length === 0) {
+        return false; // Handle empty string
+    }
+    const firstChar = inputString.charAt(0);
+    return firstChar === firstChar.toUpperCase() &amp;&amp; /[A-Z]/.test(firstChar);
+}
+
+const myString = 'Hello, world';
+if (isFirstLetterUpperCase(myString)) {
+    console.log('The first letter is uppercase.');
+} else {
+    console.log('The first letter is not uppercase.');
+}
+</code></pre>
+
+<p>In this code, we check for an empty string and also ensure that the first character is an alphabet character before comparing it to its uppercase version.</p>
+
+<h2 id="5-conclusion">5. Conclusion</h2>
+
+<p>Checking if the first letter of a string is in uppercase is a common task in JavaScript, and there are various methods to accomplish this.</p>
+
+<p>You can use regular expressions or string methods to make this determination. Remember to consider edge cases when implementing this check, and choose the method that best fits your specific use case.</p>
+
+<p>Whether it's data validation, text formatting, or other scenarios, these techniques will help you work with string data more effectively in your JavaScript applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

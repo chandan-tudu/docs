@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Check if an Object is an Array in JavaScript</title>
+<meta name="description" content="In this comprehensive guide, we will explore how to check if an object is an array in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Check if an Object is an Array in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Check if an Object is an Array in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In JavaScript, determining whether a <strong>variable is an array</strong> is a common task when working with diverse data types.</p>
+
+<p>While JavaScript doesn't provide a built-in <code>isArray</code> function for this purpose, there are several reliable methods to accomplish the task.</p>
+
+<p>In this comprehensive guide, we will explore how to check if an object is an array in JavaScript.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#using-array-isarray-method">Using <code>Array.isArray()</code></a></li>
+<li><a href="#using-instanceof-operator">Using <code>instanceof</code> Operator</a></li>
+<li><a href="#using-object-prototype-tostring-call">Using "Object.prototype.toString.call()"</a></li>
+<li><a href="#handling-edge-cases">Handling Edge Cases</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction">1. Introduction</h2>
+
+<p>JavaScript is a dynamically typed language, meaning a variable can hold values of different types.</p>
+
+<p>When dealing with collections of data, distinguishing between regular objects and arrays is crucial for proper data manipulation.</p>
+
+<p>There are multiple methods to check if an object is an array in JavaScript.</p>
+
+<h2 id="using-array-isarray-method">2. Using "Array.isArray()" method</h2>
+
+<p>The most <strong>straightforward and recommended way to check</strong> if an object is an array in JavaScript is to <strong>use the <code>Array.isArray()</code> method</strong>.</p>
+
+<p>This method was introduced in ECMAScript 5 (ES5) and is widely supported in modern JavaScript environments.</p>
+
+<p>Here's how you can use <code>Array.isArray()</code>:</p>
+
+<pre class="language-javascript"><code>const myArray = [1, 2, 3];
+if (Array.isArray(myArray)) {
+    console.log("It's an array!");
+} else {
+    console.log("It's not an array.");
+}
+</code></pre>
+
+<p>This code will correctly identify <code>myArray</code> as an array.</p>
+
+<h2 id="using-instanceof-operator">3. Using "instanceof" Operator</h2>
+
+<p>The <code>instanceof</code> operator can also be used to check if an object is an instance of the <code>Array</code> constructor.</p>
+
+<p>While this approach is functional, it may not work as expected if the object is from a different window or frame in a web environment.</p>
+
+<p>Here's how to use <code>instanceof</code>:</p>
+
+<pre class="language-javascript"><code>const myArray = [1, 2, 3];
+if (myArray instanceof Array) {
+    console.log("It's an array!");
+} else {
+    console.log("It's not an array.");
+}
+</code></pre>
+
+<p>This code will correctly identify <code>myArray</code> as an array.</p>
+
+<h2 id="using-object-prototype-tostring-call">4. Using "Object.prototype.toString.call()"</h2>
+
+<p>Another approach is to use <em>Object.prototype.toString.call()</em>, which provides a consistent way to obtain the internal <code>[[Class]]</code> property of an object.</p>
+
+<p>To check if an object is an array, you can compare the result with <code>"[object Array]"</code>.</p>
+
+<p>Here's how to use <em>Object.prototype.toString.call()</em>:</p>
+
+<pre class="language-javascript"><code>const myArray = [1, 2, 3];
+if (Object.prototype.toString.call(myArray) === '[object Array]') {
+    console.log("It's an array!");
+} else {
+    console.log("It's not an array.");
+}
+</code></pre>
+
+<p>This code will correctly identify <code>myArray</code> as an array.</p>
+
+<h2 id="handling-edge-cases">5. Handling Edge Cases</h2>
+
+<p>When using <code>instanceof</code> or <code>Object.prototype.toString.call()</code>, be aware of potential edge cases.</p>
+
+<p>For instance, if the object is from another window or frame in a web environment, the <code>instanceof</code> operator may not work correctly. In such cases, <code>Array.isArray()</code> is the safer option.</p>
+
+<h2 id="conclusion">6. Conclusion</h2>
+
+<p>Determining whether an object is an array is essential when working with JavaScript's dynamic and versatile data types.</p>
+
+<p>The <code>Array.isArray()</code> method is the most reliable and widely supported way to accomplish this task.</p>
+
+<p>However, the <code>instanceof</code> operator and <em>Object.prototype.toString.call()</em> are also valuable options when used with caution.</p>
+
+<p>By understanding these methods, you can confidently identify arrays in your JavaScript code and handle them appropriately in your data manipulation tasks.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
