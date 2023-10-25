@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Create a Table in SQL?</title>
+<meta name="description" content="In this article, we will walk you through the process of creating a table in SQL." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Create a Table in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Create a Table in SQL" loading="lazy" width="900" height="500"></div>
+<p>Creating a table in SQL is one of the fundamental tasks in database management. Tables serve as the primary means to store and organize data in a structured format.</p>
+
+<p>Whether you're setting up a new database or adding a new entity to an existing database, knowing how to create tables is essential.</p>
+
+<p>In this article, we will walk you through the process of creating a table in SQL.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#sql-create-table-statement">SQL CREATE TABLE Statement</a></li>
+<li><a href="#column-definitions">Column Definitions</a></li>
+<li><a href="#specifying-constraints">Specifying Constraints</a></li>
+<li><a href="#creating-a-simple-table">Creating a Simple Table</a></li>
+<li><a href="#data-types-in-sql">Data Types in SQL</a></li>
+<li><a href="#primary-keys-and-auto-incrementing-columns">Primary Keys and Auto-incrementing Columns</a></li>
+<li><a href="#foreign-keys-and-relationships">Foreign Keys and Relationships</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In SQL, a table is a structured object that contains rows and columns, where each column represents a specific attribute, and each row corresponds to a record.</p>
+
+<p>Creating a table involves defining the table's structure, specifying column names, data types, and constraints.</p>
+
+<h2 id="sql-create-table-statement">SQL CREATE TABLE Statement</h2>
+
+<p>The SQL statement used to create a table is the <code>CREATE TABLE</code> statement. It has the following syntax:</p>
+
+<pre class="language-sql"><code>CREATE TABLE table_name (
+    column1 datatype constraint,
+    column2 datatype constraint,
+    ...
+);
+</code></pre>
+
+<ul>
+<li><code>table_name</code>: The name of the table you want to create.</li>
+<li><code>column1</code>, <code>column2</code>, ...: The names of the columns within the table.</li>
+<li><code>datatype</code>: The data type for each column.</li>
+<li><code>constraint</code>: Optional constraints that define rules for the column.</li>
+</ul>
+
+<h2 id="column-definitions">Column Definitions</h2>
+
+<p>Column definitions include the column name and data type. For example, to create a table named "Employees" with columns for "EmployeeID," "FirstName," "LastName," and "BirthDate," you would use the following SQL statement:</p>
+
+<pre class="language-sql"><code>CREATE TABLE Employees (
+    EmployeeID INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    BirthDate DATE
+);
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>"EmployeeID," "FirstName," "LastName," and "BirthDate" are the column names.</li>
+<li>"INT," "VARCHAR(50)," and "DATE" are the data types.</li>
+</ul>
+
+<h2 id="specifying-constraints">Specifying Constraints</h2>
+
+<p>Constraints define rules for data integrity within a table. Common constraints include:</p>
+
+<ul>
+<li><strong>Primary Key</strong>: Ensures each row's uniqueness and serves as a unique identifier.</li>
+<li><strong>Foreign Key</strong>: Defines relationships between tables and enforces referential integrity.</li>
+<li><strong>Unique Constraint</strong>: Enforces uniqueness within a column or a combination of columns.</li>
+<li><strong>Check Constraint</strong>: Specifies conditions that data must meet to be valid.</li>
+<li><strong>Default Constraint</strong>: Provides a default value for a column when a value is not provided.</li>
+</ul>
+
+<h2 id="creating-a-simple-table">Creating a Simple Table</h2>
+
+<p>Let's create a simple example table named "Products" with a primary key, unique constraint, and a foreign key:</p>
+
+<pre class="language-sql"><code>CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100) NOT NULL,
+    Price DECIMAL(10, 2),
+    CategoryID INT,
+    UNIQUE (ProductName),
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>"ProductID" is the primary key column.</li>
+<li>"ProductName" has a unique constraint.</li>
+<li>"CategoryID" is a foreign key referencing another table, likely named "Categories."</li>
+</ul>
+
+<h2 id="data-types-in-sql">Data Types in SQL</h2>
+
+<p>SQL supports various data types to accommodate different types of data, such as integers, strings, dates, and more. Common data types include:</p>
+
+<ul>
+<li><code>INT</code> for integers</li>
+<li><code>VARCHAR(n)</code> for variable-length character strings of maximum length <code>n</code></li>
+<li><code>DECIMAL(p, s)</code> for fixed-point numbers with <code>p</code> total digits and <code>s</code> decimal places</li>
+<li><code>DATE</code> for date values</li>
+<li><code>BOOL</code> or <code>BOOLEAN</code> for boolean values</li>
+</ul>
+
+<h2 id="primary-keys-and-auto-incrementing-columns">Primary Keys and Auto-incrementing Columns</h2>
+
+<p>Primary keys ensure the uniqueness of each row within a table. They are typically used for identification and indexing.</p>
+
+<p>Many databases allow primary key columns to auto-increment, generating a unique value for each new row automatically.</p>
+
+<pre class="language-sql"><code>CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50)
+);
+</code></pre>
+
+<p>In this example, "CustomerID" is the primary key, and it will auto-increment with each new customer record.</p>
+
+<h2 id="foreign-keys-and-relationships">Foreign Keys and Relationships</h2>
+
+<p>Foreign keys establish relationships between tables. They reference the primary key of another table, enforcing referential integrity.</p>
+
+<p>For example, in an e-commerce database, you might have a "Products" table with a foreign key to a "Categories" table, creating a relationship between products and their respective categories.</p>
+
+<pre class="language-sql"><code>CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100) NOT NULL,
+    CategoryID INT,
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Creating tables in SQL is a fundamental step in database design and management. Understanding how to define columns, data types, and constraints is crucial for building a database that efficiently stores and manages data.</p>
+
+<p>Tables serve as the foundation for structured data storage, and proper table design is essential for data integrity and efficient data retrieval.</p>
+
+<p>As you work with SQL databases, creating tables becomes an essential skill for building and maintaining your data infrastructure.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

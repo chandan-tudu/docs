@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Send Request Query Parameters with Axios</title>
+<meta name="description" content="In this comprehensive guide, we will explore how to send request query parameters with Axios." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Send Request Query Parameters with Axios</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Send Request Query Parameters with Axios" loading="lazy" width="900" height="500"></div>
+<p>When working with web services and APIs in JavaScript, you often need to <strong>send HTTP requests with query parameters</strong> to fetch or filter data.</p>
+
+<p>Axios is a popular JavaScript library for making HTTP requests, and it provides a convenient way to include query parameters in your requests.</p>
+
+<p>In this comprehensive guide, we will explore how to send request query parameters with Axios.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#1-introduction-to-axios">Introduction to Axios</a></li>
+<li><a href="#2-sending-get-requests-with-query-parameters">Sending GET Requests with Query Parameters</a>
+
+<ul>
+<li><a href="#method-1-using-a-query-string">Method 1: Using a Query String</a></li>
+<li><a href="#method-2-using-the-params-option">Method 2: Using the <code>params</code> Option</a></li>
+</ul></li>
+<li><a href="#3-handling-dynamic-query-parameters">Handling Dynamic Query Parameters</a></li>
+<li><a href="#4-conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="1-introduction-to-axios">1. Introduction to Axios</h2>
+
+<p>Axios is a promise-based HTTP client for the browser and Node.js. It provides an easy-to-use API for making HTTP requests to fetch data from external sources or interact with web services and APIs.</p>
+
+<p>To get started, you need to include Axios in your project. You can either download it manually or use a package manager like npm or yarn:</p>
+
+<pre class="language-bash"><code>npm install axios
+</code></pre>
+
+<p>Now, let's see how to use Axios to send HTTP requests with query parameters.</p>
+
+<h2 id="2-sending-get-requests-with-query-parameters">2. Sending GET Requests with Query Parameters</h2>
+
+<h3 id="method-1-using-a-query-string">Method 1: Using a Query String</h3>
+
+<p>You can send query parameters in the URL by manually constructing the query string. Axios allows you to include query parameters directly in the URL.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>const axios = require('axios'); // Import Axios
+
+const baseURL = 'https://api.example.com/data'; // The base URL
+
+// Define query parameters
+const params = {
+    category: 'books',
+    author: 'John Doe',
+    sortBy: 'date',
+};
+
+// Create the query string from the parameters
+const queryString = new URLSearchParams(params).toString();
+
+// Combine the base URL and the query string
+const requestURL = `${baseURL}?${queryString}`;
+
+// Send the GET request with the query parameters
+axios
+    .get(requestURL)
+    .then((response) =&gt; {
+        console.log(response.data);
+    })
+    .catch((error) =&gt; {
+        console.error(error);
+    });
+</code></pre>
+
+<p>In this example, we define the query parameters in the <code>params</code> object and use <code>URLSearchParams</code> to create a query string. We then combine the base URL and query string to form the complete request URL.</p>
+
+<h3 id="method-2-using-the-params-option">Method 2: Using the "params" Option</h3>
+
+<p>Axios provides a more <strong>straightforward way to send query parameters</strong> using the <code>params</code> option.</p>
+
+<p>Here's how to do it:</p>
+
+<pre class="language-javascript"><code>const axios = require('axios'); // Import Axios
+
+const baseURL = 'https://api.example.com/data'; // The base URL
+
+// Define query parameters
+const params = {
+    category: 'books',
+    author: 'John Doe',
+    sortBy: 'date',
+};
+
+// Send the GET request with the query parameters using the `params` option
+axios
+    .get(baseURL, { params })
+    .then((response) =&gt; {
+        console.log(response.data);
+    })
+    .catch((error) =&gt; {
+        console.error(error);
+    });
+</code></pre>
+
+<p>In this code, we pass the <code>params</code> object directly to the Axios request as an option. Axios will automatically create the query string for you and append it to the URL.</p>
+
+<h2 id="3-handling-dynamic-query-parameters">3. Handling Dynamic Query Parameters</h2>
+
+<p>To handle dynamic query parameters in your requests, you can build the <code>params</code> object programmatically based on user input or other factors. This allows you to create flexible and customizable requests.</p>
+
+<p>Here's an example of how to handle dynamic query parameters:</p>
+
+<pre class="language-javascript"><code>const axios = require('axios'); // Import Axios
+
+const baseURL = 'https://api.example.com/data'; // The base URL
+
+// Define dynamic query parameters based on user input or other factors
+const dynamicParams = {
+    category: 'books',
+    author: 'John Doe',
+    // Additional parameters based on user input
+};
+
+// Send the GET request with the dynamic query parameters using the `params` option
+axios
+    .get(baseURL, { params: dynamicParams })
+    .then((response) =&gt; {
+        console.log(response.data);
+    })
+    .catch((error) =&gt; {
+        console.error(error);
+    });
+</code></pre>
+
+<p>In this example, the <code>dynamicParams</code> object is constructed based on user input or other dynamic factors. You can adapt the query parameters to suit your specific use case.</p>
+
+<h2 id="4-conclusion">4. Conclusion</h2>
+
+<p>Sending HTTP requests with query parameters is a fundamental aspect of working with web services and APIs. Axios simplifies this process by providing convenient options for including query parameters in your requests.</p>
+
+<p>Whether you need to fetch filtered data, interact with APIs, or handle dynamic user input, Axios makes it easy to create HTTP requests with query parameters and retrieve the desired data efficiently.</p>
+
+<p>By mastering these techniques, you can build powerful web applications and services that leverage external data sources effectively.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

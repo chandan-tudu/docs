@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What Are SQL Indexes?</title>
+<meta name="description" content="In this article, we'll explore SQL indexes, their types, and how they improve database performance." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>What Are SQL Indexes?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of What Are SQL Indexes" loading="lazy" width="900" height="500"></div>
+<p>SQL indexes are essential database structures that optimize query performance by speeding up data retrieval.</p>
+
+<p>They serve as a roadmap for the database engine, allowing it to locate specific data more efficiently.</p>
+
+<p>Understanding indexes is crucial for anyone working with databases, whether you're a database administrator, developer, or data analyst.</p>
+
+<p>In this article, we'll explore SQL indexes, their types, and how they improve database performance.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-sql-indexes">Introduction to SQL Indexes</a></li>
+<li><a href="#how-sql-indexes-work">How SQL Indexes Work</a></li>
+<li><a href="#types-of-sql-indexes">Types of SQL Indexes</a>
+
+<ul>
+<li><a href="#primary-index">Primary Index</a></li>
+<li><a href="#unique-index">Unique Index</a></li>
+<li><a href="#non-unique-index">Non-Unique Index</a></li>
+<li><a href="#composite-index">Composite Index</a></li>
+<li><a href="#clustered-index">Clustered Index</a></li>
+<li><a href="#non-clustered-index">Non-Clustered Index</a></li>
+</ul></li>
+<li><a href="#creating-and-managing-sql-indexes">Creating and Managing SQL Indexes</a></li>
+<li><a href="#best-practices-for-using-sql-indexes">Best Practices for Using SQL Indexes</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-sql-indexes">Introduction to SQL Indexes</h2>
+
+<p>An SQL index is a database structure that provides a quick lookup mechanism to find rows in database tables.</p>
+
+<p>It acts like an index in a book, making it easier to locate specific information without having to read the entire book.</p>
+
+<p>Without indexes, a database would need to perform a full table scan, examining every row to find the data you requested. This can be extremely slow for large datasets.</p>
+
+<p>SQL indexes are similar to the index at the back of a book, which lists keywords along with page numbers where those keywords can be found.</p>
+
+<p>In the context of a database, these keywords are the indexed columns, and the page numbers are the row identifiers or pointers to the actual data.</p>
+
+<h2 id="how-sql-indexes-work">How SQL Indexes Work</h2>
+
+<p>Here's how SQL indexes work:</p>
+
+<ol>
+<li><p><strong>Index Creation</strong>: Indexes are created on one or more columns of a database table. These columns are often used in <code>WHERE</code> clauses of SQL queries for filtering and searching.</p></li>
+<li><p><strong>Data Storage</strong>: The index data structure is stored separately from the actual data in the table. This data structure is designed for fast retrieval.</p></li>
+<li><p><strong>Query Optimization</strong>: When a query is executed, the database optimizer checks if the query can benefit from an index. If so, it uses the index to locate the data.</p></li>
+<li><p><strong>Faster Data Retrieval</strong>: The database engine uses the index to find the rows that match the query criteria. This results in significantly faster data retrieval.</p></li>
+</ol>
+
+<h2 id="types-of-sql-indexes">Types of SQL Indexes</h2>
+
+<p>There are various types of SQL indexes, each designed for specific use cases. Here are some common types:</p>
+
+<h3 id="primary-index">Primary Index</h3>
+
+<ul>
+<li>A primary index is a unique index that enforces data integrity and ensures that each row in the table is uniquely identified.</li>
+<li>It's often created on the primary key of a table.</li>
+</ul>
+
+<h3 id="unique-index">Unique Index</h3>
+
+<ul>
+<li>A unique index enforces the uniqueness of values in one or more columns. It prevents duplicate values from being inserted.</li>
+<li>Unique indexes are commonly used for columns that should have distinct values, such as email addresses or usernames.</li>
+</ul>
+
+<h3 id="non-unique-index">Non-Unique Index</h3>
+
+<ul>
+<li>A non-unique index allows duplicate values in the indexed columns. It's used for improving query performance but doesn't enforce uniqueness.</li>
+<li>These indexes are used for columns where duplicates are allowed, such as categories or tags.</li>
+</ul>
+
+<h3 id="composite-index">Composite Index</h3>
+
+<ul>
+<li>A composite index is created on multiple columns. It's useful for improving performance when queries involve multiple conditions.</li>
+<li>For instance, an index on <code>(last_name, first_name)</code> would be beneficial for a query that searches for people based on both last and first names.</li>
+</ul>
+
+<h3 id="clustered-index">Clustered Index</h3>
+
+<ul>
+<li>A clustered index determines the physical order of data rows in a table.</li>
+<li>In most database systems, a table can have only one clustered index, as the data rows are physically stored in the order specified by this index.</li>
+</ul>
+
+<h3 id="non-clustered-index">Non-Clustered Index</h3>
+
+<ul>
+<li>Non-clustered indexes are separate from the data rows and contain a copy of the indexed columns along with a pointer to the actual data.</li>
+<li>A table can have multiple non-clustered indexes, and they are used to improve query performance.</li>
+</ul>
+
+<h2 id="creating-and-managing-sql-indexes">Creating and Managing SQL Indexes</h2>
+
+<p>Creating and managing indexes can vary depending on the database management system (DBMS) you're using. However, the general process involves the following steps:</p>
+
+<ol>
+<li><p><strong>Choosing Columns</strong>: Identify which columns need indexing based on your query patterns and performance needs.</p></li>
+<li><p><strong>Creating Indexes</strong>: Use SQL commands specific to your DBMS to create indexes on the chosen columns.</p></li>
+<li><p><strong>Monitoring Performance</strong>: Regularly monitor your database's performance and query execution plans to ensure that the indexes are effective.</p></li>
+<li><p><strong>Maintenance</strong>: Indexes may require maintenance over time, such as rebuilding or reorganizing them to keep them efficient.</p></li>
+</ol>
+
+<h2 id="best-practices-for-using-sql-indexes">Best Practices for Using SQL Indexes</h2>
+
+<p>To use SQL indexes effectively, consider these best practices:</p>
+
+<ol>
+<li><p><strong>Selectively Index</strong>: Don't over-index your tables. Index only columns that are frequently used in <code>WHERE</code>, <code>JOIN</code>, or <code>ORDER BY</code> clauses.</p></li>
+<li><p><strong>Use Composite Indexes Wisely</strong>: Be cautious when creating composite indexes. They can be beneficial, but only when you query using the columns in the same order as the index.</p></li>
+<li><p><strong>Regularly Monitor and Maintain</strong>: Keep an eye on your database's performance, and reorganize or rebuild indexes when necessary.</p></li>
+<li><p><strong>Understand Query Execution Plans</strong>: Learn how to analyze query execution plans to identify which indexes are being used and how queries are performing.</p></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SQL indexes are crucial for optimizing database performance. They provide a way to quickly locate rows in database tables, reducing the need for full table scans and improving query response times.</p>
+
+<p>By understanding the types of indexes, when to use them, and best practices for their implementation, you can leverage this powerful feature to ensure your database applications run efficiently.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

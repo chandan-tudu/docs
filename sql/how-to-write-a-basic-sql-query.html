@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Write a Basic SQL Query?</title>
+<meta name="description" content="In this article, we'll walk you through the process of writing a basic SQL query." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+    <li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box"><h1>How to Write a Basic SQL Query</h1></div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Write a Basic SQL Query" loading="lazy" width="900" height="500"></div>
+<p>SQL (Structured Query Language) is a domain-specific language used for managing and querying relational databases.</p>
+
+<p>Writing SQL queries is an essential skill for anyone dealing with databases, whether you're a software developer, data analyst, or database administrator.</p>
+
+<p>In this article, we'll walk you through the process of writing a basic SQL query.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before we dive into writing SQL queries, make sure you have the following prerequisites in place:</p>
+
+<ol>
+<li><strong>Database Management System (DBMS)</strong>: You need access to a database and a DBMS to practice SQL queries. Popular DBMS options include MySQL, PostgreSQL, SQLite, SQL Server, and Oracle.</li>
+<li><strong>SQL Client</strong>: You can write and execute SQL queries using a command-line tool, GUI-based client (e.g., MySQL Workbench, DBeaver), or an online SQL editor.</li>
+</ol>
+
+<h2 id="writing-a-basic-sql-query">Writing a Basic SQL Query</h2>
+
+<p>SQL queries typically fall into four main categories: <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, and <code>DELETE</code>. In this article, we'll start with a basic <code>SELECT</code> query, which is used to retrieve data from a database.</p>
+
+<h3 id="the-select-statement">The "SELECT" Statement</h3>
+
+<p>The <code>SELECT</code> statement is used to retrieve data from one or more tables in a database. The basic syntax of a <code>SELECT</code> query is as follows:</p>
+
+<pre class="language-sql"><code>SELECT column1, column2, ...
+FROM table_name;
+</code></pre>
+
+<p>Here's a breakdown of the components:</p>
+
+<ul>
+<li><code>SELECT</code>: Specifies the columns you want to retrieve.</li>
+<li><code>column1, column2, ...</code>: The specific columns you want to retrieve. You can use <code>*</code> to select all columns.</li>
+<li><code>FROM</code>: Specifies the table from which you're retrieving data.</li>
+<li><code>table_name</code>: The name of the table containing the data.</li>
+</ul>
+
+<p>Let's look at some practical examples.</p>
+
+<h3 id="example-1-retrieving-all-columns">Example 1: Retrieving All Columns</h3>
+
+<p>To retrieve all columns from a table, use <code>SELECT *</code>. For example, if you have a table called <code>employees</code>, you can retrieve all records like this:</p>
+
+<pre class="language-sql"><code>SELECT *
+FROM employees;
+</code></pre>
+
+<p>This query will return all rows and columns from the <code>employees</code> table.</p>
+
+<h3 id="example-2-selecting-specific-columns">Example 2: Selecting Specific Columns</h3>
+
+<p>To retrieve specific columns, list them after the <code>SELECT</code> keyword. Suppose you want to retrieve only the <code>first_name</code> and <code>last_name</code> columns from the <code>employees</code> table:</p>
+
+<pre class="language-sql"><code>SELECT first_name, last_name
+FROM employees;
+</code></pre>
+
+<p>This query will return only the <code>first_name</code> and <code>last_name</code> columns for all records in the <code>employees</code> table.</p>
+
+<h3 id="example-3-adding-a-where-clause">Example 3: Adding a <code>WHERE</code> Clause</h3>
+
+<p>You can filter the results using a <code>WHERE</code> clause. For instance, if you want to retrieve the records of employees whose <code>department</code> is 'Sales':</p>
+
+<pre class="language-sql"><code>SELECT first_name, last_name
+FROM employees
+WHERE department = 'Sales';
+</code></pre>
+
+<p>This query will return the <code>first_name</code> and <code>last_name</code> of employees working in the 'Sales' department.</p>
+
+<h2 id="running-your-sql-query">Running Your SQL Query</h2>
+
+<p>After writing your SQL query, you need to run it against a database. The process of executing SQL queries can vary depending on the SQL client or DBMS you are using. Here are the general steps:</p>
+
+<ol>
+<li>Open your SQL client or database interface.</li>
+<li>Connect to the database you want to work with.</li>
+<li>Paste your SQL query into the SQL editor.</li>
+<li>Run the query, and view the results.</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Writing a basic SQL query is an essential skill for working with relational databases. In this article, we covered the <code>SELECT</code> statement, which is used to retrieve data from a table.</p>
+
+<p>You learned how to select all columns or specific columns and how to filter results using a <code>WHERE</code> clause. As you become more familiar with SQL, you can explore more advanced SQL statements and features to manipulate and query data effectively.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body>
+
+</html>

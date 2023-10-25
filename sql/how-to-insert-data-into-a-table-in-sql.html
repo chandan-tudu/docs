@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Insert Data into a Table in SQL?</title>
+<meta name="description" content="In this article, we will guide you through the process of inserting data into a table using SQL." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Insert Data into a Table in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Insert Data into a Table in SQL?" loading="lazy" width="900" height="500"></div>
+<p>Inserting data into a table in SQL is a fundamental operation in database management.</p>
+
+<p>After creating a table and defining its structure, the next step is to populate it with data.</p>
+
+<p>In this article, we will guide you through the process of inserting data into a table using SQL.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#sql-insert-into-statement">SQL INSERT INTO Statement</a></li>
+<li><a href="#inserting-data-into-a-table">Inserting Data into a Table</a></li>
+<li><a href="#inserting-data-into-specific-columns">Inserting Data into Specific Columns</a></li>
+<li><a href="#inserting-multiple-rows">Inserting Multiple Rows</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In SQL, tables serve as containers for data, and inserting data into these tables is essential for creating, updating, and managing database records.</p>
+
+<p>The <code>INSERT INTO</code> statement is used to add data into a table, specifying the target table and the values to be inserted.</p>
+
+<h2 id="sql-insert-into-statement">SQL INSERT INTO Statement</h2>
+
+<p>The basic syntax for the <code>INSERT INTO</code> statement is as follows:</p>
+
+<pre class="language-sql"><code>INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+</code></pre>
+
+<ul>
+<li><code>table_name</code>: The name of the target table where data will be inserted.</li>
+<li><code>(column1, column2, column3, ...)</code>: Optional list of columns to insert data into. If omitted, data for all columns is expected.</li>
+<li><code>VALUES (value1, value2, value3, ...)</code>: The values to be inserted into the specified columns.</li>
+</ul>
+
+<h2 id="inserting-data-into-a-table">Inserting Data into a Table</h2>
+
+<p>Let's say we have a table named "Employees" with columns for "EmployeeID," "FirstName," "LastName," and "Salary."</p>
+
+<p>To insert a new employee record, you would use the following SQL statement:</p>
+
+<pre class="language-sql"><code>INSERT INTO Employees (EmployeeID, FirstName, LastName, Salary)
+VALUES (1, 'John', 'Doe', 50000.00);
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>We specify the target table as "Employees."</li>
+<li>We explicitly list the columns we are inserting data into: "EmployeeID," "FirstName," "LastName," and "Salary."</li>
+<li>We provide corresponding values for each column.</li>
+</ul>
+
+<h2 id="inserting-data-into-specific-columns">Inserting Data into Specific Columns</h2>
+
+<p>You can choose to insert data into specific columns, leaving others empty.</p>
+
+<p>For instance, to insert a new employee without specifying the "Salary," you can do the following:</p>
+
+<pre class="language-sql"><code>INSERT INTO Employees (EmployeeID, FirstName, LastName)
+VALUES (2, 'Jane', 'Smith');
+</code></pre>
+
+<p>In this case, only the "EmployeeID," "FirstName," and "LastName" columns are populated, and "Salary" will be empty.</p>
+
+<h2 id="inserting-multiple-rows">Inserting Multiple Rows</h2>
+
+<p>You can insert multiple rows into a table with a single <code>INSERT INTO</code> statement. To insert data for multiple employees, you can write:</p>
+
+<pre class="language-sql"><code>INSERT INTO Employees (EmployeeID, FirstName, LastName, Salary)
+VALUES
+    (3, 'Robert', 'Johnson', 60000.00),
+    (4, 'Mary', 'Brown', 55000.00),
+    (5, 'David', 'Lee', 62000.00);
+</code></pre>
+
+<p>In this example, we insert data for three employees in a single statement.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Inserting data into a table is a fundamental operation in SQL. Whether you're adding new records to a table or updating existing ones, the <code>INSERT INTO</code> statement is a vital tool for managing the data within your database.</p>
+
+<p>By following the syntax and providing the appropriate values, you can efficiently populate your tables with relevant data, making your database a valuable resource for applications and decision-making.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

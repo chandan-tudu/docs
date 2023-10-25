@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Wait 1 Second in JavaScript</title>
+<meta name="description" content="In this comprehensive guide, we will explore different methods to introduce a 1-second delay in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Wait 1 Second in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Wait one Second in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In JavaScript, you might encounter situations where you need to introduce a delay in your code, commonly referred to as a "pause" or "waiting."</p>
+
+<p>This can be useful in various scenarios, such as creating time-based animations, managing timeouts, or simulating real-time behavior.</p>
+
+<p>In this comprehensive guide, we will explore different methods to introduce a 1-second delay in JavaScript.</p>
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<p>Introducing a 1-second delay in JavaScript essentially means suspending the execution of your code for one second.</p>
+
+<p>It can be achieved through various methods, and we'll explore the most common ones here.</p>
+
+<h2 id="2-using-settimeout-method">2. Using "setTimeout()" method</h2>
+
+<p>The most straightforward way to introduce a 1-second delay in JavaScript is by using the <code>setTimeout()</code> function.</p>
+
+<p>It allows you to execute a function or code snippet after a specified time delay, in milliseconds.</p>
+
+<p>Here's how you can use <code>setTimeout()</code> to wait for 1 second:</p>
+
+<pre class="language-javascript"><code>console.log('Before waiting');
+
+setTimeout(function () {
+    console.log('After waiting for 1 second');
+}, 1000); // 1000 milliseconds = 1 second
+</code></pre>
+
+<p>In this example, we use <code>setTimeout()</code> to print "After waiting for 1 second" to the console after a delay of 1000 milliseconds (1 second).</p>
+
+<h2 id="3-using-promises-and-async-await-">3. Using Promises and "async/await"</h2>
+
+<p>In modern JavaScript, you can leverage Promises and the <code>async/await</code> syntax to create asynchronous code that waits for a specified period.</p>
+
+<p>Here's how to use Promises and <code>async/await</code> for a 1-second delay:</p>
+
+<pre class="language-javascript"><code>async function waitOneSecond() {
+    console.log('Before waiting');
+
+    await new Promise((resolve) =&gt; setTimeout(resolve, 1000)); // Wait for 1 second
+
+    console.log('After waiting for 1 second');
+}
+
+waitOneSecond();
+</code></pre>
+
+<p>In this code, we define an <code>async</code> function called <code>waitOneSecond</code> that utilizes a Promise and <code>await</code> to wait for 1 second before printing "After waiting for 1 second" to the console.</p>
+
+<hr />
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Introducing a 1-second delay in JavaScript is a common requirement in various programming scenarios.</p>
+
+<p>You can use the <code>setTimeout()</code> function for simple delays or embrace modern asynchronous techniques like Promises and <code>async/await</code> to achieve more complex waiting mechanisms.</p>
+
+<p>The choice of method depends on your specific use case and coding style. Whether you're building web applications, animations, or interactive features, mastering these techniques will enable you to control the timing and flow of your JavaScript code effectively.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

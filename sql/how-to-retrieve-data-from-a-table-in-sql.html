@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Retrieve Data from a Table in SQL?</title>
+<meta name="description" content="In this article, we'll explore the process of retrieving data from a table using SQL." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Retrieve Data from a Table in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Retrieve Data from a Table in SQL?" loading="lazy" width="900" height="500"></div>
+<p>Retrieving data from a table is one of the primary tasks in working with SQL databases.</p>
+
+<p>Whether you need to query data for analysis, reporting, or any other purpose, SQL provides powerful tools for fetching the data you need.</p>
+
+<p>In this article, we'll explore the process of retrieving data from a table using SQL.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#sql-select-statement">SQL SELECT Statement</a></li>
+<li><a href="#retrieving-all-data-from-a-table">Retrieving All Data from a Table</a></li>
+<li><a href="#selecting-specific-columns">Selecting Specific Columns</a></li>
+<li><a href="#filtering-data-with-the-where-clause">Filtering Data with the WHERE Clause</a></li>
+<li><a href="#sorting-data-with-order-by">Sorting Data with ORDER BY</a></li>
+<li><a href="#limiting-results-with-limit">Limiting Results with LIMIT</a></li>
+<li><a href="#joining-tables">Joining Tables</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>SQL (Structured Query Language) is designed for managing and querying relational databases. To retrieve data from a table, you use SQL's <code>SELECT</code> statement.</p>
+
+<p>The <code>SELECT</code> statement allows you to specify which columns you want to retrieve, filter the data, and sort the results.</p>
+
+<h2 id="sql-select-statement">SQL SELECT Statement</h2>
+
+<p>The basic syntax for the <code>SELECT</code> statement is as follows:</p>
+
+<pre class="language-sql"><code>SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+</code></pre>
+
+<ul>
+<li><code>column1, column2, ...</code>: The columns you want to retrieve data from.</li>
+<li><code>table_name</code>: The name of the table you are querying.</li>
+<li><code>WHERE condition</code>: An optional clause to filter the data based on specified conditions.</li>
+</ul>
+
+<h2 id="retrieving-all-data-from-a-table">Retrieving All Data from a Table</h2>
+
+<p>To retrieve all data from a table, use the <code>SELECT *</code> statement. For example:</p>
+
+<pre class="language-sql"><code>SELECT *
+FROM Employees;
+</code></pre>
+
+<p>This query selects all columns and all rows from the "Employees" table.</p>
+
+<h2 id="selecting-specific-columns">Selecting Specific Columns</h2>
+
+<p>You can specify which columns to retrieve by listing them in the <code>SELECT</code> statement. For instance, to retrieve only the first and last names of employees:</p>
+
+<pre class="language-sql"><code>SELECT FirstName, LastName
+FROM Employees;
+</code></pre>
+
+<p>This query fetches only the "FirstName" and "LastName" columns from the "Employees" table.</p>
+
+<h2 id="filtering-data-with-the-where-clause">Filtering Data with the WHERE Clause</h2>
+
+<p>To filter the data you retrieve, use the <code>WHERE</code> clause. For example, to select employees with a salary greater than $50,000:</p>
+
+<pre class="language-sql"><code>SELECT FirstName, LastName, Salary
+FROM Employees
+WHERE Salary &gt; 50000;
+</code></pre>
+
+<p>The <code>WHERE</code> clause allows you to specify conditions that data must meet to be included in the result set.</p>
+
+<h2 id="sorting-data-with-order-by">Sorting Data with ORDER BY</h2>
+
+<p>You can sort the retrieved data using the <code>ORDER BY</code> clause. To retrieve employees in ascending order of their salaries:</p>
+
+<pre class="language-sql"><code>SELECT FirstName, LastName, Salary
+FROM Employees
+ORDER BY Salary ASC;
+</code></pre>
+
+<p>The <code>ASC</code> keyword specifies an ascending sort. To sort in descending order, use <code>DESC</code>.</p>
+
+<h2 id="limiting-results-with-limit">Limiting Results with LIMIT</h2>
+
+<p>Use the <code>LIMIT</code> clause to restrict the number of rows returned. For example, to retrieve the top 10 highest-paid employees:</p>
+
+<pre class="language-sql"><code>SELECT FirstName, LastName, Salary
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 10;
+</code></pre>
+
+<p>The <code>LIMIT</code> clause is especially useful when you want to retrieve a specific number of records from your query results.</p>
+
+<h2 id="joining-tables">Joining Tables</h2>
+
+<p>In real-world scenarios, data may be distributed across multiple tables.</p>
+
+<p>SQL allows you to join tables to retrieve related data. Common join types include <code>INNER JOIN</code>, <code>LEFT JOIN</code>, and <code>RIGHT JOIN</code>.</p>
+
+<p>For example, to retrieve a list of products and their corresponding categories:</p>
+
+<pre class="language-sql"><code>SELECT Products.ProductName, Categories.CategoryName
+FROM Products
+INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID;
+</code></pre>
+
+<p>This query retrieves the product names and their associated category names by joining the "Products" and "Categories" tables.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Retrieving data from a table in SQL is a fundamental skill for anyone working with databases.</p>
+
+<p>The ability to select specific columns, filter data, sort results, and join tables allows you to tailor your queries to meet your specific needs.</p>
+
+<p>SQL's flexibility and power make it a go-to tool for managing and analyzing data in relational databases, making it an essential skill for data professionals and developers.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

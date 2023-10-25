@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Update Records in SQL?</title>
+<meta name="description" content="In this article, we'll explore the process of updating records in SQL." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Update Records in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Update Records in SQL?" loading="lazy" width="900" height="500"></div>
+<p>Updating records in a SQL database is a common and essential operation when working with databases.</p>
+
+<p>Whether you need to correct errors, modify existing data, or implement new information, SQL provides the <code>UPDATE</code> statement to perform these tasks efficiently.</p>
+
+<p>In this article, we'll explore the process of updating records in SQL.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#sql-update-statement">SQL UPDATE Statement</a></li>
+<li><a href="#updating-records-in-a-table">Updating Records in a Table</a></li>
+<li><a href="#updating-records-with-the-where-clause">Updating Records with the WHERE Clause</a></li>
+<li><a href="#updating-multiple-records">Updating Multiple Records</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In a relational database, data evolves over time. As a result, it's crucial to be able to update existing records when changes occur.</p>
+
+<p>SQL provides the <code>UPDATE</code> statement, allowing you to modify data in a table while preserving the structure of the database.</p>
+
+<h2 id="sql-update-statement">SQL UPDATE Statement</h2>
+
+<p>The basic syntax for the <code>UPDATE</code> statement is as follows:</p>
+
+<pre class="language-sql"><code>UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+</code></pre>
+
+<ul>
+<li><code>table_name</code>: The name of the table to update.</li>
+<li><code>column1, column2, ...</code>: The columns to update.</li>
+<li><code>value1, value2, ...</code>: The new values to assign to the specified columns.</li>
+<li><code>WHERE condition</code>: An optional clause that specifies which records to update based on specific conditions.</li>
+</ul>
+
+<h2 id="updating-records-in-a-table">Updating Records in a Table</h2>
+
+<p>To update a single record in a table, you can use the <code>UPDATE</code> statement. For example, to change the last name of an employee with <code>EmployeeID</code> 3:</p>
+
+<pre class="language-sql"><code>UPDATE Employees
+SET LastName = 'Smith'
+WHERE EmployeeID = 3;
+</code></pre>
+
+<p>This query sets the <code>LastName</code> of the employee with <code>EmployeeID</code> 3 to "Smith."</p>
+
+<h2 id="updating-records-with-the-where-clause">Updating Records with the WHERE Clause</h2>
+
+<p>In most cases, you want to update multiple records based on specific conditions.</p>
+
+<p>The <code>WHERE</code> clause allows you to target records that meet certain criteria. For example, to give all employees with a salary below $50,000 a raise:</p>
+
+<pre class="language-sql"><code>UPDATE Employees
+SET Salary = Salary + 5000
+WHERE Salary &lt; 50000;
+</code></pre>
+
+<p>This query increases the salary of all employees earning less than $50,000 by $5,000.</p>
+
+<h2 id="updating-multiple-records">Updating Multiple Records</h2>
+
+<p>You can update multiple records simultaneously by using the <code>UPDATE</code> statement.</p>
+
+<p>For example, to change the department of all employees in "Sales" to "Marketing":</p>
+
+<pre class="language-sql"><code>UPDATE Employees
+SET Department = 'Marketing'
+WHERE Department = 'Sales';
+</code></pre>
+
+<p>This query updates the <code>Department</code> column for all employees currently in the "Sales" department to "Marketing."</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Updating records in SQL is a fundamental operation for managing relational databases.</p>
+
+<p>Whether you're fixing errors, adjusting data to reflect changes, or implementing new information, the <code>UPDATE</code> statement is a powerful tool for modifying the data stored in your database.</p>
+
+<p>Understanding how to update records is crucial for maintaining the integrity of your database and ensuring that the data it contains remains accurate and up to date.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
