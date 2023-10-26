@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use SQL Aliases for Columns?</title>
+<meta name="description" content="In this article, we will explore the purpose of SQL aliases, explain their syntax, and provide examples of how to use them effectively." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use SQL Aliases for Columns?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use SQL Aliases for Columns?" loading="lazy" width="900" height="500"></div>
+<p><strong>SQL aliases for columns</strong> are a powerful feature that allows you to rename columns in the result set of a SQL query.</p>
+
+<p>Aliases make your query results more readable, provide a convenient way to assign custom names to columns, and simplify the presentation of data.</p>
+
+<p>In this article, we will explore the purpose of SQL aliases, explain their syntax, and provide examples of how to use them effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-sql-aliases">Introduction to SQL Aliases</a></li>
+<li><a href="#syntax-of-sql-aliases">Syntax of SQL Aliases</a></li>
+<li><a href="#using-sql-aliases-with-examples">Using SQL Aliases with Examples</a>
+
+<ul>
+<li><a href="#example-1-basic-alias">Example 1: Basic Alias</a></li>
+<li><a href="#example-2-alias-with-expressions">Example 2: Alias with Expressions</a></li>
+<li><a href="#example-3-alias-for-calculated-columns">Example 3: Alias for Calculated Columns</a></li>
+</ul></li>
+<li><a href="#benefits-of-sql-aliases">Benefits of SQL Aliases</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-sql-aliases">Introduction to SQL Aliases</h2>
+
+<p>SQL aliases for columns allow you to assign custom names to the columns in the result set of a query.</p>
+
+<p>These custom names are temporary and are only used within the context of the query.</p>
+
+<h3>Aliases are useful for various purposes, including:</h3>
+
+<ul>
+<li>Making query results more readable by using descriptive column names.</li>
+<li>Simplifying the presentation of data, especially when dealing with complex queries.</li>
+<li>Renaming columns to fit specific requirements without changing the database schema.</li>
+</ul>
+
+<p>Aliases can be applied to individual columns, including those with calculated values, expressions, or functions.</p>
+
+<h2 id="syntax-of-sql-aliases">Syntax of SQL Aliases</h2>
+
+<p>The basic syntax for creating an alias for a column in a SQL query is as follows:</p>
+
+<pre class="language-sql"><code>SELECT column_name AS alias_name
+FROM table_name;
+</code></pre>
+
+<ul>
+<li><code>column_name</code>: The name of the column you want to alias.</li>
+<li><code>alias_name</code>: The custom name you want to assign to the column.</li>
+</ul>
+
+<p>You can also use double quotes or square brackets for <code>alias_name</code> if the name contains spaces or special characters. For example:</p>
+
+<pre class="language-sql"><code>SELECT column_name AS "Alias Name with Spaces"
+FROM table_name;
+</code></pre>
+
+<h2 id="using-sql-aliases-with-examples">Using SQL Aliases with Examples</h2>
+
+<p>Let's explore some practical examples of using SQL aliases for columns:</p>
+
+<h3 id="example-1-basic-alias">Example 1: Basic Alias</h3>
+
+<p>Suppose you have a table of employees, and you want to create a query that lists the first and last names of employees.</p>
+
+<p>You can use aliases to make the result set more readable:</p>
+
+<pre class="language-sql"><code>SELECT FirstName AS "First Name", LastName AS "Last Name"
+FROM Employees;
+</code></pre>
+
+<p>In this SQL statement, we use aliases to rename the "FirstName" and "LastName" columns to "First Name" and "Last Name," respectively.</p>
+
+<h3 id="example-2-alias-with-expressions">Example 2: Alias with Expressions</h3>
+
+<p>Consider a scenario where you have a table of products with a "Price" column, and you want to calculate a discounted price for each product in your query.</p>
+
+<p>You can use aliases with expressions to simplify the presentation of the discounted price:</p>
+
+<pre class="language-sql"><code>SELECT ProductName, Price, Price * 0.9 AS "Discounted Price"
+FROM Products;
+</code></pre>
+
+<p>Here, we use an alias to name the calculated column "Discounted Price" that results from the expression <code>Price * 0.9</code>, which calculates a <code>10%</code> discount.</p>
+
+<h3 id="example-3-alias-for-calculated-columns">Example 3: Alias for Calculated Columns</h3>
+
+<p>Suppose you have a table of orders with "OrderDate" and "Quantity" columns, and you want to calculate the total quantity for each order.</p>
+
+<p>You can use an alias for a calculated column:</p>
+
+<pre class="language-sql"><code>SELECT OrderID, OrderDate, Quantity, Quantity * Price AS "Total"
+FROM Orders;
+</code></pre>
+
+<p>In this SQL statement, we create an alias "Total" for the calculated column <code>Quantity * Price</code>, which represents the total cost of each order.</p>
+
+<h2 id="benefits-of-sql-aliases">Benefits of SQL Aliases</h2>
+
+<p>SQL aliases for columns offer several benefits:</p>
+
+<ul>
+<li><p><strong>Readability</strong>: Aliases make query results more readable by providing descriptive column names, making it easier to understand the data.</p></li>
+<li><p><strong>Presentation</strong>: Aliases simplify the presentation of data, especially in complex queries where the original column names may be less intuitive.</p></li>
+<li><p><strong>Flexibility</strong>: Aliases allow you to rename columns temporarily without changing the database schema, providing flexibility in query design.</p></li>
+<li><p><strong>Calculated Columns</strong>: Aliases are useful for naming calculated columns, making it clear what the column represents.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SQL aliases for columns are a valuable feature for customizing the names of columns in the result set of a query.</p>
+
+<p>They improve the readability and presentation of data, making query results more informative and user-friendly.</p>
+
+<p>Whether you need to rename columns for clarity, create aliases for calculated values, or simplify complex queries, SQL aliases provide a versatile tool for enhancing the output of your SQL queries.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

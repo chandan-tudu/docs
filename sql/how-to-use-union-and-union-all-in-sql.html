@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use "UNION" and "UNION ALL" in SQL?</title>
+<meta name="description" content="This article will explore the purpose of UNION and UNION ALL, their syntax, differences, and provide practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use "UNION" and "UNION ALL" in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use UNION and UNION ALL in SQL?" loading="lazy" width="900" height="500"></div>
+<p>In SQL, the <code>UNION</code> and <code>UNION ALL</code> operators are essential tools for <strong>combining the results of multiple SELECT queries</strong> into a single result set.</p>
+
+<p>While both operators merge data from different tables or queries, they have distinct behaviors and use cases.</p>
+
+<p>This article will explore the purpose of <code>UNION</code> and <code>UNION ALL</code>, their syntax, differences, and provide practical examples of how to use them effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-union-and-union-all">Introduction to UNION and UNION ALL</a></li>
+<li><a href="#syntax-of-the-union-operator">Syntax of the UNION Operator</a></li>
+<li><a href="#syntax-of-the-union-all-operator">Syntax of the UNION ALL Operator</a></li>
+<li><a href="#differences-between-union-and-union-all">Differences between UNION and UNION ALL</a></li>
+<li><a href="#using-union-and-union-all-with-examples">Using UNION and UNION ALL with Examples</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-union-and-union-all">Introduction to UNION and UNION ALL</h2>
+
+<p>The <code>UNION</code> and <code>UNION ALL</code> operators in SQL enable you to combine the result sets of multiple <code>SELECT</code> queries into a single, merged result set.</p>
+
+<p>These operators are often used when you need to consolidate data from different tables, ensuring that duplicates are removed (in the case of <code>UNION</code>) or retained (in the case of <code>UNION ALL</code>).</p>
+
+<h2 id="syntax-of-the-union-operator">Syntax of the UNION Operator</h2>
+
+<p>The basic syntax of the <code>UNION</code> operator is as follows:</p>
+
+<pre class="language-sql"><code>SELECT column1, column2, ...
+FROM table1
+WHERE condition
+UNION
+SELECT column1, column2, ...
+FROM table2
+WHERE condition;
+</code></pre>
+
+<ul>
+<li><code>column1, column2, ...</code>: The columns you want to retrieve in the result set.</li>
+<li><code>table1</code>, <code>table2</code>: The tables or queries you want to combine.</li>
+<li><code>condition</code>: An optional condition to filter the rows.</li>
+</ul>
+
+<p>The <code>UNION</code> operator merges the result sets of the two <code>SELECT</code> queries and returns a distinct result set, eliminating duplicate rows.</p>
+
+<h2 id="syntax-of-the-union-all-operator">Syntax of the UNION ALL Operator</h2>
+
+<p>The basic syntax of the <code>UNION ALL</code> operator is similar to <code>UNION</code>, but it retains all rows, including duplicates:</p>
+
+<pre class="language-sql"><code>SELECT column1, column2, ...
+FROM table1
+WHERE condition
+UNION ALL
+SELECT column1, column2, ...
+FROM table2
+WHERE condition;
+</code></pre>
+
+<p>The <code>UNION ALL</code> operator combines the result sets of the two <code>SELECT</code> queries and preserves duplicate rows.</p>
+
+<h2 id="differences-between-union-and-union-all">Differences between UNION and UNION ALL</h2>
+
+<p>The primary difference between <code>UNION</code> and <code>UNION ALL</code> lies in how they handle duplicate rows:</p>
+
+<ul>
+<li><p><code>UNION</code>: This operator removes duplicate rows from the combined result set, ensuring that the final result contains only distinct rows.</p></li>
+<li><p><code>UNION ALL</code>: This operator retains all rows, including duplicates. It does not remove any rows from the combined result set.</p></li>
+</ul>
+
+<p>Because <code>UNION</code> removes duplicates, it may have a slightly higher performance cost as it requires the database to perform additional operations to identify and eliminate duplicates. On the other hand, <code>UNION ALL</code> is generally faster because it simply concatenates the result sets.</p>
+
+<h2 id="using-union-and-union-all-with-examples">Using UNION and UNION ALL with Examples</h2>
+
+<p>Let's explore some practical examples of using <code>UNION</code> and <code>UNION ALL</code>:</p>
+
+<h3 id="example-1-using-union">Example 1: Using UNION</h3>
+
+<p>Suppose you have two tables, "Customers" and "Suppliers," and you want to create a list of all unique company names from both tables.</p>
+
+<p>You can use the <code>UNION</code> operator:</p>
+
+<pre class="language-sql"><code>SELECT CompanyName
+FROM Customers
+UNION
+SELECT CompanyName
+FROM Suppliers;
+</code></pre>
+
+<p>This SQL statement combines the company names from both tables while removing duplicates, resulting in a list of unique company names.</p>
+
+<h3 id="example-2-using-union-all">Example 2: Using UNION ALL</h3>
+
+<p>Consider a scenario where you have two tables, "Orders" and "ArchivedOrders," and you want to combine all orders, including those archived, into a single list.</p>
+
+<p>To retain all orders, including any duplicates, you can use the <code>UNION ALL</code> operator:</p>
+
+<pre class="language-sql"><code>SELECT OrderID, OrderDate
+FROM Orders
+UNION ALL
+SELECT OrderID, OrderDate
+FROM ArchivedOrders;
+</code></pre>
+
+<p>This SQL statement combines all orders from both tables, including duplicates, into a single list.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The <code>UNION</code> and <code>UNION ALL</code> operators in SQL provide powerful means to combine the results of multiple <code>SELECT</code> queries into a single, merged result set.</p>
+
+<p>Understanding their differences is essential, as <code>UNION</code> removes duplicates, while <code>UNION ALL</code> retains them. These operators are commonly used to consolidate data from different tables or queries, making them invaluable tools in SQL for data integration and analysis.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

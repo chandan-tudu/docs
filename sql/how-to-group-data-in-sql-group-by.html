@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Group Data in SQL (GROUP BY)?</title>
+<meta name="description" content="In this article, we will explore the purpose of the GROUP BY clause, its syntax, and provide practical examples of how to use it effectively." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Group Data in SQL (GROUP BY)?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Group Data in SQL (GROUP BY)?" loading="lazy" width="900" height="500"></div>
+<p><strong>Grouping data in SQL</strong> using the <code>GROUP BY</code> clause is a fundamental technique for summarizing and aggregating information from a database table.</p>
+
+<p>It allows you to group rows with the same values in specified columns and apply aggregate functions to the groups.</p>
+
+<p>In this article, we will explore the purpose of the <code>GROUP BY</code> clause, its syntax, and provide practical examples of how to use it effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-grouping-data">Introduction to Grouping Data</a></li>
+<li><a href="#syntax-of-the-group-by-clause">Syntax of the GROUP BY Clause</a></li>
+<li><a href="#aggregate-functions-with-group-by">Aggregate Functions with GROUP BY</a></li>
+<li><a href="#using-group-by-with-examples">Using GROUP BY with Examples</a></li>
+<li><a href="#grouping-with-having">Grouping with HAVING</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-grouping-data">Introduction to Grouping Data</h2>
+
+<p>In SQL, it's often necessary to summarize data by grouping rows with the same values in one or more columns.</p>
+
+<p>The <code>GROUP BY</code> clause is used to perform this grouping. It creates distinct groups based on the specified columns and allows you to apply aggregate functions to these groups.</p>
+
+<p>For example, you may have a table with sales data, and you want to find the total sales for each product category.</p>
+
+<p>Using <code>GROUP BY</code>, you can group the data by the product category column and calculate the total sales within each group.</p>
+
+<h2 id="syntax-of-the-group-by-clause">Syntax of the GROUP BY Clause</h2>
+
+<p>The basic syntax of the <code>GROUP BY</code> clause in a <code>SELECT</code> statement is as follows:</p>
+
+<pre class="language-sql"><code>SELECT column1, column2, ...
+FROM table_name
+GROUP BY column1, column2, ...;
+</code></pre>
+
+<ul>
+<li><code>column1, column2, ...</code>: The columns you want to include in the result set and use for grouping.</li>
+<li><code>table_name</code>: The name of the table from which you want to retrieve data.</li>
+<li><code>GROUP BY</code>: The keyword indicating that grouping is to be applied.</li>
+<li><code>column1, column2, ...</code>: The columns by which you want to group the data.</li>
+</ul>
+
+<h2 id="aggregate-functions-with-group-by">Aggregate Functions with GROUP BY</h2>
+
+<p>The power of the <code>GROUP BY</code> clause lies in its ability to apply aggregate functions to the groups it creates.</p>
+
+<p>Commonly used aggregate functions include:</p>
+
+<ul>
+<li><code>COUNT()</code>: Returns the number of rows in each group.</li>
+<li><code>SUM()</code>: Calculates the sum of a numeric column in each group.</li>
+<li><code>AVG()</code>: Computes the average of a numeric column in each group.</li>
+<li><code>MIN()</code>: Finds the minimum value in each group.</li>
+<li><code>MAX()</code>: Identifies the maximum value in each group.</li>
+</ul>
+
+<p>These functions help you summarize and analyze data effectively.</p>
+
+<h2 id="using-group-by-with-examples">Using GROUP BY with Examples</h2>
+
+<p>Let's explore some practical examples of using the <code>GROUP BY</code> clause in SQL:</p>
+
+<h3 id="example-1-grouping-and-counting">Example 1: Grouping and Counting</h3>
+
+<p>Suppose you have a table of orders and you want to find the number of orders placed by each customer.</p>
+
+<p>You can use <code>GROUP BY</code> with the <code>COUNT()</code> function:</p>
+
+<pre class="language-sql"><code>SELECT CustomerID, COUNT(OrderID) AS OrderCount
+FROM Orders
+GROUP BY CustomerID;
+</code></pre>
+
+<p>This SQL statement groups orders by customer and counts the number of orders for each customer.</p>
+
+<h3 id="example-2-grouping-and-summing">Example 2: Grouping and Summing</h3>
+
+<p>Imagine you have a table of products and their sales data, and you want to find the total sales for each product category.</p>
+
+<p>You can use <code>GROUP BY</code> with the <code>SUM()</code> function:</p>
+
+<pre class="language-sql"><code>SELECT Category, SUM(SalesAmount) AS TotalSales
+FROM Products
+GROUP BY Category;
+</code></pre>
+
+<p>This SQL statement groups products by category and calculates the total sales amount for each category.</p>
+
+<h2 id="grouping-with-having">Grouping with HAVING</h2>
+
+<p>In addition to <code>GROUP BY</code>, you can use the <code>HAVING</code> clause to filter the results of grouped data.</p>
+
+<p>The <code>HAVING</code> clause allows you to apply conditions to the grouped data after aggregation.</p>
+
+<p>For example, you can use it to filter groups based on a minimum or maximum value.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The SQL <code>GROUP BY</code> clause is a fundamental tool for summarizing and aggregating data in a database table.</p>
+
+<p>By grouping rows based on specified columns and applying aggregate functions, you can derive valuable insights and summaries from your data.</p>
+
+<p>Whether you need to count occurrences, calculate sums, averages, or find minimum and maximum values, the <code>GROUP BY</code> clause is a versatile and indispensable feature for SQL developers and database administrators.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

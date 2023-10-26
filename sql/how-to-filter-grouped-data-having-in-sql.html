@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Filter Grouped Data (HAVING) in SQL?</title>
+<meta name="description" content="In this article, we will explore the purpose of the HAVING clause, its syntax, and provide practical examples of how to use it effectively." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Filter Grouped Data (HAVING) in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Filter Grouped Data (HAVING) in SQL?" loading="lazy" width="900" height="500"></div>
+<p><strong>Filtering grouped data in SQL</strong> is a powerful technique that allows you to refine the results of a <code>GROUP BY</code> operation.</p>
+
+<p>The <code>HAVING</code> clause is specifically designed for this purpose, enabling you to apply conditions to the grouped data after aggregation.</p>
+
+<p>In this article, we will explore the purpose of the <code>HAVING</code> clause, its syntax, and provide practical examples of how to use it effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-filtering-grouped-data">Introduction to Filtering Grouped Data</a></li>
+<li><a href="#syntax-of-the-having-clause">Syntax of the HAVING Clause</a></li>
+<li><a href="#using-having-with-examples">Using HAVING with Examples</a></li>
+<li><a href="#benefits-and-best-practices">Benefits and Best Practices</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-filtering-grouped-data">Introduction to Filtering Grouped Data</h2>
+
+<p>In SQL, the <code>GROUP BY</code> clause is used to group rows with the same values in specified columns and apply aggregate functions to these groups.</p>
+
+<p>While this is powerful for summarizing data, there are often cases where you need to filter the results of grouped data based on certain conditions. This is where the <code>HAVING</code> clause comes into play.</p>
+
+<p>The <code>HAVING</code> clause is used in conjunction with <code>GROUP BY</code> to filter the results of grouped data.</p>
+
+<p>It allows you to apply conditions to the grouped data after aggregation, ensuring that only the desired groups are included in the result set.</p>
+
+<p>For example, you might want to find the average salary of employees in each department but filter out departments with an average salary less than a specific threshold. The <code>HAVING</code> clause enables you to perform this operation.</p>
+
+<h2 id="syntax-of-the-having-clause">Syntax of the HAVING Clause</h2>
+
+<p>The basic syntax of the <code>HAVING</code> clause in a <code>SELECT</code> statement is as follows:</p>
+
+<pre class="language-sql"><code>SELECT column1, column2, ...
+FROM table_name
+GROUP BY column1, column2, ...
+HAVING condition;
+</code></pre>
+
+<ul>
+<li><code>column1, column2, ...</code>: The columns you want to include in the result set and use for grouping.</li>
+<li><code>table_name</code>: The name of the table from which you want to retrieve data.</li>
+<li><code>GROUP BY</code>: The keyword indicating that grouping is to be applied.</li>
+<li><code>column1, column2, ...</code>: The columns by which you want to group the data.</li>
+<li><code>HAVING</code>: The keyword indicating that filtering of grouped data is to be applied.</li>
+<li><code>condition</code>: The condition that grouped data must meet to be included in the result set.</li>
+</ul>
+
+<h2 id="using-having-with-examples">Using HAVING with Examples</h2>
+
+<p>Let's explore some practical examples of using the <code>HAVING</code> clause in SQL:</p>
+
+<h3 id="example-1-filtering-by-count">Example 1: Filtering by Count</h3>
+
+<p>Suppose you have a table of customers and their orders, and you want to find customers who have placed more than three orders.</p>
+
+<p>You can use the <code>HAVING</code> clause with the <code>COUNT()</code> function:</p>
+
+<pre class="language-sql"><code>SELECT CustomerID, COUNT(OrderID) AS OrderCount
+FROM Orders
+GROUP BY CustomerID
+HAVING COUNT(OrderID) &gt; 3;
+</code></pre>
+
+<p>This SQL statement groups orders by customer and counts the number of orders for each customer.</p>
+
+<p>The <code>HAVING</code> clause filters out customers with more than three orders.</p>
+
+<h3 id="example-2-filtering-by-sum">Example 2: Filtering by Sum</h3>
+
+<p>Imagine you have a table of products and their sales data, and you want to find products with a total sales amount greater than <code>$10,000</code>.</p>
+
+<p>You can use the <code>HAVING</code> clause with the <code>SUM()</code> function:</p>
+
+<pre class="language-sql"><code>SELECT ProductID, ProductName, SUM(SalesAmount) AS TotalSales
+FROM Sales
+GROUP BY ProductID, ProductName
+HAVING SUM(SalesAmount) &gt; 10000;
+</code></pre>
+
+<p>This SQL statement groups products by product ID and name and calculates the total sales amount for each product.</p>
+
+<p>The <code>HAVING</code> clause filters out products with total sales exceeding <code>$10,000</code>.</p>
+
+<h2 id="benefits-and-best-practices">Benefits and Best Practices</h2>
+
+<p>The <code>HAVING</code> clause offers several benefits and best practices:</p>
+
+<ul>
+<li><p>Improved Precision: The <code>HAVING</code> clause allows you to precisely filter grouped data based on your specific criteria, ensuring that only the desired groups are included in the result set.</p></li>
+<li><p>Readability: By combining the <code>GROUP BY</code> and <code>HAVING</code> clauses, your SQL queries remain organized and easy to read, enhancing code maintainability.</p></li>
+<li><p>Expressive Queries: The <code>HAVING</code> clause allows you to create expressive and complex queries that answer specific questions or provide valuable insights from your data.</p></li>
+</ul>
+
+<p>To use the <code>HAVING</code> clause effectively:</p>
+
+<ul>
+<li><p>Understand Data Relationships: Clearly understand the relationships between columns and the data you need to filter before applying the <code>HAVING</code> clause.</p></li>
+<li><p>Use Aggregate Functions: Utilize aggregate functions such as <code>SUM()</code>, <code>COUNT()</code>, <code>AVG()</code>, and others to perform calculations on grouped data when using <code>HAVING</code>.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The SQL <code>HAVING</code> clause is a valuable tool for filtering the results of grouped data in SQL queries.</p>
+
+<p>Whether you need to filter groups by counts, sums, averages, or other criteria, the <code>HAVING</code> clause provides a flexible and efficient means to obtain the specific data you require from your database.</p>
+
+<p>By combining <code>GROUP BY</code> with <code>HAVING</code>, you can perform complex data analysis and retrieve meaningful insights from your database tables.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

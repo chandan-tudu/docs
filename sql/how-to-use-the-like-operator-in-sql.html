@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use the LIKE Operator in SQL?</title>
+<meta name="description" content="In this article, we'll explore how to use the LIKEoperator in SQL." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use the LIKE Operator in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use the LIKE Operator in SQL?" loading="lazy" width="900" height="500"></div>
+<p>The SQL <code>LIKE</code> operator is a powerful tool for searching and filtering data in a database. It allows you to perform pattern matching on text values within a table.</p>
+
+<p>In this article, we'll explore how to use the <code>LIKE</code> operator in SQL, the different wildcard characters it supports, and practical examples of its application.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-the-like-operator">Introduction to the LIKE Operator</a></li>
+<li><a href="#the-wildcard">The '%' Wildcard</a></li>
+<li><a href="#the-wildcard">The '&#95;' Wildcard</a></li>
+<li><a href="#using-the-like-operator-with-examples">Using the LIKE Operator with Examples</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-the-like-operator">Introduction to the LIKE Operator</h2>
+
+<p>The <code>LIKE</code> operator is primarily used in SQL for pattern matching in text data. It allows you to search for a specified pattern within a column of text data.</p>
+
+<p>The patterns can include wildcard characters that represent unknown or variable characters. The two most commonly used wildcard characters are <code>%</code> and <code>_</code>.</p>
+
+<ul>
+<li><p>The <code>%</code> wildcard represents zero, one, or multiple characters. For example, <code>%cat</code> would match any word ending with "cat," such as "domestic" or "wildcat."</p></li>
+<li><p>The <code>_</code> wildcard represents a single character. For example, <code>t_st</code> would match "test," "tast," or "t5st," where the underscore represents any character.</p></li>
+</ul>
+
+<p>The <code>LIKE</code> operator is often used in conjunction with the <code>SELECT</code> statement to retrieve data that matches a specific pattern.</p>
+
+<h2 id="the-wildcard">The '%' Wildcard</h2>
+
+<p>The <code>%</code> wildcard is used to match any number of characters (including zero characters). Here are some common use cases for the <code>%</code> wildcard:</p>
+
+<ul>
+<li><p>To find all records where a particular column starts with a specific set of characters, you can use the <code>%</code> wildcard at the end of the pattern. For example, to find all employees with names starting with "Jo," you can use <code>LIKE 'Jo%'</code>.</p></li>
+<li><p>To search for records containing a specific set of characters anywhere within a column, you can use the <code>%</code> wildcard both before and after the pattern. For example, to find all products containing the word "apple" in their name, you can use <code>LIKE '%apple%'</code>.</p></li>
+</ul>
+
+<h2 id="the---wildcard">The '&#95;' Wildcard</h2>
+
+<p>The <code>_</code> wildcard is used to match a single character. It can be helpful when you want to find records with specific characters at defined positions in the data. Here are some common use cases for the <code>_</code> wildcard:</p>
+
+<ul>
+<li><p>To find all records where a particular column has a specific character in a specific position, you can use the <code>_</code> wildcard to represent that character's position. For example, to find all words with "a" as the second character, you can use <code>LIKE '_a%'</code>.</p></li>
+<li><p>To search for records where a particular column has a specific character at multiple defined positions, you can use multiple <code>_</code> wildcards. For example, to find all three-letter words where the first and last characters are "b," you can use <code>LIKE 'b_b'</code>.</p></li>
+</ul>
+
+<h2 id="using-the-like-operator-with-examples">Using the LIKE Operator with Examples</h2>
+
+<p>Let's explore some practical examples of using the <code>LIKE</code> operator in SQL:</p>
+
+<h3 id="example-1-basic-pattern-matching">Example 1: Basic Pattern Matching</h3>
+
+<pre class="language-sql"><code>SELECT * FROM Products
+WHERE ProductName LIKE 'Apple%';
+</code></pre>
+
+<p>This SQL statement retrieves all products whose names start with "Apple."</p>
+
+<h3 id="example-2-pattern-matching-anywhere">Example 2: Pattern Matching Anywhere</h3>
+
+<pre class="language-sql"><code>SELECT * FROM Customers
+WHERE Email LIKE '%gmail.com';
+</code></pre>
+
+<p>This SQL statement retrieves all customers with email addresses ending in "gmail.com."</p>
+
+<h3 id="example-3-using-multiple-wildcards">Example 3: Using Multiple Wildcards</h3>
+
+<pre class="language-sql"><code>SELECT * FROM Words
+WHERE Word LIKE 'b_b';
+</code></pre>
+
+<p>This SQL statement retrieves all three-letter words where the first and last characters are "b."</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The SQL <code>LIKE</code> operator is a powerful tool for pattern matching in text data. By using the <code>%</code> and <code>_</code> wildcards, you can create flexible and precise search criteria to filter and retrieve data from your database.</p>
+
+<p>Whether you're looking for records that start with a specific pattern, contain certain characters anywhere in the text, or match defined character positions, the <code>LIKE</code> operator allows you to perform complex searches efficiently.</p>
+
+<p>Understanding and using the <code>LIKE</code> operator is a valuable skill for SQL developers and database administrators.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

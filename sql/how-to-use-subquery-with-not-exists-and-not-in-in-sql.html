@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use Subquery with "NOT EXISTS" and "NOT IN" in SQL</title>
+<meta name="description" content="In this article, we will explore the purpose of subqueries with NOT EXISTS and NOT IN." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use Subquery with "NOT EXISTS" and "NOT IN" in SQL</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use Subquery with NOT EXISTS and NOT IN in SQL" loading="lazy" width="900" height="500"></div>
+<p>The <code>NOT EXISTS</code> and <code>NOT IN</code> operators are valuable tools that allow you to filter data based on the absence of specific values or the result set of another query.</p>
+
+<p>In this article, we will explore the purpose of subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code>, their syntax, and provide practical examples to demonstrate how to use them effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-subqueries-with-not-exists-and-not-in">Introduction to Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code></a></li>
+<li><a href="#syntax-of-subqueries-with-not-exists-and-not-in">Syntax of Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code></a></li>
+<li><a href="#using-subqueries-with-not-exists-and-not-in-with-examples">Using Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code> with Examples</a>
+
+<ul>
+<li><a href="#example-1-using-not-exists-to-filter-unrelated-data">Example 1: Using <code>NOT EXISTS</code> to Filter Unrelated Data</a></li>
+<li><a href="#example-2-using-not-in-to-exclude-specific-values">Example 2: Using <code>NOT IN</code> to Exclude Specific Values</a></li>
+<li><a href="#example-3-using-correlated-subqueries-with-not-exists">Example 3: Using Correlated Subqueries with <code>NOT EXISTS</code></a></li>
+</ul></li>
+<li><a href="#benefits-of-using-subqueries-with-not-exists-and-not-in">Benefits of Using Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code></a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-subqueries-with-not-exists-and-not-in-">Introduction to Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code></h2>
+
+<p>Subqueries, also known as nested queries or inner queries, are SQL queries that are nested within another query.</p>
+
+<p>The <code>NOT EXISTS</code> and <code>NOT IN</code> operators are used in conjunction with subqueries to filter data based on the absence of specific values or the result set of another query.</p>
+
+<ul>
+<li><p><code>NOT EXISTS</code>: This operator is used to check if a subquery does not return any rows. If the subquery does not return any records, the condition is met, and the row is included in the result set.</p></li>
+<li><p><code>NOT IN</code>: This operator is used to exclude rows from the result set that match any value in a list or the result set of a subquery.</p></li>
+</ul>
+
+<p>Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code> are often used to create more complex and targeted queries, especially when you want to filter data based on the absence of certain values or the result set of another query.</p>
+
+<h2 id="syntax-of-subqueries-with-not-exists-and-not-in-">Syntax of Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code></h2>
+
+<p>The basic syntax for using a subquery with the <code>NOT EXISTS</code> and <code>NOT IN</code> operators in SQL is as follows:</p>
+
+<h3 id="using-not-exists-">Using <code>NOT EXISTS</code>:</h3>
+
+<pre class="language-sql"><code>SELECT columns
+FROM table
+WHERE NOT EXISTS (subquery);
+</code></pre>
+
+<ul>
+<li><code>columns</code>: The columns you want to retrieve in the main query.</li>
+<li><code>table</code>: The main table you are querying.</li>
+<li><code>subquery</code>: The subquery that provides the conditions for exclusion.</li>
+</ul>
+
+<p>The <code>NOT EXISTS</code> operator checks if the subquery does not return any rows. If the subquery does not return any records, the condition is met, and the row is included in the result set.</p>
+
+<h3 id="using-not-in-">Using <code>NOT IN</code>:</h3>
+
+<pre class="language-sql"><code>SELECT columns
+FROM table
+WHERE column_name NOT IN (subquery);
+</code></pre>
+
+<ul>
+<li><code>columns</code>: The columns you want to retrieve in the main query.</li>
+<li><code>table</code>: The main table you are querying.</li>
+<li><code>column_name</code>: The column you want to filter against.</li>
+<li><code>subquery</code>: The subquery that provides a list of values or a result set to compare against the specified column.</li>
+</ul>
+
+<p>The <code>NOT IN</code> operator checks if the values in the specified column do not match any values in the subquery. If no match is found, the row is included in the result set.</p>
+
+<h2 id="using-subqueries-with-not-exists-and-not-in-with-examples">Using Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code> with Examples</h2>
+
+<p>Let's explore practical examples of using subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code>:</p>
+
+<h3 id="example-1-using-not-exists-to-filter-unrelated-data">Example 1: Using <code>NOT EXISTS</code> to Filter Unrelated Data</h3>
+
+<p>Suppose you have two tables, "Orders" and "Customers," and you want to retrieve orders from customers who do not have any orders.</p>
+
+<p>You can use <code>NOT EXISTS</code> to filter out orders for customers without any related records in the "Orders" table:</p>
+
+<pre class="language-sql"><code>SELECT OrderID, OrderDate, CustomerID
+FROM Orders AS o
+WHERE NOT EXISTS (SELECT 1 FROM Customers AS c WHERE c.CustomerID = o.CustomerID);
+</code></pre>
+
+<p>In this query, the subquery checks if there are no related records in the "Customers" table for each order.</p>
+
+<p>If no related records exist, the <code>NOT EXISTS</code> condition is met, and the order is included in the result.</p>
+
+<h3 id="example-2-using-not-in-to-exclude-specific-values">Example 2: Using <code>NOT IN</code> to Exclude Specific Values</h3>
+
+<p>Consider a scenario where you have a list of product names, and you want to retrieve all products except those with specific names.</p>
+
+<p>You can use <code>NOT IN</code> to exclude products with the specified names:</p>
+
+<pre class="language-sql"><code>SELECT ProductName
+FROM Products
+WHERE ProductName NOT IN ('Product A', 'Product B', 'Product C');
+</code></pre>
+
+<p>In this query, the <code>NOT IN</code> operator is used to exclude products with names 'Product A,' 'Product B,' and 'Product C.' The result includes all products except those with the excluded names.</p>
+
+<h3 id="example-3-using-correlated-subqueries-with-not-exists-">Example 3: Using Correlated Subqueries with <code>NOT EXISTS</code></h3>
+
+<p>Suppose you have two tables, "Employees" and "Salaries," and you want to retrieve employees who do not have salary records.</p>
+
+<p>You can use <code>NOT EXISTS</code> with a correlated subquery to filter out employees without salary records:</p>
+
+<pre class="language-sql"><code>SELECT EmployeeName, Department
+FROM Employees AS e
+WHERE NOT EXISTS (SELECT 1 FROM Salaries AS s WHERE e.EmployeeID = s.EmployeeID);
+</code></pre>
+
+<p>In this query, the subquery is correlated with the outer query, checking for each employee if there are no related records in the "Salaries" table.</p>
+
+<p>If no related records exist, the <code>NOT EXISTS</code> condition is met, and the employee is included in the result.</p>
+
+<h2 id="benefits-of-using-subqueries-with-not-exists-and-not-in-">Benefits of Using Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code></h2>
+
+<p>Using subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code> offers several benefits:</p>
+
+<ul>
+<li><p><strong>Conditional Exclusion</strong>: Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code> allow you to conditionally exclude rows from the result set based on the absence of specific values or the result set of another query.</p></li>
+<li><p><strong>Data Validation</strong>: You can use these operators to validate data by checking if certain conditions are not met before including rows in the result.</p></li>
+<li><p><strong>Complex Queries</strong>: Subqueries with <code>NOT EXISTS</code> and <code>NOT IN</code> are valuable for handling complex queries that involve checking relationships, uniqueness, and conditions for exclusion.</p></li>
+<li><p><strong>Simplicity</strong>: This approach simplifies complex queries and provides a concise and readable way to filter data based on specific criteria.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Subqueries with the <code>NOT EXISTS</code> and <code>NOT IN</code> operators in SQL are powerful tools for filtering data based on the absence of specific values or the result set of another query.</p>
+
+<p>They allow you to create more targeted and flexible queries, making it easier to retrieve records that do not match certain conditions.</p>
+
+<p>Whether you need to filter unrelated data, exclude specific values, or validate data, subqueries with NOT EXISTS and NOT IN provide a versatile and efficient solution for a wide range of SQL query scenarios.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

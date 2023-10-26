@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Difference Between INNER JOIN and OUTER JOIN in SQL</title>
+<meta name="description" content="In this article, we will explore the differences between INNER JOIN and OUTER JOIN." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Difference Between INNER JOIN and OUTER JOIN in SQL</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of Difference Between INNER JOIN and OUTER JOIN in SQL" loading="lazy" width="900" height="500"></div>
+<p>INNER JOIN and OUTER JOIN are two common methods to achieve this, but they have distinct behaviors and use cases.</p>
+
+<p>In this article, we will explore the differences between INNER JOIN and OUTER JOIN, their syntax, and provide practical examples to illustrate when and how to use them.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-join-in-sql">Introduction to JOIN in SQL</a></li>
+<li><a href="#inner-join">INNER JOIN</a>
+
+<ul>
+<li><a href="#syntax-of-inner-join">Syntax of INNER JOIN</a></li>
+<li><a href="#using-inner-join-with-examples">Using INNER JOIN with Examples</a></li>
+</ul></li>
+<li><a href="#outer-join">OUTER JOIN</a>
+
+<ul>
+<li><a href="#syntax-of-outer-join">Syntax of OUTER JOIN</a></li>
+<li><a href="#using-outer-join-with-examples">Using OUTER JOIN with Examples</a></li>
+</ul></li>
+<li><a href="#key-differences-between-inner-join-and-outer-join">Key Differences Between INNER JOIN and OUTER JOIN</a></li>
+<li><a href="#when-to-use-inner-join-and-outer-join">When to Use INNER JOIN and OUTER JOIN</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-join-in-sql">Introduction to JOIN in SQL</h2>
+
+<p>SQL JOIN operations combine rows from two or more tables based on a related column between them.</p>
+
+<p>These operations allow you to retrieve data that spans multiple tables, enabling you to answer complex queries and extract meaningful information.</p>
+
+<p>INNER JOIN and OUTER JOIN are the most common types of JOIN operations.</p>
+
+<h2 id="inner-join">INNER JOIN</h2>
+
+<p>An INNER JOIN returns only the rows that have matching values in both tables. It filters out rows that have no corresponding data in the other table.</p>
+
+<p>This type of JOIN is often used to retrieve records that exist in both tables.</p>
+
+<h3 id="syntax-of-inner-join">Syntax of INNER JOIN</h3>
+
+<p>The basic syntax for INNER JOIN is as follows:</p>
+
+<pre class="language-sql"><code>SELECT columns
+FROM table1
+INNER JOIN table2
+ON table1.column = table2.column;
+</code></pre>
+
+<ul>
+<li><code>columns</code>: The columns you want to retrieve from the joined tables.</li>
+<li><code>table1</code>, <code>table2</code>: The tables you want to join.</li>
+<li><code>column</code>: The related columns that define the relationship between the tables.</li>
+</ul>
+
+<h3 id="using-inner-join-with-examples">Using INNER JOIN with Examples</h3>
+
+<p>Let's explore a practical example of using INNER JOIN:</p>
+
+<p>Suppose you have two tables, "Customers" and "Orders," and you want to retrieve a list of customers who have placed orders.</p>
+
+<p>You can use INNER JOIN as follows:</p>
+
+<pre class="language-sql"><code>SELECT Customers.CustomerName, Orders.OrderDate
+FROM Customers
+INNER JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
+</code></pre>
+
+<p>This query joins the "Customers" and "Orders" tables based on the "CustomerID" column, retrieving the customer names and order dates for customers who have placed orders.</p>
+
+<h2 id="outer-join">OUTER JOIN</h2>
+
+<p>An OUTER JOIN, on the other hand, returns all rows from one table and the matching rows from the other table.</p>
+
+<p>If there are no matches, the result will still contain the data from one table, with NULL values for the columns from the other table.</p>
+
+<p>OUTER JOINs are used to retrieve data from one table, along with any related data from another table, even if there are no matches.</p>
+
+<h3 id="syntax-of-outer-join">Syntax of OUTER JOIN</h3>
+
+<p>The basic syntax for OUTER JOIN is as follows:</p>
+
+<pre class="language-sql"><code>SELECT columns
+FROM table1
+LEFT OUTER JOIN table2
+ON table1.column = table2.column;
+</code></pre>
+
+<ul>
+<li><code>columns</code>: The columns you want to retrieve from the joined tables.</li>
+<li><code>table1</code>, <code>table2</code>: The tables you want to join.</li>
+<li><code>column</code>: The related columns that define the relationship between the tables.</li>
+</ul>
+
+<h3 id="using-outer-join-with-examples">Using OUTER JOIN with Examples</h3>
+
+<p>Let's explore a practical example of using OUTER JOIN:</p>
+
+<p>Suppose you have two tables, "Employees" and "Departments," and you want to retrieve a list of all employees, including those who are not assigned to a department.</p>
+
+<p>You can use a LEFT OUTER JOIN as follows:</p>
+
+<pre class="language-sql"><code>SELECT Employees.EmployeeName, Departments.DepartmentName
+FROM Employees
+LEFT OUTER JOIN Departments
+ON Employees.DepartmentID = Departments.DepartmentID;
+</code></pre>
+
+<p>This query performs a LEFT OUTER JOIN between the "Employees" and "Departments" tables based on the "DepartmentID" column, retrieving the employee names and department names.</p>
+
+<p>Even if an employee is not assigned to a department, their name will still appear in the result with a NULL department name.</p>
+
+<h2 id="key-differences-between-inner-join-and-outer-join">Key Differences Between INNER JOIN and OUTER JOIN</h2>
+
+<p>The primary differences between INNER JOIN and OUTER JOIN are as follows:</p>
+
+<ul>
+<li><p><strong>Result Set</strong>: INNER JOIN returns only the rows with matching values in both tables, while OUTER JOIN returns all rows from one table and the matching rows from the other table.</p></li>
+<li><p><strong>Non-Matching Rows</strong>: In INNER JOIN, non-matching rows from both tables are excluded. In OUTER JOIN, non-matching rows from one table are included with NULL values for the columns from the other table.</p></li>
+<li><p><strong>Use Cases</strong>: INNER JOIN is used to retrieve records that exist in both tables, making it ideal for finding related data. OUTER JOIN is used to retrieve data from one table along with related data from another table, even if there are no matches.</p></li>
+</ul>
+
+<h2 id="when-to-use-inner-join-and-outer-join">When to Use INNER JOIN and OUTER JOIN</h2>
+
+<ul>
+<li><p><strong>INNER JOIN</strong> is suitable when you need to retrieve records that have corresponding data in both tables. Use it to find related data and perform operations on matched records.</p></li>
+<li><p><strong>OUTER JOIN</strong> is useful when you want to retrieve data from one table along with related data from another table, even if there are no matches. It's helpful for scenarios where you need to maintain a complete list, including non-matching data.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In SQL, INNER JOIN and OUTER JOIN are essential tools for combining data from multiple tables.</p>
+
+<p>Understanding the key differences between these two types of JOIN operations is crucial, as it determines the type of data you retrieve in your queries.</p>
+
+<p>INNER JOIN retrieves only matching data, while OUTER JOIN includes non-matching data with NULL values. Choosing the appropriate JOIN type depends on your specific data retrieval needs and the structure of your database.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

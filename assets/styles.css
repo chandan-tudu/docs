@@ -42,6 +42,7 @@
 
 html{
   font-size: 18px;
+  scroll-behavior: smooth;
 }
 @media (max-width: 700px) {
   html{
@@ -263,6 +264,9 @@ hr {
 
 .article-container :is(ul,ol) li{
     margin-bottom: .7em;
+}
+.article-container :is(ul,ol) li:first-child{
+    margin-top:  .7em;
 }
 
 @media (max-width: 700px) {

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Join Tables in SQL?</title>
+<meta name="description" content="In this article, we will explore the purpose of joining tables, the types of joins, and provide practical examples of how to join tables effectively." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Join Tables in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Join Tables in SQL?" loading="lazy" width="900" height="500"></div>
+<p>Joining tables in SQL is a fundamental concept for working with relational databases.</p>
+
+<p>It allows you to combine data from two or more tables to retrieve meaningful information.</p>
+
+<p>In this article, we will explore the purpose of joining tables, the types of joins, and provide practical examples of how to join tables effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-joining-tables">Introduction to Joining Tables</a></li>
+<li><a href="#types-of-sql-joins">Types of SQL Joins</a>
+
+<ul>
+<li><a href="#inner-join">INNER JOIN</a></li>
+<li><a href="#left-join-or-left-outer-join">LEFT JOIN (or LEFT OUTER JOIN)</a></li>
+<li><a href="#right-join-or-right-outer-join">RIGHT JOIN (or RIGHT OUTER JOIN)</a></li>
+<li><a href="#full-join-or-full-outer-join">FULL JOIN (or FULL OUTER JOIN)</a></li>
+<li><a href="#self-join">SELF JOIN</a></li>
+</ul></li>
+<li><a href="#joining-tables-with-examples">Joining Tables with Examples</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-joining-tables">Introduction to Joining Tables</h2>
+
+<p>In relational databases, data is often distributed across multiple tables to minimize redundancy and maintain data integrity.</p>
+
+<p>To retrieve meaningful information, you may need to combine data from different tables. This is where SQL joins come into play.</p>
+
+<p>Joining tables allows you to link related data by specifying common columns between them.</p>
+
+<p>The result is a single, unified dataset that can be queried and analyzed efficiently.</p>
+
+<h2 id="types-of-sql-joins">Types of SQL Joins</h2>
+
+<h3 id="inner-join">INNER JOIN</h3>
+
+<p>The <code>INNER JOIN</code> retrieves rows that have matching values in both tables. It returns only the data that has a counterpart in the other table.</p>
+
+<h3 id="left-join-or-left-outer-join-">LEFT JOIN (or LEFT OUTER JOIN)</h3>
+
+<p>The <code>LEFT JOIN</code> retrieves all rows from the left table and the matching rows from the right table. If there's no match in the right table, NULL values are returned.</p>
+
+<h3 id="right-join-or-right-outer-join-">RIGHT JOIN (or RIGHT OUTER JOIN)</h3>
+
+<p>The <code>RIGHT JOIN</code> is the opposite of the <code>LEFT JOIN</code>. It retrieves all rows from the right table and the matching rows from the left table.</p>
+
+<h3 id="full-join-or-full-outer-join-">FULL JOIN (or FULL OUTER JOIN)</h3>
+
+<p>The <code>FULL JOIN</code> returns all rows when there is a match in either the left or right table. If there's no match in either table, NULL values are returned.</p>
+
+<h3 id="self-join">SELF JOIN</h3>
+
+<p>A <code>SELF JOIN</code> is used to combine rows from the same table. It's helpful when you need to compare data within a single table.</p>
+
+<h2 id="joining-tables-with-examples">Joining Tables with Examples</h2>
+
+<p>Let's explore some practical examples of joining tables in SQL:</p>
+
+<h3 id="example-1-inner-join">Example 1: INNER JOIN</h3>
+
+<p>Suppose you have two tables, "Customers" and "Orders," and you want to retrieve a list of customers who placed orders. You can use an <code>INNER JOIN</code> to achieve this:</p>
+
+<pre class="language-sql"><code>SELECT Customers.CustomerName, Orders.OrderDate
+FROM Customers
+INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+</code></pre>
+
+<p>This SQL statement retrieves the names of customers and the dates of their orders, joining the "Customers" and "Orders" tables based on the common column, "CustomerID."</p>
+
+<h3 id="example-2-left-join">Example 2: LEFT JOIN</h3>
+
+<p>Suppose you want to retrieve a list of all employees and their assigned projects.</p>
+
+<p>You have two tables, "Employees" and "Projects." Some employees may not be assigned to any projects. You can use a <code>LEFT JOIN</code> to include all employees:</p>
+
+<pre class="language-sql"><code>SELECT Employees.EmployeeName, Projects.ProjectName
+FROM Employees
+LEFT JOIN Projects ON Employees.EmployeeID = Projects.EmployeeID;
+</code></pre>
+
+<p>This SQL statement retrieves the names of employees and their assigned projects.</p>
+
+<p>If an employee is not assigned to any project, their name will still be listed, and the "ProjectName" will be NULL.</p>
+
+<h3 id="example-3-full-join">Example 3: FULL JOIN</h3>
+
+<p>Consider a scenario where you have two tables, "Customers" and "Orders," and you want to retrieve a list of all customers, whether they placed orders or not.</p>
+
+<p>You can use a <code>FULL JOIN</code> to achieve this:</p>
+
+<pre class="language-sql"><code>SELECT Customers.CustomerName, Orders.OrderDate
+FROM Customers
+FULL JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+</code></pre>
+
+<p>This SQL statement retrieves the names of all customers and the dates of their orders, whether they placed orders or not.</p>
+
+<p>If a customer didn't place any orders, the "OrderDate" will be NULL.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Joining tables in SQL is a powerful technique for combining data from multiple tables to retrieve meaningful information.</p>
+
+<p>Understanding the types of joins and when to use them is essential for building complex queries and reports.</p>
+
+<p>Whether you need to retrieve customer orders, link employees to their projects, or analyze data within a single table, SQL joins are a fundamental tool for working with relational databases.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use the WHERE Clause in SQL</title>
+<meta name="description" content="In this article, we'll explore the purpose of the WHERE clause, its syntax, and provide practical examples of how to use it effectively." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use the WHERE Clause in SQL</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use the WHERE Clause in SQL" loading="lazy" width="900" height="500"></div>
+<p>The SQL <code>WHERE</code> clause is a fundamental component for filtering and retrieving specific data from a database table.</p>
+
+<p>It allows you to define conditions that data must meet to be included in the result set of a query.</p>
+
+<p>In this article, we'll explore the purpose of the <code>WHERE</code> clause, its syntax, and provide practical examples of how to use it effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-the-where-clause">Introduction to the WHERE Clause</a></li>
+<li><a href="#syntax-of-the-where-clause">Syntax of the WHERE Clause</a></li>
+<li><a href="#basic-comparison-operators">Basic Comparison Operators</a></li>
+<li><a href="#logical-operators-in-the-where-clause">Logical Operators in the WHERE Clause</a></li>
+<li><a href="#using-the-where-clause-with-examples">Using the WHERE Clause with Examples</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-the-where-clause">Introduction to the WHERE Clause</h2>
+
+<p>The <code>WHERE</code> clause is an essential part of the SQL <code>SELECT</code> statement. It allows you to filter rows from a table that meet specific conditions.</p>
+
+<p>This is especially useful when dealing with large datasets, as it enables you to extract only the information that is relevant to your query.</p>
+
+<p>For instance, if you have a table of employees and you want to retrieve a list of all employees who have a salary greater than $50,000, you can use the <code>WHERE</code> clause to specify this condition.</p>
+
+<h2 id="syntax-of-the-where-clause">Syntax of the WHERE Clause</h2>
+
+<p>The basic syntax of the <code>WHERE</code> clause in a <code>SELECT</code> statement is as follows:</p>
+
+<pre class="language-sql"><code>SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+</code></pre>
+
+<ul>
+<li><code>column1, column2, ...</code>: The columns you want to retrieve from the table.</li>
+<li><code>table_name</code>: The name of the table from which you want to retrieve data.</li>
+<li><code>condition</code>: The condition that data must meet to be included in the result set.</li>
+</ul>
+
+<h2 id="basic-comparison-operators">Basic Comparison Operators</h2>
+
+<p>The <code>WHERE</code> clause employs various comparison operators to define conditions. Here are some of the most commonly used comparison operators:</p>
+
+<ul>
+<li><code>=</code>: Equal to</li>
+<li><code>&lt;&gt;</code> or <code>!=</code>: Not equal to</li>
+<li><code>&lt;</code>: Less than</li>
+<li><code>&lt;=</code>: Less than or equal to</li>
+<li><code>&gt;</code>: Greater than</li>
+<li><code>&gt;=</code>: Greater than or equal to</li>
+<li><code>BETWEEN</code>: Within a range</li>
+<li><code>LIKE</code>: Matches a pattern</li>
+<li><code>IN</code>: Matches any value in a list</li>
+</ul>
+
+<h2 id="logical-operators-in-the-where-clause">Logical Operators in the WHERE Clause</h2>
+
+<p>In addition to comparison operators, logical operators can be used to create more complex conditions in the <code>WHERE</code> clause.</p>
+
+<p>The most common logical operators include:</p>
+
+<ul>
+<li><code>AND</code>: Requires both conditions to be true.</li>
+<li><code>OR</code>: Requires at least one condition to be true.</li>
+<li><code>NOT</code>: Reverses the result of a condition.</li>
+</ul>
+
+<p>These operators allow you to combine multiple conditions to create sophisticated queries.</p>
+
+<h2 id="using-the-where-clause-with-examples">Using the WHERE Clause with Examples</h2>
+
+<p>Let's explore some practical examples of using the <code>WHERE</code> clause in SQL:</p>
+
+<h3 id="example-1-basic-comparison">Example 1: Basic Comparison</h3>
+
+<pre class="language-sql"><code>SELECT * FROM Employees
+WHERE Salary &gt; 50000;
+</code></pre>
+
+<p>This SQL statement retrieves all employees whose salary is greater than $50,000.</p>
+
+<h3 id="example-2-combining-conditions">Example 2: Combining Conditions</h3>
+
+<pre class="language-sql"><code>SELECT * FROM Orders
+WHERE (OrderDate &gt;= '2023-01-01' AND OrderDate &lt;= '2023-12-31') AND (TotalAmount &gt; 1000);
+</code></pre>
+
+<p>This SQL statement retrieves all orders placed in the year 2023 with a total amount exceeding $1,000.</p>
+
+<h3 id="example-3-using-the-like-operator">Example 3: Using the LIKE Operator</h3>
+
+<pre class="language-sql"><code>SELECT * FROM Products
+WHERE ProductName LIKE 'Ap%';
+</code></pre>
+
+<p>This SQL statement retrieves all products whose names start with "Ap," such as "Apple" or "Apex."</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The SQL <code>WHERE</code> clause is a fundamental tool for filtering and retrieving specific data from a database table. It allows you to define conditions that data must meet to be included in the result set of a query.</p>
+
+<p>By using comparison operators and logical operators, you can create complex conditions to tailor your queries to specific requirements.</p>
+
+<p>Whether you're searching for records that meet a certain criteria, combining multiple conditions, or matching patterns in text data, the <code>WHERE</code> clause is a versatile and indispensable feature for SQL developers and database administrators.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

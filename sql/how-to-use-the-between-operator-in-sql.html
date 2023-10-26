@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use the BETWEEN Operator in SQL?</title>
+<meta name="description" content="In this article, we will explore the purpose of the BETWEEN operator." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use the BETWEEN Operator in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use the BETWEEN Operator in SQL?" loading="lazy" width="900" height="500"></div>
+<p>The <code>BETWEEN</code> operator in SQL is a valuable tool that allows you to filter data within a specified range of values.</p>
+
+<p>This operator is commonly used when you need to retrieve records that fall within a specific range of values for a particular column.</p>
+
+<p>In this article, we will explore the purpose of the <code>BETWEEN</code> operator, its syntax, practical examples, and use cases.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-the-between-operator">Introduction to the BETWEEN Operator</a></li>
+<li><a href="#syntax-of-the-between-operator">Syntax of the BETWEEN Operator</a></li>
+<li><a href="#using-the-between-operator-with-examples">Using the BETWEEN Operator with Examples</a>
+
+<ul>
+<li><a href="#example-1-filtering-numeric-values">Example 1: Filtering Numeric Values</a></li>
+<li><a href="#example-2-filtering-date-ranges">Example 2: Filtering Date Ranges</a></li>
+</ul></li>
+<li><a href="#use-cases-of-the-between-operator">Use Cases of the BETWEEN Operator</a>
+
+<ul>
+<li><a href="#1-filtering-sales-transactions">1. Filtering Sales Transactions</a></li>
+<li><a href="#2-managing-employee-salaries">2. Managing Employee Salaries</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-the-between-operator">Introduction to the BETWEEN Operator</h2>
+
+<p>The <code>BETWEEN</code> operator is used in SQL to filter data based on a specified range of values.</p>
+
+<p>It checks if a value in a particular column falls within the defined range, which can include both the lower and upper boundaries.</p>
+
+<p>The <code>BETWEEN</code> operator simplifies the process of retrieving data within a specific range, making it a versatile tool for various SQL queries.</p>
+
+<h2 id="syntax-of-the-between-operator">Syntax of the BETWEEN Operator</h2>
+
+<p>The basic syntax for using the <code>BETWEEN</code> operator in SQL is as follows:</p>
+
+<pre class="language-sql"><code>SELECT columns
+FROM table
+WHERE column_name BETWEEN value1 AND value2;
+</code></pre>
+
+<ul>
+<li><code>columns</code>: The columns you want to retrieve in the result.</li>
+<li><code>table</code>: The table you are querying.</li>
+<li><code>column_name</code>: The column for which you want to define the range.</li>
+<li><code>value1</code> and <code>value2</code>: The lower and upper boundaries of the range, respectively.</li>
+</ul>
+
+<p>The <code>BETWEEN</code> operator checks if the value in the specified column falls within the range defined by <code>value1</code> and <code>value2</code>.</p>
+
+<p>If the value meets the condition, the row is included in the result set.</p>
+
+<h2 id="using-the-between-operator-with-examples">Using the BETWEEN Operator with Examples</h2>
+
+<p>Let's explore practical examples of using the <code>BETWEEN</code> operator:</p>
+
+<h3 id="example-1-filtering-numeric-values">Example 1: Filtering Numeric Values</h3>
+
+<p>Suppose you have a "Sales" table with a column named "TotalAmount," and you want to retrieve all sales transactions with a total amount between $500 and $1,000.</p>
+
+<p>You can use the <code>BETWEEN</code> operator to filter the data:</p>
+
+<pre class="language-sql"><code>SELECT OrderID, OrderDate, TotalAmount
+FROM Sales
+WHERE TotalAmount BETWEEN 500 AND 1000;
+</code></pre>
+
+<p>In this query, the <code>BETWEEN</code> operator is used to filter sales transactions with a total amount falling within the specified range of $500 to $1,000.</p>
+
+<h3 id="example-2-filtering-date-ranges">Example 2: Filtering Date Ranges</h3>
+
+<p>Imagine you have an "Events" table with a "EventDate" column, and you want to retrieve all events that occurred between January 1, 2023, and March 31, 2023.</p>
+
+<p>You can use the <code>BETWEEN</code> operator to filter the data:</p>
+
+<pre class="language-sql"><code>SELECT EventName, EventDate
+FROM Events
+WHERE EventDate BETWEEN '2023-01-01' AND '2023-03-31';
+</code></pre>
+
+<p>In this query, the <code>BETWEEN</code> operator is used to filter events that occurred within the specified date range.</p>
+
+<h2 id="use-cases-of-the-between-operator">Use Cases of the BETWEEN Operator</h2>
+
+<p>The <code>BETWEEN</code> operator is applicable in various use cases:</p>
+
+<h3 id="1-filtering-sales-transactions">1. Filtering Sales Transactions</h3>
+
+<p>In the context of sales and financial data, the <code>BETWEEN</code> operator is useful for retrieving sales transactions, orders, or invoices within specific monetary ranges.</p>
+
+<p>This is essential for financial analysis, budgeting, and identifying transactions that meet certain criteria.</p>
+
+<h3 id="2-managing-employee-salaries">2. Managing Employee Salaries</h3>
+
+<p>When dealing with employee data, the <code>BETWEEN</code> operator can be used to filter employees based on their salary range.</p>
+
+<p>For instance, HR departments can use it to find employees whose salaries fall within a predefined range for performance evaluations or compensation adjustments.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The <code>BETWEEN</code> operator in SQL is a versatile tool for filtering data within a specified range of values.</p>
+
+<p>Whether you are working with numeric data, date ranges, or other types of values, the <code>BETWEEN</code> operator simplifies the process of retrieving records that meet specific criteria.</p>
+
+<p>By understanding its syntax and use cases, you can effectively query your database to obtain the desired results.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

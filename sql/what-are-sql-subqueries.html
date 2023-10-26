@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What are SQL Subqueries?</title>
+<meta name="description" content="In this article, we will delve into the world of SQL subqueries, exploring their purpose, types, and how to use them effectively." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>What are SQL Subqueries?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of What are SQL Subqueries?" loading="lazy" width="900" height="500"></div>
+<p><strong>SQL subqueries</strong>, also known as <strong>nested queries or subselects</strong>, are powerful tools in database management.</p>
+
+<p>They allow you to nest one query inside another, providing a means to retrieve data from multiple tables or perform complex operations.</p>
+
+<p>In this article, we will delve into the world of SQL subqueries, exploring their purpose, types, and how to use them effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-sql-subqueries">Introduction to SQL Subqueries</a></li>
+<li><a href="#types-of-sql-subqueries">Types of SQL Subqueries</a>
+
+<ul>
+<li><a href="#scalar-subqueries">Scalar Subqueries</a></li>
+<li><a href="#row-subqueries">Row Subqueries</a></li>
+<li><a href="#table-subqueries">Table Subqueries</a></li>
+</ul></li>
+<li><a href="#using-sql-subqueries-with-examples">Using SQL Subqueries with Examples</a></li>
+<li><a href="#benefits-and-best-practices">Benefits and Best Practices</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-sql-subqueries">Introduction to SQL Subqueries</h2>
+
+<p>SQL subqueries are queries embedded within other SQL statements. They are used to retrieve data that will be used in the main query.</p>
+
+<p>Subqueries are enclosed in parentheses and can be placed in various parts of a SQL statement, including the <code>SELECT</code>, <code>FROM</code>, and <code>WHERE</code> clauses.</p>
+
+<p>Subqueries offer a way to simplify complex queries, improve readability, and enhance the efficiency of database operations.</p>
+
+<p>They can be used for tasks such as filtering data, making comparisons, and retrieving values to be used in calculations.</p>
+
+<h2 id="types-of-sql-subqueries">Types of SQL Subqueries</h2>
+
+<p>SQL subqueries can be categorized into three main types, each serving a different purpose:</p>
+
+<h3 id="scalar-subqueries">Scalar Subqueries</h3>
+
+<p>Scalar subqueries return a single value. They are typically used in parts of a query where a single value is expected.</p>
+
+<p>For example, you might use a scalar subquery to retrieve the highest or lowest value from a column.</p>
+
+<h3 id="row-subqueries">Row Subqueries</h3>
+
+<p>Row subqueries return multiple values as a single row. They can be used in situations where you need to compare a set of values with a single row of data.</p>
+
+<p>Row subqueries are commonly used with operators like <code>IN</code>, <code>ANY</code>, and <code>ALL</code>.</p>
+
+<h3 id="table-subqueries">Table Subqueries</h3>
+
+<p>Table subqueries return a result set that can be treated as a table. These subqueries are used to retrieve multiple rows and columns.</p>
+
+<p>Table subqueries are often found in the <code>FROM</code> clause, allowing you to work with the result set as if it were an actual table.</p>
+
+<h2 id="using-sql-subqueries-with-examples">Using SQL Subqueries with Examples</h2>
+
+<p>Let's explore some practical examples of using SQL subqueries:</p>
+
+<h3 id="example-1-scalar-subquery">Example 1: Scalar Subquery</h3>
+
+<p>Suppose you have a table of products and you want to find the product with the highest price. You can use a scalar subquery to retrieve the maximum price:</p>
+
+<pre class="language-sql"><code>SELECT ProductName, Price
+FROM Products
+WHERE Price = (SELECT MAX(Price) FROM Products);
+</code></pre>
+
+<p>This SQL statement retrieves the product(s) with the highest price by using a scalar subquery in the <code>WHERE</code> clause.</p>
+
+<h3 id="example-2-row-subquery">Example 2: Row Subquery</h3>
+
+<p>Consider a scenario where you have two tables, "Employees" and "Departments," and you want to find all employees who work in the 'Sales' or 'Marketing' departments.</p>
+
+<p>You can use a row subquery with the <code>IN</code> operator:</p>
+
+<pre class="language-sql"><code>SELECT EmployeeName, Department
+FROM Employees
+WHERE Department IN (SELECT DepartmentName FROM Departments WHERE DepartmentName IN ('Sales', 'Marketing'));
+</code></pre>
+
+<p>This SQL statement retrieves employees who work in the specified departments by using a row subquery within the <code>IN</code> operator.</p>
+
+<h3 id="example-3-table-subquery">Example 3: Table Subquery</h3>
+
+<p>Suppose you want to find the average salary in each department. You can use a table subquery in the <code>FROM</code> clause:</p>
+
+<pre class="language-sql"><code>SELECT DepartmentName, AVG(Salary) AS AvgSalary
+FROM (SELECT DepartmentID, DepartmentName FROM Departments) AS Subquery
+JOIN Employees ON Subquery.DepartmentID = Employees.DepartmentID
+GROUP BY DepartmentName;
+</code></pre>
+
+<p>This SQL statement calculates the average salary for each department by using a table subquery in the <code>FROM</code> clause to create a virtual table.</p>
+
+<h2 id="benefits-and-best-practices">Benefits and Best Practices</h2>
+
+<p>SQL subqueries offer several benefits, including:</p>
+
+<ul>
+<li><p>Enhanced readability: Subqueries can make complex queries more understandable by breaking them into smaller, manageable parts.</p></li>
+<li><p>Reusability: Subqueries can be used in multiple queries and applications, improving code reuse.</p></li>
+<li><p>Optimization: Databases can optimize subqueries for performance, potentially executing them more efficiently than equivalent joins.</p></li>
+</ul>
+
+<p>To use subqueries effectively, consider these best practices:</p>
+
+<ul>
+<li><p>Use subqueries when necessary: While subqueries are powerful, they can introduce complexity. Use them when they provide clear benefits in terms of readability or logic.</p></li>
+<li><p>Optimize subqueries: Ensure that subqueries are well-optimized and do not negatively impact query performance. Use indexes and test performance when working with subqueries.</p></li>
+<li><p>Understand data relationships: Accurately understand the relationships between tables and the data you need to retrieve to design effective subqueries.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SQL subqueries are versatile tools that enhance the capabilities of SQL by allowing you to nest one query inside another.</p>
+
+<p>Whether you need to retrieve single values, compare sets of data, or create virtual tables, subqueries provide a powerful means to work with relational databases.</p>
+
+<p>By understanding the types of subqueries and following best practices, you can effectively utilize subqueries to enhance the readability and efficiency of your SQL queries.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

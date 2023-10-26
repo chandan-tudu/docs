@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use SQL Aggregate Functions?</title>
+<meta name="description" content="In this article, we will explore SQL aggregate functions, their various types, syntax, practical examples, and use cases." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use SQL Aggregate Functions?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use SQL Aggregate Functions?" loading="lazy" width="900" height="500"></div>
+<p><strong>SQL aggregate functions</strong> are a powerful set of tools for <strong>performing calculations on groups of rows</strong> in a database table.</p>
+
+<p>These functions allow you to obtain summary information, such as totals, averages, counts, and more, from your data.</p>
+
+<p>In this article, we will explore SQL aggregate functions, their various types, syntax, practical examples, and use cases.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-sql-aggregate-functions">Introduction to SQL Aggregate Functions</a></li>
+<li><a href="#types-of-sql-aggregate-functions">Types of SQL Aggregate Functions</a>
+
+<ul>
+<li><a href="#1-count">1. COUNT</a></li>
+<li><a href="#2-sum">2. SUM</a></li>
+<li><a href="#3-avg">3. AVG</a></li>
+<li><a href="#4-min">4. MIN</a></li>
+<li><a href="#5-max">5. MAX</a></li>
+</ul></li>
+<li><a href="#syntax-of-sql-aggregate-functions">Syntax of SQL Aggregate Functions</a></li>
+<li><a href="#using-sql-aggregate-functions-with-examples">Using SQL Aggregate Functions with Examples</a>
+
+<ul>
+<li><a href="#example-1-counting-customers">Example 1: COUNTing Customers</a></li>
+<li><a href="#example-2-calculating-average-order-value">Example 2: Calculating Average Order Value</a></li>
+</ul></li>
+<li><a href="#use-cases-of-sql-aggregate-functions">Use Cases of SQL Aggregate Functions</a>
+
+<ul>
+<li><a href="#1-reporting-and-analytics">1. Reporting and Analytics</a></li>
+<li><a href="#2-data-quality-assessment">2. Data Quality Assessment</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-sql-aggregate-functions">Introduction to SQL Aggregate Functions</h2>
+
+<p>SQL aggregate functions are essential components of SQL queries. They allow you to perform calculations on groups of rows rather than individual rows.</p>
+
+<p>This is particularly valuable for obtaining summary information and statistics from your data.</p>
+
+<p>The most common SQL aggregate functions include <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, and <code>MAX</code>, but many more are available.</p>
+
+<h2 id="types-of-sql-aggregate-functions">Types of SQL Aggregate Functions</h2>
+
+<p>Let's explore the most commonly used SQL aggregate functions:</p>
+
+<h3 id="1-count">1. COUNT</h3>
+
+<p>The <code>COUNT</code> function is used to count the number of rows in a table or a result set.</p>
+
+<p>It can be applied to a specific column or used without specifying a column to count all rows.</p>
+
+<h3 id="2-sum">2. SUM</h3>
+
+<p>The <code>SUM</code> function calculates the sum of values in a numeric column. It is commonly used to obtain the total of a specific attribute, such as the total sales amount.</p>
+
+<h3 id="3-avg">3. AVG</h3>
+
+<p>The <code>AVG</code> function calculates the average value of a numeric column. It provides the average of a specific attribute, such as the average price of products.</p>
+
+<h3 id="4-min">4. MIN</h3>
+
+<p>The <code>MIN</code> function retrieves the minimum value from a numeric column. It is used to find the smallest value in a dataset.</p>
+
+<h3 id="5-max">5. MAX</h3>
+
+<p>The <code>MAX</code> function retrieves the maximum value from a numeric column. It is used to find the largest value in a dataset.</p>
+
+<h2 id="syntax-of-sql-aggregate-functions">Syntax of SQL Aggregate Functions</h2>
+
+<p>The basic syntax for using SQL aggregate functions is as follows:</p>
+
+<pre class="language-sql"><code>SELECT aggregate_function(column_name)
+FROM table_name
+WHERE condition;
+</code></pre>
+
+<ul>
+<li><code>aggregate_function</code>: The aggregate function to be applied (e.g., <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, or <code>MAX</code>).</li>
+<li><code>column_name</code>: The column on which the function is applied.</li>
+<li><code>table_name</code>: The name of the table from which data is retrieved.</li>
+<li><code>condition</code>: An optional condition to filter the rows before applying the aggregate function.</li>
+</ul>
+
+<h2 id="using-sql-aggregate-functions-with-examples">Using SQL Aggregate Functions with Examples</h2>
+
+<p>Let's explore practical examples of using SQL aggregate functions:</p>
+
+<h3 id="example-1-counting-customers">Example 1: COUNTing Customers</h3>
+
+<p>Suppose you have a "Customers" table, and you want to count the number of customers in a specific city, such as New York. You can use the <code>COUNT</code> function to achieve this:</p>
+
+<pre class="language-sql"><code>SELECT COUNT(CustomerID) AS NewYorkCustomers
+FROM Customers
+WHERE City = 'New York';
+</code></pre>
+
+<p>In this query, the <code>COUNT</code> function counts the number of customer IDs where the city is "New York."</p>
+
+<h3 id="example-2-calculating-average-order-value">Example 2: Calculating Average Order Value</h3>
+
+<p>Consider an "Orders" table with an "OrderTotal" column. To calculate the average order value, you can use the <code>AVG</code> function:</p>
+
+<pre class="language-sql"><code>SELECT AVG(OrderTotal) AS AverageOrderValue
+FROM Orders;
+</code></pre>
+
+<p>This query calculates the average value of the "OrderTotal" column across all orders.</p>
+
+<h2 id="use-cases-of-sql-aggregate-functions">Use Cases of SQL Aggregate Functions</h2>
+
+<p>SQL aggregate functions are widely used in various applications:</p>
+
+<h3 id="1-reporting-and-analytics">1. Reporting and Analytics</h3>
+
+<p>In reporting and analytics, aggregate functions are essential for summarizing and presenting data in a meaningful way.</p>
+
+<p>They are used to generate statistics, key performance indicators (KPIs), and metrics.</p>
+
+<h3 id="2-data-quality-assessment">2. Data Quality Assessment</h3>
+
+<p>Aggregate functions are valuable for assessing data quality. You can use them to detect anomalies, identify missing data, and verify the integrity of your dataset.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SQL aggregate functions are essential tools for summarizing and analyzing data in relational databases.</p>
+
+<p>They allow you to calculate counts, totals, averages, and more, providing valuable insights and information.</p>
+
+<p>By understanding the types, syntax, and practical examples of SQL aggregate functions, you can enhance your ability to extract meaningful information from your database and support reporting, analytics, and data quality assessment efforts.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

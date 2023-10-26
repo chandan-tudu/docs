@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What are SQL Views?</title>
+<meta name="description" content="In this article, we will explore the purpose of SQL views, their benefits, and provide examples to illustrate their usage." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>What are SQL Views?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of What are SQL Views?" loading="lazy" width="900" height="500"></div>
+<p>SQL views are virtual database objects that provide a way to simplify complex queries and enhance data security in relational database systems.</p>
+
+<p>They offer a convenient method to create a "virtual table" based on the result set of a SELECT query.</p>
+
+<p>In this article, we will explore the purpose of SQL views, their benefits, and provide examples to illustrate their usage.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-sql-views">Introduction to SQL Views</a></li>
+<li><a href="#creating-sql-views">Creating SQL Views</a></li>
+<li><a href="#modifying-and-updating-views">Modifying and Updating Views</a></li>
+<li><a href="#benefits-of-sql-views">Benefits of SQL Views</a></li>
+<li><a href="#using-sql-views-with-examples">Using SQL Views with Examples</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-sql-views">Introduction to SQL Views</h2>
+
+<p>SQL views are a database object that allows you to encapsulate complex SQL queries into a reusable and easily accessible form.</p>
+
+<p>They behave like tables but don't store data themselves. Instead, they retrieve data dynamically from the underlying tables or other views, ensuring that the view always reflects the most up-to-date data.</p>
+
+<p>Views serve several key purposes:</p>
+
+<ul>
+<li><p><strong>Simplify Queries</strong>: Views simplify complex queries by encapsulating the logic of the query into a single object, making it easier to write and read SQL statements.</p></li>
+<li><p><strong>Data Security</strong>: Views can be used to restrict access to certain columns or rows in a table, providing an additional layer of security by only exposing specific data to authorized users.</p></li>
+<li><p><strong>Data Abstraction</strong>: Views abstract the underlying data structure, making it easier to work with databases when the underlying schema is complex or subject to change.</p></li>
+</ul>
+
+<h2 id="creating-sql-views">Creating SQL Views</h2>
+
+<p>Creating a SQL view is a straightforward process. The basic syntax to create a view is as follows:</p>
+
+<pre class="language-sql"><code>CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+</code></pre>
+
+<ul>
+<li><code>view_name</code>: The name of the view you want to create.</li>
+<li><code>column1, column2, ...</code>: The columns to include in the view.</li>
+<li><code>table_name</code>: The name of the table from which you want to retrieve data.</li>
+<li><code>condition</code>: An optional condition to filter the rows to be included in the view.</li>
+</ul>
+
+<p>Here is an example of creating a simple view:</p>
+
+<pre class="language-sql"><code>CREATE VIEW EmployeeNames AS
+SELECT EmployeeID, FirstName, LastName
+FROM Employees;
+</code></pre>
+
+<p>This view, named <code>EmployeeNames</code>, retrieves the <code>EmployeeID</code>, <code>FirstName</code>, and <code>LastName</code> columns from the <code>Employees</code> table.</p>
+
+<h2 id="modifying-and-updating-views">Modifying and Updating Views</h2>
+
+<p>SQL views are not updated directly. Instead, they reflect the data from the underlying tables.</p>
+
+<p>To modify the data displayed in a view, you need to update the data in the tables the view is based on. Views are read-only in nature.</p>
+
+<h2 id="benefits-of-sql-views">Benefits of SQL Views</h2>
+
+<p>SQL views offer several benefits:</p>
+
+<ul>
+<li><p><strong>Simplicity</strong>: Views simplify complex queries by encapsulating logic in a single object, making SQL statements more concise and easier to understand.</p></li>
+<li><p><strong>Data Security</strong>: Views allow you to restrict access to specific columns or rows, enhancing data security and privacy.</p></li>
+<li><p><strong>Data Abstraction</strong>: Views abstract the underlying schema, making it easier to work with databases, especially when the schema is complex or subject to change.</p></li>
+<li><p><strong>Reusability</strong>: Views can be reused in various queries, reducing code redundancy and making maintenance easier.</p></li>
+</ul>
+
+<h2 id="using-sql-views-with-examples">Using SQL Views with Examples</h2>
+
+<p>Let's explore practical examples of using SQL views:</p>
+
+<h3 id="example-1-creating-a-simple-view">Example 1: Creating a Simple View</h3>
+
+<pre class="language-sql"><code>CREATE VIEW CustomersWithOrders AS
+SELECT Customers.CustomerName, Orders.OrderDate
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+</code></pre>
+
+<p>This view, <code>CustomersWithOrders</code>, retrieves customer names and their order dates by joining the <code>Customers</code> and <code>Orders</code> tables.</p>
+
+<h3 id="example-2-using-views-to-simplify-queries">Example 2: Using Views to Simplify Queries</h3>
+
+<p>Consider a scenario where you frequently need to retrieve information about employees and their departments from a complex database with multiple tables.</p>
+
+<p>By creating a view that encapsulates the necessary joins and column selections, you can simplify your queries and make them more readable.</p>
+
+<h3 id="example-3-applying-data-security">Example 3: Applying Data Security</h3>
+
+<p>Suppose you have a database with sensitive customer information, including credit card details, but you want to restrict access to the credit card data.</p>
+
+<p>By creating a view that includes all customer information except credit card details, you can grant access to authorized users while protecting sensitive data.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SQL views are a valuable tool for simplifying complex queries, enhancing data security, and abstracting the underlying data structure.</p>
+
+<p>By encapsulating logic into a reusable database object, views make SQL statements more concise, readable, and maintainable.</p>
+
+<p>Whether you want to simplify queries, provide a layer of data security, or abstract complex schemas, SQL views are a versatile feature in relational databases.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What is a Self-Join in SQL?</title>
+<meta name="description" content="In this article, we will explore what a self-join is, its syntax, practical examples, and use cases." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>What is a Self-Join in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of What is a Self-Join in SQL?" loading="lazy" width="900" height="500"></div>
+<p>A <strong>self-join in SQL</strong> is a specific type of join operation that involves joining a table to itself.</p>
+
+<p>This technique is commonly used when working with hierarchical data, such as organizational structures, network graphs, or any data where elements have relationships with other elements within the same dataset</p>
+
+<p>In this article, we will explore what a self-join is, its syntax, practical examples, and use cases.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-self-joins">Introduction to Self-Joins</a></li>
+<li><a href="#syntax-of-self-joins">Syntax of Self-Joins</a></li>
+<li><a href="#using-self-joins-with-examples">Using Self-Joins with Examples</a>
+
+<ul>
+<li><a href="#example-1-employee-hierarchy">Example 1: Employee Hierarchy</a></li>
+<li><a href="#example-2-social-network-connections">Example 2: Social Network Connections</a></li>
+</ul></li>
+<li><a href="#use-cases-of-self-joins">Use Cases of Self-Joins</a>
+
+<ul>
+<li><a href="#1-managing-hierarchical-data">1. Managing Hierarchical Data</a></li>
+<li><a href="#2-analyzing-social-networks">2. Analyzing Social Networks</a></li>
+<li><a href="#3-tracking-inventory-movements">3. Tracking Inventory Movements</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-self-joins">Introduction to Self-Joins</h2>
+
+<p>In SQL, a self-join occurs when a table is joined to itself. Instead of relating two different tables, a self-join relates rows within the same table.</p>
+
+<p>This allows you to establish relationships between rows based on common attributes or columns.</p>
+
+<p>Self-joins are particularly useful for handling hierarchical data, where each row may have a parent or child relationship with other rows in the same table.</p>
+
+<h2 id="syntax-of-self-joins">Syntax of Self-Joins</h2>
+
+<p>The basic syntax for a self-join in SQL is as follows:</p>
+
+<pre class="language-sql"><code>SELECT t1.column_name, t2.column_name
+FROM table_name t1
+JOIN table_name t2 ON t1.related_column = t2.related_column;
+</code></pre>
+
+<ul>
+<li><code>column_name</code>: The columns you want to retrieve from the table.</li>
+<li><code>table_name</code>: The name of the table you are joining to itself.</li>
+<li><code>related_column</code>: The column(s) that establish the relationship between rows in the same table.</li>
+</ul>
+
+<p>The SQL <code>JOIN</code> operation allows you to connect rows from the same table by comparing values in the related columns.</p>
+
+<h2 id="using-self-joins-with-examples">Using Self-Joins with Examples</h2>
+
+<p>Let's explore practical examples of using self-joins:</p>
+
+<h3 id="example-1-employee-hierarchy">Example 1: Employee Hierarchy</h3>
+
+<p>Suppose you have an "Employees" table with a hierarchical structure where each employee has a manager, and you want to retrieve the names of employees and their respective managers.</p>
+
+<p>You can use a self-join to achieve this:</p>
+
+<pre class="language-sql"><code>SELECT e1.EmployeeName, e2.EmployeeName AS ManagerName
+FROM Employees e1
+LEFT JOIN Employees e2 ON e1.ManagerID = e2.EmployeeID;
+</code></pre>
+
+<p>In this query, the self-join links the "Employees" table to itself, connecting each employee with their manager.</p>
+
+<p>The <code>LEFT JOIN</code> ensures that all employees are included in the result, even if they do not have a manager.</p>
+
+<h3 id="example-2-social-network-connections">Example 2: Social Network Connections</h3>
+
+<p>Imagine you have a "Connections" table representing a social network where users can connect with other users.</p>
+
+<p>You want to find pairs of users who are connected to each other. A self-join can help you identify these connections:</p>
+
+<pre class="language-sql"><code>SELECT c1.UserID AS User1, c2.UserID AS User2
+FROM Connections c1
+JOIN Connections c2 ON c1.FriendID = c2.UserID AND c1.UserID = c2.FriendID;
+</code></pre>
+
+<p>In this query, the self-join connects the "Connections" table to itself, matching pairs of users who are connected to each other.</p>
+
+<p>The condition in the <code>ON</code> clause ensures that both sides of the connection are considered.</p>
+
+<h2 id="use-cases-of-self-joins">Use Cases of Self-Joins</h2>
+
+<p>Self-joins are valuable in various use cases:</p>
+
+<h3 id="1-managing-hierarchical-data">1. Managing Hierarchical Data</h3>
+
+<p>Self-joins are commonly used to manage hierarchical data structures such as organizational charts, project hierarchies, or file systems.</p>
+
+<p>They help identify parent-child relationships within the same dataset and enable you to retrieve information about levels of hierarchy, manager-subordinate relationships, and more.</p>
+
+<h3 id="2-analyzing-social-networks">2. Analyzing Social Networks</h3>
+
+<p>In social network applications, self-joins are used to find connections between users, identify mutual friends, and analyze the structure of the network.</p>
+
+<p>This is essential for recommendations, friend suggestions, and community detection.</p>
+
+<h3 id="3-tracking-inventory-movements">3. Tracking Inventory Movements</h3>
+
+<p>Self-joins are useful in inventory management systems to track the movement of items within the same inventory table.</p>
+
+<p>By joining the table to itself, you can find instances where items were transferred, moved, or assigned to other locations or individuals.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>A self-join in SQL is a powerful tool for connecting rows within the same table, allowing you to establish relationships between them based on shared attributes.</p>
+
+<p>This technique is particularly valuable when working with hierarchical data, social networks, and inventory tracking.</p>
+
+<p>By understanding the syntax and use cases of self-joins, you can effectively analyze and manage complex relationships within your dataset.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

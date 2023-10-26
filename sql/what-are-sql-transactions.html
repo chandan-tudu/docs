@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What are SQL Transactions?</title>
+<meta name="description" content="In this article, we'll delve into what SQL transactions are, how they work, and their significance in maintaining data integrity." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>What are SQL Transactions?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of What are SQL Transactions?" loading="lazy" width="900" height="500"></div>
+<p>In the realm of database management, SQL (Structured Query Language) transactions are a crucial concept.</p>
+
+<p>They enable the reliable and consistent management of data in a database, especially in scenarios where multiple operations must be executed as a single, indivisible unit.</p>
+
+<p>In this article, we'll delve into what SQL transactions are, how they work, and their significance in maintaining data integrity.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#understanding-sql-transactions">Understanding SQL Transactions</a></li>
+<li><a href="#sql-transaction-commands">SQL Transaction Commands</a></li>
+<li><a href="#examples-of-sql-transactions">Examples of SQL Transactions</a></li>
+<li><a href="#importance-of-sql-transactions">Importance of SQL Transactions</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="understanding-sql-transactions">Understanding SQL Transactions</h2>
+
+<p>A transaction, in the context of databases, is a sequence of one or more SQL statements that collectively perform a specific task.</p>
+
+<p>The fundamental property of a transaction is the concept of atomicity, which means that a transaction is treated as a single, indivisible unit.</p>
+
+<p>In other words, either all the changes made by the transaction are applied to the database, or none of them are.</p>
+
+<p>SQL transactions follow the principles of the ACID properties:</p>
+
+<ul>
+<li><p><strong>Atomicity</strong>: As mentioned, a transaction is atomic, meaning it's an all-or-nothing operation. If any part of the transaction fails, the entire transaction is rolled back, and no changes are made to the database.</p></li>
+<li><p><strong>Consistency</strong>: Transactions take the database from one consistent state to another. The database should follow all integrity constraints both before and after the transaction.</p></li>
+<li><p><strong>Isolation</strong>: Transactions are isolated from each other, meaning one transaction does not interfere with another. Each transaction sees a consistent snapshot of the database.</p></li>
+<li><p><strong>Durability</strong>: Once a transaction is committed, its changes are permanent and survive system failures. Even if the system crashes, the committed changes will be retained.</p></li>
+</ul>
+
+<h2 id="sql-transaction-commands">SQL Transaction Commands</h2>
+
+<p>SQL provides specific commands for working with transactions. These commands allow you to define the beginning and end of a transaction, as well as the way a transaction is handled. The main SQL commands related to transactions are:</p>
+
+<ul>
+<li><p><code>BEGIN TRANSACTION</code> or <code>START TRANSACTION</code>: Initiates a new transaction.</p></li>
+<li><p><code>COMMIT</code>: Marks the end of a successful transaction, applying all changes to the database.</p></li>
+<li><p><code>ROLLBACK</code>: Cancels a transaction, undoing any changes made during the transaction.</p></li>
+<li><p><code>SAVEPOINT</code>: Sets a savepoint within a transaction, allowing you to roll back to that point in case of an error.</p></li>
+<li><p><code>ROLLBACK TO</code>: Rolls back to a specified savepoint within a transaction.</p></li>
+<li><p><code>SET TRANSACTION</code>: Specifies transaction characteristics such as isolation level or read-only mode.</p></li>
+</ul>
+
+<h2 id="examples-of-sql-transactions">Examples of SQL Transactions</h2>
+
+<p>Let's consider a practical example to understand SQL transactions better. Imagine you are transferring money from one bank account to another.</p>
+
+<p>This operation involves two SQL statements: one to deduct the money from the source account and another to deposit it into the target account.</p>
+
+<p>Here's how a transaction might look:</p>
+
+<pre class="language-sql"><code>BEGIN TRANSACTION;
+
+-- Deduct money from the source account
+UPDATE Accounts
+SET Balance = Balance - 500
+WHERE AccountNumber = '12345';
+
+-- Deposit money into the target account
+UPDATE Accounts
+SET Balance = Balance + 500
+WHERE AccountNumber = '67890';
+
+COMMIT;
+</code></pre>
+
+<p>In this example, the <code>BEGIN TRANSACTION</code> statement marks the start of the transaction.</p>
+
+<p>If either of the <code>UPDATE</code> statements fails for any reason (e.g., insufficient funds or a database error), the entire transaction is rolled back, ensuring data consistency.</p>
+
+<p>Only if both updates are successful will the <code>COMMIT</code> statement be executed, making the changes permanent.</p>
+
+<h2 id="importance-of-sql-transactions">Importance of SQL Transactions</h2>
+
+<p>SQL transactions play a vital role in various applications and industries, ensuring data integrity, consistency, and reliability.</p>
+
+<p>Some key areas where transactions are critical include:</p>
+
+<ol>
+<li><p><strong>Banking and Finance</strong>: In financial systems, transactions must be accurate and consistent to avoid errors and discrepancies in account balances and transactions.</p></li>
+<li><p><strong>Inventory Management</strong>: Managing stock levels and sales in retail or e-commerce systems requires transactional support to prevent over-selling or stock inaccuracies.</p></li>
+<li><p><strong>Online Shopping</strong>: E-commerce platforms rely on transactions to ensure that orders are correctly processed and that stock levels are updated accurately.</p></li>
+<li><p><strong>Booking and Reservations</strong>: Systems for booking flights, hotels, or event tickets require transactions to guarantee that reservations are made correctly and without conflicts.</p></li>
+<li><p><strong>Content Management</strong>: Content management systems use transactions to handle changes to content, ensuring that updates are either fully applied or fully rolled back.</p></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SQL transactions are the backbone of reliable database management, offering the assurance of data integrity and consistency.</p>
+
+<p>By adhering to the ACID properties and using transaction commands in SQL, developers and database administrators can create systems that handle multiple operations as atomic units.</p>
+
+<p>This is essential for applications where data accuracy and reliability are paramount, such as financial systems, e-commerce platforms, and booking services.</p>
+
+<p>Understanding and effectively implementing SQL transactions is a fundamental skill in the world of database management and application development.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

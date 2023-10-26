@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What are SQL Constraints?</title>
+<meta name="description" content="In this article, we will explore what SQL constraints are, how they work, and the different types of constraints available." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>What are SQL Constraints?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of What are SQL Constraints?" loading="lazy" width="900" height="500"></div>
+<p>In the context of database management, <strong>constraints are rules or conditions</strong> that are applied to data in a database to ensure its accuracy, integrity, and consistency.</p>
+
+<p>SQL constraints are a fundamental component of database design, as they help maintain data quality and enforce business rules.</p>
+
+<p>In this article, we will explore what SQL constraints are, how they work, and the different types of constraints available.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#understanding-constraints">Understanding Constraints</a></li>
+<li><a href="#types-of-sql-constraints">Types of SQL Constraints</a>
+
+<ul>
+<li><a href="#primary-key-constraint">Primary Key Constraint</a></li>
+<li><a href="#unique-constraint">Unique Constraint</a></li>
+<li><a href="#check-constraint">Check Constraint</a></li>
+<li><a href="#foreign-key-constraint">Foreign Key Constraint</a></li>
+<li><a href="#not-null-constraint">Not Null Constraint</a></li>
+</ul></li>
+<li><a href="#applying-constraints">Applying Constraints</a></li>
+<li><a href="#benefits-of-sql-constraints">Benefits of SQL Constraints</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="understanding-constraints">Understanding Constraints</h2>
+
+<p>Constraints in SQL are used to define rules and restrictions on data stored in database tables.</p>
+
+<p>These rules ensure that data values meet certain criteria and maintain data integrity.</p>
+
+<p>Constraints act as safeguards to prevent the entry of invalid or inconsistent data into the database.</p>
+
+<p>They are an integral part of creating reliable and accurate database systems.</p>
+
+<h2 id="types-of-sql-constraints">Types of SQL Constraints</h2>
+
+<p>There are several types of SQL constraints, each serving a specific purpose in database design.</p>
+
+<p>Let's explore the most common types of constraints:</p>
+
+<h3 id="primary-key-constraint">Primary Key Constraint</h3>
+
+<p>A primary key is a unique identifier for each record in a table. It ensures that each row in the table has a unique value for the specified column or set of columns.</p>
+
+<p>The primary key constraint enforces data integrity by preventing duplicate or null values.</p>
+
+<p>In SQL, <em>primary keys</em> are defined using the <code>PRIMARY KEY</code> keyword.</p>
+
+<h3 id="unique-constraint">Unique Constraint</h3>
+
+<p>The unique constraint ensures that all values in a specified column or columns are unique, but it allows for null values.</p>
+
+<p>It enforces the uniqueness of data but permits multiple rows with null values. The <em>unique constraint</em> is defined using the <code>UNIQUE</code> keyword.</p>
+
+<h3 id="check-constraint">Check Constraint</h3>
+
+<p>A check constraint specifies a condition that must be met for data to be inserted or updated in a table.</p>
+
+<p>It is used to enforce business rules or data validation. The check constraint is defined using the <code>CHECK</code> keyword.</p>
+
+<h3 id="foreign-key-constraint">Foreign Key Constraint</h3>
+
+<p>A foreign key constraint establishes a relationship between two tables. It enforces referential integrity by ensuring that values in one table's foreign key column correspond to values in another table's primary key column.</p>
+
+<p><em>Foreign key constraints</em> are defined using the <code>FOREIGN KEY</code> keyword.</p>
+
+<h3 id="not-null-constraint">Not Null Constraint</h3>
+
+<p>The not null constraint ensures that a column does not contain null values. It enforces that every row in the table must have a value in the specified column.</p>
+
+<p>The <em>not null constraint</em> is defined using the <code>NOT NULL</code> keyword.</p>
+
+<h2 id="applying-constraints">Applying Constraints</h2>
+
+<p>Constraints can be applied when creating a new table or altering an existing one. When creating a new table, constraints are specified within the table's schema definition. When altering a table, constraints can be added, modified, or dropped as needed.</p>
+
+<p>To add a constraint to an existing table, the <code>ALTER TABLE</code> statement is used. For example, to add a unique constraint to an existing table:</p>
+
+<h2 id="benefits-of-sql-constraints">Benefits of SQL Constraints</h2>
+
+<p>SQL constraints offer several benefits:</p>
+
+<ol>
+<li><p><strong>Data Integrity</strong>: Constraints ensure that data in the database remains accurate and consistent, reducing the risk of errors and inconsistencies.</p></li>
+<li><p><strong>Business Rules Enforcement</strong>: They enable the enforcement of business rules, ensuring that only valid data is entered into the database.</p></li>
+<li><p><strong>Relationships</strong>: Foreign key constraints establish relationships between tables, facilitating data retrieval and maintaining referential integrity.</p></li>
+<li><p><strong>Error Prevention</strong>: Constraints prevent the entry of incorrect or incomplete data, reducing data entry errors.</p></li>
+<li><p><strong>Documentation</strong>: Constraints serve as documentation for the database's design, making it easier for developers and administrators to understand and work with the database.</p></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SQL constraints are a fundamental aspect of database design and management. They play a critical role in ensuring data accuracy, maintaining integrity, and enforcing business rules.</p>
+
+<p>By understanding and applying different types of constraints, you can create reliable and efficient database systems that store and manage data effectively.</p>
+
+<p>Constraints are essential tools for developers and database administrators to ensure that databases remain accurate, consistent, and reliable.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

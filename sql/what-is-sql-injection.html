@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What is SQL Injection?</title>
+<meta name="description" content="This article explores SQL injection, its implications, and strategies to prevent it." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>What is SQL Injection?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of What is SQL Injection?" loading="lazy" width="900" height="500"></div>
+<p>SQL Injection is a prevalent and potentially devastating <strong>security vulnerability</strong> that can <strong>affect any application using SQL</strong> (Structured Query Language) to interact with a database.</p>
+
+<p>It occurs when an attacker manipulates input data in such a way that it's executed as SQL code. This article explores SQL injection, its implications, and strategies to prevent it.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-sql-injection">Introduction to SQL Injection</a></li>
+<li><a href="#how-sql-injection-works">How SQL Injection Works</a></li>
+<li><a href="#types-of-sql-injection">Types of SQL Injection</a>
+
+<ul>
+<li><a href="#classic-sql-injection">Classic SQL Injection</a></li>
+<li><a href="#blind-sql-injection">Blind SQL Injection</a></li>
+<li><a href="#time-based-blind-sql-injection">Time-Based Blind SQL Injection</a></li>
+</ul></li>
+<li><a href="#sql-injection-attacks-and-implications">SQL Injection Attacks and Implications</a></li>
+<li><a href="#preventing-sql-injection">Preventing SQL Injection</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-sql-injection">Introduction to SQL Injection</h2>
+
+<p>SQL Injection is a type of cybersecurity attack where an attacker exploits vulnerabilities in the handling of SQL queries to a database.</p>
+
+<p>In essence, the attacker injects malicious SQL code into the application's input fields, which is then executed by the database.</p>
+
+<p>This type of attack is especially dangerous because it can allow an attacker to gain unauthorized access to a database, steal, modify, or delete data, or even potentially take control of the entire system.</p>
+
+<h2 id="how-sql-injection-works">How SQL Injection Works</h2>
+
+<p>SQL Injection takes advantage of improperly sanitized user inputs. Instead of input being treated as data, an attacker can manipulate it so that it becomes executable SQL code.</p>
+
+<h3 id="here-s-a-simplified-example-of-how-it-works-">Here's a simplified example of how it works:</h3>
+
+<p>Suppose a website has a search bar that allows users to search for products by name.</p>
+
+<p>When a user enters a product name and clicks "Search," the application constructs an SQL query to fetch the product from the database.</p>
+
+<p>An attacker can exploit this by entering a product name followed by a specially crafted SQL command, such as <code>'; DROP TABLE Products--</code>.</p>
+
+<p>If the application doesn't properly validate and sanitize the input, the final SQL query might look like this:</p>
+
+<pre class="language-sql"><code>SELECT * FROM Products WHERE Name = ''; DROP TABLE Products--';
+</code></pre>
+
+<p>The malicious SQL code would be executed, and the attacker could delete the entire "Products" table.</p>
+
+<h2 id="types-of-sql-injection">Types of SQL Injection</h2>
+
+<h3 id="classic-sql-injection">Classic SQL Injection</h3>
+
+<p>Classic SQL Injection occurs when an attacker is able to manipulate input data to execute arbitrary SQL statements.</p>
+
+<p>It's the most common type of SQL Injection and can have severe consequences, including data breaches and data loss.</p>
+
+<h3 id="blind-sql-injection">Blind SQL Injection</h3>
+
+<p>Blind SQL Injection doesn't display the results of the attack directly to the attacker.</p>
+
+<p>Instead, it relies on Boolean-based responses or error messages to confirm whether the injection was successful or not.</p>
+
+<p>It's often used when direct access to query results is not available.</p>
+
+<h3 id="time-based-blind-sql-injection">Time-Based Blind SQL Injection</h3>
+
+<p>In this variation of Blind SQL Injection, the attacker can infer successful injections by measuring the time it takes for the application to respond.</p>
+
+<p>The delay in the application's response can signal the success of the attack.</p>
+
+<h2 id="sql-injection-attacks-and-implications">SQL Injection Attacks and Implications</h2>
+
+<p>SQL Injection attacks can have severe consequences:</p>
+
+<ul>
+<li><p><strong>Data Leakage</strong>: Attackers can extract sensitive data from databases, including user credentials, personal information, and financial records.</p></li>
+<li><p><strong>Data Modification</strong>: Attackers can alter data, such as changing passwords, defacing websites, or manipulating financial records.</p></li>
+<li><p><strong>Database Access</strong>: SQL Injection can lead to unauthorized access to the database, allowing attackers to manipulate the database or even take control of the entire system.</p></li>
+<li><p><strong>Application Vulnerabilities</strong>: Successful SQL Injection attacks indicate vulnerabilities in the application, undermining its overall security.</p></li>
+</ul>
+
+<h2 id="preventing-sql-injection">Preventing SQL Injection</h2>
+
+<p>Preventing SQL Injection is crucial for maintaining the security of applications. Key prevention strategies include:</p>
+
+<ul>
+<li><p><strong>Parameterized Queries</strong>: Use prepared statements or parameterized queries to ensure user input is treated as data, not executable code.</p></li>
+<li><p><strong>Input Validation</strong>: Implement strict input validation and sanitize user inputs. Validate and reject any input that doesn't conform to expected patterns.</p></li>
+<li><p><strong>Least Privilege</strong>: Ensure database users have the least privilege necessary. Limit their access to only what's required for their role.</p></li>
+<li><p><strong>Web Application Firewalls</strong>: Use web application firewalls to detect and block potential SQL Injection attacks.</p></li>
+<li><p><strong>Regular Patching</strong>: Keep database systems and application software up to date to protect against known vulnerabilities.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SQL Injection is a serious security vulnerability that can lead to data breaches, unauthorized access, and application compromise.</p>
+
+<p>Understanding the types of SQL Injection, how they work, and their implications is essential for developers, database administrators, and security professionals.</p>
+
+<p>By implementing robust prevention measures and keeping software up to date, organizations can significantly reduce the risk of SQL Injection and protect their data and applications from potential attacks.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

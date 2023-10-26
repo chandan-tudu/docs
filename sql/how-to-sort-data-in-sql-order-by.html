@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Sort Data in SQL (ORDER BY)?</title>
+<!-- <meta name="description" content="Here we will explore the purpose of the ORDER BY clause, its syntax, and provide practical examples of how to use it effectively." /> -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Sort Data in SQL (ORDER BY)?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Sort Data in SQL (ORDER BY)?" loading="lazy" width="900" height="500"></div>
+<p>Sorting data is a common and crucial operation when working with databases. The SQL <code>ORDER BY</code> clause is used to sort the result set of a query in ascending or descending order based on one or more columns.</p>
+
+<p>In this article, we will explore the purpose of the <code>ORDER BY</code> clause, its syntax, and provide practical examples of how to use it effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-the-order-by-clause">Introduction to the ORDER BY Clause</a></li>
+<li><a href="#syntax-of-the-order-by-clause">Syntax of the ORDER BY Clause</a></li>
+<li><a href="#sorting-in-ascending-and-descending-order">Sorting in Ascending and Descending Order</a></li>
+<li><a href="#sorting-by-multiple-columns">Sorting by Multiple Columns</a></li>
+<li><a href="#using-the-order-by-clause-with-examples">Using the ORDER BY Clause with Examples</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-the-order-by-clause">Introduction to the ORDER BY Clause</h2>
+
+<p>The <code>ORDER BY</code> clause is an integral part of the SQL <code>SELECT</code> statement. It allows you to specify the order in which the result set of a query should be presented.</p>
+
+<p>You can sort data in ascending (smallest to largest) or descending (largest to smallest) order based on one or more columns.</p>
+
+<p>This is particularly useful for organizing and presenting data to users in a meaningful way.</p>
+
+<p>For example, you might want to retrieve a list of products from a database and display them in alphabetical order by their names. The <code>ORDER BY</code> clause enables you to achieve this.</p>
+
+<h2 id="syntax-of-the-order-by-clause">Syntax of the ORDER BY Clause</h2>
+
+<p>The basic syntax of the <code>ORDER BY</code> clause in a <code>SELECT</code> statement is as follows:</p>
+
+<pre class="language-sql"><code>SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1 [ASC | DESC], column2 [ASC | DESC], ...;
+</code></pre>
+
+<ul>
+<li><code>column1, column2, ...</code>: The columns you want to retrieve from the table.</li>
+<li><code>table_name</code>: The name of the table from which you want to retrieve data.</li>
+<li><code>ORDER BY</code>: The keyword indicating that sorting is to be applied.</li>
+<li><code>column1, column2, ...</code>: The columns by which you want to sort the data.</li>
+<li><code>[ASC | DESC]</code>: Optional. Specifies the sort order. <code>ASC</code> (Ascending) is the default, and <code>DESC</code> (Descending) sorts in reverse order.</li>
+</ul>
+
+<h2 id="sorting-in-ascending-and-descending-order">Sorting in Ascending and Descending Order</h2>
+
+<p>To sort data in ascending order, you can use the default <code>ASC</code> (Ascending) keyword. For example:</p>
+
+<pre class="language-sql"><code>SELECT * FROM Employees
+ORDER BY LastName;
+</code></pre>
+
+<p>This SQL statement retrieves all employees and sorts them in ascending order by their last names.</p>
+
+<p>To sort data in descending order, you can use the <code>DESC</code> (Descending) keyword. For example:</p>
+
+<pre class="language-sql"><code>SELECT * FROM Products
+ORDER BY Price DESC;
+</code></pre>
+
+<p>This SQL statement retrieves all products and sorts them in descending order by their prices.</p>
+
+<h2 id="sorting-by-multiple-columns">Sorting by Multiple Columns</h2>
+
+<p>You can sort data by multiple columns by specifying each column in the <code>ORDER BY</code> clause.</p>
+
+<p>The result set will first be sorted by the first column and then, if necessary, by the subsequent columns. For example:</p>
+
+<pre class="language-sql"><code>SELECT * FROM Customers
+ORDER BY Country, LastName;
+</code></pre>
+
+<p>This SQL statement retrieves all customers and sorts them first by their country in ascending order and then, within each country group, by their last names in ascending order.</p>
+
+<h2 id="using-the-order-by-clause-with-examples">Using the ORDER BY Clause with Examples</h2>
+
+<p>Let's explore some practical examples of using the <code>ORDER BY</code> clause in SQL:</p>
+
+<h3 id="example-1-sorting-by-a-single-column">Example 1: Sorting by a Single Column</h3>
+
+<pre class="language-sql"><code>SELECT * FROM Students
+ORDER BY Score DESC;
+</code></pre>
+
+<p>This SQL statement retrieves all students and sorts them in descending order by their scores.</p>
+
+<h3 id="example-2-sorting-by-multiple-columns">Example 2: Sorting by Multiple Columns</h3>
+
+<pre class="language-sql"><code>SELECT * FROM Orders
+ORDER BY OrderDate, TotalAmount DESC;
+</code></pre>
+
+<p>This SQL statement retrieves all orders and first sorts them by order date in ascending order. For orders with the same date, it further sorts them by total amount in descending order.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The SQL <code>ORDER BY</code> clause is a fundamental tool for sorting data in a database. It allows you to specify the order in which the result set of a query should be presented, making it a valuable feature for organizing and presenting data to users.</p>
+
+<p>By using <code>ASC</code> (Ascending) or <code>DESC</code> (Descending) keywords and specifying one or more columns, you can tailor the sorting of your data to meet specific requirements.</p>
+
+<p>Whether you're sorting by a single column or multiple columns, the <code>ORDER BY</code> clause is a versatile and indispensable feature for SQL developers and database administrators.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use SQL GROUP_CONCAT or STRING_AGG?</title>
+<meta name="description" content="In this article, we will explore how to use these functions, their differences, and practical examples of their application." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use SQL GROUP_CONCAT or STRING_AGG?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use SQL GROUP_CONCAT or STRING_AGG?" loading="lazy" width="900" height="500"></div>
+<p>SQL is a powerful language for managing and querying relational databases. When it comes to working with data, there are often situations where you need to <strong>concatenate values from multiple rows into a single string</strong>. SQL provides two commonly used functions for this purpose: <code>GROUP_CONCAT</code> and <code>STRING_AGG</code>.</p>
+
+<p>In this article, we will explore how to use these functions, their differences, and practical examples of their application.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-group_concat-and-string_agg">Introduction to GROUP_CONCAT and STRING_AGG</a></li>
+<li><a href="#using-group_concat">Using GROUP_CONCAT</a>
+
+<ul>
+<li><a href="#syntax-of-group_concat">Syntax of GROUP_CONCAT</a></li>
+<li><a href="#example-1-concatenating-names">Example 1: Concatenating Names</a></li>
+</ul></li>
+<li><a href="#using-string_agg">Using STRING_AGG</a>
+
+<ul>
+<li><a href="#syntax-of-string_agg">Syntax of STRING_AGG</a></li>
+<li><a href="#example-2-aggregating-order-details">Example 2: Aggregating Order Details</a></li>
+</ul></li>
+<li><a href="#differences-between-group_concat-and-string_agg">Differences Between GROUP_CONCAT and STRING_AGG</a></li>
+<li><a href="#use-cases">Use Cases</a>
+
+<ul>
+<li><a href="#1-displaying-comma-separated-values">1. Displaying Comma-Separated Values</a></li>
+<li><a href="#2-aggregating-data">2. Aggregating Data</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-group-concat-and-string-agg">Introduction to GROUP_CONCAT and STRING_AGG</h2>
+
+<p>Both <code>GROUP_CONCAT</code> and <code>STRING_AGG</code> are SQL functions that allow you to concatenate values from multiple rows into a single string.</p>
+
+<p>These functions are particularly useful when you want to aggregate data from related rows in a meaningful way.</p>
+
+<p>However, it's important to note that these functions have some variations and are not supported in all database management systems.</p>
+
+<p>For example, <code>GROUP_CONCAT</code> is commonly found in MySQL, while <code>STRING_AGG</code> is used in SQL Server.</p>
+
+<h2 id="using-group-concat">Using GROUP_CONCAT</h2>
+
+<h3 id="syntax-of-group-concat">Syntax of GROUP_CONCAT</h3>
+
+<p>The syntax of <code>GROUP_CONCAT</code> in MySQL is as follows:</p>
+
+<pre class="language-sql"><code>GROUP_CONCAT(expression [ORDER BY sorting] [SEPARATOR separator])
+</code></pre>
+
+<ul>
+<li><code>expression</code>: The column or expression you want to concatenate.</li>
+<li><code>ORDER BY sorting</code> (optional): Defines the order of the concatenated values.</li>
+<li><code>SEPARATOR separator</code> (optional): Specifies the separator between concatenated values.</li>
+</ul>
+
+<h3 id="example-1-concatenating-names">Example 1: Concatenating Names</h3>
+
+<p>Suppose you have a table called "Employees" with columns "EmployeeID" and "Name." You want to concatenate the names of employees in a specific department, separated by commas.</p>
+
+<p>Here's how you can use <code>GROUP_CONCAT</code> to achieve this:</p>
+
+<pre class="language-sql"><code>SELECT GROUP_CONCAT(Name ORDER BY EmployeeID SEPARATOR ', ') AS EmployeeNames
+FROM Employees
+WHERE Department = 'Sales';
+</code></pre>
+
+<p>This query concatenates the names of employees in the "Sales" department, ordered by their EmployeeID, and separates the names with a comma and space.</p>
+
+<h2 id="using-string-agg">Using STRING_AGG</h2>
+
+<h3 id="syntax-of-string-agg">Syntax of STRING_AGG</h3>
+
+<p>The syntax of <code>STRING_AGG</code> in SQL Server is as follows:</p>
+
+<pre class="language-sql"><code>STRING_AGG(expression, separator)
+</code></pre>
+
+<ul>
+<li><code>expression</code>: The column or expression you want to concatenate.</li>
+<li><code>separator</code>: Specifies the separator between concatenated values.</li>
+</ul>
+
+<h3 id="example-2-aggregating-order-details">Example 2: Aggregating Order Details</h3>
+
+<p>Suppose you have an "OrderDetails" table with columns "OrderID" and "Product." You want to aggregate the products for a specific order, separated by semicolons.</p>
+
+<p>Here's how you can use <code>STRING_AGG</code> to achieve this:</p>
+
+<pre class="language-sql"><code>SELECT STRING_AGG(Product, '; ') WITHIN GROUP (ORDER BY Product) AS ProductList
+FROM OrderDetails
+WHERE OrderID = 1001;
+</code></pre>
+
+<p>This query aggregates the product details for the order with ID 1001, ordered by product name, and separates them with a semicolon and space.</p>
+
+<h2 id="differences-between-group-concat-and-string-agg">Differences Between GROUP_CONCAT and STRING_AGG</h2>
+
+<p>While both <code>GROUP_CONCAT</code> and <code>STRING_AGG</code> serve similar purposes, they have some differences:</p>
+
+<ul>
+<li><p><strong>Database Compatibility</strong>: <code>GROUP_CONCAT</code> is commonly found in MySQL, whereas <code>STRING_AGG</code> is used in SQL Server. They are not interchangeable between database systems.</p></li>
+<li><p><strong>ORDER BY Clause</strong>: <code>GROUP_CONCAT</code> allows you to specify an <code>ORDER BY</code> clause to control the order of concatenated values. <code>STRING_AGG</code> uses <code>WITHIN GROUP (ORDER BY)</code> for the same purpose.</p></li>
+<li><p><strong>SEPARATOR Keyword</strong>: In <code>GROUP_CONCAT</code>, the <code>SEPARATOR</code> keyword is used to define the separator between values. In <code>STRING_AGG</code>, the separator is simply specified as the second argument.</p></li>
+</ul>
+
+<h2 id="use-cases">Use Cases</h2>
+
+<h3 id="1-displaying-comma-separated-values">1. Displaying Comma-Separated Values</h3>
+
+<p>Both <code>GROUP_CONCAT</code> and <code>STRING_AGG</code> are useful for displaying comma-separated or delimited values, such as tags, categories, or names.</p>
+
+<h3 id="2-aggregating-data">2. Aggregating Data</h3>
+
+<p>These functions are valuable for aggregating data from related rows, such as combining order details or employee names based on specific criteria.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SQL <code>GROUP_CONCAT</code> and <code>STRING_AGG</code> are powerful tools for concatenating values from multiple rows into a single string.</p>
+
+<p>While they serve a similar purpose, their syntax and usage differ depending on the database system you are using.</p>
+
+<p>By understanding how to use these functions and their variations, you can efficiently aggregate and display data in a way that meets your specific requirements.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

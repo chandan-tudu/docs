@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use the CASE Statement in SQL?</title>
+<meta name="description" content="In this article, we will explore the purpose of the CASE statement, its syntax, practical examples, and use cases." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use the CASE Statement in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use the CASE Statement in SQL?" loading="lazy" width="900" height="500"></div>
+<p>The <code>CASE</code> statement in SQL is a powerful and flexible way to perform conditional logic within a query.</p>
+
+<p>It allows you to control the flow of data based on specified conditions, providing a way to create customized columns, apply transformations, and categorize data.</p>
+
+<p>In this article, we will explore the purpose of the <code>CASE</code> statement, its syntax, practical examples, and use cases.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-the-case-statement">Introduction to the CASE Statement</a></li>
+<li><a href="#syntax-of-the-case-statement">Syntax of the CASE Statement</a></li>
+<li><a href="#using-the-case-statement-with-examples">Using the CASE Statement with Examples</a>
+
+<ul>
+<li><a href="#example-1-categorizing-sales-data">Example 1: Categorizing Sales Data</a></li>
+<li><a href="#example-2-customizing-column-values">Example 2: Customizing Column Values</a></li>
+</ul></li>
+<li><a href="#use-cases-of-the-case-statement">Use Cases of the CASE Statement</a>
+
+<ul>
+<li><a href="#1-data-transformation">1. Data Transformation</a></li>
+<li><a href="#2-conditional-aggregation">2. Conditional Aggregation</a></li>
+<li><a href="#3-data-categorization">3. Data Categorization</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-the-case-statement">Introduction to the CASE Statement</h2>
+
+<p>The <code>CASE</code> statement in SQL is used for conditional processing and provides a way to create and manipulate data based on specified conditions.</p>
+
+<p>It acts as a switch or branching mechanism within a query, allowing you to define different outcomes for different conditions.</p>
+
+<p>The <code>CASE</code> statement is particularly useful when you need to perform conditional transformations on data or categorize records based on specific criteria.</p>
+
+<h2 id="syntax-of-the-case-statement">Syntax of the CASE Statement</h2>
+
+<p>The basic syntax of the <code>CASE</code> statement in SQL is as follows:</p>
+
+<pre class="language-sql"><code>SELECT
+    column1,
+    column2,
+    ...
+    CASE
+        WHEN condition1 THEN result1
+        WHEN condition2 THEN result2
+        ...
+        ELSE else_result
+    END AS new_column
+FROM
+    table_name;
+</code></pre>
+
+<ul>
+<li><code>column1</code>, <code>column2</code>, ...: The columns you want to retrieve in the result.</li>
+<li><code>condition1</code>, <code>condition2</code>, ...: Conditions that you want to evaluate.</li>
+<li><code>result1</code>, <code>result2</code>, ...: The values or expressions to return when the corresponding condition is met.</li>
+<li><code>else_result</code>: The value or expression to return when none of the conditions are met.</li>
+<li><code>new_column</code>: The alias for the column created by the <code>CASE</code> statement.</li>
+</ul>
+
+<p>The <code>CASE</code> statement evaluates each condition in the order in which they are listed.</p>
+
+<p>When a condition is met, the corresponding result is returned, and the <code>CASE</code> statement exits. If none of the conditions are met, the <code>ELSE</code> part is executed.</p>
+
+<h2 id="using-the-case-statement-with-examples">Using the CASE Statement with Examples</h2>
+
+<p>Let's explore practical examples of using the <code>CASE</code> statement:</p>
+
+<h3 id="example-1-categorizing-sales-data">Example 1: Categorizing Sales Data</h3>
+
+<p>Suppose you have a "Sales" table with a column called "TotalAmount," and you want to categorize sales as "High," "Medium," or "Low" based on their total amount.</p>
+
+<p>You can use the <code>CASE</code> statement to achieve this:</p>
+
+<pre class="language-sql"><code>SELECT
+    OrderID,
+    OrderDate,
+    TotalAmount,
+    CASE
+        WHEN TotalAmount &gt;= 1000 THEN 'High'
+        WHEN TotalAmount &gt;= 500 THEN 'Medium'
+        ELSE 'Low'
+    END AS SalesCategory
+FROM
+    Sales;
+</code></pre>
+
+<ul>
+<li>In this query, the <code>CASE</code> statement categorizes sales based on the total amount.</li>
+<li>If the total amount is greater than or equal to $1,000, the sales are categorized as "High."</li>
+<li>If the total amount is between $500 and $999, they are categorized as "Medium." Otherwise, they are categorized as "Low."</li>
+</ul>
+
+<h3 id="example-2-customizing-column-values">Example 2: Customizing Column Values</h3>
+
+<p>Suppose you have a "Employees" table with a "Gender" column, and you want to customize the display of gender values as "Male" and "Female" instead of "M" and "F."</p>
+
+<p>You can use the <code>CASE</code> statement to accomplish this:</p>
+
+<pre class="language-sql"><code>SELECT
+    EmployeeID,
+    EmployeeName,
+    CASE
+        WHEN Gender = 'M' THEN 'Male'
+        WHEN Gender = 'F' THEN 'Female'
+        ELSE 'Unknown'
+    END AS CustomGender
+FROM
+    Employees;
+</code></pre>
+
+<p>In this query, the <code>CASE</code> statement customizes the display of gender values based on the original "Gender" column.</p>
+
+<p>It replaces "M" with "Male," "F" with "Female," and assigns "Unknown" to any other values.</p>
+
+<h2 id="use-cases-of-the-case-statement">Use Cases of the CASE Statement</h2>
+
+<p>The <code>CASE</code> statement is applicable in various use cases:</p>
+
+<h3 id="1-data-transformation">1. Data Transformation</h3>
+
+<p>The <code>CASE</code> statement is often used for data transformation, such as converting data types, customizing column values, and applying conditional formatting.</p>
+
+<h3 id="2-conditional-aggregation">2. Conditional Aggregation</h3>
+
+<p>You can use the <code>CASE</code> statement to conditionally aggregate data based on specific criteria.</p>
+
+<p>For example, you can calculate the sum of sales for different regions or categories using conditional aggregation.</p>
+
+<h3 id="3-data-categorization">3. Data Categorization</h3>
+
+<p>The <code>CASE</code> statement is valuable for categorizing data based on conditions. This can include categorizing products, customers, sales, or any other data into groups for analysis and reporting.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The <code>CASE</code> statement in SQL is a versatile tool for performing conditional logic within queries. It allows you to create customized columns, apply data transformations, and categorize records based on specific criteria.</p>
+
+<p>By understanding its syntax and use cases, you can enhance your SQL queries and obtain the desired results for a wide range of data manipulation tasks.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

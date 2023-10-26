@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Use Subquery with IN Operator in SQL?</title>
+<meta name="description" content="In this article, we will explore the purpose of subqueries with IN Operator." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">SQL</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Use Subquery with IN Operator in SQL?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/sql.jpg" alt="Post Thumbnail of How to Use Subquery with IN in SQL?" loading="lazy" width="900" height="500"></div>
+<p>The <code>IN</code> operator is a valuable tool in SQL that allows you to use a subquery to filter data based on whether it matches any value in a list or the result set of another query.</p>
+
+<p>In this article, we will explore the purpose of subqueries with <code>IN</code>, their syntax, and provide practical examples to demonstrate how to use them effectively.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#introduction-to-subquery-with-in">Introduction to Subquery with IN</a></li>
+<li><a href="#syntax-of-subquery-with-in">Syntax of Subquery with IN</a></li>
+<li><a href="#using-subquery-with-in-with-examples">Using Subquery with IN with Examples</a>
+
+<ul>
+<li><a href="#example-1-using-subquery-with-in-to-filter-data">Example 1: Using Subquery with IN to Filter Data</a></li>
+<li><a href="#example-2-using-subquery-with-in-and-a-list">Example 2: Using Subquery with IN and a List</a></li>
+<li><a href="#example-3-using-subquery-with-in-and-another-query">Example 3: Using Subquery with IN and Another Query</a></li>
+</ul></li>
+<li><a href="#benefits-of-using-subquery-with-in">Benefits of Using Subquery with IN</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-subquery-with-in">Introduction to Subquery with IN</h2>
+
+<p>A subquery, also known as a nested query, is a query nested within another query.</p>
+
+<p>The <code>IN</code> operator is used in conjunction with subqueries to filter data based on whether it matches any value in a list or the result set of another query.</p>
+
+<p>Subqueries with <code>IN</code> are often used to create more targeted and flexible queries, especially when you want to filter data against a set of conditions.</p>
+
+<h2 id="syntax-of-subquery-with-in">Syntax of Subquery with IN</h2>
+
+<p>The basic syntax for using a subquery with the <code>IN</code> operator in SQL is as follows:</p>
+
+<pre class="language-sql"><code>SELECT columns
+FROM table
+WHERE column_name IN (subquery);
+</code></pre>
+
+<ul>
+<li><code>columns</code>: The columns you want to retrieve in the main query.</li>
+<li><code>table</code>: The main table you are querying.</li>
+<li><code>column_name</code>: The column you want to filter against.</li>
+<li><code>subquery</code>: The subquery that provides a list of values or a result set to compare against the specified column.</li>
+</ul>
+
+<p>The <code>IN</code> operator checks if the values in the specified column match any of the values in the subquery. If a match is found, the row is included in the result set.</p>
+
+<h2 id="using-subquery-with-in-with-examples">Using Subquery with IN with Examples</h2>
+
+<p>Let's explore practical examples of using subqueries with the <code>IN</code> operator:</p>
+
+<h3 id="example-1-using-subquery-with-in-to-filter-data">Example 1: Using Subquery with IN to Filter Data</h3>
+
+<p>Suppose you have a table of products, and you want to retrieve products that belong to a specific category.</p>
+
+<p>You can use a subquery with <code>IN</code> to filter the data based on the category name:</p>
+
+<pre class="language-sql"><code>SELECT ProductName, Category
+FROM Products
+WHERE Category IN (SELECT Category FROM Categories WHERE CategoryName = 'Electronics');
+</code></pre>
+
+<p>In this query, the subquery retrieves the category name "Electronics" from the "Categories" table, and the main query filters the products based on whether their category matches any value in the subquery's result set.</p>
+
+<h3 id="example-2-using-subquery-with-in-and-a-list">Example 2: Using Subquery with IN and a List</h3>
+
+<p>Consider a scenario where you have a list of customer names, and you want to retrieve their orders.</p>
+
+<p>You can use a subquery with <code>IN</code> to filter the data based on the list of customer names:</p>
+
+<pre class="language-sql"><code>SELECT OrderID, OrderDate, CustomerName
+FROM Orders
+WHERE CustomerName IN ('Alice', 'Bob', 'Charlie');
+</code></pre>
+
+<p>In this query, the list of customer names is used directly with the <code>IN</code> operator.</p>
+
+<p>The main query retrieves orders for customers whose names match any value in the list.</p>
+
+<h3 id="example-3-using-subquery-with-in-and-another-query">Example 3: Using Subquery with IN and Another Query</h3>
+
+<p>Suppose you have two tables, "Orders" and "Customers," and you want to retrieve orders from customers who are located in specific cities.</p>
+
+<p>You can use a subquery with <code>IN</code> to filter the data based on a subquery that retrieves customer IDs for the desired cities:</p>
+
+<pre class="language-sql"><code>SELECT OrderID, OrderDate, CustomerID
+FROM Orders
+WHERE CustomerID IN (SELECT CustomerID FROM Customers WHERE City IN ('New York', 'Los Angeles'));
+</code></pre>
+
+<p>In this query, the subquery retrieves customer IDs from the "Customers" table for customers located in the cities 'New York' and 'Los Angeles.'</p>
+
+<p>The main query filters orders based on whether their customer IDs match any value in the subquery's result set.</p>
+
+<h2 id="benefits-of-using-subquery-with-in">Benefits of Using Subquery with IN</h2>
+
+<p>Using subqueries with the <code>IN</code> operator provides several benefits:</p>
+
+<ul>
+<li><p><strong>Flexibility</strong>: Subqueries with <code>IN</code> allow you to create flexible queries by filtering data against lists of values or the result sets of other queries.</p></li>
+<li><p><strong>Targeted Filtering</strong>: You can use <code>IN</code> to filter data based on specific conditions, making it ideal for retrieving records that match multiple criteria.</p></li>
+<li><p><strong>Simplicity</strong>: Subqueries with <code>IN</code> can simplify complex queries by providing a concise and readable way to filter data.</p></li>
+<li><p><strong>Scalability</strong>: This approach is scalable and can handle large sets of data efficiently.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Subqueries with the <code>IN</code> operator are a powerful tool in SQL for filtering data based on a list of values or the result set of another query.</p>
+
+<p>They allow you to create more targeted and flexible queries, making it easier to retrieve records that match specific conditions.</p>
+
+<p>Whether you need to filter data based on category names, customer names, or any other set of values, subqueries with <code>IN</code> provide a versatile and efficient solution for a wide range of SQL query scenarios.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
