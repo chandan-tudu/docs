@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" />
-<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Delete an Element from an Array in PHP</title>
-<meta name="description" content="In this article, we'll explore several methods to delete elements from an array in PHP." />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
-</head>
+<meta name="description" content="In this article, we'll explore several methods to delete elements from an array in PHP.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css">
+<link rel="canonical" href="https://www.devbabu.com/docs/php/delete-an-element-from-an-array-in-php.html"></head>
 <body>
 <div class="header" id="header"></div>
 <div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
@@ -49,7 +49,7 @@ print_r($fruits);
 
 <p>In this example, we use <code>unset($fruits[1])</code> to remove the element at index 1 (which contains "banana") from the <code>$fruits</code> array. The remaining elements are reindexed, leaving no gap.</p>
 
-<hr />
+<hr>
 
 <h2 id="method-2-using-array-splice-">Method 2: Using array_splice()</h2>
 
@@ -76,7 +76,7 @@ print_r($fruits);
 
 <p>In this example, we remove one element starting from index 1 (which contains "banana") from the <code>$fruits</code> array. Like <code>unset()</code>, <code>array_splice()</code> also reindexes the array.</p>
 
-<hr />
+<hr>
 
 <h2 id="method-3-using-array-filter-">Method 3: Using array_filter()</h2>
 
@@ -107,7 +107,7 @@ print_r($fruits);
 <li>Any element meeting the condition is removed from the array.</li>
 </ol>
 
-<hr />
+<hr>
 
 <h2 id="method-4-using-array-values-reindexing-">Method 4: Using array_values() (Reindexing)</h2>
 
@@ -142,7 +142,7 @@ print_r($fruits);
 <li>Then, we reindex the array using <code>array_values()</code>. This ensures that the remaining elements are reindexed sequentially.</li>
 </ol>
 
-<hr />
+<hr>
 
 <h2 id="conclusion">Conclusion</h2>
 

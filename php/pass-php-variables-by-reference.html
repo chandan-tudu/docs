@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" />
-<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Pass PHP Variables By Reference?</title>
-<meta name="description" content="In this article, we'll explore how to pass PHP variables by reference and understand when and why you might want to use this approach." />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
-</head>
+<meta name="description" content="In this article, we'll explore how to pass PHP variables by reference and understand when and why you might want to use this approach.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css">
+<link rel="canonical" href="https://www.devbabu.com/docs/php/pass-php-variables-by-reference.html"></head>
 <body>
 <div class="header" id="header"></div>
 <div class="nav-links">
@@ -42,7 +42,7 @@
 
 <p>To pass a variable by reference, you use the <code>&amp;</code> symbol before the variable in both the function declaration and the function call.</p>
 
-<hr />
+<hr>
 
 <h2 id="syntax-for-passing-by-reference">Syntax for Passing by Reference</h2>
 
@@ -58,7 +58,7 @@ myFunction($myVariable);
 
 <p>In this example, the <code>&amp;</code> symbol before <code>$variable</code> in the function definition indicates that <code>$variable</code> is passed by reference.</p>
 
-<hr />
+<hr>
 
 <h2 id="example-modifying-a-variable-by-reference">Example: Modifying a Variable by Reference</h2>
 
@@ -85,7 +85,7 @@ echo "Original number: " . $myNumber;
 <li>When we call the function with <code>$myNumber</code>, it modifies the original variable, and we see the updated value outside the function.</li>
 </ol>
 
-<hr />
+<hr>
 
 <h2 id="when-to-use-pass-by-reference">When to Use Pass by Reference</h2>
 
@@ -98,7 +98,7 @@ echo "Original number: " . $myNumber;
 <li><p><strong>Resource Management:</strong> When working with PHP resources like database connections or file handles, you often need to pass these by reference to manage them correctly.</p></li>
 </ol>
 
-<hr />
+<hr>
 
 <h2 id="caution-side-effects">Caution: Side Effects</h2>
 
@@ -110,7 +110,7 @@ echo "Original number: " . $myNumber;
 
 <p>Make sure to document the functions that use pass by reference to indicate their special behavior.</p>
 
-<hr />
+<hr>
 
 <h2 id="conclusion-">Conclusion:</h2>
 

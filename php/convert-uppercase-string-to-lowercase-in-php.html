@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" />
-<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Convert Uppercase String to Lowercase in PHP?</title>
-<meta name="description" content="In this article, we'll explore different approaches to convert an uppercase string to lowercase in PHP." />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
-</head>
+<meta name="description" content="In this article, we'll explore different approaches to convert an uppercase string to lowercase in PHP.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css">
+<link rel="canonical" href="https://www.devbabu.com/docs/php/convert-uppercase-string-to-lowercase-in-php.html"></head>
 <body>
 <div class="header" id="header"></div>
 <div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
@@ -49,7 +49,7 @@ echo $lowercaseString;
 
 <p>Here's an example:</p>
 
-<pre class="language-php"><code>$uppercaseString = "ΓΕΙΑ ΣΑΣ, ΚΟΣΜΕ!";
+<pre class="language-php"><code>$uppercaseString = "&Gamma;&Epsilon;&Iota;&Alpha; &Sigma;&Alpha;&Sigma;, &Kappa;&Omicron;&Sigma;&Mu;&Epsilon;!";
 $lowercaseString = mb_strtolower($uppercaseString, 'UTF-8');
 
 echo $lowercaseString;
@@ -57,7 +57,7 @@ echo $lowercaseString;
 
 <p>Output:</p>
 
-<pre><code>γεια σασ, κοσμε!
+<pre><code>&gamma;&epsilon;&iota;&alpha; &sigma;&alpha;&sigma;, &kappa;&omicron;&sigma;&mu;&epsilon;!
 </code></pre>
 
 <p>In this example, the <code>mb_strtolower()</code> function is used with the <code>'UTF-8'</code> encoding to convert the multibyte string <code>$uppercaseString</code> to lowercase.</p>

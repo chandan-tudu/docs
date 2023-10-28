@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" />
-<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adding a Property at the "Start" of a JavaScript Object</title>
-<meta name="description" content="In this article, we'll explore how to add a property at the start of a JavaScript object." />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
-</head>
+<meta name="description" content="In this article, we'll explore how to add a property at the start of a JavaScript object.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css">
+<link rel="canonical" href="https://www.devbabu.com/docs/js/adding-a-property-at-the-start-of-a-javascript-object.html"></head>
 <body>
 <div class="header" id="header"></div>
 <div class="nav-links">
@@ -44,7 +44,7 @@
 
 <p>While this behavior may work in practice, it is not standardized in the ECMAScript specification, so it is generally unwise to rely on property order for critical program logic.</p>
 
-<hr />
+<hr>
 
 <h2 id="adding-a-property-at-the-start-">Adding a Property at the "Start"</h2>
 
@@ -85,7 +85,7 @@ const valueToAdd = 'newValue';
 
 <p>This code snippet will log the <code>updatedObject</code> to the console.</p>
 
-<hr />
+<hr>
 
 <p>Keep in mind that this approach is a workaround, and it leverages the observed behavior of some JavaScript engines. While it may work for your specific use case, you should avoid relying on property order for critical program logic. If you need specific property order, consider using an array of objects where order is guaranteed. JavaScript's object properties are best suited for situations where order is not essential, and you're concerned with key-value associations.</p>
 </article>

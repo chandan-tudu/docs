@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" />
-<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Append One Array to Another in PHP?</title>
-<meta name="description" content="In this article, we will explore various methods for appending one array to another in PHP." />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
-</head>
+<meta name="description" content="In this article, we will explore various methods for appending one array to another in PHP.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css">
+<link rel="canonical" href="https://www.devbabu.com/docs/php/append-one-array-to-another-in-php.html"></head>
 <body>
 <div class="header" id="header"></div>
 <div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
@@ -53,7 +53,7 @@ print_r($result);
 
 <p>In this example, we have two arrays, <code>$array1</code> and <code>$array2</code>. The <code>array_merge()</code> function combines them into a single array called <code>$result</code>.</p>
 
-<hr />
+<hr>
 
 <h2 id="2-using-the-operator">2. Using the <code>+</code> Operator</h2>
 
@@ -83,7 +83,7 @@ print_r($result);
 
 <p>In this example, we have two arrays, <code>$array1</code> and <code>$array2</code>. When we use the <code>+</code> operator to merge them, the keys "b," "d," and "e" from <code>$array2</code> are added to <code>$array1</code>, but the existing values for "b" and "c" in <code>$array1</code> are not overwritten.</p>
 
-<hr />
+<hr>
 
 <h2 id="3-using-the-array-push-function">3. Using the array_push() Function</h2>
 
@@ -118,7 +118,7 @@ print_r($array1);
 
 <p>In this example, we use a <code>foreach</code> loop to iterate through <code>$array2</code>, and for each element, we use <code>array_push()</code> to add it to the end of <code>$array1</code>. This effectively appends <code>$array2</code> to <code>$array1</code>.</p>
 
-<hr />
+<hr>
 
 <h2 id="4-using-the-array-splice-function">4. Using the array_splice() Function</h2>
 
@@ -153,7 +153,7 @@ print_r($array1);
 
 <p>The <code>count($array1)</code> argument specifies the position at which to insert the elements (at the end), and <code>0</code> specifies that no elements should be removed from <code>$array1</code>.</p>
 
-<hr />
+<hr>
 
 <h2 id="conclusion">Conclusion</h2>
 

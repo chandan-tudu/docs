@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" />
-<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Get the Last Character of a String in PHP?</title>
-<meta name="description" content="In this article, we'll explore different approaches to get the last character of a string in PHP." />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
-</head>
+<meta name="description" content="In this article, we'll explore different approaches to get the last character of a string in PHP.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css">
+<link rel="canonical" href="https://www.devbabu.com/docs/php/get-the-last-character-of-a-string-in-php.html"></head>
 <body>
 <div class="header" id="header"></div>
 <div class="nav-links"><ul><li><a href="./index.html">PHP</a></li></ul></div>
@@ -49,7 +49,7 @@ echo $lastCharacter;
 
 <p>Here's an example:</p>
 
-<pre class="language-php"><code>$inputString = "こんにちは、世界！";
+<pre class="language-php"><code>$inputString = "&#12371;&#12435;&#12395;&#12385;&#12399;&#12289;&#19990;&#30028;&#65281;";
 $lastCharacter = mb_substr($inputString, -1);
 
 echo $lastCharacter;
@@ -57,7 +57,7 @@ echo $lastCharacter;
 
 <p>Output:</p>
 
-<pre><code>！
+<pre><code>&#65281;
 </code></pre>
 
 <p>In this example, <code>mb_substr($inputString, -1)</code> extracts the last character of the multibyte string <code>$inputString</code> using a negative offset.</p>
@@ -88,7 +88,7 @@ echo $lastCharacter;
 
 <p>Here's an example:</p>
 
-<pre class="language-php"><code>$inputString = "こんにちは、世界！";
+<pre class="language-php"><code>$inputString = "&#12371;&#12435;&#12395;&#12385;&#12399;&#12289;&#19990;&#30028;&#65281;";
 $stringLength = mb_strlen($inputString);
 $lastCharacter = $inputString[$stringLength - 1];
 
@@ -97,7 +97,7 @@ echo $lastCharacter;
 
 <p>Output:</p>
 
-<pre><code>！
+<pre><code>&#65281;
 </code></pre>
 
 <p>In this example, we first calculate the length of the multibyte string using <code>mb_strlen($inputString)</code>, and then we access the last character using array indexing with <code>$stringLength - 1</code>.</p>
@@ -127,7 +127,7 @@ echo $lastThreeCharacters;
 
 <p>Here's an example that retrieves the last 3 characters from a multibyte string:</p>
 
-<pre class="language-php"><code>$inputString = "こんにちは、世界！";
+<pre class="language-php"><code>$inputString = "&#12371;&#12435;&#12395;&#12385;&#12399;&#12289;&#19990;&#30028;&#65281;";
 $lastThreeCharacters = mb_substr($inputString, -3);
 
 echo $lastThreeCharacters;
@@ -135,7 +135,7 @@ echo $lastThreeCharacters;
 
 <p>Output:</p>
 
-<pre><code>世界！
+<pre><code>&#19990;&#30028;&#65281;
 </code></pre>
 
 <p>In this example, <code>mb_substr($inputString, -3)</code> extracts the last three characters of the multibyte string.</p>

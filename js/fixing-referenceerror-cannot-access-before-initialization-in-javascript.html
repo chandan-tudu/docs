@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" />
-<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fixing "ReferenceError: Cannot access before initialization" in JavaScript</title>
 <!-- <meta name="description" content="" /> -->
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
-</head>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css">
+<link rel="canonical" href="https://www.devbabu.com/docs/js/fixing-referenceerror-cannot-access-before-initialization-in-javascript.html"></head>
 <body>
 <div class="header" id="header"></div>
 <div class="nav-links">
@@ -43,7 +43,7 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ol>
 
-<hr />
+<hr>
 
 <h2 id="variable-declaration">Variable Declaration</h2>
 
@@ -58,7 +58,7 @@
 
 <p>This code declares a variable named <code>myVariable</code> and initializes it with the string "Hello, World!".</p>
 
-<hr />
+<hr>
 
 <h2 id="hoisting-in-javascript">Hoisting in JavaScript</h2>
 
@@ -72,7 +72,7 @@ let myVariable = 'Hello, World!';
 
 <p>In this code, the declaration of <code>myVariable</code> is hoisted to the top, but the initialization is not. <strong>Attempting to access the variable before its initialization</strong> leads to the error.</p>
 
-<hr />
+<hr>
 
 <h2 id="function-scopes">Function Scopes</h2>
 
@@ -89,7 +89,7 @@ console.log(insideVariable); // Error: Cannot access 'insideVariable' before ini
 
 <p>In this code, <code>insideVariable</code> is declared and initialized within the <code>myFunction</code> scope and cannot be accessed from outside the function.</p>
 
-<hr />
+<hr>
 
 <h2 id="block-scopes">Block Scopes</h2>
 
@@ -108,7 +108,7 @@ console.log(blockVariable); // Error: Cannot access 'blockVariable' before initi
 
 <p>In this code, <code>blockVariable</code> is declared and initialized within the <code>if</code> block and is not accessible outside of it.</p>
 
-<hr />
+<hr>
 
 <h2 id="best-practices">Best Practices</h2>
 
@@ -121,7 +121,7 @@ console.log(blockVariable); // Error: Cannot access 'blockVariable' before initi
 <li>Use strict linting tools and follow best practices in your coding style to catch variable-related errors during development.</li>
 </ol>
 
-<hr />
+<hr>
 
 <h2 id="conclusion">Conclusion</h2>
 

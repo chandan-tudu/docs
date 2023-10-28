@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" />
-<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Use PHP serialize() and unserialize() Functions?</title>
-<meta name="description" content="In this article, we'll explore How to Use PHP serialize() and unserialize() Functions." />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
-</head>
+<meta name="description" content="In this article, we'll explore How to Use PHP serialize() and unserialize() Functions.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css">
+<link rel="canonical" href="https://www.devbabu.com/docs/php/php-serialize-and-unserialize-functions.html"></head>
 <body>
 <div class="header" id="header"></div>
 <div class="nav-links">
@@ -52,7 +52,7 @@ echo $serializedData;
 
 <p>In this example, we have an associative array called <code>$data</code>, and we use <code>serialize($data)</code> to convert it into a serialized string.</p>
 
-<hr />
+<hr>
 
 <h2 id="unserialize-function">unserialize() Function</h2>
 
@@ -70,7 +70,7 @@ print_r($originalData);
 
 <p>In this example, we provide the serialized data string to <code>unserialize()</code>, and it returns the original data structure.</p>
 
-<hr />
+<hr>
 
 <h2 id="combining-serialize-and-unserialize-">Combining <code>serialize()</code> and <code>unserialize()</code></h2>
 
@@ -98,7 +98,7 @@ print_r($originalData);
 
 <p>This is commonly used for tasks like storing user session data, caching, or storing configuration settings.</p>
 
-<hr />
+<hr>
 
 <h2 id="complex-data-structures">Complex Data Structures</h2>
 
@@ -127,7 +127,7 @@ print_r($unserializedPerson);
 
 <p>In this example, we define a <code>Person</code> class, create an instance of it, and then use <code>serialize()</code> to convert it into a serialized string. We can later use <code>unserialize()</code> to recreate the object.</p>
 
-<hr />
+<hr>
 
 <h2 id="error-handling">Error Handling</h2>
 
@@ -147,7 +147,7 @@ try {
 }
 </code></pre>
 
-<hr />
+<hr>
 
 <h2 id="security-considerations">Security Considerations</h2>
 
@@ -157,7 +157,7 @@ try {
 
 <p>It's recommended to validate and sanitize serialized data to mitigate these risks.</p>
 
-<hr />
+<hr>
 
 <h2 id="conclusion">Conclusion</h2>
 

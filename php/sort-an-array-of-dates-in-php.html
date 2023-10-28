@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8" />
-<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Sort an Array of Dates in PHP?</title>
-<meta name="description" content="In this guide, we'll explore how to sort an array of dates in PHP." />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
-</head>
+<meta name="description" content="In this guide, we'll explore how to sort an array of dates in PHP.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css">
+<link rel="canonical" href="https://www.devbabu.com/docs/php/sort-an-array-of-dates-in-php.html"></head>
 <body>
 <div class="header" id="header"></div>
 <div class="nav-links">
@@ -60,10 +60,10 @@ print_r($dates);
 <p><strong>Output:</strong></p>
 <pre><code>Array
 (
-    [0] => 2023-10-01
-    [1] => 2023-10-05
-    [2] => 2023-10-10
-    [3] => 2023-10-15
+    [0] =&gt; 2023-10-01
+    [1] =&gt; 2023-10-05
+    [2] =&gt; 2023-10-10
+    [3] =&gt; 2023-10-15
 )</code></pre>
 
 <p>In this code:</p>
@@ -77,7 +77,7 @@ print_r($dates);
 
 <p>The result will be an array of dates sorted in ascending order.</p>
 
-<hr />
+<hr>
 
 <h2 id="sorting-in-descending-order">Sorting in Descending Order</h2>
 
@@ -108,17 +108,17 @@ print_r($dates);
 <p><strong>Output:</strong></p>
 <pre><code>Array
 (
-    [0] => 2023-10-15
-    [1] => 2023-10-10
-    [2] => 2023-10-05
-    [3] => 2023-10-01
+    [0] =&gt; 2023-10-15
+    [1] =&gt; 2023-10-10
+    [2] =&gt; 2023-10-05
+    [3] =&gt; 2023-10-01
 )</code></pre>
 
 <p>In this code, we define a custom comparison function <code>dateComparisonDesc</code> that reverses the comparison using the spaceship operator (<code>&lt;=&gt;</code>). The rest of the process is the same as in the previous example.</p>
 
 <p>The result will be an array of dates sorted in descending order.</p>
 
-<hr />
+<hr>
 
 <h2 id="using-asort-and-arsort-">Using <code>asort()</code> and <code>arsort()</code></h2>
 
@@ -146,22 +146,22 @@ print_r($dates);
 <p><strong>Output:</strong></p>
 <pre><code>Array
 (
-    [event4] => 2023-10-01
-    [event2] => 2023-10-05
-    [event3] => 2023-10-10
-    [event1] => 2023-10-15
+    [event4] =&gt; 2023-10-01
+    [event2] =&gt; 2023-10-05
+    [event3] =&gt; 2023-10-10
+    [event1] =&gt; 2023-10-15
 )
 Array
 (
-    [event1] => 2023-10-15
-    [event3] => 2023-10-10
-    [event2] => 2023-10-05
-    [event4] => 2023-10-01
+    [event1] =&gt; 2023-10-15
+    [event3] =&gt; 2023-10-10
+    [event2] =&gt; 2023-10-05
+    [event4] =&gt; 2023-10-01
 )</code></pre>
 
 <p>In this code, we first use <code>asort()</code> to sort the associative array in ascending order and then use <code>arsort()</code> to sort it in descending order.</p>
 
-<hr />
+<hr>
 
 <h3 id="conclusion">Conclusion</h3>
 
