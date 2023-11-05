@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Get the Length of a JavaScript Object</title>
+<meta name="description" content="You can calculate the length of a JavaScript object using various methods, as we will explore in this article" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/how-to-get-the-length-of-a-javascript-object.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Get the Length of a JavaScript Object</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of How to Get the Length of a JavaScript Object" loading="lazy" width="900" height="500"></div>
+<p>While arrays have a built-in <code>length</code> property to easily determine their size, objects do not have a direct property to represent their length.</p>
+
+<p>However, you can calculate the length of a JavaScript object using various methods, as we will explore in this article.</p>
+
+<p><strong>Table of Contents:</strong></p>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#using-the-object-keys-method">Using the Object.keys() Method</a></li>
+<li><a href="#using-the-for-in-loop">Using a for...in Loop</a></li>
+<li><a href="#using-the-object-getownpropertynames-method">Using the Object.getOwnPropertyNames() Method</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction">1. Introduction</h2>
+
+<p>JavaScript objects are versatile and can store various types of data. To find the length of an object, you need to count the number of its properties or keys.</p>
+
+<p>This is a common task when working with data structures, and there are several ways to achieve this.</p>
+
+<h2 id="using-the-object-keys-method">2. Using the "Object.keys()" Method</h2>
+
+<p>One of the simplest and most commonly used methods to get the length of an object is by using the <code>Object.keys()</code> method.</p>
+
+<p>This method returns an array of a given object's own enumerable property names (keys). To determine the length, you can calculate the length of the resulting array:</p>
+
+<pre class="language-javascript"><code>const myObject = {
+    name: 'John',
+    age: 30,
+    city: 'New York',
+};
+
+const objectLength = Object.keys(myObject).length;
+
+console.log(`Length of the object: ${objectLength}`); // Outputs: Length of the object: 3
+</code></pre>
+
+<p>This method is concise and straightforward, making it a preferred way to find the length of an object.</p>
+
+<h2 id="using-the-for-in-loop">3. Using the "for...in" Loop</h2>
+
+<p>Another approach to calculate the length of an object is to use a <code>for...in</code> loop.</p>
+
+<p>This loop iterates over the object's properties and increments a counter for each property found:</p>
+
+<pre class="language-javascript"><code>const myObject = {
+    name: 'John',
+    age: 30,
+    city: 'New York',
+};
+
+let objectLength = 0;
+
+for (const key in myObject) {
+    if (myObject.hasOwnProperty(key)) {
+        objectLength++;
+    }
+}
+
+console.log(`Length of the object: ${objectLength}`); // Outputs: Length of the object: 3
+</code></pre>
+
+<p>This method provides you with more control and can be used when you need to perform additional operations during the iteration.</p>
+
+<h2 id="using-the-object-getownpropertynames-method">4. Using the "Object.getOwnPropertyNames()" Method</h2>
+
+<p>The <code>Object.getOwnPropertyNames()</code> method is similar to <code>Object.keys()</code>, but it returns an array of all properties, including non-enumerable ones.</p>
+
+<p>To calculate the length of the object, you can count the elements in the resulting array:</p>
+
+<pre class="language-javascript"><code>const myObject = {
+    name: 'John',
+    age: 30,
+    city: 'New York',
+};
+
+const objectLength = Object.getOwnPropertyNames(myObject).length;
+
+console.log(`Length of the object: ${objectLength}`); // Outputs: Length of the object: 3
+</code></pre>
+
+<p>This method can be helpful when you need to access non-enumerable properties in addition to the enumerable ones.</p>
+
+<h2 id="conclusion">5. Conclusion</h2>
+
+<p>Determining the length of a JavaScript object is a common task when working with complex data structures.</p>
+
+<p>By using methods like <code>Object.keys()</code>, <code>for...in</code> loops, or <code>Object.getOwnPropertyNames()</code>, you can efficiently calculate the number of properties in an object.</p>
+
+<p>Choose the method that best suits your specific use case to ensure your code accurately handles objects of varying lengths and structures.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

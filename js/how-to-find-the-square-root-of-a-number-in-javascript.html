@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Find the Square Root of a Number in JavaScript</title>
+<meta name="description" content="In this article, we will explore different methods to find the square root of a number in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/how-to-find-the-square-root-of-a-number-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to Find the Square Root of a Number in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Finding the Square Root of a Number in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides a built-in function to <strong>compute the square root of a number</strong>, making it a straightforward task.</p>
+
+<p>In this article, we will explore different methods to find the square root of a number in JavaScript.</p>
+
+<p><strong>Table of Contents:</strong></p>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#using-the-math-sqrt-function">Using the Math.sqrt() Function</a></li>
+<li><a href="#using-the-exponent-operator">Using the Exponent Operator &#42;&#42;</a></li>
+<li><a href="#finding-the-nth-root">Finding the Nth Root</a></li>
+<li><a href="#handling-negative-and-non-numeric-values">Handling Negative and Non-Numeric Values</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction">1. Introduction</h2>
+
+<p>The square root of a number is a value that, when multiplied by itself, results in the original number.</p>
+
+<p>In mathematics, the square root of a number "x" is represented as √x. In JavaScript, you can calculate the square root using various methods, depending on your specific requirements.</p>
+
+<h2 id="using-the-math-sqrt-function">2. Using the "Math.sqrt()" Function</h2>
+
+<p>JavaScript provides the <code>Math.sqrt()</code> function, which allows you to calculate the square root of a number with ease. Here's how to use it:</p>
+
+<pre class="language-javascript"><code>const number = 25;
+const squareRoot = Math.sqrt(number);
+
+console.log(squareRoot); // Outputs: 5
+</code></pre>
+
+<p>The <code>Math.sqrt()</code> function takes a single argument, which is the number for which you want to find the square root. It returns the square root of the number.</p>
+
+<h2 id="using-the-exponent-operator">3. Using the Exponent Operator "&#42;&#42;"</h2>
+
+<p>An alternative method to find the square root in JavaScript is by using the exponentiation operator (<code>**</code>).</p>
+
+<p>You can calculate the square root by raising the number to the power of <code>0.5</code> (1/2). Here's an example:</p>
+
+<pre class="language-javascript"><code>const number = 25;
+const squareRoot = number ** 0.5;
+
+console.log(squareRoot); // Outputs: 5
+</code></pre>
+
+<p>This method is equivalent to using the <code>Math.sqrt()</code> function but provides an alternative syntax for the same operation.</p>
+
+<h2 id="finding-the-nth-root">4. Finding the Nth Root</h2>
+
+<p>To find the square root, we use an exponent of <code>0.5</code>, which is equivalent to 1/2.</p>
+
+<p>To find the cube root, you can use an exponent of <code>1/3</code>, and for the nth root, you can use an exponent of <code>1/n</code>.</p>
+
+<p>Here's an example of finding the cube root:</p>
+
+<pre class="language-javascript"><code>const number = 27;
+const cubeRoot = number ** (1 / 3);
+
+console.log(cubeRoot); // Outputs: 3
+</code></pre>
+
+<p>This approach is versatile and allows you to find roots of any order, not just the square root.</p>
+
+<h2 id="handling-negative-and-non-numeric-values">5. Handling Negative and Non-Numeric Values</h2>
+
+<p>It's important to note that the <code>Math.sqrt()</code> function and the <code>**</code> operator work with positive numbers or zero.</p>
+
+<p>When used with negative values or non-numeric values, they will return <code>NaN</code> (Not-a-Number).</p>
+
+<p>To handle these cases and prevent errors, it's advisable to check the input data and handle edge cases in your code.</p>
+
+<h2 id="conclusion">6. Conclusion</h2>
+
+<p>Finding the square root of a number in JavaScript is a fundamental mathematical operation that is straightforward to perform using the built-in <code>Math.sqrt()</code> function or the exponentiation operator <code>**</code>.</p>
+
+<p>Understanding these methods allows you to work with square roots and even other roots of numbers, enhancing your ability to perform various mathematical calculations in your JavaScript applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
