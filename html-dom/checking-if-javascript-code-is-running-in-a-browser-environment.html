@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checking If JavaScript Code Is Running in a Browser Environment</title>
+<meta name="description" content="In this article, we'll explore how to check if JavaScript code is running in a browser environment." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/checking-if-javascript-code-is-running-in-a-browser-environment.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Checking If JavaScript Code Is Running in a Browser Environment</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Checking If JavaScript Code Is Running in a Browser Environment" loading="lazy" width="900" height="500"></div>
+<p>There are scenarios where your code may be used in different contexts, such as server-side Node.js or client-side web browsers. In this article, we'll explore how to <strong>check if JavaScript code is running in a browser</strong> environment.</p>
+
+<h2 id="understanding-the-context">Understanding the Context</h2>
+
+<p>JavaScript is a versatile language used in various environments, including web browsers and server-side environments like Node.js.</p>
+
+<p>The ability to distinguish between these contexts is crucial for ensuring your code behaves correctly and avoids errors related to missing or incompatible browser-specific features.</p>
+
+<p>Here are some common scenarios where checking the environment is useful:</p>
+
+<ol>
+<li><p>Loading Polyfills: You may need to load polyfills for browser-specific features only when running in a browser environment.</p></li>
+<li><p>Feature Detection: When conducting feature detection, you want to avoid browser-specific code when running in a non-browser environment.</p></li>
+<li><p>Server-Side Rendering: In server-side rendering, you might need to skip or modify code that is meant for the client-side browser.</p></li>
+</ol>
+
+<h2 id="methods-for-checking-the-environment">Methods for Checking the Environment</h2>
+
+<p>There are several methods to determine if your JavaScript code is running in a browser environment:</p>
+
+<h3 id="1-checking-for-the-window-object">1. Checking for the "window" Object</h3>
+
+<p>In web browsers, the <code>window</code> object is a global object that represents the browser window.</p>
+
+<p>You can check for the existence of the <code>window</code> object to determine if your code is running in a browser environment:</p>
+
+<pre class="language-javascript"><code>if (typeof window !== 'undefined') {
+    // Code is running in a browser environment
+} else {
+    // Code is not running in a browser environment
+}
+</code></pre>
+
+<p>This method relies on the fact that the <code>window</code> object is not defined in non-browser environments like Node.js.</p>
+
+<h3 id="2-checking-for-the-document-object">2. Checking for the "document" Object</h3>
+
+<p>Similar to the <code>window</code> object, you can also check for the existence of the <code>document</code> object, which is available in browser environments but not in server-side Node.js:</p>
+
+<pre class="language-javascript"><code>if (typeof document !== 'undefined') {
+    // Code is running in a browser environment
+} else {
+    // Code is not running in a browser environment
+}
+</code></pre>
+
+<p>This method is especially useful if you need to work with the DOM, as the <code>document</code> object is specific to browser environments.</p>
+
+<h3 id="3-using-the-navigator-object">3. Using the "navigator" Object</h3>
+
+<p>The <code>navigator</code> object provides information about the user's browser.</p>
+
+<p>While this method is less commonly used for environment detection, you can check for properties specific to browsers:</p>
+
+<pre class="language-javascript"><code>if (
+    typeof navigator !== 'undefined' &amp;&amp;
+    typeof navigator.userAgent === 'string'
+) {
+    // Code is running in a browser environment
+} else {
+    // Code is not running in a browser environment
+}
+</code></pre>
+
+<p>The <code>navigator.userAgent</code> property is typically present in browser environments but may be undefined in non-browser contexts.</p>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>The methods mentioned in this article are widely supported in modern browsers.</p>
+
+<p>However, when using these techniques, it's important to test your code across different browsers to ensure consistent behavior.</p>
+
+<p>These methods are not specific to any particular version of JavaScript, so they should work across a wide range of environments.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Checking if JavaScript code is running in a browser environment is a crucial step in ensuring your code behaves correctly and avoids errors related to incompatible or missing browser-specific features.</p>
+
+<p>By using the methods outlined in this article, you can easily determine the context in which your code is executing and make the necessary adjustments to accommodate different environments.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

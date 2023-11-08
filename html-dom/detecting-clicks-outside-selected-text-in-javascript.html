@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detecting Clicks Outside Selected Text in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to check if users click outside of selected text or an element using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/detecting-clicks-outside-selected-text-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Detecting Clicks Outside Selected Text in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Detecting Clicks Outside Selected Text in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In web development, there are situations where you may want to determine if a user clicks outside a specific area, such as selected text or an element.</p>
+
+<p>This can be useful for various purposes, like closing a dropdown when the user clicks outside of it.</p>
+
+<p>In this article, we'll explore how to check if users click outside of selected text or an element using JavaScript.</p>
+
+<h2 id="detecting-clicks-outside-an-element">Detecting Clicks Outside an Element</h2>
+
+<p>To detect clicks outside a specific element, you need to add a click event listener to the document or a container element that surrounds the target area.</p>
+
+<p>When a click occurs, you can then check if the target of the click event is the element you want to exclude or not.</p>
+
+<p>Here's a step-by-step guide:</p>
+
+<h3 id="1-html-structure">1. HTML Structure</h3>
+
+<p>First, create your HTML structure. You might have a container element with text or any other content you want to consider as "selected text."</p>
+
+<pre class="language-html"><code>&lt;div id="container"&gt;
+    &lt;p&gt;This is some selected text.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3 id="2-javascript-logic">2. JavaScript Logic</h3>
+
+<p>Now, let's add the JavaScript logic to check for clicks outside the selected text area.</p>
+
+<p>We'll listen for click events on the <code>document</code> and verify if the target of the click is not within the container.</p>
+
+<pre class="language-javascript"><code>const container = document.getElementById('container');
+
+// Add a click event listener to the document
+document.addEventListener('click', function (event) {
+    const isClickInsideContainer = container.contains(event.target);
+
+    // If the click is outside the container, take action
+    if (!isClickInsideContainer) {
+        // Perform your desired action here, e.g., close a dropdown
+        console.log('Click is outside the container.');
+    }
+});
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>We obtain a reference to the container element using <code>getElementById</code>.</li>
+<li>We add a click event listener to the <code>document</code>.</li>
+<li>Within the event listener, we use the <code>contains</code> method to check if the event target (the element clicked) is inside the container. If it's not, we perform the desired action (e.g., logging a message).</li>
+</ul>
+
+<h3 id="3-customization">3. Customization</h3>
+
+<p>You can customize the logic to perform various actions when a click occurs outside the container.</p>
+
+<p>Common use cases include closing a dropdown, hiding a modal, or resetting a selection. The possibilities are endless.</p>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>This method is widely supported in modern web browsers. However, it's always a good practice to test your code across different browsers to ensure it works as expected, especially if you're developing for older or less common browsers.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Detecting clicks outside a specific area or element in JavaScript is a valuable technique for creating user-friendly web interfaces.</p>
+
+<p>By following the steps and code provided in this article, you can easily implement this behavior in your web applications and enhance the user experience by responding to user interactions effectively.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

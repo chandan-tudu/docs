@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Creating an Auto-Expanding Textarea with JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to create an auto-expanding textarea using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/creating-an-auto-expanding-textarea-with-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Creating an Auto-Expanding Textarea with JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Creating an Auto-Expanding Textarea with JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Auto-expanding textareas are a common feature in web forms and text editors. They allow the textarea to dynamically adjust its height as the user types or pastes text, providing a more user-friendly experience.</p>
+
+<p>In this article, we'll explore how to create an <strong>auto-expanding textarea</strong> using JavaScript.</p>
+
+<h2 id="the-html-structure">The HTML Structure</h2>
+
+<p>To get started, you'll need to set up the HTML structure for your auto-expanding textarea. Here's a basic example:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;link rel="stylesheet" type="text/css" href="styles.css" /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;textarea
+            id="autoExpandTextarea"
+            rows="1"
+            placeholder="Type something..."
+        &gt;&lt;/textarea&gt;
+        &lt;script src="script.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example, we have a <code>textarea</code> element with the ID "autoExpandTextarea." We've set the <code>rows</code> attribute to "1" to create a single row initially, and we've added a placeholder for guidance.</p>
+
+<h2 id="css-for-styling">CSS for Styling</h2>
+
+<p>You can style the textarea as needed. Here's a simple CSS example (styles.css):</p>
+
+<pre class="language-css"><code>#autoExpandTextarea {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-size: 16px;
+}
+</code></pre>
+
+<p>This CSS code sets the width of the textarea to 100%, adds a border, provides padding, and sets the font size.</p>
+
+<h2 id="javascript-for-auto-expanding">JavaScript for Auto-Expanding</h2>
+
+<p>To create the auto-expanding behavior, you'll need JavaScript (script.js):</p>
+
+<pre class="language-javascript"><code>// Get the textarea element
+const textarea = document.getElementById('autoExpandTextarea');
+
+// Add an event listener for input changes
+textarea.addEventListener('input', function () {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+});
+
+// Set an initial height to match the placeholder
+textarea.style.height = '1.5em';
+</code></pre>
+
+<p>Here's what this JavaScript code does:</p>
+
+<ol>
+<li>It gets the textarea element by its ID, "autoExpandTextarea."</li>
+<li>It adds an event listener for the "input" event, which triggers when the user types or pastes text into the textarea.</li>
+<li>In the event listener, it sets the textarea's height to "auto" to reset it, then adjusts the height to match the textarea's scrollHeight. This makes the textarea expand as needed to fit the content.</li>
+<li>It sets an initial height to match the placeholder's height, so the textarea looks correct before the user starts typing.</li>
+</ol>
+
+<h2 id="testing-and-customization">Testing and Customization</h2>
+
+<p>After adding the HTML, CSS, and JavaScript code, you can test your auto-expanding textarea in a web browser.</p>
+
+<p>Type or paste text into the textarea, and you should see it expand as you input more text.</p>
+
+<p>You can further customize the appearance and behavior of your auto-expanding textarea by adjusting the CSS styles, such as font size, padding, and borders, to fit your design requirements.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Creating an auto-expanding textarea with JavaScript is a valuable addition to web forms and text editors, enhancing the user experience by dynamically adjusting the textarea's height as the user types or pastes content.</p>
+
+<p>By following the steps and code provided in this article, you can easily implement this feature in your web applications and improve usability for your users.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

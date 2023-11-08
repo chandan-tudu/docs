@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dynamically Changing Favicon Based on User's Color Scheme Preference</title>
+<meta name="description" content="Dynamically Changing Favicon Based on User's Color Scheme Preference" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/dynamically-changing-favicon-based-on-user-s-color-scheme-preference.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Dynamically Changing Favicon Based on User's Color Scheme Preference</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Dynamically Changing Favicon Based on User&#039;s Color Scheme Preference" loading="lazy" width="900" height="500"></div>
+<p>The favicon, that tiny but essential image displayed in a browser's tab or bookmark list, is often overlooked when considering a website's customization and personalization.</p>
+
+<p>However, it's a subtle yet effective way to enhance the user experience. One way to achieve this enhancement is by dynamically changing the favicon based on a user's color scheme preference.</p>
+
+<p>In this article, we'll explore how to implement this feature using HTML, CSS, and JavaScript.</p>
+
+<h2 id="why-change-the-favicon-dynamically-">Why Change the Favicon Dynamically?</h2>
+
+<p>Adapting the favicon based on a user's color scheme preference offers several benefits:</p>
+
+<ol>
+<li><p><strong>Personalization</strong>: It provides a more personalized experience to users, making your website feel more in tune with their preferences.</p></li>
+<li><p><strong>Visual Continuity</strong>: It aligns with the overall color scheme of the website, ensuring visual continuity, especially in dark mode.</p></li>
+<li><p><strong>User Engagement</strong>: This subtle customization can improve user engagement and help your website stand out from the competition.</p></li>
+</ol>
+
+<h2 id="creating-different-favicon-images">Creating Different Favicon Images</h2>
+
+<p>The first step is to create multiple favicon images that match the light and dark color schemes of your website.</p>
+
+<p>These images should be easily distinguishable from each other. Save them with distinct filenames, such as "favicon-light.png" and "favicon-dark.png."</p>
+
+<h2 id="linking-the-default-favicon-in-your-html">Linking the Default Favicon in Your HTML</h2>
+
+<p>In your HTML document's <code>&lt;head&gt;</code> section, link the default favicon using the following code:</p>
+
+<pre class="language-html"><code>&lt;link rel="icon" type="image/png" href="favicon.png" id="favicon" /&gt;
+</code></pre>
+
+<p>This code links the favicon with the "favicon" ID, which we'll use for dynamic updates.</p>
+
+<h2 id="detecting-the-user-s-color-scheme-preference">Detecting the User's Color Scheme Preference</h2>
+
+<p>JavaScript can be used to detect the user's color scheme preference. The following code checks whether the user has a light or dark color scheme:</p>
+
+<pre class="language-javascript"><code>const prefersDarkMode = window.matchMedia(
+    '(prefers-color-scheme: dark)'
+).matches;
+</code></pre>
+
+<p>This code checks whether the user's system preferences include a dark mode. If it does, <code>prefersDarkMode</code> will be set to <code>true</code>.</p>
+
+<h2 id="dynamically-changing-the-favicon">Dynamically Changing the Favicon</h2>
+
+<p>Now, let's add the JavaScript code to dynamically change the favicon based on the user's color scheme preference.</p>
+
+<p>Add the following code just before the closing <code>&lt;/body&gt;</code> tag in your HTML document:</p>
+
+<pre class="language-html"><code>&lt;script&gt;
+    const favicon = document.getElementById('favicon');
+    const prefersDarkMode = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+    ).matches;
+
+    function setFavicon() {
+        const faviconPath = prefersDarkMode
+            ? 'favicon-dark.png'
+            : 'favicon-light.png';
+        favicon.href = faviconPath;
+    }
+
+    setFavicon(); // Initial favicon setup
+
+    // Listen for changes in the user's color scheme preference
+    window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', (e) =&gt; {
+            prefersDarkMode = e.matches;
+            setFavicon();
+        });
+&lt;/script&gt;
+</code></pre>
+
+<p>This JavaScript code does the following:</p>
+
+<ul>
+<li>It checks the user's color scheme preference when the page loads and sets the favicon accordingly based on the <code>prefersDarkMode</code> variable.</li>
+<li>It adds an event listener to react to changes in the user's color scheme preference dynamically. When the color scheme changes, the favicon is updated accordingly.</li>
+</ul>
+
+<h2 id="testing-and-deployment">Testing and Deployment</h2>
+
+<p>After implementing the dynamic favicon change, thoroughly test your website to ensure that the favicon updates correctly based on the user's color scheme preference. Once everything works as expected, deploy your updated HTML file to your web server.</p>
+
+<p>With this feature in place, users visiting your website will experience a more personalized and visually coherent browsing experience.</p>
+
+<p>The dynamic favicon change based on their color scheme preference is a subtle but effective way to make your website more engaging and user-friendly.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

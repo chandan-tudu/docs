@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculate Reading Time of a Webpage Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to calculate the reading time of a webpage using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/calculate-reading-time-of-a-webpage-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Calculate Reading Time of a Webpage Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Calculate Reading Time of a Webpage Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Measuring the reading time of a webpage is a helpful feature for websites and blogs.</p>
+
+<p>It allows users to estimate the time required to go through the content, which can be especially useful for longer articles.</p>
+
+<p>In this article, we'll explore how to <strong>calculate the reading time of a webpage using JavaScript</strong>.</p>
+
+<p><strong>Table of Contents:</strong></p>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#html-structure">HTML Structure</a></li>
+<li><a href="#javascript-code">JavaScript Code</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction">1. Introduction</h2>
+
+<p>The reading time of a webpage can be calculated by counting the words in the content and estimating the average reading speed.</p>
+
+<p>We'll use JavaScript to perform this task, and you can add this functionality to your website or blog to enhance the user experience.</p>
+
+<h2 id="html-structure">2. HTML Structure</h2>
+
+<p>To calculate the reading time of a webpage, we need some content to analyze. Create an HTML structure with a container for your content:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Calculate Reading Time&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="content"&gt;
+            &lt;h1&gt;Article Title&lt;/h1&gt;
+            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+            &lt;!-- Add more paragraphs as needed --&gt;
+        &lt;/div&gt;
+        &lt;p id="readingTime"&gt;
+            Reading Time: &lt;span id="time"&gt;Calculating...&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;script src="reading-time.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example, we have a content section with a title and paragraphs, and a <code>&lt;p&gt;</code> element with the ID <code>readingTime</code> where we'll display the reading time.</p>
+
+<p>We also include an external JavaScript file, <code>reading-time.js</code>, which is where we'll implement the reading time calculation.</p>
+
+<h2 id="javascript-code">3. JavaScript Code (reading-time.js)</h2>
+
+<p>Create a JavaScript file named <code>reading-time.js</code> to calculate the reading time:</p>
+
+<pre class="language-javascript"><code>document.addEventListener('DOMContentLoaded', function () {
+    // Get the content and the reading time element
+    const content = document.getElementById('content');
+    const readingTimeElement = document.getElementById('time');
+
+    // Define the average reading speed in words per minute (adjust as needed)
+    const wordsPerMinute = 200;
+
+    // Calculate the total word count in the content
+    const text = content.innerText || content.textContent;
+    const wordCount = text.split(/\s+/).length;
+
+    // Calculate the reading time in minutes
+    const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+    // Display the reading time
+    readingTimeElement.textContent = `${readingTime} minute${
+        readingTime &gt; 1 ? 's' : ''
+    } read`;
+});
+</code></pre>
+
+<p>In this JavaScript code:</p>
+
+<ul>
+<li>We wait for the DOM to be fully loaded before executing the code by using the <code>DOMContentLoaded</code> event listener.</li>
+<li>We select the content element and the reading time element by their IDs.</li>
+<li>We define the average reading speed in words per minute. You can adjust this value to match your audience's reading speed.</li>
+<li>We calculate the total word count in the content by splitting the text into words using a regular expression.</li>
+<li>We calculate the reading time by dividing the word count by the average reading speed and rounding up to the nearest minute.</li>
+<li>Finally, we display the reading time in the <code>readingTimeElement</code>.</li>
+</ul>
+
+<h2 id="conclusion">4. Conclusion</h2>
+
+<p>Calculating the reading time of a webpage using JavaScript is a valuable feature that enhances the user experience.</p>
+
+<p>By providing an estimate of the time required to read the content, you can help users plan their reading sessions and make your website or blog more user-friendly.</p>
+
+<p>Adjust the average reading speed to better match your audience's reading habits, and feel free to customize the display of the reading time to suit your design preferences.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

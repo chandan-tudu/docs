@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dynamically Updating CSS Root Variables using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to dynamically update CSS root variables." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/dynamically-updating-css-root-variables-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Dynamically Updating CSS Root Variables using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Dynamically Updating CSS Root Variables using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>CSS variables, also known as custom properties, allow for dynamic and reusable styles. By updating CSS root variables with JavaScript, you can achieve dynamic theming, responsive design, and more. In this article, we'll explore how to dynamically update CSS root variables.</p>
+
+<h2 id="understanding-css-root-variables">Understanding CSS Root Variables</h2>
+
+<p>CSS root variables are defined in the <code>:root</code> selector. They start with a double hyphen (<code>--</code>) followed by a custom name. For example:</p>
+
+<pre class="language-css"><code>:root {
+    --primary-color: #3498db;
+    --font-size: 16px;
+}
+</code></pre>
+
+<p>These variables can be used throughout your CSS stylesheets, providing a central place to define and change values.</p>
+
+<p>To access a CSS root variable in your styles, you use the <code>var()</code> function:</p>
+
+<pre class="language-css"><code>body {
+    background-color: var(--primary-color);
+    font-size: var(--font-size);
+}
+</code></pre>
+
+<h2 id="dynamically-updating-css-root-variables-with-javascript">Dynamically Updating CSS Root Variables with JavaScript</h2>
+
+<p>To dynamically update CSS root variables using JavaScript, you'll need to follow these steps:</p>
+
+<h3 id="1-access-the-document-s-styles">1. Access the Document's Styles</h3>
+
+<p>First, access the <code>style</code> attribute of the <code>document.documentElement</code> to get the root style element. This is where you can read and modify the CSS root variables.</p>
+
+<pre class="language-javascript"><code>const rootStyles = document.documentElement.style;
+</code></pre>
+
+<h3 id="2-update-css-root-variables">2. Update CSS Root Variables</h3>
+
+<p>Now, you can use JavaScript to update the CSS root variables based on your application's requirements.</p>
+
+<p>For example, you can change the primary color or font size based on user interactions, preferences, or the application's state.</p>
+
+<pre class="language-javascript"><code>rootStyles.setProperty('--primary-color', '#FF5733');
+rootStyles.setProperty('--font-size', '18px');
+</code></pre>
+
+<h3 id="3-apply-the-updates">3. Apply the Updates</h3>
+
+<p>After updating the CSS root variables, the changes will be reflected in the styles of your entire web page.</p>
+
+<p>Elements that use <code>var(--primary-color)</code> or <code>var(--font-size)</code> will now display the new values.</p>
+
+<h2 id="use-cases-for-dynamic-css-root-variables">Use Cases for Dynamic CSS Root Variables</h2>
+
+<p>Here are some common use cases where dynamically updating CSS root variables can be beneficial:</p>
+
+<h3 id="1-theming">1. Theming</h3>
+
+<p>Allow users to change the theme of your website by switching between light and dark modes.</p>
+
+<p>Update CSS root variables like <code>--primary-background-color</code> and <code>--text-color</code> to control the color scheme.</p>
+
+<h3 id="2-responsive-design">2. Responsive Design</h3>
+
+<p>Adjust font sizes, margins, and paddings dynamically to create a responsive layout.</p>
+
+<p>Update CSS root variables based on the screen size or device orientation.</p>
+
+<h3 id="3-user-preferences">3. User Preferences</h3>
+
+<p>Let users customize aspects of your website, such as font size, line height, or link color, and save their preferences in cookies or local storage for a consistent experience on return visits.</p>
+
+<h3 id="4-real-time-updates">4. Real-time Updates</h3>
+
+<p>Change styles in real-time based on events, such as highlighting selected items, indicating errors, or animating elements on user interactions.</p>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>Dynamically updating CSS root variables is widely supported in modern web browsers. However, older browsers may not fully support this feature.</p>
+
+<p>Be sure to check for compatibility and consider providing fallback styles when necessary.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Dynamically updating CSS root variables is a powerful technique that can enhance the user experience on your website.</p>
+
+<p>It provides flexibility, theming options, and responsiveness, allowing your site to adapt to user preferences and different devices.</p>
+
+<p>By using JavaScript to modify the CSS root variables in real-time, you can create a more dynamic and engaging web application.</p>
+
+<p>Experiment with this technique to unlock new possibilities in web design and user customization.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

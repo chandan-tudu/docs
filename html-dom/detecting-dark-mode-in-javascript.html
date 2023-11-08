@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Detect Dark Mode in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to detect dark mode in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/detecting-dark-mode-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Detecting Dark Mode in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Detecting Dark Mode in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Detecting whether a user's operating system or browser is in dark mode can help tailor your website's appearance to match their preferences. In this article, we'll explore how to <strong>detect dark mode in JavaScript</strong>.</p>
+
+<h2 id="dark-mode-detection-methods">Dark Mode Detection Methods</h2>
+
+<p>There are multiple methods to detect dark mode, including checking the <code>prefers-color-scheme</code> media feature, using the <code>matchMedia</code> API, or listening for <code>change</code> events.</p>
+
+<p>Here's a step-by-step guide for each method:</p>
+
+<h3 id="1-using-prefers-color-scheme-media-feature">1. Using "prefers-color-scheme" Media Feature</h3>
+
+<p>The <code>prefers-color-scheme</code> media feature is part of CSS and can be accessed in JavaScript to detect the user's preferred color scheme. It returns "light," "dark," or "no-preference."</p>
+
+<pre class="language-javascript"><code>const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+if (darkModeQuery.matches) {
+    // Dark mode is preferred
+} else {
+    // Light mode is preferred, or no preference set
+}
+</code></pre>
+
+<p>This code snippet uses the <code>window.matchMedia</code> method to check the current color scheme preference.</p>
+
+<h3 id="2-using-matchmedia-api">2. Using "matchMedia" API</h3>
+
+<p>You can also use the <code>matchMedia</code> API to listen for changes in the user's color scheme preference.</p>
+
+<pre class="language-javascript"><code>const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+function handleDarkModeChange(e) {
+    if (e.matches) {
+        // Dark mode is preferred
+    } else {
+        // Light mode is preferred, or no preference set
+    }
+}
+
+darkModeQuery.addEventListener('change', handleDarkModeChange);
+
+// Initial check
+handleDarkModeChange(darkModeQuery);
+</code></pre>
+
+<p>This code registers a listener for changes in the user's color scheme preference, and it also performs an initial check to detect the current preference.</p>
+
+<h3 id="3-using-localstorage-">3. Using "localStorage"</h3>
+
+<p>You can save the user's color scheme preference in <code>localStorage</code> when they explicitly set it on your website and retrieve it to determine the current mode.</p>
+
+<pre class="language-javascript"><code>// Set the user's preference (e.g., 'dark' or 'light') in localStorage
+localStorage.setItem('color-scheme', 'dark');
+
+// Retrieve the preference
+const userPreference = localStorage.getItem('color-scheme');
+
+if (userPreference === 'dark') {
+    // Dark mode is preferred
+} else {
+    // Light mode is preferred, or no preference set
+}
+</code></pre>
+
+<p>This method allows you to store and retrieve the user's choice of color scheme and then adapt your website accordingly.</p>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<p>When detecting dark mode in JavaScript, consider the following best practices:</p>
+
+<ol>
+<li><p><strong>Provide a Toggle</strong>: Give users the option to switch between light and dark modes manually. Use their preference as a default but let them override it.</p></li>
+<li><p><strong>Responsive Design</strong>: Adapt your website's appearance, color schemes, and images to provide an optimal experience in both light and dark modes.</p></li>
+<li><p><strong>Testing</strong>: Test your dark mode implementation across different devices and browsers to ensure compatibility.</p></li>
+<li><p><strong>Accessibility</strong>: Ensure your website remains accessible and readable in both light and dark modes, and consider offering high-contrast options for users with visual impairments.</p></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Detecting dark mode in JavaScript is a valuable feature for enhancing the user experience on your website.</p>
+
+<p>By understanding the methods and best practices mentioned in this article, you can create a more user-friendly and visually appealing web environment, catering to users' preferences for dark or light mode.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

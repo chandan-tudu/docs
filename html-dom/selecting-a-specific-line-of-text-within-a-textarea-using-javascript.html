@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selecting a specific line of text within a textarea using JavaScript</title>
+<meta name="description" content="In this article, we will explore how to select a given line in a textarea using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/selecting-a-specific-line-of-text-within-a-textarea-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Selecting a specific line of text within a textarea using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Selecting a specific line of text within a textarea using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Selecting a specific line of text within a textarea using JavaScript can be a useful feature in various web applications.</p>
+
+<p>It allows you to programmatically highlight or select a particular line of text, which can be handy for tasks like code editors, text processors, or providing a user-friendly interface for selecting content.</p>
+
+<p>In this article, we will explore how to select a given line in a textarea using JavaScript.</p>
+
+<p><strong>Table of Contents:</strong></p>
+
+<ol>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-html-structure">HTML Structure</a></li>
+<li><a href="#3-javascript-code">JavaScript Code</a></li>
+<li><a href="#4-conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<p>To select a specific line in a textarea, we'll use JavaScript to manipulate the textarea's selection range.</p>
+
+<p>A selection range is an object that defines the selected text within an input or textarea element.</p>
+
+<p>We'll use the <code>setSelectionRange()</code> method to achieve this. Additionally, we need to identify the starting and ending indices of the desired line, which depends on the content within the textarea.</p>
+
+<h2 id="2-html-structure">2. HTML Structure</h2>
+
+<p>First, create a simple HTML structure with a textarea element.</p>
+
+<p>This element will allow the user to input text and will serve as the target for selecting a specific line using JavaScript.</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Select Line in Text Area&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;textarea id="textArea" rows="5" cols="30"&gt;&lt;/textarea&gt;
+        &lt;button onclick="selectLine()"&gt;Select Line&lt;/button&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example, we have a textarea with the ID <code>textArea</code> and a button that, when clicked, will execute the <code>selectLine()</code> function.</p>
+
+<h2 id="3-javascript-code">3. JavaScript Code</h2>
+
+<p>Now, let's implement the JavaScript code to select a given line in the textarea.</p>
+
+<p>We will retrieve the content of the textarea, calculate the starting and ending indices for the desired line, and use the <code>setSelectionRange()</code> method to select it.</p>
+
+<pre class="language-javascript"><code>function selectLine() {
+    // Get the textarea element
+    const textarea = document.getElementById('textArea');
+
+    // Get the textarea content
+    const text = textarea.value;
+
+    // Determine the line number you want to select
+    const lineNumber = 3; // Change this to the desired line number
+
+    // Initialize variables to track the starting and ending indices
+    let startIndex = 0;
+    let endIndex = text.length;
+
+    // Split the content into lines
+    const lines = text.split('\n');
+
+    // Check if the desired line exists
+    if (lineNumber &gt; 0 &amp;&amp; lineNumber &lt;= lines.length) {
+        // Calculate the starting and ending indices for the desired line
+        for (let i = 0; i &lt; lineNumber - 1; i++) {
+            startIndex += lines[i].length + 1; // +1 to account for the newline character
+        }
+        endIndex = startIndex + lines[lineNumber - 1].length;
+    }
+
+    // Set the selection range to the desired line
+    textarea.setSelectionRange(startIndex, endIndex);
+
+    // Focus the textarea to show the selection
+    textarea.focus();
+}
+</code></pre>
+
+<p>In this JavaScript code:</p>
+
+<ul>
+<li>We retrieve the textarea element using its ID.</li>
+<li>We get the content of the textarea using the <code>value</code> property.</li>
+<li>We specify the desired line number to be selected (you can change the value of <code>lineNumber</code> as needed).</li>
+<li>We initialize <code>startIndex</code> and <code>endIndex</code> to track the selection range, and we initially set <code>endIndex</code> to the length of the entire content.</li>
+<li>We split the content into an array of lines using the newline character (<code>\n</code>) as the delimiter.</li>
+<li>We calculate the <code>startIndex</code> and <code>endIndex</code> based on the content of the desired line.</li>
+<li>Finally, we use the <code>setSelectionRange()</code> method to select the specified line and then focus the textarea to display the selection.</li>
+</ul>
+
+<h2 id="4-conclusion">4. Conclusion</h2>
+
+<p>Selecting a given line in a textarea using JavaScript involves splitting the content into lines and calculating the starting and ending indices for the desired line.</p>
+
+<p>By using the <code>setSelectionRange()</code> method, you can programmatically highlight or select specific lines of text within a textarea, which can be beneficial in various web applications that involve text input and manipulation.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
