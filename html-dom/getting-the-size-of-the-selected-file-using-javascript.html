@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting the Size of the Selected File Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to get the size of the selected file using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/getting-the-size-of-the-selected-file-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Getting the Size of the Selected File Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Getting the Size of the Selected File Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>When working with file uploads in web applications, it's often necessary to retrieve information about the selected files, such as their size.</p>
+
+<p>JavaScript provides a straightforward way to accomplish this by utilizing the <code>File</code> object and the <code>FileList</code> interface.</p>
+
+<p>In this article, we'll explore how to get the size of the selected file using JavaScript.</p>
+
+<h2 id="input-element-for-file-upload">Input Element for File Upload</h2>
+
+<p>To enable file uploads in a web page, you can use the <code>&lt;input&gt;</code> element with the <code>type</code> attribute set to "file".</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-html"><code>&lt;input type="file" id="fileInput" onchange="handleFileSelection()"&gt;
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>We create an <code>&lt;input&gt;</code> element of type "file" with the ID "fileInput."</p></li>
+<li><p>The <code>onchange</code> attribute is set to a JavaScript function <code>handleFileSelection()</code>, which will be called when a file is selected.</p></li>
+</ul>
+
+<h2 id="using-javascript-to-get-file-size">Using JavaScript to Get File Size</h2>
+
+<p>Let's implement the JavaScript function <code>handleFileSelection()</code> to retrieve the size of the selected file:</p>
+
+<pre class="language-javascript"><code>function handleFileSelection() {
+  // Get the file input element
+  const fileInput = document.getElementById('fileInput');
+
+  // Check if files are selected
+  if (fileInput.files.length &gt; 0) {
+    // Access the first selected file
+    const selectedFile = fileInput.files[0];
+
+    // Get the size of the selected file (in bytes)
+    const fileSizeInBytes = selectedFile.size;
+
+    // Convert bytes to kilobytes (optional)
+    const fileSizeInKB = fileSizeInBytes / 1024;
+
+    console.log(`Selected file size: ${fileSizeInBytes} bytes (${fileSizeInKB} KB)`);
+  } else {
+    console.log('No file selected.');
+  }
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>We obtain a reference to the file input element with the ID "fileInput."</p></li>
+<li><p>We check if any files are selected using <code>fileInput.files.length</code>.</p></li>
+<li><p>If files are selected, we access the first selected file using <code>fileInput.files[0]</code>.</p></li>
+<li><p>We retrieve the size of the selected file in bytes using <code>selectedFile.size</code>.</p></li>
+<li><p>Optionally, we convert the file size to kilobytes by dividing it by 1024.</p></li>
+<li><p>The file size information is logged to the console.</p></li>
+</ul>
+
+<h2 id="full-example">Full Example</h2>
+
+<p>Let's put everything together in a complete HTML example:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;File Size Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;input type="file" id="fileInput" onchange="handleFileSelection()"&gt;
+
+  &lt;script&gt;
+    function handleFileSelection() {
+      // Get the file input element
+      const fileInput = document.getElementById('fileInput');
+
+      // Check if files are selected
+      if (fileInput.files.length &gt; 0) {
+        // Access the first selected file
+        const selectedFile = fileInput.files[0];
+
+        // Get the size of the selected file (in bytes)
+        const fileSizeInBytes = selectedFile.size;
+
+        // Convert bytes to kilobytes (optional)
+        const fileSizeInKB = fileSizeInBytes / 1024;
+
+        console.log(`Selected file size: ${fileSizeInBytes} bytes (${fileSizeInKB} KB)`);
+      } else {
+        console.log('No file selected.');
+      }
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We include the file input element and the JavaScript function <code>handleFileSelection()</code>.</p></li>
+<li><p>When a file is selected, the function retrieves and logs the size of the selected file.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Getting the size of a selected file is a common task when working with file uploads in web development.</p>
+
+<p>JavaScript, along with the File API, provides a simple and effective way to retrieve file size information.</p>
+
+<p>Incorporate this knowledge into your file upload workflows to enhance user interactions and provide meaningful feedback in your web applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

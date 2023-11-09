@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inserting HTML After or Before an Element in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to Inserting HTML After or Before an Element using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/inserting-html-after-or-before-an-element-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Inserting HTML After or Before an Element in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Inserting HTML After or Before an Element in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides methods to insert HTML content after or before an existing element. In this article, we'll explore how to achieve this using JavaScript.</p>
+
+<h2 id="using-insertadjacenthtml-method">Using "insertAdjacentHTML" Method</h2>
+
+<p>The <code>insertAdjacentHTML</code> method is a convenient way to insert HTML content around an element.</p>
+
+<p>It allows you to specify the position where the new HTML should be inserted, such as before or after the target element.</p>
+
+<p>Here's a step-by-step guide:</p>
+
+<pre class="language-javascript"><code>// Get a reference to the target element
+const targetElement = document.getElementById('targetElement');
+
+// HTML content to be inserted
+const htmlToInsert = '&lt;div class="inserted-content"&gt;This content was inserted&lt;/div&gt;';
+
+// Insert HTML content after the target element
+targetElement.insertAdjacentHTML('afterend', htmlToInsert);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>We obtain a reference to the target element with the ID "targetElement."</p></li>
+<li><p>We define the HTML content that we want to insert after the target element.</p></li>
+<li><p>The <code>insertAdjacentHTML</code> method is called on the target element, specifying the position as <code>'afterend'</code> to insert the HTML after the target element.</p></li>
+</ul>
+
+<p>You can use <code>'beforebegin'</code> to insert before the target element, <code>'afterbegin'</code> to insert at the beginning of the target element, and <code>'beforeend'</code> to insert at the end of the target element.</p>
+
+<h2 id="full-example">Full Example</h2>
+
+<p>Let's consider a complete example with an HTML structure containing a target element:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Insert HTML Example&lt;/title&gt;
+  &lt;style&gt;
+    .target-element {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    .inserted-content {
+      background-color: #f0f0f0;
+      padding: 5px;
+      margin-top: 5px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div id="targetElement" class="target-element"&gt;This is the target element.&lt;/div&gt;
+
+  &lt;script&gt;
+    // Get a reference to the target element
+    const targetElement = document.getElementById('targetElement');
+
+    // HTML content to be inserted
+    const htmlToInsert = '&lt;div class="inserted-content"&gt;This content was inserted&lt;/div&gt;';
+
+    // Insert HTML content after the target element
+    targetElement.insertAdjacentHTML('afterend', htmlToInsert);
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We have a <code>&lt;div&gt;</code> element with the ID "targetElement."</p></li>
+<li><p>The JavaScript code inserts additional HTML content after the target element.</p></li>
+<li><p>Styling is applied to visually distinguish the target element and the inserted content.</p></li>
+</ul>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>The <code>insertAdjacentHTML</code> method is well-supported in modern browsers. However, if you need to support older browsers, you may consider alternative methods, such as manipulating the <code>innerHTML</code> property or using the <code>appendChild</code> method.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Inserting HTML content after or before an element in JavaScript is a useful technique for dynamically updating the structure of a web page.</p>
+
+<p>The <code>insertAdjacentHTML</code> method provides a straightforward way to achieve this, allowing you to insert HTML at specific positions relative to a target element.</p>
+
+<p>Incorporate this knowledge into your web development projects to create more dynamic and interactive user interfaces.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Submitting a Form with AJAX in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to submit a form with AJAX in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/submitting-a-form-with-ajax-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Submitting a Form with AJAX in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Submitting a Form with AJAX in JavaScript" loading="lazy" width="900" height="500"></div>
+<p><strong>Submitting a form without reloading</strong> the entire page is a common requirement in modern web development.</p>
+
+<p>AJAX (Asynchronous JavaScript and XML) provides a solution for handling form submissions asynchronously, allowing you to send and receive data from the server in the background.</p>
+
+<p>In this article, we'll explore how to submit a form with AJAX in JavaScript.</p>
+
+<h2 id="using-the-formdata-object">Using the FormData Object</h2>
+
+<p>To submit a form with AJAX, we can use the <code>FormData</code> object to construct a set of key/value pairs representing form fields and their values.</p>
+
+<p>This makes it easy to handle various types of form data, including text fields, checkboxes, and file inputs.</p>
+
+<p>Here's a step-by-step guide:</p>
+
+<pre class="language-javascript"><code>// Get a reference to the form element
+const myForm = document.getElementById('myForm');
+
+// Add a submit event listener to the form
+myForm.addEventListener('submit', function (event) {
+  // Prevent the default form submission
+  event.preventDefault();
+
+  // Create a FormData object from the form
+  const formData = new FormData(myForm);
+
+  // Call the function to submit the form with AJAX
+  submitForm(formData);
+});
+
+// Function to submit the form with AJAX
+function submitForm(formData) {
+  // Create an XMLHttpRequest object
+  const xhr = new XMLHttpRequest();
+
+  // Configure the XMLHttpRequest
+  xhr.open('POST', '/submit', true);
+
+  // Set the onload event handler
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      // Form submitted successfully
+      console.log('Form submitted successfully:', xhr.responseText);
+    } else {
+      // Error during form submission
+      console.error('Error during form submission:', xhr.statusText);
+    }
+  };
+
+  // Set the onerror event handler
+  xhr.onerror = function () {
+    console.error('Network error during form submission.');
+  };
+
+  // Send the FormData object to the server
+  xhr.send(formData);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>We obtain a reference to the form element with the ID "myForm."</p></li>
+<li><p>We add a <code>submit</code> event listener to the form, preventing the default form submission behavior.</p></li>
+<li><p>The <code>submitForm</code> function is called when the form is submitted. It creates a <code>FormData</code> object from the form and sends it to the server using an XMLHttpRequest.</p></li>
+<li><p>The server-side endpoint (<code>'/submit'</code>) where the form data is sent should handle the form submission process.</p></li>
+</ul>
+
+<h2 id="full-example">Full Example</h2>
+
+<p>Let's consider a complete example with an HTML structure containing a form:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Form Submission Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;form id="myForm"&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" required&gt;
+
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+
+  &lt;script&gt;
+    // Get a reference to the form element
+    const myForm = document.getElementById('myForm');
+
+    // Add a submit event listener to the form
+    myForm.addEventListener('submit', function (event) {
+      // Prevent the default form submission
+      event.preventDefault();
+
+      // Create a FormData object from the form
+      const formData = new FormData(myForm);
+
+      // Call the function to submit the form with AJAX
+      submitForm(formData);
+    });
+
+    // Function to submit the form with AJAX
+    function submitForm(formData) {
+      // Create an XMLHttpRequest object
+      const xhr = new XMLHttpRequest();
+
+      // Configure the XMLHttpRequest
+      xhr.open('POST', '/submit', true);
+
+      // Set the onload event handler
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // Form submitted successfully
+          console.log('Form submitted successfully:', xhr.responseText);
+        } else {
+          // Error during form submission
+          console.error('Error during form submission:', xhr.statusText);
+        }
+      };
+
+      // Set the onerror event handler
+      xhr.onerror = function () {
+        console.error('Network error during form submission.');
+      };
+
+      // Send the FormData object to the server
+      xhr.send(formData);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We have a <code>&lt;form&gt;</code> element with the ID "myForm" containing text and email input fields.</p></li>
+<li><p>The JavaScript code handles the form submission asynchronously using AJAX.</p></li>
+<li><p>The form data is sent to the server-side endpoint (<code>'/submit'</code>) for further processing.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Submitting a form with AJAX in JavaScript provides a seamless and dynamic way to interact with the server without reloading the entire page.</p>
+
+<p>By leveraging the <code>FormData</code> object and XMLHttpRequest, you can easily handle form submissions asynchronously, improving the user experience and making your web applications more responsive.</p>
+
+<p>Incorporate this technique into your projects to create interactive and modern forms that seamlessly communicate with the server.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting the Selected Text in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to get the selected text in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/getting-the-selected-text-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Getting the Selected Text in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Getting the Selected Text in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In web development, there are scenarios where you might need to <strong>retrieve the text that a user has selected</strong> on a webpage. In this article, we'll explore how to get the selected text in JavaScript.</p>
+
+<h2 id="the-window-getselection-method">The "window.getSelection" Method</h2>
+
+<p>JavaScript provides the <code>window.getSelection</code> method, which allows you to obtain information about the current selection within a document.</p>
+
+<p>To get the selected text, you can use this method along with the <code>toString</code> function. Here's a step-by-step guide:</p>
+
+<pre class="language-javascript"><code>// Get the selection object
+const selection = window.getSelection();
+
+// Check if there is any text selected
+if (selection &amp;&amp; selection.toString().length &gt; 0) {
+  // Retrieve the selected text
+  const selectedText = selection.toString();
+  console.log('Selected Text:', selectedText);
+} else {
+  console.log('No text selected.');
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>We use <code>window.getSelection()</code> to obtain the selection object, which represents the user's text selection.</p></li>
+<li><p>We check if there is any text selected by verifying that the length of the selected text is greater than 0.</p></li>
+<li><p>If text is selected, we use <code>selection.toString()</code> to retrieve the selected text.</p></li>
+<li><p>We log the selected text to the console.</p></li>
+</ul>
+
+<h2 id="full-example">Full Example</h2>
+
+<p>Let's consider a complete example with an HTML structure and a button that triggers the retrieval of the selected text:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Selected Text Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;p&gt;
+    Select some text in this paragraph to see the result.
+  &lt;/p&gt;
+
+  &lt;button onclick="getSelectedText()"&gt;Get Selected Text&lt;/button&gt;
+
+  &lt;script&gt;
+    function getSelectedText() {
+      // Get the selection object
+      const selection = window.getSelection();
+
+      // Check if there is any text selected
+      if (selection &amp;&amp; selection.toString().length &gt; 0) {
+        // Retrieve the selected text
+        const selectedText = selection.toString();
+        alert('Selected Text: ' + selectedText);
+      } else {
+        alert('No text selected.');
+      }
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We have a <code>&lt;p&gt;</code> element with some text.</p></li>
+<li><p>There's a button labeled "Get Selected Text" that, when clicked, calls the <code>getSelectedText</code> function.</p></li>
+<li><p>The <code>getSelectedText</code> function uses the described approach to retrieve the selected text and displays an alert with the selected text or a message indicating that no text is selected.</p></li>
+</ul>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>The <code>window.getSelection</code> method is well-supported in modern browsers. However, as with any web development feature, it's important to test your code across different browsers to ensure consistent behavior.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Getting the selected text in JavaScript is a straightforward process using the <code>window.getSelection</code> method.</p>
+
+<p>This functionality can be useful for various user interactions and customization of the user experience on your web pages.</p>
+
+<p>By incorporating this technique into your projects, you can enhance the functionality of your web applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

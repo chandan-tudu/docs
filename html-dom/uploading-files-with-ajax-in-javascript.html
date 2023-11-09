@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Uploading Files with AJAX in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to upload files using AJAX in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/uploading-files-with-ajax-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Uploading Files with AJAX in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Uploading Files with AJAX in JavaScript" loading="lazy" width="900" height="500"></div>
+<p><strong>Uploading files asynchronously using AJAX</strong> (Asynchronous JavaScript and XML) is a common requirement in modern web development.</p>
+
+<p>AJAX allows you to send and receive data from the server without refreshing the entire page. In this article, we'll explore how to upload files using AJAX in JavaScript.</p>
+
+<h2 id="using-the-formdata-object">Using the FormData Object</h2>
+
+<p>To upload files with AJAX, we can use the <code>FormData</code> object, which allows you to construct a set of key/value pairs representing form fields and their values.</p>
+
+<p>This includes file inputs, making it suitable for handling file uploads. Here's a step-by-step guide:</p>
+
+<pre class="language-javascript"><code>// Get a reference to the file input and submit button
+const fileInput = document.getElementById('fileInput');
+const submitButton = document.getElementById('submitButton');
+
+// Add a change event listener to the file input
+fileInput.addEventListener('change', handleFileSelection);
+
+// Function to handle file selection
+function handleFileSelection() {
+  // Get the selected file
+  const selectedFile = fileInput.files[0];
+
+  // Enable the submit button
+  submitButton.disabled = false;
+
+  // Add a click event listener to the submit button
+  submitButton.addEventListener('click', () =&gt; {
+    // Call the function to upload the file
+    uploadFile(selectedFile);
+  });
+}
+
+// Function to upload the file using AJAX
+function uploadFile(file) {
+  // Create a FormData object
+  const formData = new FormData();
+
+  // Append the file to the FormData object
+  formData.append('file', file);
+
+  // Create an XMLHttpRequest object
+  const xhr = new XMLHttpRequest();
+
+  // Configure the XMLHttpRequest
+  xhr.open('POST', '/upload', true);
+
+  // Set the onload event handler
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      // File uploaded successfully
+      console.log('File uploaded successfully:', xhr.responseText);
+    } else {
+      // Error during file upload
+      console.error('Error during file upload:', xhr.statusText);
+    }
+  };
+
+  // Set the onerror event handler
+  xhr.onerror = function () {
+    console.error('Network error during file upload.');
+  };
+
+  // Send the FormData object to the server
+  xhr.send(formData);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>We obtain references to the file input and submit button.</p></li>
+<li><p>We add a <code>change</code> event listener to the file input, triggering the <code>handleFileSelection</code> function when a file is selected.</p></li>
+<li><p>The <code>handleFileSelection</code> function gets the selected file, enables the submit button, and adds a click event listener to it.</p></li>
+<li><p>The <code>uploadFile</code> function is called when the submit button is clicked. It creates a <code>FormData</code> object, appends the selected file to it, and sends it to the server using an XMLHttpRequest.</p></li>
+<li><p>The server-side endpoint (<code>'/upload'</code>) where the file is sent should handle the file upload process.</p></li>
+</ul>
+
+<h2 id="full-example">Full Example</h2>
+
+<p>Let's consider a complete example with an HTML structure containing a file input and a submit button:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;File Upload Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;input type="file" id="fileInput" accept=".jpg, .jpeg, .png" /&gt;
+  &lt;button id="submitButton" disabled&gt;Submit&lt;/button&gt;
+
+  &lt;script&gt;
+    // Get a reference to the file input and submit button
+    const fileInput = document.getElementById('fileInput');
+    const submitButton = document.getElementById('submitButton');
+
+    // Add a change event listener to the file input
+    fileInput.addEventListener('change', handleFileSelection);
+
+    // Function to handle file selection
+    function handleFileSelection() {
+      // Get the selected file
+      const selectedFile = fileInput.files[0];
+
+      // Enable the submit button
+      submitButton.disabled = false;
+
+      // Add a click event listener to the submit button
+      submitButton.addEventListener('click', () =&gt; {
+        // Call the function to upload the file
+        uploadFile(selectedFile);
+      });
+    }
+
+    // Function to upload the file using AJAX
+    function uploadFile(file) {
+      // Create a FormData object
+      const formData = new FormData();
+
+      // Append the file to the FormData object
+      formData.append('file', file);
+
+      // Create an XMLHttpRequest object
+      const xhr = new XMLHttpRequest();
+
+      // Configure the XMLHttpRequest
+      xhr.open('POST', '/upload', true);
+
+      // Set the onload event handler
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // File uploaded successfully
+          console.log('File uploaded successfully:', xhr.responseText);
+        } else {
+          // Error during file upload
+          console.error('Error during file upload:', xhr.statusText);
+        }
+      };
+
+      // Set the onerror event handler
+      xhr.onerror = function () {
+        console.error('Network error during file upload.');
+      };
+
+      // Send the FormData object to the server
+      xhr.send(formData);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We have an <code>&lt;input&gt;</code> element of type "file" with the ID "fileInput" and a <code>&lt;button&gt;</code> element with the ID "submitButton."</p></li>
+<li><p>The JavaScript code enables the submit button only when a file is selected and triggers the file upload process when the submit button is clicked.</p></li>
+<li><p>The server-side endpoint (<code>'/upload'</code>) should handle the file</p>
+
+<p>upload process.</p></li>
+</ul>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>The <code>FormData</code> object and XMLHttpRequest are well-supported in modern browsers. However, keep in mind that older versions of Internet Explorer may have limited support.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Uploading files asynchronously using AJAX in JavaScript is a powerful technique for creating dynamic and responsive web applications.</p>
+
+<p>By leveraging the <code>FormData</code> object and XMLHttpRequest, you can implement file upload functionality with ease.</p>
+
+<p>Whether you are building a file-sharing platform, a content management system, or any application that involves file uploads, understanding and implementing asynchronous file uploads enhances the user experience and makes your application more interactive.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

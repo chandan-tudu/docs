@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stripping HTML from Text Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore methods to strip HTML from a given text using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/stripping-html-from-text-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Stripping HTML from Text Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Stripping HTML from Text Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>When working with user-generated content or processing HTML data, you might encounter situations where you need to remove HTML tags and extract only the plain text.</p>
+
+<p>JavaScript provides various approaches to achieve this. In this article, we'll explore methods to strip HTML from a given text using JavaScript.</p>
+
+<h2 id="method-1-using-a-dom-parser">Method 1: Using a DOM Parser</h2>
+
+<p>One approach is to leverage the DOMParser to create a DocumentFragment from the HTML string and then extract the text content. Here's an example:</p>
+
+<pre class="language-javascript"><code>// Function to strip HTML using DOMParser
+function stripHtmlUsingDOMParser(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  return doc.body.textContent || "";
+}
+
+// Example usage
+const htmlString = '&lt;p&gt;This is &lt;strong&gt;HTML&lt;/strong&gt; content.&lt;/p&gt;';
+const textContent = stripHtmlUsingDOMParser(htmlString);
+console.log(textContent);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>DOMParser</code> is used to create a DocumentFragment from the HTML string.</p></li>
+<li><p>The <code>textContent</code> property of the body is accessed to obtain the plain text.</p></li>
+</ul>
+
+<h2 id="method-2-using-a-regular-expression">Method 2: Using a Regular Expression</h2>
+
+<p>Another approach involves using a regular expression to replace HTML tags with an empty string. Here's an example:</p>
+
+<pre class="language-javascript"><code>// Function to strip HTML using a regular expression
+function stripHtmlUsingRegex(html) {
+  return html.replace(/&lt;[^&gt;]*&gt;/g, '');
+}
+
+// Example usage
+const htmlString = '&lt;p&gt;This is &lt;strong&gt;HTML&lt;/strong&gt; content.&lt;/p&gt;';
+const textContent = stripHtmlUsingRegex(htmlString);
+console.log(textContent);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>The regular expression <code>/&lt;[^&gt;]*&gt;/g</code> matches any HTML tags and replaces them with an empty string.</li>
+</ul>
+
+<h2 id="full-example">Full Example</h2>
+
+<p>Let's create a complete HTML example that demonstrates both methods:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;HTML Stripping Example&lt;/title&gt;
+  &lt;script&gt;
+    // Function to strip HTML using DOMParser
+    function stripHtmlUsingDOMParser(html) {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      return doc.body.textContent || "";
+    }
+
+    // Function to strip HTML using a regular expression
+    function stripHtmlUsingRegex(html) {
+      return html.replace(/&lt;[^&gt;]*&gt;/g, '');
+    }
+
+    // Example usage
+    window.onload = function () {
+      const htmlString = '&lt;p&gt;This is &lt;strong&gt;HTML&lt;/strong&gt; content.&lt;/p&gt;';
+
+      // Using DOMParser
+      const textContentDOMParser = stripHtmlUsingDOMParser(htmlString);
+      console.log('Using DOMParser:', textContentDOMParser);
+
+      // Using regular expression
+      const textContentRegex = stripHtmlUsingRegex(htmlString);
+      console.log('Using regular expression:', textContentRegex);
+    };
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;HTML Stripping Example&lt;/h1&gt;
+  &lt;p&gt;Check the browser console for the stripped HTML content.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We define two functions, <code>stripHtmlUsingDOMParser</code> and <code>stripHtmlUsingRegex</code>, to demonstrate both methods.</p></li>
+<li><p>The example usage section logs the results of both methods to the browser console.</p></li>
+</ul>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>Both methods are widely supported in modern browsers. However, keep in mind that using regular expressions for parsing HTML has limitations and may not cover all edge cases. The DOMParser method is generally more robust.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Stripping HTML from text is a common requirement in web development, especially when working with user-generated content.</p>
+
+<p>JavaScript provides different methods to achieve this, such as using the DOMParser or regular expressions.</p>
+
+<p>Choose the method that best fits your specific use case and consider the trade-offs in terms of performance and accuracy.</p>
+
+<p>Incorporate these techniques into your projects to ensure clean and safe handling of HTML content.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

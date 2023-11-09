@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preventing Default Actions in JavaScript Events</title>
+<meta name="description" content="In this article, we'll explore how to prevent the default action of an event using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/preventing-default-actions-in-javascript-events.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Preventing Default Actions in JavaScript Events</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Preventing Default Actions in JavaScript Events" loading="lazy" width="900" height="500"></div>
+<p>In web development, events occur when users interact with a web page. These events trigger default actions associated with certain elements, such as submitting a form or following a hyperlink.</p>
+
+<p>JavaScript allows you to prevent these default actions, providing control over the behavior of your web applications.</p>
+
+<p>In this article, we'll explore how to prevent the default action of an event using JavaScript.</p>
+
+<h2 id="introduction-to-event-default-actions">Introduction to Event Default Actions</h2>
+
+<p>When an event is triggered, it often comes with a default action associated with the event type.</p>
+
+<p>For example, clicking on a submit button within a form typically triggers the form submission.</p>
+
+<p>Similarly, clicking on a hyperlink usually navigates to the URL specified in the href attribute.</p>
+
+<p>In many cases, you might want to override or modify this default behavior based on your application's requirements.</p>
+
+<p>JavaScript provides a simple mechanism to prevent the default action associated with an event.</p>
+
+<h2 id="using-the-preventdefault-method">Using the "preventDefault" Method</h2>
+
+<p>The <code>preventDefault</code> method is a key tool in preventing the default action of an event.</p>
+
+<p>It is available on the event object that is automatically passed to event handlers. Here's an example:</p>
+
+<pre class="language-javascript"><code>// Function to handle a form submission event
+function handleFormSubmission(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Additional custom logic can be added here
+  console.log('Form submission prevented.');
+}
+
+// Add an event listener to the form
+const myForm = document.getElementById('myForm');
+myForm.addEventListener('submit', handleFormSubmission);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>handleFormSubmission</code> function is an event handler for the form submission event.</p></li>
+<li><p>The <code>event.preventDefault()</code> statement prevents the default form submission behavior.</p></li>
+<li><p>You can include additional custom logic within the event handler.</p></li>
+</ul>
+
+<h2 id="example-preventing-form-submission">Example: Preventing Form Submission</h2>
+
+<p>Let's create a complete example with an HTML form:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Preventing Form Submission Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;form id="myForm"&gt;
+    &lt;label for="username"&gt;Username:&lt;/label&gt;
+    &lt;input type="text" id="username" name="username" required&gt;
+
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+    &lt;input type="password" id="password" name="password" required&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+
+  &lt;script&gt;
+    // Function to handle a form submission event
+    function handleFormSubmission(event) {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
+      // Additional custom logic can be added here
+      console.log('Form submission prevented.');
+    }
+
+    // Add an event listener to the form
+    const myForm = document.getElementById('myForm');
+    myForm.addEventListener('submit', handleFormSubmission);
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We have a simple HTML form with a username input, a password input, and a submit button.</p></li>
+<li><p>The JavaScript code adds an event listener to the form, preventing the default form submission behavior.</p></li>
+<li><p>The <code>console.log</code> statement in the event handler demonstrates that the form submission has been prevented.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Preventing the default action of an event is a crucial capability when building interactive web applications.</p>
+
+<p>Whether it's preventing form submissions, modifying link behavior, or handling other user interactions, the <code>preventDefault</code> method provides a straightforward way to take control of event handling.</p>
+
+<p>Incorporate this knowledge into your web development projects to create more responsive and customized user experiences.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

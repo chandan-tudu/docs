@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Determining the Height and Width of an Element Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to Determining the Height and Width of an Element Using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/determining-the-height-and-width-of-an-element-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Determining the Height and Width of an Element Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Determining the Height and Width of an Element Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides methods to dynamically determine the height and width of an element.</p>
+
+<p>In this article, we'll explore how to achieve this and leverage this information in your web applications.</p>
+
+<h2 id="using-the-offsetheight-and-offsetwidth-properties">Using the "offsetHeight" and "offsetWidth" Properties</h2>
+
+<p>The <code>offsetHeight</code> and <code>offsetWidth</code> properties are straightforward ways to obtain the height and width of an element, respectively.</p>
+
+<p>These properties include the element's padding, border, and the actual content.</p>
+
+<p>Let's create a simple function to demonstrate how to use these properties:</p>
+
+<pre class="language-javascript"><code>// Function to get the height and width of an element
+function getElementDimensions(element) {
+  const height = element.offsetHeight;
+  const width = element.offsetWidth;
+  return { height, width };
+}
+
+// Example usage
+const myElement = document.getElementById('myElement');
+const dimensions = getElementDimensions(myElement);
+console.log('Element Dimensions:', dimensions);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>getElementDimensions</code> function takes an element as an argument.</p></li>
+<li><p>It retrieves the height and width of the element using <code>element.offsetHeight</code> and <code>element.offsetWidth</code>.</p></li>
+<li><p>The function returns an object containing the height and width.</p></li>
+</ul>
+
+<h2 id="example-displaying-element-dimensions">Example: Displaying Element Dimensions</h2>
+
+<p>Let's create a complete example where we dynamically display the dimensions of an element when the page loads:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Element Dimensions Example&lt;/title&gt;
+  &lt;style&gt;
+    #myElement {
+      width: 200px;
+      height: 100px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div id="myElement"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to get the height and width of an element
+    function getElementDimensions(element) {
+      const height = element.offsetHeight;
+      const width = element.offsetWidth;
+      return { height, width };
+    }
+
+    // Function to display element dimensions
+    function displayElementDimensions() {
+      const myElement = document.getElementById('myElement');
+      const dimensions = getElementDimensions(myElement);
+      console.log('Element Dimensions:', dimensions);
+
+      // Display the dimensions on the page
+      const dimensionsDisplay = document.createElement('p');
+      dimensionsDisplay.textContent = `Element Dimensions: ${dimensions.width}px x ${dimensions.height}px`;
+      document.body.appendChild(dimensionsDisplay);
+    }
+
+    // Call the display function when the page loads
+    window.onload = displayElementDimensions;
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We have a <code>&lt;div&gt;</code> element with the ID "myElement," which has some CSS styles applied.</p></li>
+<li><p>The JavaScript code dynamically retrieves the dimensions of the element and logs them to the console.</p></li>
+<li><p>It also creates a <code>&lt;p&gt;</code> element to display the dimensions on the page.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Determining the height and width of an element is a fundamental aspect of web development.</p>
+
+<p>JavaScript provides convenient properties, such as <code>offsetHeight</code> and <code>offsetWidth</code>, that allow you to dynamically obtain these dimensions.</p>
+
+<p>Use this information to create responsive layouts, perform calculations, or adapt the styling of your elements based on their size.</p>
+
+<p>Incorporate this knowledge into your projects to ensure a seamless and visually appealing user experience.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

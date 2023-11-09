@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checking if an Element is in the Viewport in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to check if an element is in the viewport using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/checking-if-an-element-is-in-the-viewport-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Checking if an Element is in the Viewport in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Checking if an Element is in the Viewport in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Determining whether an <strong>element is currently visible within the user's viewport</strong> is a common task in web development.</p>
+
+<p>This information is valuable for triggering animations, lazy loading content, or applying styles based on the element's visibility.</p>
+
+<p>In this article, we'll explore how to check if an element is in the viewport using JavaScript.</p>
+
+<h2 id="using-the-getboundingclientrect-method">Using the "getBoundingClientRect" Method</h2>
+
+<p>The <code>getBoundingClientRect</code> method provides information about the position of an element relative to the viewport.</p>
+
+<p>By comparing the element's top, bottom, left, and right coordinates with the viewport dimensions, we can determine if the element is currently visible. Here's a step-by-step guide:</p>
+
+<pre class="language-javascript"><code>// Function to check if an element is in the viewport
+function isInViewport(element) {
+  // Get the bounding box of the element
+  const boundingBox = element.getBoundingClientRect();
+
+  // Check if the element is fully visible
+  return (
+    boundingBox.top &gt;= 0 &amp;&amp;
+    boundingBox.left &gt;= 0 &amp;&amp;
+    boundingBox.bottom &lt;= window.innerHeight &amp;&amp;
+    boundingBox.right &lt;= window.innerWidth
+  );
+}
+
+// Get a reference to the target element
+const targetElement = document.getElementById('myElement');
+
+// Check if the element is in the viewport
+const elementIsInView = isInViewport(targetElement);
+
+// Log the result to the console
+console.log('Is the element in the viewport?', elementIsInView);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>We define a function named <code>isInViewport</code> that takes an element as a parameter.</p></li>
+<li><p>Inside the function, we use the <code>getBoundingClientRect</code> method to obtain the bounding box of the element.</p></li>
+<li><p>We check if all four sides of the bounding box are within the dimensions of the viewport, indicating that the element is fully visible.</p></li>
+<li><p>We obtain a reference to the target element using <code>document.getElementById</code> or any other suitable method.</p></li>
+<li><p>We call the <code>isInViewport</code> function with the target element to check if it is in the viewport.</p></li>
+<li><p>The result is logged to the console.</p></li>
+</ul>
+
+<h2 id="full-example">Full Example</h2>
+
+<p>Let's consider a complete example with an HTML structure containing a div element:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Viewport Check Example&lt;/title&gt;
+  &lt;style&gt;
+    #myElement {
+      width: 300px;
+      height: 200px;
+      background-color: lightblue;
+      margin: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div id="myElement"&gt;
+    This is the target element to check if it's in the viewport.
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+      // Get the bounding box of the element
+      const boundingBox = element.getBoundingClientRect();
+
+      // Check if the element is fully visible
+      return (
+        boundingBox.top &gt;= 0 &amp;&amp;
+        boundingBox.left &gt;= 0 &amp;&amp;
+        boundingBox.bottom &lt;= window.innerHeight &amp;&amp;
+        boundingBox.right &lt;= window.innerWidth
+      );
+    }
+
+    // Get a reference to the target element
+    const targetElement = document.getElementById('myElement');
+
+    // Check if the element is in the viewport
+    const elementIsInView = isInViewport(targetElement);
+
+    // Log the result to the console
+    console.log('Is the element in the viewport?', elementIsInView);
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We have a <code>&lt;div&gt;</code> element with the ID "myElement."</p></li>
+<li><p>The JavaScript code checks if the div is currently in the viewport.</p></li>
+<li><p>The result is logged to the console.</p></li>
+</ul>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>The <code>getBoundingClientRect</code> method is well-supported in modern browsers. However, as always, it's good practice to test your code across different browsers to ensure consistent behavior.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Checking if an element is in the viewport using JavaScript is a powerful technique for creating dynamic and responsive web applications.</p>
+
+<p>Whether you want to trigger animations, load content on demand, or apply styles based on visibility, this method allows you to make informed decisions about the visibility of elements on the page.</p>
+
+<p>Incorporate this knowledge into your projects to enhance the user experience and create more interactive web applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detecting if an Element is Focused Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to Detect if an Element is Focused using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/detecting-if-an-element-is-focused-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Detecting if an Element is Focused Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Detecting if an Element is Focused Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides a straightforward way to <strong>detect if an element is focused</strong>. In this article, we'll explore how to achieve this using JavaScript.</p>
+
+<h2 id="the-document-activeelement-property">The "document.activeElement" Property</h2>
+
+<p>The <code>document.activeElement</code> property is a useful tool for determining which element is currently focused in the document.</p>
+
+<p>It returns the currently focused element or <code>null</code> if no element has focus.</p>
+
+<p>By comparing the active element with the element you're interested in, you can determine if the desired element is focused.</p>
+
+<p>Let's create a simple function to check if a specific element is focused:</p>
+
+<pre class="language-javascript"><code>// Function to check if an element is focused
+function isElementFocused(element) {
+  return document.activeElement === element;
+}
+
+// Example usage
+const myInput = document.getElementById('myInput');
+console.log(isElementFocused(myInput)); // Returns true or false
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>isElementFocused</code> function takes an element as an argument.</p></li>
+<li><p>It compares the active element (<code>document.activeElement</code>) with the specified element.</p></li>
+<li><p>The function returns <code>true</code> if the specified element is focused and <code>false</code> otherwise.</p></li>
+</ul>
+
+<h2 id="example-styling-focused-element">Example: Styling Focused Element</h2>
+
+<p>Let's create a complete example where we change the styling of an input field when it gains focus:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Element Focus Detection Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Styling for the focused input */
+    #myInput:focus {
+      border: 2px solid #4CAF50;
+      background-color: #f0f0f0;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;label for="myInput"&gt;Type something:&lt;/label&gt;
+  &lt;input type="text" id="myInput" onfocus="handleFocus()" onblur="handleBlur()"&gt;
+
+  &lt;script&gt;
+    // Function to handle input focus
+    function handleFocus() {
+      const myInput = document.getElementById('myInput');
+      console.log(`Input focused: ${isElementFocused(myInput)}`);
+    }
+
+    // Function to handle input blur
+    function handleBlur() {
+      const myInput = document.getElementById('myInput');
+      console.log(`Input blurred: ${isElementFocused(myInput)}`);
+    }
+
+    // Function to check if an element is focused
+    function isElementFocused(element) {
+      return document.activeElement === element;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We have an input field with the ID "myInput."</p></li>
+<li><p>The input field has <code>onfocus</code> and <code>onblur</code> attributes that call the <code>handleFocus</code> and <code>handleBlur</code> functions, respectively.</p></li>
+<li><p>The <code>handleFocus</code> function logs whether the input is focused using the <code>isElementFocused</code> function.</p></li>
+<li><p>The input field has CSS styles that change when it gains focus.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Detecting whether an element is focused is a valuable capability in web development.</p>
+
+<p>JavaScript, with the help of the <code>document.activeElement</code> property, allows you to determine the currently focused element and perform actions accordingly.</p>
+
+<p>Use this knowledge to create more interactive and user-friendly web applications by responding to focus events on specific elements.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

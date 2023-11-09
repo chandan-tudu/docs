@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detecting macOS Browser Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to detect if a user is using macOS and identify the browser they are using using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/detecting-macos-browser-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Detecting macOS Browser Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Detecting macOS Browser Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In this article, we'll explore how to detect if a user is using macOS and identify the browser they are using using JavaScript.</p>
+
+<h2 id="detecting-macos">Detecting macOS</h2>
+
+<p>To detect if a user is using macOS, we can examine the <code>navigator.platform</code> property.</p>
+
+<p>The <code>navigator</code> object provides information about the browser environment, including the platform.</p>
+
+<p>macOS typically has the platform string "MacIntel" or "MacPPC." Here's a simple example:</p>
+
+<pre class="language-javascript"><code>// Detect macOS
+function isMacOS() {
+  return navigator.platform.toUpperCase().includes('MAC');
+}
+
+// Example usage
+if (isMacOS()) {
+  console.log('User is using macOS');
+} else {
+  console.log('User is not using macOS');
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>isMacOS</code> function checks if the platform string contains the word "MAC" (case-insensitive).</p></li>
+<li><p>We use <code>navigator.platform.toUpperCase()</code> to ensure case-insensitive comparison.</p></li>
+<li><p>The example usage demonstrates how to log whether the user is using macOS.</p></li>
+</ul>
+
+<h2 id="detecting-browser-on-macos">Detecting Browser on macOS</h2>
+
+<p>Detecting the browser on macOS involves inspecting the <code>navigator.userAgent</code> property.</p>
+
+<p>Each browser has a distinct user agent string, allowing us to identify the specific browser. Here's an example:</p>
+
+<pre class="language-javascript"><code>// Detect browser on macOS
+function getMacOSBrowser() {
+  const userAgent = navigator.userAgent.toLowerCase();
+
+  if (userAgent.includes('safari') &amp;&amp; !userAgent.includes('chrome')) {
+    return 'Safari';
+  } else if (userAgent.includes('firefox')) {
+    return 'Firefox';
+  } else if (userAgent.includes('chrome')) {
+    return 'Google Chrome';
+  } else {
+    return 'Unknown Browser';
+  }
+}
+
+// Example usage
+const browserOnMacOS = getMacOSBrowser();
+console.log(`User is using ${browserOnMacOS} on macOS`);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>getMacOSBrowser</code> function examines the <code>navigator.userAgent</code> string to identify the browser.</p></li>
+<li><p>We use the <code>includes</code> method to check for specific strings associated with each browser.</p></li>
+<li><p>The example usage logs the detected browser on macOS.</p></li>
+</ul>
+
+<h2 id="full-example">Full Example</h2>
+
+<p>Let's put it all together in a complete HTML example:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;macOS Browser Detection Example&lt;/title&gt;
+  &lt;script&gt;
+    // Detect macOS
+    function isMacOS() {
+      return navigator.platform.toUpperCase().includes('MAC');
+    }
+
+    // Detect browser on macOS
+    function getMacOSBrowser() {
+      const userAgent = navigator.userAgent.toLowerCase();
+
+      if (userAgent.includes('safari') &amp;&amp; !userAgent.includes('chrome')) {
+        return 'Safari';
+      } else if (userAgent.includes('firefox')) {
+        return 'Firefox';
+      } else if (userAgent.includes('chrome')) {
+        return 'Google Chrome';
+      } else {
+        return 'Unknown Browser';
+      }
+    }
+
+    // Example usage
+    window.onload = function () {
+      if (isMacOS()) {
+        const browserOnMacOS = getMacOSBrowser();
+        console.log(`User is using ${browserOnMacOS} on macOS`);
+      } else {
+        console.log('User is not using macOS');
+      }
+    };
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;macOS Browser Detection&lt;/h1&gt;
+  &lt;p&gt;Check the browser console for the detection result.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>The <code>window.onload</code> event ensures that the detection occurs when the page has fully loaded.</p></li>
+<li><p>The detected information is logged to the browser console.</p></li>
+</ul>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>The provided methods for detecting macOS and the browser are widely supported across modern browsers.</p>
+
+<p>However, keep in mind that user agent strings can be manipulated or spoofed, so consider alternative methods if absolute accuracy is crucial.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Detecting the user's operating system and browser in JavaScript can be valuable for customizing the user experience based on the platform.</p>
+
+<p>By examining the <code>navigator.platform</code> and <code>navigator.userAgent</code> properties, you can identify whether the user is using macOS and determine the specific browser they are using.</p>
+
+<p>Use this information wisely to enhance your web applications and provide a more tailored experience for users on different platforms.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
