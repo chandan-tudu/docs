@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Attaching and Detaching Event Handlers in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to attach and detach event handlers using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/attaching-and-detaching-event-handlers-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Attaching and Detaching Event Handlers in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Attaching and Detaching Event Handlers in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides the ability to <strong>attach and detach event handlers dynamically</strong>, allowing for more flexible and interactive web applications.</p>
+
+<p>In this article, we'll explore how to attach and detach event handlers using JavaScript.</p>
+
+<h2 id="attaching-event-handlers">Attaching Event Handlers</h2>
+
+<p>Attaching an event handler involves specifying a function that should be executed when a particular event occurs.</p>
+
+<p>The <code>addEventListener</code> method is commonly used for this purpose. Here's a basic example:</p>
+
+<pre class="language-javascript"><code>// Function to be executed when the button is clicked
+function handleClick() {
+  alert('Button clicked!');
+}
+
+// Get the button element by its ID
+const button = document.getElementById('myButton');
+
+// Attach the event handler to the button click event
+button.addEventListener('click', handleClick);
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We define a function named <code>handleClick</code> that displays an alert when called.</p></li>
+<li><p>The <code>getElementById</code> method is used to obtain a reference to the button element with the ID <code>'myButton'</code>.</p></li>
+<li><p>The <code>addEventListener</code> method is used to attach the <code>handleClick</code> function to the button's click event.</p></li>
+</ul>
+
+<h2 id="example-attaching-event-handler-on-button-click">Example: Attaching Event Handler on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button dynamically attaches an event handler:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Event Handling Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button id="myButton"&gt;Click me&lt;/button&gt;
+
+  &lt;script&gt;
+    // Function to be executed when the button is clicked
+    function handleClick() {
+      alert('Button clicked!');
+    }
+
+    // Get the button element by its ID
+    const button = document.getElementById('myButton');
+
+    // Attach the event handler to the button click event
+    button.addEventListener('click', handleClick);
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with the ID <code>'myButton'</code>.</p></li>
+<li><p>The <code>handleClick</code> function displays an alert when called.</p></li>
+<li><p>The <code>addEventListener</code> method attaches the <code>handleClick</code> function to the button's click event.</p></li>
+</ul>
+
+<h2 id="detaching-event-handlers">Detaching Event Handlers</h2>
+
+<p>Detaching an event handler is as important as attaching one, especially when you want to modify the behavior of your application dynamically.</p>
+
+<p>To detach an event handler, you can use the <code>removeEventListener</code> method. Here's an example:</p>
+
+<pre class="language-javascript"><code>// Function to be executed when the button is clicked
+function handleClick() {
+  alert('Button clicked!');
+}
+
+// Get the button element by its ID
+const button = document.getElementById('myButton');
+
+// Attach the event handler to the button click event
+button.addEventListener('click', handleClick);
+
+// Detach the event handler from the button click event after a delay
+setTimeout(() =&gt; {
+  button.removeEventListener('click', handleClick);
+  alert('Event handler detached!');
+}, 3000);
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We attach the <code>handleClick</code> function to the button's click event using <code>addEventListener</code>.</p></li>
+<li><p>After a delay of 3 seconds (3000 milliseconds), we use <code>removeEventListener</code> to detach the <code>handleClick</code> function from the button's click event.</p></li>
+<li><p>An additional alert informs us that the event handler has been detached.</p></li>
+</ul>
+
+<h2 id="example-detaching-event-handler-on-button-click">Example: Detaching Event Handler on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button dynamically attaches and then detaches an event handler:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Event Handling Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button id="myButton"&gt;Click me&lt;/button&gt;
+
+  &lt;script&gt;
+    // Function to be executed when the button is clicked
+    function handleClick() {
+      alert('Button clicked!');
+    }
+
+    // Get the button element by its ID
+    const button = document.getElementById('myButton');
+
+    // Attach the event handler to the button click event
+    button.addEventListener('click', handleClick);
+
+    // Detach the event handler from the button click event after a delay
+    button.addEventListener('click', function detachHandler() {
+      button.removeEventListener('click', handleClick);
+      alert('Event handler detached!');
+      // Detach itself to avoid multiple detachments
+      button.removeEventListener('click', detachHandler);
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We attach the <code>handleClick</code> function to the button's click event using <code>addEventListener</code>.</p></li>
+<li><p>After the button is clicked, we use an anonymous function (<code>detachHandler</code>) to detach the <code>handleClick</code> function from the button's click event.</p></li>
+<li><p>An additional alert informs us that the event handler has been detached.</p></li>
+<li><p>To avoid multiple detachments, we also detach the <code>detachHandler</code> function itself.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Attaching and detaching event handlers dynamically empowers developers to create more interactive and responsive web applications.</p>
+
+<p>Whether you're responding to user actions, implementing dynamic UI changes, or optimizing performance, the ability to manage event handlers dynamically is a valuable skill in web development.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

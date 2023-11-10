@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting Document Height and Width Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to use JavaScript to get the document height and width." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/getting-document-height-and-width-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Getting Document Height and Width Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Getting Document Height and Width Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In web development, knowing the dimensions of the document is essential for creating responsive layouts and positioning elements accurately.</p>
+
+<p>JavaScript provides a straightforward way to obtain the height and width of the document.</p>
+
+<p>In this article, we'll explore how to use JavaScript to get the document height and width.</p>
+
+<h2 id="document-properties-for-dimensions">Document Properties for Dimensions</h2>
+
+<p>To retrieve the height and width of the entire document, you can use the <code>document.documentElement</code> or <code>document.body</code> properties, depending on the structure of your HTML.</p>
+
+<p>The <code>clientHeight</code> and <code>clientWidth</code> properties of these elements give you the dimensions of the visible content area.</p>
+
+<p>Let's create a simple function to get the document height and width:</p>
+
+<pre class="language-javascript"><code>// Function to get document dimensions
+function getDocumentDimensions() {
+  // Choose the appropriate element based on your HTML structure
+  const documentElement = document.documentElement;
+  // const documentBody = document.body;
+
+  // Get document dimensions
+  const documentHeight = documentElement.clientHeight;
+  const documentWidth = documentElement.clientWidth;
+
+  // Log or use the dimensions as needed
+  console.log(`Document Height: ${documentHeight}px`);
+  console.log(`Document Width: ${documentWidth}px`);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>getDocumentDimensions</code> function selects either <code>document.documentElement</code> or <code>document.body</code> based on your HTML structure.</p></li>
+<li><p>The <code>clientHeight</code> and <code>clientWidth</code> properties are used to obtain the dimensions of the visible content area.</p></li>
+<li><p>The dimensions are logged to the console or can be used in any desired way.</p></li>
+</ul>
+
+<h2 id="example-displaying-document-dimensions-on-button-click">Example: Displaying Document Dimensions on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button triggers the display of the document dimensions:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Document Dimensions Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="getDocumentDimensions()"&gt;Get Document Dimensions&lt;/button&gt;
+
+  &lt;script&gt;
+    // Function to get document dimensions
+    function getDocumentDimensions() {
+      const documentElement = document.documentElement;
+      const documentHeight = documentElement.clientHeight;
+      const documentWidth = documentElement.clientWidth;
+
+      // Display the dimensions
+      alert(`Document Height: ${documentHeight}px\nDocument Width: ${documentWidth}px`);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>getDocumentDimensions</code> function when clicked.</p></li>
+<li><p>The <code>getDocumentDimensions</code> function retrieves the document dimensions and displays them using an alert.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Understanding how to obtain the document height and width using JavaScript is crucial for building responsive and dynamic web applications.</p>
+
+<p>By using properties like <code>clientHeight</code> and <code>clientWidth</code> on <code>document.documentElement</code> or <code>document.body</code>, you can easily access the dimensions of the visible content area.</p>
+
+<p>Incorporate this knowledge into your projects to create layouts that adapt to different screen sizes and provide an optimal user experience.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

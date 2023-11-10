@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Replacing Broken Images Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to dynamically replace broken images using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/replacing-broken-images-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Replacing Broken Images Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Replacing Broken Images Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>To improve the user experience, you can use JavaScript to replace broken images with fallback content or alternative images.</p>
+
+<p>In this article, we'll explore how to dynamically replace broken images using JavaScript.</p>
+
+<h2 id="detecting-broken-images">Detecting Broken Images</h2>
+
+<p>To replace broken images, we first need to detect whether an image has failed to load.</p>
+
+<p>We can achieve this by using the <code>onerror</code> event handler of the <code>&lt;img&gt;</code> element. The <code>onerror</code> event is triggered when an image fails to load.</p>
+
+<p>Let's create a simple function to handle the <code>onerror</code> event and replace broken images:</p>
+
+<pre class="language-javascript"><code>// Function to handle the onerror event of an image
+function handleImageError(imageElement) {
+  // Replace the broken image with a fallback image or alternative content
+  imageElement.src = 'fallback-image.jpg';
+  // Optionally, you can add additional styling or alternative content
+  imageElement.alt = 'Fallback Image';
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>handleImageError</code> function takes an image element as an argument.</p></li>
+<li><p>It sets the <code>src</code> attribute of the image to a fallback image or an alternative image URL.</p></li>
+<li><p>Optionally, you can add alternative content or additional styling to improve the user experience.</p></li>
+</ul>
+
+<h2 id="example-replacing-broken-images">Example: Replacing Broken Images</h2>
+
+<p>Let's create a complete example where we use the <code>handleImageError</code> function to replace broken images:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Replace Broken Images Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    img {
+      margin: 8px;
+      max-width: 200px;
+      max-height: 200px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;img src="valid-image.jpg" alt="Valid Image"&gt;
+  &lt;img src="nonexistent-image.jpg" alt="Broken Image" onerror="handleImageError(this)"&gt;
+  &lt;img src="another-valid-image.jpg" alt="Another Valid Image" onerror="handleImageError(this)"&gt;
+
+  &lt;script&gt;
+    // Function to handle the onerror event of an image
+    function handleImageError(imageElement) {
+      // Replace the broken image with a fallback image or alternative content
+      imageElement.src = 'fallback-image.jpg';
+      // Optionally, you can add additional styling or alternative content
+      imageElement.alt = 'Fallback Image';
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>Three images are included in the HTML, one of which is a broken image with the <code>onerror</code> attribute calling the <code>handleImageError</code> function.</p></li>
+<li><p>The <code>handleImageError</code> function replaces the broken image with a fallback image.</p></li>
+</ul>
+
+<h2 id="dynamically-listen-to-error-event-for-all-images">Dynamically listen to "error" event for all images</h2>
+<p>In this case, you don't need to add <strong>"onerror"</strong> attribute to all the images:</p>
+<pre class="language-javascript"><code>// Function to handle the onerror event of an image
+function handleImageError(imageElement) {
+  // Replace the broken image with a fallback image or alternative content
+  imageElement.src = 'fallback-image.jpg';
+  // Optionally, you can add additional styling or alternative content
+  imageElement.alt = 'Fallback Image';
+}
+
+// Selecting all the images
+const images = document.querySelectorAll('img');
+
+images.forEach((el) =&gt; {
+    el.addEventListener('error', () =&gt; {handleImageError(el)});
+});
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Replacing broken images using JavaScript is a practical approach to improve the user experience on a website.</p>
+
+<p>By detecting image loading errors and dynamically replacing broken images with fallback content, you can ensure a more seamless visual presentation.</p>
+
+<p>Incorporate this technique into your projects to handle broken images gracefully and provide a better browsing experience for your users.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Showing or Hiding an Element Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore different techniques to show or hide an element using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/showing-or-hiding-an-element-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Showing or Hiding an Element Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Showing or Hiding an Element Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In web development, dynamically <strong>showing or hiding elements</strong> is a common requirement.</p>
+
+<p>This can be useful for creating interactive user interfaces, toggling the visibility of content, or responding to user actions.</p>
+
+<p>In this article, we'll explore different techniques to show or hide an element using JavaScript.</p>
+
+<h2 id="changing-the-display-property">Changing the "display" Property</h2>
+
+<p>One of the simplest ways to show or hide an element is by changing its <code>display</code> property.</p>
+
+<p>The <code>display</code> property determines how an element is rendered on the page.</p>
+
+<p>Setting it to <code>'none'</code> hides the element, and setting it to <code>'block'</code>, <code>'inline'</code>, or other values shows the element.</p>
+
+<p>Let's create a function that toggles the visibility of an element using the <code>display</code> property:</p>
+
+<pre class="language-javascript"><code>// Function to toggle the visibility of an element
+function toggleVisibility(elementId) {
+  // Get the element by its ID
+  const element = document.getElementById(elementId);
+
+  // Toggle the display property
+  if (element.style.display === 'none') {
+    element.style.display = 'block'; // or 'inline', 'flex', etc.
+  } else {
+    element.style.display = 'none';
+  }
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>toggleVisibility</code> function takes the ID of the target element as an argument.</p></li>
+<li><p>The <code>getElementById</code> method is used to get the element.</p></li>
+<li><p>The <code>display</code> property is toggled between <code>'none'</code> and the desired display value.</p></li>
+</ul>
+
+<h2 id="example-toggle-visibility-on-button-click">Example: Toggle Visibility on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button toggles the visibility of a paragraph:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Show/Hide Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="toggleVisibility('myParagraph')"&gt;Toggle Visibility&lt;/button&gt;
+  &lt;p id="myParagraph"&gt;This is a hidden paragraph.&lt;/p&gt;
+
+  &lt;script&gt;
+    // Function to toggle the visibility of an element
+    function toggleVisibility(elementId) {
+      const element = document.getElementById(elementId);
+
+      // Toggle the display property
+      if (element.style.display === 'none') {
+        element.style.display = 'block';
+      } else {
+        element.style.display = 'none';
+      }
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>toggleVisibility</code> function when clicked.</p></li>
+<li><p>The <code>toggleVisibility</code> function toggles the visibility of the paragraph with the ID <code>'myParagraph'</code>.</p></li>
+</ul>
+
+<h2 id="using-the-classlist-property">Using the <code>classList</code> Property</h2>
+
+<p>Another approach is to use the <code>classList</code> property to add or remove a class that controls the visibility of an element.</p>
+
+<p>This method is especially useful when you have predefined styles for hidden and visible states.</p>
+
+<p>Let's create a function that toggles the visibility using the <code>classList</code> property:</p>
+
+<pre class="language-javascript"><code>// Function to toggle the visibility of an element using classList
+function toggleVisibilityWithClass(elementId, className) {
+  // Get the element by its ID
+  const element = document.getElementById(elementId);
+
+  // Toggle the class
+  element.classList.toggle(className);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>toggleVisibilityWithClass</code> function takes the ID of the target element and the class name as arguments.</p></li>
+<li><p>The <code>getElementById</code> method is used to get the element.</p></li>
+<li><p>The <code>classList.toggle</code> method is used to add the class if it's not present, and remove it if it is.</p></li>
+</ul>
+
+<h2 id="example-toggle-visibility-with-class-on-button-click">Example: Toggle Visibility with Class on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button toggles the visibility of a paragraph using a class:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Show/Hide Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none; /* Define a 'hidden' class with desired styles */
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="toggleVisibilityWithClass('myParagraph', 'hidden')"&gt;Toggle Visibility&lt;/button&gt;
+  &lt;p id="myParagraph" class="hidden"&gt;This is a hidden paragraph.&lt;/p&gt;
+
+  &lt;script&gt;
+    // Function to toggle the visibility of an element using classList
+    function toggleVisibilityWithClass(elementId, className) {
+      const element = document.getElementById(elementId);
+
+      // Toggle the class
+      element.classList.toggle(className);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>toggleVisibilityWithClass</code> function when clicked.</p></li>
+<li><p>The <code>toggleVisibilityWithClass</code> function toggles the visibility of the paragraph with the ID <code>'myParagraph'</code> using the <code>'hidden'</code> class.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Showing or hiding elements dynamically is a fundamental aspect of web development.</p>
+
+<p>By changing the <code>display</code> property or using the <code>classList</code> property, you can easily toggle the visibility of elements based on user interactions or other events.</p>
+
+<p>Incorporate these techniques into your projects to create more interactive and user-friendly web applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manipulating Attributes in JavaScript: Getting, Setting, and Removing</title>
+<meta name="description" content="This article explores how to get, set, and remove attributes using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/manipulating-attributes-in-javascript-getting-setting-and-removing.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Manipulating Attributes in JavaScript: Getting, Setting, and Removing</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Manipulating Attributes in JavaScript: Getting, Setting, and Removing" loading="lazy" width="900" height="500"></div>
+<p>Attributes can include standard ones like <code>id</code>, <code>class</code>, or custom ones that developers define. This article explores how to <strong>get, set, and remove attributes using JavaScript</strong>.</p>
+
+<h2 id="getting-attributes">Getting Attributes</h2>
+
+<p>To get an attribute's value, you can use the <code>getAttribute</code> method. This method takes the attribute name as an argument and returns its value.</p>
+
+<p>Here's a function demonstrating how to get attributes:</p>
+
+<pre class="language-javascript"><code>// Function to get an attribute value of an element
+function getAttributeValue(elementId, attributeName) {
+  // Get the element by its ID
+  const element = document.getElementById(elementId);
+
+  // Get the value of the specified attribute
+  const attributeValue = element.getAttribute(attributeName);
+
+  // Log the attribute value
+  console.log(attributeValue);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>getAttributeValue</code> function takes the ID of the target element and the attribute name as arguments.</p></li>
+<li><p>The <code>getElementById</code> method is used to get the element.</p></li>
+<li><p>The <code>getAttribute</code> method retrieves the value of the specified attribute, which is then logged to the console.</p></li>
+</ul>
+
+<h2 id="example-getting-attributes-on-button-click">Example: Getting Attributes on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button logs the value of a specific attribute:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Attribute Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    div {
+      padding: 20px;
+      border: 2px solid black;
+      margin-top: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="getAttributeValue('myDiv', 'id')"&gt;Get Attribute Value&lt;/button&gt;
+  &lt;div id="myDiv"&gt;This is a div with an ID attribute.&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to get an attribute value of an element
+    function getAttributeValue(elementId, attributeName) {
+      const element = document.getElementById(elementId);
+      const attributeValue = element.getAttribute(attributeName);
+      console.log(attributeValue);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>getAttributeValue</code> function when clicked.</p></li>
+<li><p>The <code>getAttributeValue</code> function logs the value of the <code>id</code> attribute for the div with the ID <code>'myDiv'</code>.</p></li>
+</ul>
+
+<h2 id="setting-attributes">Setting Attributes</h2>
+
+<p>To set or change the value of an attribute, you can use the <code>setAttribute</code> method. This method takes the attribute name and the new value as arguments.</p>
+
+<p>Here's a function demonstrating how to set attributes:</p>
+
+<pre class="language-javascript"><code>// Function to set an attribute value of an element
+function setAttributeValue(elementId, attributeName, newValue) {
+  // Get the element by its ID
+  const element = document.getElementById(elementId);
+
+  // Set the value of the specified attribute
+  element.setAttribute(attributeName, newValue);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>setAttributeValue</code> function takes the ID of the target element, the attribute name, and the new value as arguments.</p></li>
+<li><p>The <code>getElementById</code> method is used to get the element.</p></li>
+<li><p>The <code>setAttribute</code> method sets the value of the specified attribute.</p></li>
+</ul>
+
+<h2 id="example-setting-attributes-on-button-click">Example: Setting Attributes on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button sets a new attribute value for a div:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Attribute Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    div {
+      padding: 20px;
+      border: 2px solid black;
+      margin-top: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="setAttributeValue('myDiv', 'class', 'newClass')"&gt;Set Attribute Value&lt;/button&gt;
+  &lt;div id="myDiv"&gt;This is a div with an ID attribute.&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to set an attribute value of an element
+    function setAttributeValue(elementId, attributeName, newValue) {
+      const element = document.getElementById(elementId);
+      element.setAttribute(attributeName, newValue);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>setAttributeValue</code> function when clicked.</p></li>
+<li><p>The <code>setAttributeValue</code> function sets the value of the <code>class</code> attribute to <code>'newClass'</code> for the div with the ID <code>'myDiv'</code>.</p></li>
+</ul>
+
+<h2 id="removing-attributes">Removing Attributes</h2>
+
+<p>To remove an attribute, you can use the <code>removeAttribute</code> method. This method takes the attribute name as an argument and removes it from the element.</p>
+
+<p>Here's a function demonstrating how to remove attributes:</p>
+
+<pre class="language-javascript"><code>// Function to remove an attribute of an element
+function removeAttribute(elementId, attributeName) {
+  // Get the element by its ID
+  const element = document.getElementById(elementId);
+
+  // Remove the specified attribute
+  element.removeAttribute(attributeName);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>removeAttribute</code> function takes the ID of the target element and the attribute name as arguments.</p></li>
+<li><p>The <code>getElementById</code> method is used to get the element.</p></li>
+<li><p>The <code>removeAttribute</code> method removes the specified attribute from the element.</p></li>
+</ul>
+
+<h2 id="example-removing-attributes-on-button-click">Example: Removing Attributes on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button removes an attribute from a div:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Attribute Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    div {
+      padding: 20px;
+      border: 2px solid black;
+      margin-top: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="removeAttribute('myDiv', 'id')"&gt;Remove Attribute&lt;/button&gt;
+  &lt;div id="myDiv"&gt;This is a div with
+
+ an ID attribute.&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to remove an attribute of an element
+    function removeAttribute(elementId, attributeName) {
+      const element = document.getElementById(elementId);
+      element.removeAttribute(attributeName);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>removeAttribute</code> function when clicked.</p></li>
+<li><p>The <code>removeAttribute</code> function removes the <code>id</code> attribute from the div with the ID <code>'myDiv'</code>.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Manipulating attributes is a fundamental aspect of JavaScript development. Whether you need to retrieve information from attributes, dynamically set values, or remove them based on user interactions, the techniques discussed in this article provide you with the tools to efficiently manage attributes of HTML elements.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

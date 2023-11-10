@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checking if an Element is a Descendant of Another in JavaScript</title>
+<meta name="description" content="Here we'll explore various methods and techniques to check if an Element is a Descendant of Another using JavaScript" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/checking-if-an-element-is-a-descendant-of-another-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Checking if an Element is a Descendant of Another in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Checking if an Element is a Descendant of Another in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Whether you're working with event handling, manipulating the DOM, or implementing specific behaviors based on the structure of your page, knowing how to <strong>check if an element is a descendant of another</strong> is a valuable skill.</p>
+
+<p>In this article, we'll explore various methods and techniques to achieve this using JavaScript.</p>
+
+<h2 id="method-1-node-contains-">Method 1: "Node.contains()"</h2>
+
+<p>The <code>Node.contains()</code> method is a straightforward way to check if one element is a descendant of another.</p>
+
+<p>This method returns a boolean value, indicating whether the specified node is a descendant of the node on which the method is called.</p>
+
+<pre class="language-javascript"><code>const parentElement = document.getElementById('parent');
+const childElement = document.getElementById('child');
+
+if (parentElement.contains(childElement)) {
+  console.log('Child is a descendant of the parent.');
+} else {
+  console.log('Child is not a descendant of the parent.');
+}
+</code></pre>
+
+<p>This method is supported in modern browsers and provides a clean and concise way to perform the check.</p>
+
+<h2 id="method-2-traversing-the-dom-tree">Method 2: Traversing the DOM Tree</h2>
+
+<p>You can traverse the DOM tree manually by checking the parent chain of the element.</p>
+
+<p>This involves iterating through the parent nodes until you reach the root (<code>document</code>), checking at each step if the current parent is the expected ancestor.</p>
+
+<pre class="language-javascript"><code>const isDescendant = (parent, child) =&gt; {
+  let currentNode = child.parentNode;
+
+  while (currentNode !== null) {
+    if (currentNode === parent) {
+      return true;
+    }
+    currentNode = currentNode.parentNode;
+  }
+
+  return false;
+};
+
+const parentElement = document.getElementById('parent');
+const childElement = document.getElementById('child');
+
+if (isDescendant(parentElement, childElement)) {
+  console.log('Child is a descendant of the parent.');
+} else {
+  console.log('Child is not a descendant of the parent.');
+}
+</code></pre>
+
+<p>While this method works, it involves more manual steps and might be less efficient than using <code>Node.contains()</code>.</p>
+
+<h2 id="method-3-node-comparedocumentposition-">Method 3: "Node.compareDocumentPosition()"</h2>
+
+<p>The <em>Node.compareDocumentPosition()</em> method compares the position of two nodes in the document.</p>
+
+<p>If the result contains the <code>Node.DOCUMENT_POSITION_CONTAINS</code> bit, it means the first node is a descendant of the second node.</p>
+
+<pre class="language-javascript"><code>const parentElement = document.getElementById('parent');
+const childElement = document.getElementById('child');
+
+const position = parentElement.compareDocumentPosition(childElement);
+
+if (position &amp; Node.DOCUMENT_POSITION_CONTAINS) {
+  console.log('Child is a descendant of the parent.');
+} else {
+  console.log('Child is not a descendant of the parent.');
+}
+</code></pre>
+
+<p>This method provides a more granular result and can be useful in certain scenarios, but it might be less commonly used compared to the previous methods.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Checking if an element is a descendant of another is a common task in web development. The choice of method depends on factors such as browser compatibility, simplicity, and the specific requirements of your project.</p>
+
+<p>Whether you opt for the straightforward <em>Node.contains()</em> method, traverse the DOM manually, or use <em>Node.compareDocumentPosition()</em>, understanding these techniques allows you to efficiently handle the structure of your web page in JavaScript.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

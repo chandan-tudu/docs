@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting Siblings of an Element Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore different techniques to get siblings using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/getting-siblings-of-an-element-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Getting Siblings of an Element Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Getting Siblings of an Element Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In web development, working with the siblings of an HTML element is a common task. Siblings are elements that share the same parent.</p>
+
+<p>JavaScript provides several ways to access and manipulate the siblings of an element. In this article, we'll explore different techniques to get siblings using JavaScript.</p>
+
+<h2 id="the-parentnode-property">The "parentNode" Property</h2>
+
+<p>The <code>parentNode</code> property allows you to access the parent element of a given element.</p>
+
+<p>Once you have the parent, you can use the <code>children</code> property to get all the child elements.</p>
+
+<p>Finally, you can filter out the original element to obtain its siblings.</p>
+
+<p>Let's create a function that demonstrates this approach:</p>
+
+<pre class="language-javascript"><code>// Function to get siblings of an element
+function getSiblings(element) {
+  // Get the parent element
+  const parentElement = element.parentNode;
+
+  // Get all child elements of the parent
+  const childElements = Array.from(parentElement.children);
+
+  // Filter out the original element to get siblings
+  const siblings = childElements.filter(child =&gt; child !== element);
+
+  return siblings;
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>getSiblings</code> function takes an element as an argument.</p></li>
+<li><p>The parent element is obtained using the <code>parentNode</code> property.</p></li>
+<li><p>The <code>children</code> property returns a live <code>HTMLCollection</code>, which is converted to an array using <code>Array.from()</code> for easier manipulation.</p></li>
+<li><p>The array of child elements is filtered to exclude the original element, resulting in an array of siblings.</p></li>
+</ul>
+
+<h2 id="example-highlighting-siblings-on-mouseover">Example: Highlighting Siblings on Mouseover</h2>
+
+<p>Let's create a complete example where hovering over an element highlights its siblings:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Get Siblings Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    div {
+      padding: 10px;
+      border: 1px solid black;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div onmouseover="highlightSiblings(this)"&gt;Element 1&lt;/div&gt;
+  &lt;div onmouseover="highlightSiblings(this)"&gt;Element 2&lt;/div&gt;
+  &lt;div onmouseover="highlightSiblings(this)"&gt;Element 3&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to get siblings of an element
+    function getSiblings(element) {
+      const parentElement = element.parentNode;
+      const childElements = Array.from(parentElement.children);
+      return childElements.filter(child =&gt; child !== element);
+    }
+
+    // Function to highlight siblings on mouseover
+    function highlightSiblings(element) {
+      const siblings = getSiblings(element);
+
+      // Remove the 'highlight' class from all siblings
+      siblings.forEach(sibling =&gt; sibling.classList.remove('highlight'));
+
+      // Add the 'highlight' class to the current element and its siblings
+      [element, ...siblings].forEach(sibling =&gt; sibling.classList.add('highlight'));
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>Three <code>&lt;div&gt;</code> elements are included in the HTML with an <code>onmouseover</code> attribute calling the <code>highlightSiblings</code> function when hovered over.</p></li>
+<li><p>The <code>highlightSiblings</code> function uses the <code>getSiblings</code> function to obtain the siblings of the current element and highlights them by adding a 'highlight' class.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Working with the siblings of an element is a useful skill in JavaScript development.</p>
+
+<p>Whether you're highlighting related elements, updating their content, or applying other changes, understanding how to access and manipulate siblings provides greater control over your web applications.</p>
+
+<p>Incorporate these techniques into your projects to create more interactive and dynamic user interfaces.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

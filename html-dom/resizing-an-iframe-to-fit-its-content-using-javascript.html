@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resizing an Iframe to Fit Its Content Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to resize an iframe to fit its content using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/resizing-an-iframe-to-fit-its-content-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Resizing an Iframe to Fit Its Content Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Resizing an Iframe to Fit Its Content Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides a solution to this by allowing you to resize the iframe based on the dimensions of its content.</p>
+
+<p>In this article, we'll explore how to resize an iframe to fit its content using JavaScript.</p>
+
+<h2 id="obtaining-content-dimensions">Obtaining Content Dimensions</h2>
+
+<p>Before resizing the iframe, you need to determine the dimensions of the content inside it.</p>
+
+<p>This can be achieved by accessing the content document within the iframe and obtaining the height and width of its body or another specific element.</p>
+
+<pre class="language-javascript"><code>// Function to get the dimensions of the content inside the iframe
+function getContentDimensions(iframeId) {
+  const iframe = document.getElementById(iframeId);
+
+  // Access the content document within the iframe
+  const contentDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+  // Get the dimensions of the body or another element
+  const contentBody = contentDocument.body;
+  const width = contentBody.scrollWidth || contentBody.clientWidth;
+  const height = contentBody.scrollHeight || contentBody.clientHeight;
+
+  return { width, height };
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>getContentDimensions</code> function takes the ID of the iframe as an argument.</p></li>
+<li><p>It retrieves the iframe element using <code>document.getElementById(iframeId)</code>.</p></li>
+<li><p>The content document is accessed using either <code>iframe.contentDocument</code> or <code>iframe.contentWindow.document</code>.</p></li>
+<li><p>The dimensions of the body or another element inside the content document are obtained using properties such as <code>scrollWidth</code>, <code>clientWidth</code>, <code>scrollHeight</code>, or <code>clientHeight</code>.</p></li>
+</ul>
+
+<h2 id="resizing-the-iframe">Resizing the Iframe</h2>
+
+<p>Once you have the dimensions of the content, you can resize the iframe accordingly.</p>
+
+<pre class="language-javascript"><code>// Function to resize the iframe based on its content
+function resizeIframe(iframeId) {
+  const iframe = document.getElementById(iframeId);
+
+  // Get the dimensions of the content inside the iframe
+  const { width, height } = getContentDimensions(iframeId);
+
+  // Resize the iframe
+  iframe.style.width = `${width}px`;
+  iframe.style.height = `${height}px`;
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>resizeIframe</code> function takes the ID of the iframe as an argument.</p></li>
+<li><p>It retrieves the iframe element using <code>document.getElementById(iframeId)</code>.</p></li>
+<li><p>The dimensions of the content are obtained using the previously defined <code>getContentDimensions</code> function.</p></li>
+<li><p>The iframe is resized by setting its <code>width</code> and <code>height</code> CSS properties to the calculated dimensions.</p></li>
+</ul>
+
+<h2 id="example-resizing-iframe-on-content-change">Example: Resizing Iframe on Content Change</h2>
+
+<p>Let's create a complete example where we dynamically load content into an iframe, and the iframe is resized whenever the content changes:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Resizable Iframe Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    iframe {
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 8px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;iframe id="myIframe" width="300" height="200"&gt;&lt;/iframe&gt;
+  &lt;button onclick="loadContent()"&gt;Load Content&lt;/button&gt;
+
+  &lt;script&gt;
+    // Function to get the dimensions of the content inside the iframe
+    function getContentDimensions(iframeId) {
+      const iframe = document.getElementById(iframeId);
+      const contentDocument = iframe.contentDocument || iframe.contentWindow.document;
+      const contentBody = contentDocument.body;
+      const width = contentBody.scrollWidth || contentBody.clientWidth;
+      const height = contentBody.scrollHeight || contentBody.clientHeight;
+      return { width, height };
+    }
+
+    // Function to resize the iframe based on its content
+    function resizeIframe(iframeId) {
+      const iframe = document.getElementById(iframeId);
+      const { width, height } = getContentDimensions(iframeId);
+      iframe.style.width = `${width}px`;
+      iframe.style.height = `${height}px`;
+    }
+
+    // Function to load content into the iframe
+    function loadContent() {
+      const iframe = document.getElementById('myIframe');
+      const content = '&lt;h1&gt;New Content&lt;/h1&gt;&lt;p&gt;This is dynamically loaded content.&lt;/p&gt;';
+
+      // Set the content of the iframe
+      iframe.contentDocument.body.innerHTML = content;
+
+      // Resize the iframe based on the new content
+      resizeIframe('myIframe');
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>An iframe with the ID "myIframe" is included in the HTML, and a button triggers the loading of new content into the iframe.</p></li>
+<li><p>The <code>getContentDimensions</code> and <code>resizeIframe</code> functions are used to get the dimensions of the content inside the iframe and resize the iframe accordingly.</p></li>
+<li><p>The <code>loadContent</code> function sets new content in the iframe and calls <code>resizeIframe</code> to adjust the iframe size based on the new content.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Resizing an iframe to fit its content using JavaScript involves determining the dimensions of the content inside the iframe and adjusting the size of the iframe accordingly.</p>
+
+<p>By combining functions to obtain content dimensions and resize the iframe, you can create a responsive solution that adapts to changes in the content dynamically.</p>
+
+<p>Incorporate this technique into your projects to provide a seamless user experience when dealing with iframes and dynamic content loading.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

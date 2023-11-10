@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Navigating Back to the Previous Page Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to use JavaScript to go back to the previous page in the browser's history." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/navigating-back-to-the-previous-page-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Navigating Back to the Previous Page Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Navigating Back to the Previous Page Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides a simple and effective way to achieve this using the <code>window.history</code> object.</p>
+
+<p>In this article, we'll explore how to use JavaScript to go back to the previous page in the browser's history.</p>
+
+<h2 id="using-window-history-">Using "window.history"</h2>
+
+<p>The <code>window.history</code> object in JavaScript represents the browser's session history.</p>
+
+<p>By utilizing the <code>go</code> method with a negative value, you can instruct the browser to navigate backward in the history.</p>
+
+<p>Let's create a simple function to handle the navigation:</p>
+
+<pre class="language-javascript"><code>// Function to go back to the previous page
+function goBack() {
+  // Navigate back in the history
+  window.history.go(-1);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>The <code>goBack</code> function uses the <code>window.history.go</code> method with a parameter of <code>-1</code> to navigate back one step in the browser's history.</li>
+</ul>
+
+<h2 id="example-going-back-on-button-click">Example: Going Back on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button triggers a navigation back to the previous page:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Go Back Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="goBack()"&gt;Go Back&lt;/button&gt;
+
+  &lt;script&gt;
+    // Function to go back to the previous page
+    function goBack() {
+      // Navigate back in the history
+      window.history.go(-1);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>goBack</code> function when clicked.</p></li>
+<li><p>The <code>goBack</code> function navigates back to the previous page when the button is clicked.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Navigating back to the previous page using JavaScript is a simple and effective way to enhance user navigation within your web application.</p>
+
+<p>By leveraging the <code>window.history</code> object, you can provide users with a seamless experience as they move through the pages they've visited.</p>
+
+<p>Incorporate this functionality into your projects to improve the overall usability of your web applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

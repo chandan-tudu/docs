@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting and Setting HTML Content in JavaScript</title>
+<meta name="description" content="This article explores how to get and set the HTML of an element." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/getting-and-setting-html-content-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Getting and Setting HTML Content in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Getting and Setting HTML Content in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Whether you need to retrieve the HTML content or update it dynamically, JavaScript provides methods to accomplish these tasks. This article explores how to get and set the HTML of an element.</p>
+
+<h2 id="getting-html-content">Getting HTML Content</h2>
+
+<p>To retrieve the HTML content of an element, you can use the <code>innerHTML</code> property.</p>
+
+<p>This property contains the HTML markup within the opening and closing tags of an element.</p>
+
+<p>Here's a function demonstrating how to get the HTML content:</p>
+
+<pre class="language-javascript"><code>// Function to get the HTML content of an element
+function getHTMLContent(elementId) {
+  // Get the element by its ID
+  const element = document.getElementById(elementId);
+
+  // Get the HTML content
+  const htmlContent = element.innerHTML;
+
+  // Log the HTML content
+  console.log(htmlContent);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>getHTMLContent</code> function takes the ID of the target element as an argument.</p></li>
+<li><p>The <code>getElementById</code> method is used to get the element.</p></li>
+<li><p>The <code>innerHTML</code> property is used to retrieve the HTML content, which is then logged to the console.</p></li>
+</ul>
+
+<h2 id="example-getting-html-content-on-button-click">Example: Getting HTML Content on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button logs the HTML content of a div:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;HTML Content Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    div {
+      id: 'myDiv';
+      padding: 20px;
+      border: 2px solid black;
+      margin-top: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="getHTMLContent('myDiv')"&gt;Get HTML Content&lt;/button&gt;
+  &lt;div id="myDiv"&gt;This is a div with &lt;strong&gt;HTML&lt;/strong&gt; content.&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to get the HTML content of an element
+    function getHTMLContent(elementId) {
+      const element = document.getElementById(elementId);
+      const htmlContent = element.innerHTML;
+      console.log(htmlContent);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>getHTMLContent</code> function when clicked.</p></li>
+<li><p>The <code>getHTMLContent</code> function logs the HTML content of the div with the ID <code>'myDiv'</code>.</p></li>
+</ul>
+
+<h2 id="setting-html-content">Setting HTML Content</h2>
+
+<p>To set or change the HTML content of an element, you can use the same <code>innerHTML</code> property.</p>
+
+<p>This time, you assign a new HTML string to it. Here's a function demonstrating how to set HTML content:</p>
+
+<pre class="language-javascript"><code>// Function to set the HTML content of an element
+function setHTMLContent(elementId, newHTML) {
+  // Get the element by its ID
+  const element = document.getElementById(elementId);
+
+  // Set the HTML content
+  element.innerHTML = newHTML;
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>setHTMLContent</code> function takes the ID of the target element and the new HTML content as arguments.</p></li>
+<li><p>The <code>getElementById</code> method is used to get the element.</p></li>
+<li><p>The <code>innerHTML</code> property is used to set the HTML content to the specified value.</p></li>
+</ul>
+
+<h2 id="example-setting-html-content-on-button-click">Example: Setting HTML Content on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button updates the HTML content of a div:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;HTML Content Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    div {
+      id: 'myDiv';
+      padding: 20px;
+      border: 2px solid black;
+      margin-top: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="setHTMLContent('myDiv', 'Updated &lt;em&gt;HTML&lt;/em&gt; content.')"&gt;Set HTML Content&lt;/button&gt;
+  &lt;div id="myDiv"&gt;This is a div with &lt;strong&gt;HTML&lt;/strong&gt; content.&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to set the HTML content of an element
+    function setHTMLContent(elementId, newHTML) {
+      const element = document.getElementById(elementId);
+      element.innerHTML = newHTML;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>setHTMLContent</code> function when clicked.</p></li>
+<li><p>The <code>setHTMLContent</code> function updates the HTML content of the div with the ID <code>'myDiv'</code> to the specified value.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Manipulating HTML content dynamically is a fundamental aspect of web development.</p>
+
+<p>Whether you need to retrieve information from the HTML structure or update it based on user interactions, the techniques discussed in this article provide you with the tools to efficiently manage the HTML content of HTML elements.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

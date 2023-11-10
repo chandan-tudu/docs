@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Setting CSS Styles for an Element Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to set CSS styles for an element using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/setting-css-styles-for-an-element-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Setting CSS Styles for an Element Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Setting CSS Styles for an Element Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides a convenient way to manipulate the styles of an element by accessing its <code>style</code> property.</p>
+
+<p>In this article, we'll explore how to set CSS styles for an element using JavaScript.</p>
+
+<h2 id="the-style-property">The "style" Property</h2>
+
+<p>Every HTML element has a <code>style</code> property that represents its inline styles.</p>
+
+<p>The <code>style</code> property is an object with properties corresponding to the various CSS styles that can be applied to the element.</p>
+
+<h3 id="changing-individual-styles">Changing Individual Styles</h3>
+
+<p>You can set individual styles by assigning values to the corresponding properties of the <code>style</code> object.</p>
+
+<p>For example, to set the background color of an element:</p>
+
+<pre class="language-javascript"><code>// Get the element (replace 'elementId' with the actual ID)
+const element = document.getElementById('elementId');
+
+// Set the background color to red
+element.style.backgroundColor = 'red';
+</code></pre>
+
+<h3 id="setting-multiple-styles">Setting Multiple Styles</h3>
+
+<p>To set multiple styles at once, you can use the <code>cssText</code> property of the <code>style</code> object:</p>
+
+<pre class="language-javascript"><code>// Get the element (replace 'elementId' with the actual ID)
+const element = document.getElementById('elementId');
+
+// Set multiple styles using cssText
+element.style.cssText = 'color: blue; font-size: 18px; border: 2px solid black;';
+</code></pre>
+
+<h2 id="example-dynamically-styling-an-element">Example: Dynamically Styling an Element</h2>
+
+<p>Let's create a complete example where a button click dynamically styles an HTML element:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Set Style Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #targetElement {
+      padding: 20px;
+      border: 2px solid black;
+      margin-top: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="setDynamicStyles()"&gt;Set Dynamic Styles&lt;/button&gt;
+  &lt;div id="targetElement"&gt;I'm a target element&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to set dynamic styles for the target element
+    function setDynamicStyles() {
+      // Get the target element
+      const targetElement = document.getElementById('targetElement');
+
+      // Set dynamic styles
+      targetElement.style.backgroundColor = 'lightblue';
+      targetElement.style.color = 'darkblue';
+      targetElement.style.fontWeight = 'bold';
+      targetElement.style.padding = '15px';
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>setDynamicStyles</code> function when clicked.</p></li>
+<li><p>The <code>setDynamicStyles</code> function dynamically sets styles for the target element, changing its background color, text color, font weight, and padding.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Manipulating the styles of HTML elements dynamically is a powerful feature of JavaScript.</p>
+
+<p>By accessing the <code>style</code> property of an element, you can set individual styles or update multiple styles at once.</p>
+
+<p>This capability is essential for creating interactive and visually appealing web applications.</p>
+
+<p>Incorporate these techniques into your projects to enhance the flexibility and responsiveness of your user interfaces.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

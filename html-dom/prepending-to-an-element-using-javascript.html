@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prepending to an Element Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to prepend content to an element using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/prepending-to-an-element-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Prepending to an Element Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Prepending to an Element Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides various methods to manipulate the DOM (Document Object Model), and one such operation is prepending content to an element.</p>
+
+<p>In this article, we'll explore how to prepend content to an element using JavaScript.</p>
+
+<h2 id="using-insertbefore-method">Using "insertBefore" Method</h2>
+
+<p>The <code>insertBefore</code> method is a versatile DOM manipulation method that allows you to insert a node before a specified reference node.</p>
+
+<p>To prepend content to an element, you can use this method along with the <code>parentNode</code> property of the target element.</p>
+
+<p>Let's create a simple function to prepend content to an element:</p>
+
+<pre class="language-javascript"><code>// Function to prepend content to an element
+function prependToElement(element, content) {
+  // Create a new element or use an existing one
+  const newElement = document.createElement('div');
+  newElement.innerHTML = content;
+
+  // Prepend the new element to the target element
+  element.parentNode.insertBefore(newElement, element);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>prependToElement</code> function takes two arguments: the target element (<code>element</code>) and the content to be prepended (<code>content</code>).</p></li>
+<li><p>A new element is created using <code>document.createElement('div')</code>, and the content is set using the <code>innerHTML</code> property.</p></li>
+<li><p>The <code>insertBefore</code> method is used to insert the new element before the target element, effectively prepending it.</p></li>
+</ul>
+
+<h2 id="example-prepending-content-on-button-click">Example: Prepending Content on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button triggers the prepend operation:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Prepend Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #target {
+      background-color: lightyellow;
+      padding: 10px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="prependContent()"&gt;Prepend Content&lt;/button&gt;
+  &lt;div id="target"&gt;Existing Content&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to prepend content to an element
+    function prependToElement(element, content) {
+      const newElement = document.createElement('div');
+      newElement.innerHTML = content;
+      element.parentNode.insertBefore(newElement, element);
+    }
+
+    // Function to trigger prepend operation
+    function prependContent() {
+      const targetElement = document.getElementById('target');
+      const contentToPrepend = 'Prepended Content';
+      prependToElement(targetElement, contentToPrepend);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>prependContent</code> function when clicked.</p></li>
+<li><p>The <code>prependContent</code> function uses the <code>prependToElement</code> function to prepend 'Prepended Content' before the existing content in the target element.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Prepending content to an element using JavaScript is a useful technique for dynamically updating the DOM.</p>
+
+<p>Whether you're adding new elements or inserting HTML content, the <code>insertBefore</code> method allows you to efficiently prepend content to a target element.</p>
+
+<p>Incorporate this approach into your web development projects to create more interactive and dynamic user interfaces.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Accessing CSS Styles of an Element in JavaScript</title>
+<meta name="description" content="This article explores how to get CSS styles of an element using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/accessing-css-styles-of-an-element-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Accessing CSS Styles of an Element in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Accessing CSS Styles of an Element in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In web development, accessing and manipulating the CSS styles of an HTML element is a common task using JavaScript.</p>
+
+<p>Whether you need to retrieve the current styles, modify them dynamically, or perform actions based on certain styles, JavaScript provides methods and properties to make these tasks straightforward.</p>
+
+<p>This article explores how to get CSS styles of an element using JavaScript.</p>
+
+<h2 id="getting-computed-styles">Getting Computed Styles</h2>
+
+<p>To retrieve the computed styles of an element, you can use the <code>getComputedStyle</code> method.</p>
+
+<p>This method returns an object that represents the final, computed values of all the CSS properties applied to the element.</p>
+
+<p>Here's a function demonstrating how to get computed styles:</p>
+
+<pre class="language-javascript"><code>// Function to get computed styles of an element
+function getComputedStyles(elementId) {
+  // Get the element by its ID
+  const element = document.getElementById(elementId);
+
+  // Get computed styles
+  const computedStyles = window.getComputedStyle(element);
+
+  // Log the computed styles
+  console.log(computedStyles);
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The <code>getComputedStyles</code> function takes the ID of the target element as an argument.</p></li>
+<li><p>The <code>getElementById</code> method is used to get the element.</p></li>
+<li><p>The <code>getComputedStyle</code> method is used to obtain an object containing the computed styles, which is then logged to the console.</p></li>
+</ul>
+
+<h2 id="example-getting-computed-styles-on-button-click">Example: Getting Computed Styles on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button logs the computed styles of a div:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Computed Styles Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    div {
+      padding: 20px;
+      border: 2px solid black;
+      margin-top: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="getComputedStyles('myDiv')"&gt;Get Computed Styles&lt;/button&gt;
+  &lt;div id="myDiv" style="color: blue; font-size: 18px;"&gt;This is a div with computed styles.&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to get computed styles of an element
+    function getComputedStyles(elementId) {
+      const element = document.getElementById(elementId);
+      const computedStyles = window.getComputedStyle(element);
+      console.log(computedStyles);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>getComputedStyles</code> function when clicked.</p></li>
+<li><p>The <code>getComputedStyles</code> function logs the computed styles of the div with the ID <code>'myDiv'</code>.</p></li>
+</ul>
+
+<h2 id="accessing-specific-styles">Accessing Specific Styles</h2>
+
+<p>The <code>getComputedStyle</code> method returns an object that allows you to access specific styles using their property names.</p>
+
+<p>For example, to get the <code>color</code> and <code>font-size</code> properties, you can do the following:</p>
+
+<pre class="language-javascript"><code>// Accessing specific computed styles
+const color = computedStyles.color;
+const fontSize = computedStyles.fontSize;
+console.log(`Color: ${color}, Font Size: ${fontSize}`);
+</code></pre>
+
+<p>In this code, <code>color</code> and <code>fontSize</code> are variables holding the values of the corresponding styles.</p>
+
+<h2 id="example-accessing-specific-computed-styles-on-button-click">Example: Accessing Specific Computed Styles on Button Click</h2>
+
+<p>Let's modify the previous example to log specific computed styles:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Computed Styles Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    div {
+      padding: 20px;
+      border: 2px solid black;
+      margin-top: 20px;
+      color: blue;
+      font-size: 18px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="getSpecificStyles('myDiv')"&gt;Get Specific Styles&lt;/button&gt;
+  &lt;div id="myDiv"&gt;This is a div with specific computed styles.&lt;/div&gt;
+
+  &lt;script&gt;
+    // Function to get specific computed styles of an element
+    function getSpecificStyles(elementId) {
+      const element = document.getElementById(elementId);
+      const computedStyles = window.getComputedStyle(element);
+      const color = computedStyles.color;
+      const fontSize = computedStyles.fontSize;
+      console.log(`Color: ${color}, Font Size: ${fontSize}`);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added specific styles (color and font-size) to the div in the HTML.</p></li>
+<li><p>The <code>getSpecificStyles</code> function now logs the color and font size of the div with the ID <code>'myDiv'</code>.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Accessing and understanding the CSS styles applied to an element is crucial for dynamic web development.</p>
+
+<p>The ability to retrieve computed styles using JavaScript opens up possibilities for creating responsive and interactive user interfaces.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

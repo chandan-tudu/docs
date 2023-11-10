@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting the Position of an Element Relative to Another Using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to use JavaScript to get the position of an element relative to another." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/getting-the-position-of-an-element-relative-to-another-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Getting the Position of an Element Relative to Another Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Getting the Position of an Element Relative to Another Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>In web development, there are situations where you need to determine the position of one HTML element relative to another.</p>
+
+<p>This information can be crucial for building interactive components, such as tooltips or context menus, that need to be positioned precisely on the screen.</p>
+
+<p>In this article, we'll explore how to use JavaScript to get the position of an element relative to another.</p>
+
+<h2 id="using-getboundingclientrect-method">Using "getBoundingClientRect()" method</h2>
+
+<p>The <code>getBoundingClientRect()</code> method is a powerful tool in JavaScript that provides information about the size and position of an element relative to the viewport.</p>
+
+<p>By comparing the bounding rectangles of two elements, you can calculate the position of one element relative to another.</p>
+
+<p>Let's create a simple function to get the position of an element relative to another:</p>
+
+<pre class="language-javascript"><code>// Function to get the position of an element relative to another
+function getRelativePosition(element, referenceElement) {
+  // Get the bounding rectangles of both elements
+  const elementRect = element.getBoundingClientRect();
+  const referenceRect = referenceElement.getBoundingClientRect();
+
+  // Calculate the relative position
+  const relativePosition = {
+    top: elementRect.top - referenceRect.top,
+    left: elementRect.left - referenceRect.left
+  };
+
+  return relativePosition;
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>The "<strong>getRelativePosition</strong>" function takes two elements as arguments: the target element (<code>element</code>) and the reference element (<code>referenceElement</code>).</p></li>
+<li><p><strong>getBoundingClientRect()</strong> is used to obtain the bounding rectangles of both elements.</p></li>
+<li><p>The relative position is calculated by subtracting the top and left coordinates of the reference element from those of the target element.</p></li>
+<li><p>The result is returned as an object with <code>top</code> and <code>left</code> properties representing the relative position.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Determining the position of an element relative to another is a valuable skill for creating dynamic and responsive web applications.</p>
+
+<p>By using the <em>getBoundingClientRect()</em> method in JavaScript, you can easily calculate the relative position of two elements on the screen.</p>
+
+<p>Incorporate this technique into your projects to build interactive components that rely on precise positioning within the user interface.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

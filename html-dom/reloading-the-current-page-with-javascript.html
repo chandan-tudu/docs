@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reloading the Current Page with JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to reload the current page using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/reloading-the-current-page-with-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Reloading the Current Page with JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Reloading the Current Page with JavaScript" loading="lazy" width="900" height="500"></div>
+<p><strong>Reloading the current page dynamically</strong> is a common requirement in web development, especially when you want to reflect changes or reset the state of the application.</p>
+
+<p>JavaScript provides a simple way to achieve this by using the <code>location.reload()</code> method.</p>
+
+<p>In this article, we'll explore how to reload the current page using JavaScript.</p>
+
+<h2 id="using-location-reload-method">Using "location.reload()" method</h2>
+
+<p>The <code>location.reload()</code> method is part of the <code>Location</code> interface in JavaScript and is used to reload the current document.</p>
+
+<p>This method can optionally take a Boolean parameter, <code>forceGet</code>, which, when set to <code>true</code>, forces the reload from the server, bypassing the browser cache.</p>
+
+<p>Let's create a simple function to reload the current page:</p>
+
+<pre class="language-javascript"><code>// Function to reload the current page
+function reloadPage() {
+  location.reload();
+}
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li>The <code>reloadPage</code> function simply calls <code>location.reload()</code> to reload the current page.</li>
+</ul>
+
+<h2 id="example-reloading-the-page-on-button-click">Example: Reloading the Page on Button Click</h2>
+
+<p>Let's create a complete example where clicking a button triggers the reload of the current page:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Reload Page Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="reloadPage()"&gt;Reload Page&lt;/button&gt;
+
+  &lt;script&gt;
+    // Function to reload the current page
+    function reloadPage() {
+      location.reload();
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>reloadPage</code> function when clicked.</p></li>
+<li><p>The <code>reloadPage</code> function triggers the reload of the current page.</p></li>
+</ul>
+
+<h2 id="reloading-with-force-get">Reloading with Force Get</h2>
+
+<p>If you want to force a reload from the server and bypass the browser cache, you can pass <code>true</code> as a parameter to <code>location.reload()</code>:</p>
+
+<pre class="language-javascript"><code>// Function to force reload the current page
+function forceReloadPage() {
+  location.reload(true);
+}
+</code></pre>
+
+<p>Keep in mind that forcing a reload from the server may impact performance, as it requires fetching all resources again.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Reloading the current page using JavaScript is a simple yet powerful way to implement functionality like resetting the state of an application or reflecting changes made by the user.</p>
+
+<p>By leveraging the <code>location.reload()</code> method, you can easily trigger a page reload dynamically.</p>
+
+<p>Integrate this capability into your web projects to enhance the user experience and provide a seamless way to update or reset the application state.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting and Setting the Document Title using JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to use JavaScript to get or set the document title." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/getting-and-setting-the-document-title-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Getting and Setting the Document Title using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Getting and Setting the Document Title using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>JavaScript provides a straightforward way to both <strong>retrieve and set the title of a webpage</strong>. In this article, we'll explore how to use JavaScript to get or set the document title.</p>
+
+<h2 id="getting-the-document-title">Getting the Document Title</h2>
+
+<p>To obtain the current document title, you can simply access the <code>document.title</code> property. This property represents the title of the current HTML document.</p>
+
+<pre class="language-javascript"><code>// Getting the document title
+const currentTitle = document.title;
+console.log('Current document title:', currentTitle);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p><code>document.title</code> is used to retrieve the current title of the document.</p></li>
+<li><p>The title is stored in the variable <code>currentTitle</code>, and it can be logged to the console or used in any desired way.</p></li>
+</ul>
+
+<h2 id="setting-the-document-title">Setting the Document Title</h2>
+
+<p>To dynamically set the document title, you can assign a new value to the <code>document.title</code> property.</p>
+
+<pre class="language-javascript"><code>// Setting the document title
+const newTitle = 'New Page Title';
+document.title = newTitle;
+console.log('Document title has been set to:', newTitle);
+</code></pre>
+
+<p>In this code:</p>
+
+<ul>
+<li><p>A new title, 'New Page Title', is assigned to the <code>document.title</code> property.</p></li>
+<li><p>The change is logged to the console or can be used for other purposes.</p></li>
+</ul>
+
+<h2 id="example-dynamically-updating-document-title">Example: Dynamically Updating Document Title</h2>
+
+<p>Let's create a complete example where a button click triggers the update of the document title.</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Document Title Example&lt;/title&gt;
+  &lt;style&gt;
+    /* Optional styling for better presentation */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;button onclick="updateDocumentTitle()"&gt;Update Document Title&lt;/button&gt;
+
+  &lt;script&gt;
+    // Function to update the document title
+    function updateDocumentTitle() {
+      const newTitle = 'Dynamic Title Change';
+      document.title = newTitle;
+      console.log('Document title has been set to:', newTitle);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>A button is included in the HTML with an <code>onclick</code> attribute calling the <code>updateDocumentTitle</code> function when clicked.</p></li>
+<li><p>The <code>updateDocumentTitle</code> function dynamically sets the document title to 'Dynamic Title Change' and logs the change to the console.</p></li>
+</ul>
+
+<h2 id="browser-compatibility">Browser Compatibility</h2>
+
+<p>The ability to get and set the document title using <code>document.title</code> is widely supported in modern browsers. However, always consider the compatibility of your web application with various browsers to ensure a consistent user experience.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Managing the document title is essential for providing users with relevant and contextual information about the webpage. JavaScript's <code>document.title</code> property makes it easy to dynamically retrieve and update the title of the document, allowing for a more interactive and user-friendly web experience. Incorporate these techniques into your projects to enhance the flexibility and responsiveness of your webpages.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
