@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selecting Children of an Element in JavaScript</title>
+<meta name="description" content="In this article, we'll explore how to select the children of an element in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/selecting-children-of-an-element-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Selecting Children of an Element in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Selecting Children of an Element in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Whether you want to style, manipulate, or traverse the children, JavaScript provides methods to select and work with them.</p>
+
+<p>In this article, we'll explore how to select the children of an element in JavaScript.</p>
+
+<h2 id="the-children-property">The "children" Property</h2>
+
+<p>The <code>children</code> property is a useful way to access the children of an element.</p>
+
+<p>It returns a live HTMLCollection, which is similar to an array, containing all child elements of the specified element.</p>
+
+<p>Here's a basic example:</p>
+
+<pre class="language-javascript"><code>// Get the parent element by its ID
+const parentElement = document.getElementById('parent');
+
+// Access the children using the children property
+const children = parentElement.children;
+
+// Log the children to the console
+console.log(children);
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We use <code>getElementById</code> to obtain a reference to the parent element with the ID 'parent'.</p></li>
+<li><p>The <code>children</code> property is then used to get a collection of child elements.</p></li>
+<li><p>Finally, we log the collection to the console.</p></li>
+</ul>
+
+<h2 id="example-selecting-and-styling-children">Example: Selecting and Styling Children</h2>
+
+<p>Let's create a complete example where we select the children of a parent element and apply styles to them:</p>
+
+<pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8" /&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+        &lt;title&gt;Children Selection Example&lt;/title&gt;
+        &lt;style&gt;
+            /* Optional styling for better presentation */
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            #parent {
+                border: 2px solid black;
+                padding: 20px;
+                margin-top: 20px;
+            }
+
+            .child {
+                background-color: lightblue;
+                margin: 5px;
+                padding: 10px;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="parent"&gt;
+            &lt;div class="child"&gt;Child 1&lt;/div&gt;
+            &lt;div class="child"&gt;Child 2&lt;/div&gt;
+            &lt;div class="child"&gt;Child 3&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;script&gt;
+            // Get the parent element by its ID
+            const parentElement = document.getElementById('parent');
+
+            // Access the children using the children property
+            const children = parentElement.children;
+
+            // Apply styles to each child
+            for (let i = 0; i &lt; children.length; i++) {
+                children[i].classList.add('child');
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><p>We've added some optional CSS styles for better presentation.</p></li>
+<li><p>The <code>getElementById</code> method is used to get the parent element with the ID 'parent'.</p></li>
+<li><p>The <code>children</code> property is used to access the child elements of the parent.</p></li>
+<li><p>We then loop through each child and apply a CSS class ('child') to style them.</p></li>
+</ul>
+
+<h2 id="the-childnodes-property">The "childNodes" Property</h2>
+
+<p>Another property you can use to access the children of an element is <code>childNodes</code>. It returns a NodeList that contains all child nodes, including text nodes and comment nodes.</p>
+
+<p>If you only need the elements, <code>children</code> is generally more convenient.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>// Get the parent element by its ID
+const parentElement = document.getElementById('parent');
+
+// Access the child nodes using the childNodes property
+const childNodes = parentElement.childNodes;
+
+// Log the child nodes to the console
+console.log(childNodes);
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Selecting the children of an element is a fundamental operation when working with the DOM in JavaScript.</p>
+
+<p>Whether you want to style, manipulate, or traverse the children, the <code>children</code> property provides a straightforward way to access them.</p>
+
+<p>Use these techniques to enhance the interactivity and presentation of your web pages by dynamically working with the child elements of HTML elements.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
