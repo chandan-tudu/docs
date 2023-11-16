@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inserting an Element After or Before Another Element Using JavaScript</title>
+<meta name="description" content="Different methods to Insert an Element After or Before Another Element Using JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/inserting-an-element-after-or-before-another-element-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Inserting an Element After or Before Another Element Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Inserting an Element After or Before Another Element Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>At times, you may need to insert new elements after or before existing elements to enhance the interactivity of your web page.</p>
+
+<p>In this article, we'll explore different methods to achieve this using plain JavaScript.</p>
+
+<h2 id="inserting-after-an-element">Inserting After an Element</h2>
+
+<p>To insert an element after another element, you can use the <code>insertAdjacentElement</code> method or a combination of <code>insertBefore</code> and <code>nextSibling</code>.</p>
+
+<h3 id="method-1-using-insertadjacentelement-">Method 1: Using "insertAdjacentElement"</h3>
+
+<p>The <code>insertAdjacentElement</code> method allows you to insert an element relative to the current element.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>// Get the reference element
+const referenceElement = document.getElementById('reference');
+
+// Create a new element
+const newElement = document.createElement('div');
+newElement.textContent = 'This is a new element';
+
+// Insert the new element after the reference element
+referenceElement.insertAdjacentElement('afterend', newElement);
+</code></pre>
+
+<p>In this example, the <code>insertAdjacentElement</code> method is used with the 'afterend' position, indicating that the new element should be inserted immediately after the reference element.</p>
+
+<h3 id="method-2-using-insertbefore-and-nextsibling-">Method 2: Using "insertBefore" and "nextSibling"</h3>
+
+<p>Alternatively, you can use a combination of <code>insertBefore</code> and <code>nextSibling</code> to achieve the same result:</p>
+
+<pre class="language-javascript"><code>// Get the reference element
+const referenceElement = document.getElementById('reference');
+
+// Create a new element
+const newElement = document.createElement('div');
+newElement.textContent = 'This is a new element';
+
+// Insert the new element after the reference element
+referenceElement.parentNode.insertBefore(newElement, referenceElement.nextSibling);
+</code></pre>
+
+<p>In this example, <code>insertBefore</code> is used to insert the new element before the sibling that follows the reference element (<code>nextSibling</code>).</p>
+
+<h2 id="inserting-before-an-element">Inserting Before an Element</h2>
+
+<p>To insert an element before another element, you can use the <code>insertAdjacentElement</code> method with the 'beforebegin' position or use <code>insertBefore</code> directly.</p>
+
+<h3 id="method-1-using-insertadjacentelement-">Method 1: Using <code>insertAdjacentElement</code></h3>
+
+<pre class="language-javascript"><code>// Get the reference element
+const referenceElement = document.getElementById('reference');
+
+// Create a new element
+const newElement = document.createElement('div');
+newElement.textContent = 'This is a new element';
+
+// Insert the new element before the reference element
+referenceElement.insertAdjacentElement('beforebegin', newElement);
+</code></pre>
+
+<p>In this example, the <code>insertAdjacentElement</code> method is used with the 'beforebegin' position to insert the new element immediately before the reference element.</p>
+
+<h3 id="method-2-using-insertbefore-">Method 2: Using <code>insertBefore</code></h3>
+
+<pre class="language-javascript"><code>// Get the reference element
+const referenceElement = document.getElementById('reference');
+
+// Create a new element
+const newElement = document.createElement('div');
+newElement.textContent = 'This is a new element';
+
+// Insert the new element before the reference element
+referenceElement.parentNode.insertBefore(newElement, referenceElement);
+</code></pre>
+
+<p>Here, the <code>insertBefore</code> method is used to insert the new element before the reference element.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Inserting elements after or before other elements in JavaScript is a common task in web development.</p>
+
+<p>Depending on your preference and the specific requirements of your project, you can choose the method that best suits your needs.</p>
+
+<p>Whether using <code>insertAdjacentElement</code> or a combination of <code>insertBefore</code> and <code>nextSibling</code>, these techniques provide flexibility in dynamically modifying the DOM structure of your web page.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

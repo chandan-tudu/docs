@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Adding or Removing Classes from an Element in JavaScript</title>
+<meta name="description" content="Different methods to add or remove classes from an element using plain JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/adding-or-removing-classes-from-an-element-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Adding or Removing Classes from an Element in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Adding or Removing Classes from an Element in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Manipulating classes is a fundamental aspect of dynamic web development, enabling you to apply styles conditionally and create responsive user interfaces.</p>
+
+<p>In this comprehensive guide, we'll explore different methods to add or remove classes from an element using plain JavaScript.</p>
+
+<h2 id="method-1-using-the-classlist-property">Method 1: Using the "classList" Property</h2>
+
+<p>The <code>classList</code> property provides a set of methods for adding, removing, and toggling classes on an element.</p>
+
+<h3 id="adding-a-class-">Adding a Class:</h3>
+
+<pre class="language-javascript"><code>// Get the element by its ID
+const myElement = document.getElementById('myElement');
+
+// Add the class 'newClass' to the element
+myElement.classList.add('newClass');
+</code></pre>
+
+<h3 id="removing-a-class-">Removing a Class:</h3>
+
+<pre class="language-javascript"><code>// Remove the class 'oldClass' from the element
+myElement.classList.remove('oldClass');
+</code></pre>
+
+<h3 id="toggling-a-class-">Toggling a Class:</h3>
+
+<pre class="language-javascript"><code>// Toggle the class 'active' on the element
+myElement.classList.toggle('active');
+</code></pre>
+
+<p>The <code>classList</code> methods provide a convenient and concise way to modify classes on an element.</p>
+
+<h2 id="method-2-using-the-classname-property">Method 2: Using the "className" Property</h2>
+
+<p>The <code>className</code> property contains a space-separated string representing the classes of an element. You can manipulate this string to add or remove classes.</p>
+
+<h3 id="adding-a-class-">Adding a Class:</h3>
+
+<pre class="language-javascript"><code>// Add the class 'newClass' to the element using className
+myElement.className += ' newClass';
+</code></pre>
+
+<h3 id="removing-a-class-">Removing a Class:</h3>
+
+<pre class="language-javascript"><code>// Remove the class 'oldClass' from the element using className
+myElement.className = myElement.className.replace('oldClass', '');
+</code></pre>
+
+<p>This method is straightforward but has some limitations, such as potential issues with class names containing substrings of other class names.</p>
+
+<h2 id="method-3-using-the-classlist-property-with-spread-operator">Method 3: Using the "classList" Property with Spread Operator</h2>
+
+<p>If you want to add multiple classes at once without explicitly listing them, you can use the spread operator.</p>
+
+<pre class="language-javascript"><code>// Add multiple classes to the element using spread operator
+myElement.classList.add(...['class1', 'class2', 'class3']);
+</code></pre>
+
+<p>This method is especially useful when you have an array of classes to add.</p>
+
+<h2 id="method-4-using-toggle-with-a-condition">Method 4: Using "toggle" with a Condition</h2>
+
+<p>You can use a condition to add or remove a class based on a certain criterion.</p>
+
+<pre class="language-javascript"><code>// Toggle the class 'nightMode' based on a condition
+const isNightMode = true;
+
+if (isNightMode) {
+    myElement.classList.add('nightMode');
+} else {
+    myElement.classList.remove('nightMode');
+}
+</code></pre>
+
+<p>This approach is useful when you need to dynamically adjust classes based on runtime conditions.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Adding or removing classes from an element is a fundamental operation in web development.</p>
+
+<p>Whether you use the <code>classList</code> property, <code>className</code>, spread operator, or conditionally toggle classes, each method has its use cases and considerations.</p>
+
+<p>Choose the approach that best fits your project's requirements and coding style, ensuring that you can efficiently and accurately manipulate classes on elements for creating dynamic and responsive user interfaces.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting the Closest Element by a Given Selector Using JavaScript</title>
+<meta name="description" content="Different methods to get the closest element by a given selector using plain JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/getting-the-closest-element-by-a-given-selector-using-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Getting the Closest Element by a Given Selector Using JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Getting the Closest Element by a Given Selector Using JavaScript" loading="lazy" width="900" height="500"></div>
+<p>When working with the Document Object Model (DOM) in JavaScript, there are scenarios where you need to find the closest ancestor element that matches a specific selector.</p>
+
+<p>This is particularly useful when you want to traverse up the DOM hierarchy to find a parent or ancestor element with a certain class or ID.</p>
+
+<p>In this article, we'll explore different methods to get the closest element by a given selector using plain JavaScript.</p>
+
+<h2 id="method-1-using-the-closest-method">Method 1: Using the "closest" Method</h2>
+
+<p>The <code>closest</code> method is a built-in JavaScript method that allows you to find the closest ancestor element that matches a specified selector.</p>
+
+<pre class="language-javascript"><code>// Get the target element
+const targetElement = document.getElementById('targetElement');
+
+// Find the closest ancestor with the specified selector
+const closestElement = targetElement.closest('.ancestorSelector');
+
+// Log the closest element to the console
+console.log(closestElement);
+</code></pre>
+
+<p>In this example, replace 'targetElement' with the actual ID or reference to the element you are starting from, and '.ancestorSelector' with the desired CSS selector for the closest ancestor you want to find.</p>
+
+<p>The <code>closest</code> method returns <code>null</code> if no matching ancestor is found.</p>
+
+<h2 id="method-2-using-a-while-loop">Method 2: Using a While Loop</h2>
+
+<p>If the <code>closest</code> method is not available or not supported in your environment, you can create a custom function using a while loop to traverse up the DOM hierarchy until a matching ancestor is found.</p>
+
+<pre class="language-javascript"><code>// Custom function to get the closest ancestor by selector
+function getClosestBySelector(element, selector) {
+    // Traverse up the DOM hierarchy until a matching ancestor is found
+    while (element &amp;&amp; !element.matches(selector)) {
+        element = element.parentElement;
+    }
+    return element;
+}
+
+// Get the target element
+const targetElement = document.getElementById('targetElement');
+
+// Use the custom function to find the closest ancestor with the specified selector
+const closestElement = getClosestBySelector(targetElement, '.ancestorSelector');
+
+// Log the closest element to the console
+console.log(closestElement);
+</code></pre>
+
+<p>In this example, the <code>getClosestBySelector</code> function takes an element and a selector as parameters, and it uses a while loop to traverse up the DOM hierarchy until it finds an ancestor that matches the specified selector.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Finding the closest ancestor element by a given selector is a common task in DOM manipulation.</p>
+
+<p>Whether you use the built-in <code>closest</code> method or create a custom function with a while loop, these methods provide flexibility in navigating the DOM hierarchy based on your specific requirements.</p>
+
+<p>Choose the method that best fits your needs and consider browser compatibility when implementing this functionality in your JavaScript projects.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

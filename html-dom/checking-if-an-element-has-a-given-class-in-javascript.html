@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checking if an Element Has a Given Class in JavaScript</title>
+<meta name="description" content="Different methods to check if an element has a given class using plain JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/checking-if-an-element-has-a-given-class-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Checking if an Element Has a Given Class in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Checking if an Element Has a Given Class in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Checking whether an element has a particular class is a common operation in JavaScript, especially when working with dynamic user interfaces and applying styles conditionally.</p>
+
+<p>In this article, we'll explore different methods to check if an element has a given class using plain JavaScript.</p>
+
+<h2 id="method-1-using-the-classlist-property">Method 1: Using the "classList" Property</h2>
+
+<p>The <code>classList</code> property provides methods to manipulate classes on an element, including checking if it contains a specific class.</p>
+
+<pre class="language-javascript"><code>// Get the element by its ID
+const myElement = document.getElementById('myElement');
+
+// Check if the element has the class 'myClass'
+const hasClass = myElement.classList.contains('myClass');
+
+// Log the result to the console
+console.log(hasClass);
+</code></pre>
+
+<p>In this example, replace 'myElement' with the actual ID or reference to the element you want to check, and 'myClass' with the class you are checking for.</p>
+
+<p>The <code>contains</code> method returns <code>true</code> if the class is present and <code>false</code> otherwise.</p>
+
+<h2 id="method-2-using-the-classname-property">Method 2: Using the "className" Property</h2>
+
+<p>The <code>className</code> property contains a space-separated string representing the classes of an element. You can use this property to check if a specific class is present.</p>
+
+<pre class="language-javascript"><code>// Get the element by its ID
+const myElement = document.getElementById('myElement');
+
+// Check if the element has the class 'myClass'
+const hasClass = myElement.className.includes('myClass');
+
+// Log the result to the console
+console.log(hasClass);
+</code></pre>
+
+<p>This method uses the <code>includes</code> method to check if the class name string contains the desired class.</p>
+
+<h2 id="method-3-using-the-indexof-method">Method 3: Using the <code>indexOf</code> Method</h2>
+
+<p>Another way to check if an element has a given class is by using the <code>indexOf</code> method.</p>
+
+<pre class="language-javascript"><code>// Get the element by its ID
+const myElement = document.getElementById('myElement');
+
+// Check if the element has the class 'myClass'
+const hasClass = myElement.className.indexOf('myClass') !== -1;
+
+// Log the result to the console
+console.log(hasClass);
+</code></pre>
+
+<p>The <code>indexOf</code> method returns the index of the first occurrence of a specified value in a string. If the class is not found, it returns -1.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Checking if an element has a given class is a routine task in JavaScript, especially in the context of DOM manipulation and user interface interactions.</p>
+
+<p>Whether you use the <code>classList</code> property, <code>className</code> property with <code>includes</code>, or <code>indexOf</code> method, each method has its use cases and considerations.</p>
+
+<p>Choose the approach that best fits your project's requirements and coding style, ensuring that you can efficiently and accurately determine the presence of a class on an element.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

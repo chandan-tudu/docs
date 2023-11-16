@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Looping Over a NodeList in JavaScript</title>
+<meta name="description" content="In this guide, we'll explore different methods to loop over a NodeList using plain JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/looping-over-a-nodelist-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Looping Over a NodeList in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Looping Over a NodeList in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>Looping over a NodeList allows you to iterate through each node and perform operations on them.</p>
+
+<p>In this guide, we'll explore different methods to loop over a NodeList using plain JavaScript.</p>
+
+<h2 id="method-1-using-a-for-loop">Method 1: Using a "for" Loop</h2>
+
+<p>The simplest and most widely used method to loop over a NodeList is to use a traditional <code>for</code> loop.</p>
+
+<p>Here's an example:</p>
+
+<pre class="language-javascript"><code>// Select all paragraphs on the page
+const paragraphs = document.querySelectorAll('p');
+
+// Loop over the NodeList using a for loop
+for (let i = 0; i &lt; paragraphs.length; i++) {
+    // Access each paragraph using paragraphs[i]
+    console.log(paragraphs[i].textContent);
+    // Perform operations on each paragraph
+}
+</code></pre>
+
+<p>In this example, <code>paragraphs</code> is a NodeList containing all the <code>&lt;p&gt;</code> elements on the page.</p>
+
+<p>The <code>for</code> loop iterates through each element, and you can perform operations on each element within the loop.</p>
+
+<h2 id="method-2-using-the-foreach-method">Method 2: Using the "forEach" Method</h2>
+
+<p>NodeList objects have a <code>forEach</code> method that you can use to loop over each element in the collection.</p>
+
+<p>This method is more concise and often considered more modern than using a <code>for</code> loop.</p>
+
+<pre class="language-javascript"><code>// Select all paragraphs on the page
+const paragraphs = document.querySelectorAll('p');
+
+// Use the forEach method to loop over the NodeList
+paragraphs.forEach((paragraph) =&gt; {
+    // Access each paragraph directly
+    console.log(paragraph.textContent);
+    // Perform operations on each paragraph
+});
+</code></pre>
+
+<p>The <code>forEach</code> method takes a callback function, and for each element in the NodeList, it calls the provided function with the current element as an argument.</p>
+
+<h2 id="method-3-using-the-for-of-loop">Method 3: Using the "for...of" Loop</h2>
+
+<p>The <code>for...of</code> loop is another modern and concise way to loop over iterable objects, including NodeLists.</p>
+
+<pre class="language-javascript"><code>// Select all paragraphs on the page
+const paragraphs = document.querySelectorAll('p');
+
+// Use the for...of loop to iterate over the NodeList
+for (const paragraph of paragraphs) {
+    // Access each paragraph directly
+    console.log(paragraph.textContent);
+    // Perform operations on each paragraph
+}
+</code></pre>
+
+<p>The <code>for...of</code> loop simplifies the syntax and provides a cleaner way to iterate over iterable objects.</p>
+
+<h2 id="method-4-converting-nodelist-to-array-and-using-array-methods">Method 4: Converting NodeList to Array and Using Array Methods</h2>
+
+<p>You can convert a NodeList to an array using the <code>Array.from</code> method or the spread operator (<code>[...nodeList]</code>).</p>
+
+<p>Once converted, you can use array methods like <code>forEach</code>, <code>map</code>, or <code>filter</code>.</p>
+
+<pre class="language-javascript"><code>// Select all paragraphs on the page
+const paragraphs = document.querySelectorAll('p');
+
+// Convert NodeList to an array using Array.from
+const paragraphArray = Array.from(paragraphs);
+
+// Use forEach on the array
+paragraphArray.forEach((paragraph) =&gt; {
+    console.log(paragraph.textContent);
+    // Perform operations on each paragraph
+});
+</code></pre>
+
+<p>This method provides the flexibility of array methods and is especially useful when you need to perform complex operations on the NodeList.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Looping over a NodeList in JavaScript is a common task when working with the DOM.</p>
+
+<p>Whether you choose a traditional <code>for</code> loop, the <code>forEach</code> method, the <code>for...of</code> loop, or converting the NodeList to an array, each method has its advantages.</p>
+
+<p>Consider your specific use case, coding style, and browser compatibility when selecting the method that best fits your needs.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

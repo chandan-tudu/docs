@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checking an Element Against a Selector in JavaScript</title>
+<meta name="description" content="Different methods to check if an element matches a selector using plain JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/html-dom/checking-an-element-against-a-selector-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">HTML-DOM</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Checking an Element Against a Selector in JavaScript</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/html-dom.jpg" alt="Post Thumbnail of Checking an Element Against a Selector in JavaScript" loading="lazy" width="900" height="500"></div>
+<p>When working with the Document Object Model (DOM) in JavaScript, there are scenarios where you need to check if an element matches a specific selector.</p>
+
+<p>This is useful when you want to perform certain actions based on the type or characteristics of an element.</p>
+
+<p>In this article, we'll explore different methods to check if an element matches a selector using plain JavaScript.</p>
+
+<h2 id="method-1-using-the-matches-method">Method 1: Using the "matches" Method</h2>
+
+<p>The <code>matches</code> method is a built-in JavaScript method that allows you to check if an element matches a specified selector.</p>
+
+<pre class="language-javascript"><code>// Get the element by its ID
+const myElement = document.getElementById('myElement');
+
+// Check if the element matches the selector '.mySelector'
+const matchesSelector = myElement.matches('.mySelector');
+
+// Log the result to the console
+console.log(matchesSelector);
+</code></pre>
+
+<p>In this example, replace 'myElement' with the actual ID or reference to the element you want to check, and '.mySelector' with the desired CSS selector. The <code>matches</code> method returns <code>true</code> if the element matches the selector and <code>false</code> otherwise.</p>
+
+<h2 id="method-2-using-the-queryselector-method">Method 2: Using the "querySelector" Method</h2>
+
+<p>If you don't have a reference to the element but want to check if any element in the document matches a selector, you can use the <code>querySelector</code> method.</p>
+
+<pre class="language-javascript"><code>// Check if any element in the document matches the selector '.mySelector'
+const matchesSelector = document.querySelector('.mySelector') !== null;
+
+// Log the result to the console
+console.log(matchesSelector);
+</code></pre>
+
+<p>In this example, '.mySelector' is the CSS selector you want to check against.</p>
+
+<p>The <code>querySelector</code> method returns the first element in the document that matches the specified selector or <code>null</code> if no matches are found.</p>
+
+<h2 id="method-3-using-closest-method">Method 3: Using "closest" Method</h2>
+
+<p>The <code>closest</code> method allows you to check if an element matches a selector or if any of its ancestors (including itself) match the selector.</p>
+
+<pre class="language-javascript"><code>// Get the element by its ID
+const myElement = document.getElementById('myElement');
+
+// Check if the element or its ancestor matches the selector '.mySelector'
+const closestSelector = myElement.closest('.mySelector') !== null;
+
+// Log the result to the console
+console.log(closestSelector);
+</code></pre>
+
+<p>In this example, 'myElement' is the element you want to check, and '.mySelector' is the desired CSS selector.</p>
+
+<p>The <code>closest</code> method returns the closest ancestor of the current element (or the element itself) that matches the specified selector, or <code>null</code> if no matches are found.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Checking if an element matches a selector is a common operation in JavaScript, especially when dealing with dynamic user interfaces.</p>
+
+<p>Whether you use the <code>matches</code> method, <code>querySelector</code>, or <code>closest</code>, each method has its use cases and considerations.</p>
+
+<p>Choose the approach that best fits your project's requirements and coding style, ensuring that you can accurately determine if an element matches a specific selector.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
