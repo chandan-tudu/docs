@@ -14,6 +14,15 @@ const createEl = (type, attr = {}) => {
     }
     return el;
 };
+
+const gadsJS = createEl('script', {
+    src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8278722404316022',
+    crossorigin:'anonymous'
+});
+
+headEl.insertAdjacentElement('beforeend', gadsJS);
+
+
 // Load Scripts
 (function(){
     const findPreEl = document.querySelector("pre[class*='language-']");
