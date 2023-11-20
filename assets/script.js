@@ -2,6 +2,7 @@ const rootEl = document.documentElement;
 const bodyEl = document.querySelector('body');
 const headEl = document.querySelector('head');
 const header = document.querySelector('.header');
+const footer = document.getElementById('footer');
 
 const moon =
     '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
@@ -83,3 +84,29 @@ if (localStorage.getItem('page-theme') === 'dark') {
     themeBtn.innerHTML = sun;
 }
 themeBtn.addEventListener('click', changeTheme);
+
+if(footer){
+    const footerList = createEl('ul', { 
+        class: 'footer-list',
+    });
+    const footerLinks = {
+        about:'https://www.devbabu.com/about-us/',
+        contact:'https://www.devbabu.com/contact-us/',
+        privacy:'https://www.devbabu.com/privacy-policy/'
+    }
+
+    for (const key in footerLinks) {
+        const li = createEl('li')
+        const link = createEl('a',{
+            href:footerLinks[key]
+        });
+        link.innerText = key.toUpperCase()
+        li.appendChild(link)
+        footerList.appendChild(li)
+    }
+
+    footer.insertAdjacentElement('afterbegin',footerList)
+    
+}
+
+

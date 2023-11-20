@@ -93,8 +93,15 @@ svg {
     position: relative;
     padding: 20px;
 }
-.footer{
-    display:none;
+.footer ul{
+    all: unset;
+    display:flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
 }
 .article-container {
     background: var(--bg-color2);
@@ -296,7 +303,6 @@ hr {
     }
     .footer{
         background: var(--bg-color2);
-        padding: 0;
     }
     .header{
         background: var(--bg-color2);
