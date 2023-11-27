@@ -326,13 +326,14 @@ hr {
 }
 
 .gdpr-msg{
+    border-top: 2px solid var(--border);
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     z-index: 999;
     padding: 20px;
-    background: rgba(0, 0, 0, .1);
+    background: var(--bg-color);
     text-align: center;
 }
 
