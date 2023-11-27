@@ -85,6 +85,34 @@ if (localStorage.getItem('page-theme') === 'dark') {
 }
 themeBtn.addEventListener('click', changeTheme);
 
+// GDPR Consent
+
+if(document.cookie.indexOf('DevBDocsCookie=1')){
+    const consentDiv = createEl('div',{
+        class:'gdpr-msg'
+    });
+    const privacyLink = createEl('a',{
+                href:'https://www.devbabu.com/privacy-policy/'
+            });
+            privacyLink.innerText = 'Privacy'
+            const acceptBtn = createEl('button')
+            acceptBtn.innerText = "Accept"
+            acceptBtn.addEventListener('click', () => {
+                document.cookie = "DevBDocsCookie=1; max-age=" + 60*60*24*30;
+                if(document.cookie){
+                    consentDiv.style.display = "none";
+                }else{
+                    alert("Cookie Can't be set!");
+                }
+            })
+
+    consentDiv.innerText = "We use cookies to ensure that we give you the best experience on our website.";
+    consentDiv.appendChild(privacyLink);
+    consentDiv.appendChild(acceptBtn);
+    bodyEl.insertAdjacentElement('beforeend', consentDiv);
+}
+
+
 if(footer){
     const footerList = createEl('ul', { 
         class: 'footer-list',

@@ -180,20 +180,6 @@ h2 {
     white-space:nowrap;
     vertical-align: middle;
     color: var(--text-bright);
-
-    /* background: var(--s-code-bg);
-    color: var(--s-code-color);
-    border:2px solid var(--color);
-    box-shadow:2px 2px var(--color);
-    font-size: .70em;
-    font-weight: 700;
-    vertical-align: middle;
-    letter-spacing:.05em;
-    border-radius: 0;
-    display:inline-block;
-    white-space:nowrap;
-    margin-left:4px;
-    margin-right:4px; */
 }
 
 pre {
@@ -276,6 +262,8 @@ hr {
     margin-top:  .7em;
 }
 
+
+
 @media (max-width: 700px) {
     
     .article-container {
@@ -335,6 +323,34 @@ hr {
     all: unset;
     user-select: none;
     cursor: pointer;
+}
+
+.gdpr-msg{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    padding: 20px;
+    background: rgba(0, 0, 0, .1);
+    text-align: center;
+}
+
+.gdpr-msg a{
+    display: inline-block;
+    margin:0 10px;
+}
+.gdpr-msg button{
+    cursor: pointer;
+    background: #222;
+    color: #f7f1ff;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: .8em;
+}
+.gdpr-msg button:hover{
+    background: #000;
 }
 
 
