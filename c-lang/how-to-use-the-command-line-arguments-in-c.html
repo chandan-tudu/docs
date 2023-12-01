@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to use the command-line arguments in C?</title>
+<meta name="description" content="This comprehensive guide explores the fundamentals of handling command-line arguments in C." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-use-the-command-line-arguments-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to use the command-line arguments in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to use the command-line arguments in C?" loading="lazy" width="900" height="500"></div>
+<p>Command-line arguments in C provide a versatile means for users to interact with programs, passing input parameters directly from the command line.</p>
+
+<p>This comprehensive guide explores the fundamentals of handling command-line arguments in C, understanding the <code>main</code> function signature, parsing arguments, and leveraging this feature for enhanced program flexibility.</p>
+
+<h2 id="1-introduction-to-command-line-arguments-in-c">1. Introduction to Command-Line Arguments in C</h2>
+
+<p>Command-line arguments enable users to provide inputs to a C program when executing it from the command line.</p>
+
+<p>These arguments offer a flexible way to customize program behavior without modifying the source code.</p>
+
+<h2 id="2-the-main-function-signature">2. The <code>main</code> Function Signature</h2>
+
+<p>In C, the <code>main</code> function is the entry point for program execution. The standard signature of the <code>main</code> function includes parameters that capture command-line arguments.</p>
+
+<pre class="language-c"><code>int main(int argc, char *argv[]) {
+    // Program logic here
+    return 0;
+}
+</code></pre>
+
+<ul>
+<li><code>int argc</code>: Represents the number of command-line arguments passed to the program.</li>
+<li><code>char *argv[]</code>: An array of strings where each element is a command-line argument.</li>
+</ul>
+
+<h2 id="3-accessing-command-line-arguments">3. Accessing Command-Line Arguments</h2>
+
+<p>Command-line arguments are accessed through the <code>argv</code> array. The first element (<code>argv[0]</code>) is the program's name, and subsequent elements contain the provided arguments.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[]) {
+    printf("Program name: %s\n", argv[0]);
+
+    for (int i = 1; i &lt; argc; i++) {
+        printf("Argument %d: %s\n", i, argv[i]);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the program prints its name and each command-line argument.</p>
+
+<h2 id="4-parsing-command-line-arguments">4. Parsing Command-Line Arguments</h2>
+
+<p>Parsing command-line arguments involves converting string representations to appropriate data types.</p>
+
+<p>Standard library functions like <code>atoi</code>, <code>atof</code>, or custom parsing logic can be employed.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        printf("Usage: %s &lt;number1&gt; &lt;number2&gt;\n", argv[0]);
+        return 1;  // Exit with an error code
+    }
+
+    // Convert string arguments to integers
+    int num1 = atoi(argv[1]);
+    int num2 = atoi(argv[2]);
+
+    printf("Sum: %d\n", num1 + num2);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the program expects two integer arguments, converts them using <code>atoi</code>, and prints their sum.</p>
+
+<h2 id="5-error-handling-and-validation">5. Error Handling and Validation</h2>
+
+<p>It's essential to handle errors and validate command-line arguments to ensure correct usage.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        printf("Usage: %s &lt;filename&gt;\n", argv[0]);
+        return 1;  // Exit with an error code
+    }
+
+    // Validate and process the filename
+    // ...
+
+    return 0;
+}
+</code></pre>
+
+<p>Here, the program expects one argument (a filename) and provides a usage message if the user provides an incorrect number of arguments.</p>
+
+<h2 id="6-advanced-techniques-flags-and-options">6. Advanced Techniques: Flags and Options</h2>
+
+<p>For programs with more complex configurations, flags and options can be introduced.</p>
+
+<p>These are usually specified by preceding them with a hyphen (<code>-</code>) or double hyphen (<code>--</code>).</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char *argv[]) {
+    int verbose = 0;
+
+    for (int i = 1; i &lt; argc; i++) {
+        if (argv[i][0] == '-') {
+            // Check for flags
+            if (argv[i][1] == 'v') {
+                verbose = 1;
+            }
+        }
+    }
+
+    if (verbose) {
+        printf("Verbose mode is enabled.\n");
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the program checks for a <code>-v</code> flag to enable verbose mode.</p>
+
+<h2 id="7-conclusion">7. Conclusion</h2>
+
+<p>Command-line arguments in C provide a powerful mechanism for users to customize program behavior without modifying the source code.</p>
+
+<p>By understanding the <code>main</code> function signature, accessing and parsing arguments, handling errors, and incorporating advanced techniques like flags and options, C programmers can create flexible and user-friendly command-line applications.</p>
+
+<p>Leveraging command-line arguments enhances program versatility and usability, making it an essential skill for C developers.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

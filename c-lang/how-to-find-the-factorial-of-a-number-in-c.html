@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Find The Factorial Of A Number In C?</title>
+<meta name="description" content="Various approaches to compute the factorial of a number in C, providing detailed explanations and practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-find-the-factorial-of-a-number-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to find the factorial of a number in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to find the factorial of a number in C?" loading="lazy" width="900" height="500"></div>
+<p>In C, finding the factorial involves understanding loops, recursion, and basic arithmetic operations.</p>
+
+<p>This comprehensive guide will explore various approaches to compute the factorial of a number in C, providing detailed explanations and practical examples.</p>
+
+<h2 id="1-introduction-to-factorial">1. Introduction to Factorial</h2>
+
+<p>The factorial of a non-negative integer, often denoted by &#40;n!&#41;, is the product of all positive integers up to that number.</p>
+
+<p>Mathematically, &#40;n! = n \times (n-1) \times (n-2) \times \ldots \times 2 \times 1&#41;.</p>
+
+<h2 id="2-using-iterative-loop-approach">2. Using Iterative (Loop) Approach</h2>
+
+<p>The iterative approach involves using a loop, typically a <code>for</code> or <code>while</code> loop, to calculate the factorial.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+unsigned long long calculateFactorialIterative(int n) {
+    // Variable to store the result
+    unsigned long long factorial = 1;
+
+    // Iterate from 1 to n and multiply the result
+    for (int i = 1; i &lt;= n; ++i) {
+        factorial *= i;
+    }
+
+    return factorial;
+}
+
+int main() {
+    // Calculate factorial using iterative approach
+    int num = 5;
+    unsigned long long result = calculateFactorialIterative(num);
+
+    // Display the result
+    printf("Factorial of %d is %llu\n", num, result);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the <code>calculateFactorialIterative</code> function uses a <code>for</code> loop to multiply the result by each integer from 1 to &#40;n&#41;.</p>
+
+<h2 id="3-using-recursive-approach">3. Using Recursive Approach</h2>
+
+<p>Recursion involves breaking down the problem into smaller subproblems. In the case of factorial computation, the base case is &#40;0! = 1&#41;, and the recursive formula is &#40;n! = n \times (n-1)!&#41;.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+unsigned long long calculateFactorialRecursive(int n) {
+    // Base case: factorial of 0 is 1
+    if (n == 0) {
+        return 1;
+    }
+
+    // Recursive case: n! = n * (n-1)!
+    return n * calculateFactorialRecursive(n - 1);
+}
+
+int main() {
+    // Calculate factorial using recursive approach
+    int num = 5;
+    unsigned long long result = calculateFactorialRecursive(num);
+
+    // Display the result
+    printf("Factorial of %d is %llu\n", num, result);
+
+    return 0;
+}
+</code></pre>
+
+<p>Here, the <code>calculateFactorialRecursive</code> function calls itself with a smaller argument until it reaches the base case.</p>
+
+<h2 id="4-handling-large-factorials">4. Handling Large Factorials</h2>
+
+<p>Factorials grow rapidly, and for larger values of &#40;n&#41;, the result may exceed the capacity of standard integer types.</p>
+
+<p>Using <code>unsigned long long</code> helps accommodate larger factorials, but it's essential to handle overflow carefully.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+
+unsigned long long calculateFactorialIterativeSafe(int n) {
+    // Variable to store the result
+    unsigned long long factorial = 1;
+
+    // Check for overflow at each step
+    for (int i = 1; i &lt;= n; ++i) {
+        // Check for overflow before multiplying
+        if (ULLONG_MAX / i &lt; factorial) {
+            printf("Overflow occurred. Cannot calculate factorial.\n");
+            return 0;  // Return an error value
+        }
+
+        factorial *= i;
+    }
+
+    return factorial;
+}
+</code></pre>
+
+<p>This modified iterative approach includes checks for overflow at each step, providing a safer way to handle large factorials.</p>
+
+<h2 id="5-conclusion">5. Conclusion</h2>
+
+<p>Calculating the factorial of a number is a fundamental operation in programming and involves understanding iterative and recursive approaches.</p>
+
+<p>Whether using loops or recursion, each method has its advantages and considerations.</p>
+
+<p>By mastering the techniques presented in this guide, C programmers can confidently compute factorials for various values, an essential skill in mathematical and algorithmic programming.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

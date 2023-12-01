@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to find the size of a file in C?</title>
+<meta name="description" content="Various techniques to find the size of a file in C, covering standard library functions, system calls, and best practices for accurate and reliable results." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-find-the-size-of-a-file-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to find the size of a file in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to find the size of a file in C?" loading="lazy" width="900" height="500"></div>
+<p>Determining the size of a file is a common task in C programming, crucial for managing resources efficiently.</p>
+
+<p>This comprehensive guide explores various techniques to find the size of a file in C, covering standard library functions, system calls, and best practices for accurate and reliable results.</p>
+
+<p><strong>Table of Contents #</strong></p>
+<ol>
+<li><a href="#1-introduction-to-file-size-in-c">Introduction to File Size in C</a></li>
+<li><a href="#2-using-standard-library-functions">Using Standard Library Functions</a>
+
+<ul>
+<li><a href="#2-1-using-fseek-and-ftell-functions">Using <code>fseek</code> and <code>ftell</code> Functions</a></li>
+<li><a href="#2-2-using-fstat-function-unix-linux-only">Using <code>fstat</code> Function (UNIX/Linux Only)</a></li>
+</ul></li>
+<li><a href="#3-using-system-calls-unix-linux-only">Using System Calls (UNIX/Linux Only)</a></li>
+<li><a href="#4-best-practices-for-file-size-in-c">Best Practices for File Size in C</a></li>
+<li><a href="#5-conclusion">Conclusion</a></li>
+</ol>
+<h2 id="1-introduction-to-file-size-in-c">1. Introduction to File Size in C</h2>
+
+<p>The size of a file represents the amount of storage it occupies on a system.</p>
+
+<p>In C, finding the size of a file is essential for tasks such as memory allocation, copying files, and ensuring the integrity of data operations.</p>
+
+<h2 id="2-using-standard-library-functions">2. Using Standard Library Functions</h2>
+
+<h3 id="2-1-using-fseek-and-ftell-functions">2.1. Using "fseek" and "ftell" Functions</h3>
+
+<p>The standard library functions <code>fseek</code> and <code>ftell</code> can be employed to determine the size of a file.</p>
+
+<p>The basic idea is to seek to the end of the file and then retrieve the file position.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+long int getFileSize(FILE* file) {
+    long int size;
+
+    // Seek to the end of the file
+    fseek(file, 0, SEEK_END);
+
+    // Get the file position, representing the size
+    size = ftell(file);
+
+    // Seek back to the beginning of the file (optional)
+    fseek(file, 0, SEEK_SET);
+
+    return size;
+}
+
+int main() {
+    FILE* file = fopen("example.txt", "r");
+
+    if (file != NULL) {
+        long int size = getFileSize(file);
+        printf("File size: %ld bytes\n", size);
+
+        fclose(file);
+    } else {
+        perror("Error opening file");
+    }
+
+    return 0;
+}
+</code></pre>
+
+<h3 id="2-2-using-fstat-function-unix-linux-only">2.2. Using "fstat" Function (UNIX/Linux Only)</h3>
+
+<p>On UNIX/Linux systems, the <code>fstat</code> function can be used to obtain file status, including the file size.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;sys/stat.h&gt;
+
+long int getFileSize(FILE* file) {
+    struct stat fileStat;
+
+    if (fstat(fileno(file), &amp;fileStat) == 0) {
+        return fileStat.st_size;
+    }
+
+    return -1;  // Error
+}
+
+int main() {
+    FILE* file = fopen("example.txt", "r");
+
+    if (file != NULL) {
+        long int size = getFileSize(file);
+        if (size != -1) {
+            printf("File size: %ld bytes\n", size);
+        } else {
+            perror("Error getting file size");
+        }
+
+        fclose(file);
+    } else {
+        perror("Error opening file");
+    }
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="3-using-system-calls-unix-linux-only">3. Using System Calls (UNIX/Linux Only)</h2>
+
+<p>On UNIX/Linux systems, the <code>stat</code> system call can be employed to obtain file information, including the size.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;sys/stat.h&gt;
+
+long int getFileSize(const char* filename) {
+    struct stat fileStat;
+
+    if (stat(filename, &amp;fileStat) == 0) {
+        return fileStat.st_size;
+    }
+
+    return -1;  // Error
+}
+
+int main() {
+    const char* filename = "example.txt";
+
+    long int size = getFileSize(filename);
+    if (size != -1) {
+        printf("File size: %ld bytes\n", size);
+    } else {
+        perror("Error getting file size");
+    }
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="4-best-practices-for-file-size-in-c">4. Best Practices for File Size in C</h2>
+
+<ul>
+<li><strong>Check File Opening:</strong> Always check if the file is opened successfully before attempting to find its size.</li>
+<li><strong>Error Handling:</strong> Implement robust error handling to handle cases where the file size cannot be determined.</li>
+<li><strong>Portability:</strong> Be aware of the platform-specific nature of certain functions and system calls. Adjust your approach accordingly for cross-platform compatibility.</li>
+<li><strong>File Position Restoration:</strong> After determining the file size using <code>fseek</code> and <code>ftell</code>, consider seeking back to the beginning of the file if further operations are expected.</li>
+</ul>
+
+<h2 id="5-conclusion">5. Conclusion</h2>
+
+<p>Determining the size of a file in C is a fundamental operation, and several methods are available to achieve this.</p>
+
+<p>Whether using standard library functions like <code>fseek</code> and <code>ftell</code> or system calls like <code>stat</code>, understanding these techniques allows programmers to handle file sizes accurately and efficiently.</p>
+
+<p>By incorporating best practices and error handling, C programs can navigate file sizes reliably, contributing to robust file management and data processing.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

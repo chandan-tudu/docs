@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to reverse a string in C?</title>
+<meta name="description" content="How to reverse a string in C, covering different approaches, practical examples, and potential challenges." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-reverse-a-string-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to reverse a string in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to reverse a string in C?" loading="lazy" width="900" height="500"></div>
+<p>In C, achieving string reversal involves understanding the principles of character arrays, pointers, and loops.</p>
+
+<p>This comprehensive guide will walk you through the process of reversing a string in C, covering different approaches, practical examples, and potential challenges.</p>
+
+<h2 id="1-introduction-to-string-reversal">1. Introduction to String Reversal</h2>
+
+<p>String reversal refers to the process of rearranging the characters in a string in the opposite order. For example, reversing the string "hello" would result in "olleh."</p>
+
+<h2 id="2-using-character-arrays-for-string-manipulation">2. Using Character Arrays for String Manipulation</h2>
+
+<p>In C, strings are represented as arrays of characters, and manipulating them involves accessing and modifying individual characters.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    // Using a character array to store a string
+    char str[] = "hello";
+
+    // Reversing the string
+    int length = strlen(str);
+    for (int i = 0; i &lt; length / 2; i++) {
+        char temp = str[i];
+        str[i] = str[length - 1 - i];
+        str[length - 1 - i] = temp;
+    }
+
+    // Displaying the reversed string
+    printf("Reversed string: %s\n", str);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the character array <code>str</code> is reversed by swapping the characters from the beginning to the middle of the array.</p>
+
+<h2 id="3-using-pointers-for-string-reversal">3. Using Pointers for String Reversal</h2>
+
+<p>C provides a pointer-based approach for string manipulation. Pointers offer a more concise way to navigate and modify strings.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    // Using a character array and pointers to store and reverse a string
+    char str[] = "hello";
+    char *start = str;
+    char *end = str + strlen(str) - 1;
+
+    // Reversing the string using pointers
+    while (start &lt; end) {
+        char temp = *start;
+        *start = *end;
+        *end = temp;
+        start++;
+        end--;
+    }
+
+    // Displaying the reversed string
+    printf("Reversed string: %s\n", str);
+
+    return 0;
+}
+</code></pre>
+
+<p>Here, the pointers <code>start</code> and <code>end</code> are used to traverse the string, and characters are swapped until the pointers meet in the middle.</p>
+
+<h2 id="4-using-a-recursive-function-for-string-reversal">4. Using a Recursive Function for String Reversal</h2>
+
+<p>Recursion offers an elegant way to reverse a string by dividing the problem into smaller subproblems.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void reverseString(char *str, int start, int end) {
+    if (start &lt; end) {
+        // Swap characters at the start and end positions
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+
+        // Recursively reverse the substring
+        reverseString(str, start + 1, end - 1);
+    }
+}
+
+int main() {
+    // Using a recursive function to reverse a string
+    char str[] = "hello";
+
+    // Reversing the string using recursion
+    reverseString(str, 0, strlen(str) - 1);
+
+    // Displaying the reversed string
+    printf("Reversed string: %s\n", str);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the <code>reverseString</code> function is called recursively to reverse the string. The base case ensures that the recursion stops when the start and end positions meet.</p>
+
+<h2 id="5-handling-edge-cases-and-null-terminated-strings">5. Handling Edge Cases and Null-Terminated Strings</h2>
+
+<p>When reversing strings in C, it's essential to handle null-terminated strings correctly.</p>
+
+<p>The null character (<code>'\0'</code>) marks the end of a string, and it should not be swapped.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void reverseString(char *str) {
+    // Handling null-terminated strings
+    if (str == NULL || *str == '\0') {
+        printf("Invalid string.\n");
+        return;
+    }
+
+    // Reversing the string
+    int length = strlen(str);
+    for (int i = 0; i &lt; length / 2; i++) {
+        char temp = str[i];
+        str[i] = str[length - 1 - i];
+        str[length - 1 - i] = temp;
+    }
+}
+
+int main() {
+    // Reversing a null-terminated string
+    char str[] = "hello";
+
+    // Reversing the string
+    reverseString(str);
+
+    // Displaying the reversed string
+    printf("Reversed string: %s\n", str);
+
+    return 0;
+}
+</code></pre>
+
+<p>This example ensures that null-terminated strings are handled appropriately to avoid issues with the null character.</p>
+
+<h2 id="6-conclusion">6. Conclusion</h2>
+
+<p>Reversing a string in C involves understanding the principles of character arrays, pointers, and loops.</p>
+
+<p>Whether using character arrays, pointers, recursive functions, or handling null-terminated strings, each approach offers a unique perspective on string manipulation.</p>
+
+<p>By mastering the techniques presented in this guide, C programmers can confidently reverse strings, an essential skill in various programming scenarios.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

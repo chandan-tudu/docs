@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to swap two numbers in C without using a temporary variable?</title>
+<meta name="description" content="Learn How to swap two numbers in C without using a temporary variable." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-swap-two-numbers-in-c-without-using-a-temporary-variable.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to swap two numbers in C without using a temporary variable?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to swap two numbers in C without using a temporary variable?" loading="lazy" width="900" height="500"></div>
+<p>In C, the standard method involves using a temporary variable to facilitate the swap. However, there exists a clever approach that allows swapping without the need for an additional variable.</p>
+
+<p>This comprehensive guide explores both the conventional and unconventional methods of swapping two numbers in C, providing detailed explanations and practical examples.</p>
+
+<p><strong>Table of Contents #</strong></p>
+
+<ol>
+<li><a href="#1-introduction-to-number-swapping">Introduction to Number Swapping</a></li>
+<li><a href="#2-conventional-swap-with-a-temporary-variable">Conventional Swap with a Temporary Variable</a></li>
+<li><a href="#3-clever-swap-without-a-temporary-variable">Clever Swap without a Temporary Variable</a></li>
+<li><a href="#4-advantages-and-considerations">Advantages and Considerations</a></li>
+<li><a href="#5-conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="1-introduction-to-number-swapping">1. Introduction to Number Swapping</h2>
+
+<p>Swapping two numbers means exchanging their values. The conventional method involves using a temporary variable to store one of the values temporarily, allowing the exchange to take place.</p>
+
+<p>However, an alternative method eliminates the need for a temporary variable, relying on arithmetic operations and bitwise XOR.</p>
+
+<h2 id="2-conventional-swap-with-a-temporary-variable">2. Conventional Swap with a Temporary Variable</h2>
+
+<p>The standard approach to swapping two numbers is to use a temporary variable. This ensures that no data is lost during the exchange.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+void swapWithTemp(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    // Conventional swap using a temporary variable
+    int num1 = 5, num2 = 10;
+
+    printf("Before swap: num1 = %d, num2 = %d\n", num1, num2);
+
+    // Call the swap function
+    swapWithTemp(&amp;num1, &amp;num2);
+
+    printf("After swap: num1 = %d, num2 = %d\n", num1, num2);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the <code>swapWithTemp</code> function takes two pointers as arguments and uses a temporary variable to facilitate the swap.</p>
+
+<h2 id="3-clever-swap-without-a-temporary-variable">3. Clever Swap without a Temporary Variable</h2>
+
+<p>The clever approach to swapping without a temporary variable involves using arithmetic operations and bitwise XOR.</p>
+
+<p>This method takes advantage of the fact that XORing a value with itself results in 0.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+void cleverSwap(int *a, int *b) {
+    // XOR the values without using a temporary variable
+    *a = *a ^ *b;
+    *b = *a ^ *b;
+    *a = *a ^ *b;
+}
+
+int main() {
+    // Clever swap without a temporary variable
+    int num1 = 5, num2 = 10;
+
+    printf("Before swap: num1 = %d, num2 = %d\n", num1, num2);
+
+    // Call the clever swap function
+    cleverSwap(&amp;num1, &amp;num2);
+
+    printf("After swap: num1 = %d, num2 = %d\n", num1, num2);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the <code>cleverSwap</code> function uses XOR operations to swap the values of the two variables without using a temporary variable.</p>
+
+<h2 id="4-advantages-and-considerations">4. Advantages and Considerations</h2>
+
+<p>The clever swap without a temporary variable may appear concise, but it's essential to understand its limitations.</p>
+
+<p>This method is not suitable for swapping values that point to the same memory location (when <code>a</code> and <code>b</code> are the same variable) as it would result in the variable being set to 0.</p>
+
+<p>Additionally, the XOR-based swap may not be as intuitive or immediately clear as the conventional method, so it's crucial to document the code well to enhance readability.</p>
+
+<h2 id="5-conclusion">5. Conclusion</h2>
+
+<p>Swapping two numbers in C is a common task, and understanding both the conventional and clever methods provides flexibility in choosing the right approach for different scenarios.</p>
+
+<p>While the conventional swap with a temporary variable ensures clarity and safety, the clever swap without a temporary variable demonstrates an intriguing alternative.</p>
+
+<p>By mastering these techniques, C programmers can confidently swap numbers efficiently, choosing the method that best suits their specific requirements.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

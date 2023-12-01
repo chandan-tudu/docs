@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to concatenate strings in C?</title>
+<meta name="description" content="Different approaches to concatenate strings in C, covering both standard library functions and manual methods." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-concatenate-strings-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to concatenate strings in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to concatenate strings in C?" loading="lazy" width="900" height="500"></div>
+<p>String concatenation, the process of combining two strings into a single string, is a fundamental operation in C programming.</p>
+
+<p>Understanding how to concatenate strings is crucial for building more complex applications where manipulating text is a common task.</p>
+
+<p>In this comprehensive guide, we will explore different approaches to concatenate strings in C, covering both standard library functions and manual methods.</p>
+
+<p><strong>Table of Contents #</strong></p>
+<ol>
+<li><a href="#1-introduction-to-string-concatenation">Introduction to String Concatenation</a></li>
+<li><a href="#2-using-the-strcat-function">Using the <code>strcat</code> Function</a></li>
+<li><a href="#3-using-strncat-for-bounded-concatenation">Using <code>strncat</code> for Bounded Concatenation</a></li>
+<li><a href="#4-manually-concatenating-strings">Manually Concatenating Strings</a></li>
+<li><a href="#5-dynamic-memory-allocation-for-concatenation">Dynamic Memory Allocation for Concatenation</a></li>
+<li><a href="#6-conclusion">Conclusion</a></li>
+</ol>
+<h2 id="1-introduction-to-string-concatenation">1. Introduction to String Concatenation</h2>
+
+<p>String concatenation involves joining two strings to create a new string. In C, strings are typically represented as arrays of characters, and various methods can be employed to concatenate them.</p>
+
+<h2 id="2-using-the-strcat-function">2. Using the <code>strcat</code> Function</h2>
+
+<p>The standard C library provides the <code>strcat</code> function for concatenating strings. It appends the content of the source string to the destination string.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    // Using strcat to concatenate strings
+    char dest[20] = "Hello, ";
+    char src[] = "world!";
+
+    strcat(dest, src);
+
+    // Displaying the concatenated string
+    printf("Concatenated string: %s\n", dest);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the <code>strcat</code> function is used to concatenate the contents of the <code>src</code> string to the <code>dest</code> string.</p>
+
+<h2 id="3-using-strncat-for-bounded-concatenation">3. Using <code>strncat</code> for Bounded Concatenation</h2>
+
+<p>While <code>strcat</code> is convenient, it lacks bounds checking, which can lead to buffer overflows if not used carefully.</p>
+
+<p>The <code>strncat</code> function allows specifying the maximum number of characters to concatenate, providing a safer alternative.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    // Using strncat for bounded concatenation
+    char dest[20] = "Hello, ";
+    char src[] = "world!";
+
+    strncat(dest, src, sizeof(dest) - strlen(dest) - 1);
+
+    // Displaying the concatenated string
+    printf("Concatenated string: %s\n", dest);
+
+    return 0;
+}
+</code></pre>
+
+<p>Here, <code>strncat</code> is employed with the third argument specifying the maximum number of characters to concatenate.</p>
+
+<h2 id="4-manually-concatenating-strings">4. Manually Concatenating Strings</h2>
+
+<p>If you prefer a manual approach, you can use a loop to concatenate strings character by character. This method provides more control over the concatenation process.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+void concatenateStrings(char dest[], const char src[]) {
+    // Find the length of the destination string
+    int destLength = 0;
+    while (dest[destLength] != '\0') {
+        destLength++;
+    }
+
+    // Concatenate the source string to the destination string
+    int i = 0;
+    while (src[i] != '\0') {
+        dest[destLength + i] = src[i];
+        i++;
+    }
+
+    // Null-terminate the concatenated string
+    dest[destLength + i] = '\0';
+}
+
+int main() {
+    // Manually concatenating strings
+    char dest[20] = "Hello, ";
+    char src[] = "world!";
+
+    concatenateStrings(dest, src);
+
+    // Displaying the concatenated string
+    printf("Concatenated string: %s\n", dest);
+
+    return 0;
+}
+</code></pre>
+
+<p>This example defines a function <code>concatenateStrings</code> that manually concatenates two strings character by character.</p>
+
+<h2 id="5-dynamic-memory-allocation-for-concatenation">5. Dynamic Memory Allocation for Concatenation</h2>
+
+<p>If the size of the resulting string is not known in advance, dynamic memory allocation can be employed to create a new string to hold the concatenated result.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+char* concatenateStringsDynamic(const char str1[], const char str2[]) {
+    // Allocate memory for the concatenated string
+    char* result = (char*)malloc(strlen(str1) + strlen(str2) + 1);
+
+    // Check for memory allocation success
+    if (result == NULL) {
+        printf("Memory allocation failed.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Copy the first string to the result
+    strcpy(result, str1);
+
+    // Concatenate the second string to the result
+    strcat(result, str2);
+
+    return result;
+}
+
+int main() {
+    // Dynamic memory allocation for string concatenation
+    const char str1[] = "Hello, ";
+    const char str2[] = "world!";
+
+    char* concatenated = concatenateStringsDynamic(str1, str2);
+
+    // Displaying the concatenated string
+    printf("Concatenated string: %s\n", concatenated);
+
+    // Free the dynamically allocated memory
+    free(concatenated);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the <code>concatenateStringsDynamic</code> function dynamically allocates memory for the concatenated string, copies the first string, and then appends the second string.</p>
+
+<h2 id="6-conclusion">6. Conclusion</h2>
+
+<p>String concatenation is a fundamental operation in C programming, and understanding various methods for achieving it is essential for building robust applications.</p>
+
+<p>Whether using the standard library functions like <code>strcat</code> and <code>strncat</code>, manually concatenating strings, or dynamically allocating memory for concatenation, each approach has its advantages and use cases.</p>
+
+<p>By mastering the techniques presented in this guide, C programmers can confidently manipulate strings, a skill critical for various programming tasks.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

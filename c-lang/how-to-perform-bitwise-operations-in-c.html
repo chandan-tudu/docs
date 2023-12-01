@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to perform bitwise operations in C?</title>
+<meta name="description" content="Fundamentals of bitwise operations, bitwise AND, OR, XOR, left and right shifts, and their practical applications in C programming." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-perform-bitwise-operations-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to perform bitwise operations in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to perform bitwise operations in C?" loading="lazy" width="900" height="500"></div>
+<p>Bitwise operations in C provide a powerful way to manipulate individual bits within integers, enabling efficient handling of flags, masks, and low-level operations.</p>
+
+<p>This comprehensive guide explores the fundamentals of bitwise operations, bitwise AND, OR, XOR, left and right shifts, and their practical applications in C programming.</p>
+
+<h2 id="1-introduction-to-bitwise-operations-in-c">1. Introduction to Bitwise Operations in C</h2>
+
+<p>Bitwise operations involve manipulating individual bits in binary representations of integers.</p>
+
+<p>These operations, including AND, OR, XOR, and shifts, provide a low-level mechanism to control and extract information at the bit level.</p>
+
+<h2 id="2-basic-bitwise-operators">2. Basic Bitwise Operators</h2>
+
+<h3 id="2-1-bitwise-and-operator">2.1. Bitwise AND (<code>&amp;</code>) Operator</h3>
+
+<p>The bitwise AND operator (<code>&amp;</code>) performs the AND operation on each pair of corresponding bits. The result is 1 only if both bits are 1.</p>
+
+<pre class="language-c"><code>unsigned int result = 0b1010 &amp; 0b1100;  // Result: 0b1000
+</code></pre>
+
+<p>In this example, the result of the bitwise AND operation is <code>0b1000</code>.</p>
+
+<h3 id="2-2-bitwise-or-operator">2.2. Bitwise OR (<code>|</code>) Operator</h3>
+
+<p>The bitwise OR operator (<code>|</code>) performs the OR operation on each pair of corresponding bits. The result is 1 if at least one of the bits is 1.</p>
+
+<pre class="language-c"><code>unsigned int result = 0b1010 | 0b1100;  // Result: 0b1110
+</code></pre>
+
+<p>In this example, the result of the bitwise OR operation is <code>0b1110</code>.</p>
+
+<h3 id="2-3-bitwise-xor-operator">2.3. Bitwise XOR (<code>^</code>) Operator</h3>
+
+<p>The bitwise XOR operator (<code>^</code>) performs the XOR operation on each pair of corresponding bits. The result is 1 if the bits are different.</p>
+
+<pre class="language-c"><code>unsigned int result = 0b1010 ^ 0b1100;  // Result: 0b0110
+</code></pre>
+
+<p>In this example, the result of the bitwise XOR operation is <code>0b0110</code>.</p>
+
+<h2 id="3-bitwise-shift-operators">3. Bitwise Shift Operators</h2>
+
+<h3 id="3-1-left-shift-operator">3.1. Left Shift (<code>&lt;&lt;</code>) Operator</h3>
+
+<p>The left shift operator (<code>&lt;&lt;</code>) shifts the bits of a number to the left by a specified number of positions.</p>
+
+<p>It effectively multiplies the number by 2 raised to the power of the shift count.</p>
+
+<pre class="language-c"><code>unsigned int result = 0b1010 &lt;&lt; 2;  // Result: 0b101000
+</code></pre>
+
+<p>In this example, the result of the left shift operation is <code>0b101000</code>.</p>
+
+<h3 id="3-2-right-shift-operator">3.2. Right Shift (<code>&gt;&gt;</code>) Operator</h3>
+
+<p>The right shift operator (<code>&gt;&gt;</code>) shifts the bits of a number to the right by a specified number of positions.</p>
+
+<p>It effectively divides the number by 2 raised to the power of the shift count.</p>
+
+<pre class="language-c"><code>unsigned int result = 0b1010 &gt;&gt; 1;  // Result: 0b0101
+</code></pre>
+
+<p>In this example, the result of the right shift operation is <code>0b0101</code>.</p>
+
+<h2 id="4-practical-applications-of-bitwise-operations">4. Practical Applications of Bitwise Operations</h2>
+
+<h3 id="4-1-setting-and-clearing-bits">4.1. Setting and Clearing Bits</h3>
+
+<p>Bitwise operations are often used to set or clear specific bits in a number.</p>
+
+<pre class="language-c"><code>// Set the 3rd bit (from the right) to 1
+unsigned int setBit = number | (1 &lt;&lt; 2);
+
+// Clear the 4th bit (from the right) to 0
+unsigned int clearBit = number &amp; ~(1 &lt;&lt; 3);
+</code></pre>
+
+<h3 id="4-2-checking-if-a-bit-is-set">4.2. Checking if a Bit is Set</h3>
+
+<p>Bitwise operations can be employed to check if a specific bit is set (equals 1).</p>
+
+<pre class="language-c"><code>// Check if the 2nd bit (from the right) is set
+if ((number &amp; (1 &lt;&lt; 1)) != 0) {
+    // Bit is set
+} else {
+    // Bit is not set
+}
+</code></pre>
+
+<h3 id="4-3-toggling-bits-">4.3. <strong>Toggling Bits</strong></h3>
+
+<p>Bitwise XOR is often used to toggle specific bits.</p>
+
+<pre class="language-c"><code>// Toggle the 5th bit (from the right)
+unsigned int toggledBit = number ^ (1 &lt;&lt; 4);
+</code></pre>
+
+<h2 id="5-bitwise-operations-and-flags">5. Bitwise Operations and Flags</h2>
+
+<p>Bitwise operations are commonly used in conjunction with flags to represent multiple boolean values within a single variable.</p>
+
+<pre class="language-c"><code>#define FLAG_A (1 &lt;&lt; 0)
+#define FLAG_B (1 &lt;&lt; 1)
+#define FLAG_C (1 &lt;&lt; 2)
+
+unsigned int flags = 0;
+
+// Set FLAG_B
+flags |= FLAG_B;
+
+// Check if FLAG_A is set
+if ((flags &amp; FLAG_A) != 0) {
+    // FLAG_A is set
+}
+</code></pre>
+
+<h2 id="6-bitwise-operations-for-optimization">6. Bitwise Operations for Optimization</h2>
+
+<p>Bitwise operations are instrumental in optimizing certain algorithms, especially in scenarios where individual bits need to be manipulated efficiently.</p>
+
+<pre class="language-c"><code>// Check if a number is even
+if ((number &amp; 1) == 0) {
+    // Number is even
+} else {
+    // Number is odd
+}
+</code></pre>
+
+<h2 id="7-conclusion">7. Conclusion</h2>
+
+<p>Bitwise operations in C provide a powerful mechanism for manipulating individual bits within integers.</p>
+
+<p>Understanding and mastering bitwise AND, OR, XOR, left and right shifts, along with their practical applications, empowers C programmers to write more efficient, compact, and optimized code.</p>
+
+<p>Whether used for setting and clearing bits, checking flags, or optimizing algorithms, bitwise operations play a crucial role in low-level bit manipulation.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

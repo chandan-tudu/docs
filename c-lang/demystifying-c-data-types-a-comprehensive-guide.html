@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demystifying C Data Types: A Comprehensive Guide</title>
+<meta name="description" content="This comprehensive guide explores the various data types in C, categorizing them into primary, derived, and user-defined types." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/demystifying-c-data-types-a-comprehensive-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Demystifying C Data Types: A Comprehensive Guide</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of Demystifying C Data Types: A Comprehensive Guide" loading="lazy" width="900" height="500"></div>
+<p>In the C programming language, data types play a fundamental role in defining the nature of variables and how they store and represent information.</p>
+
+<p>Understanding C data types is crucial for effective programming, as it dictates the range of values a variable can hold and the operations that can be performed on it.</p>
+
+<p>This comprehensive guide explores the various data types in C, categorizing them into primary, derived, and user-defined types.</p>
+
+<p><strong>Table of Contents #</strong></p>
+<ol>
+<li><a href="#1-introduction-to-c-data-types">Introduction to C Data Types</a></li>
+<li><a href="#2-primary-data-types">Primary Data Types</a>
+
+<ul>
+<li><a href="#a-integer-types">a. Integer Types</a></li>
+<li><a href="#b-floating-point-types">b. Floating-Point Types</a></li>
+<li><a href="#c-void-type">c. Void Type</a></li>
+</ul></li>
+<li><a href="#3-derived-data-types">Derived Data Types</a>
+
+<ul>
+<li><a href="#a-arrays">a. Arrays</a></li>
+<li><a href="#b-pointers">b. Pointers</a></li>
+<li><a href="#c-structures">c. Structures</a></li>
+<li><a href="#d-union">d. Union</a></li>
+</ul></li>
+<li><a href="#4-user-defined-data-types">User-Defined Data Types</a>
+
+<ul>
+<li><a href="#a-typedef">a. typedef</a></li>
+</ul></li>
+<li><a href="#5-conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="1-introduction-to-c-data-types">1. Introduction to C Data Types</h2>
+
+<p>In C, a data type is a classification that specifies which type of value a variable can hold.</p>
+
+<p>Data types are essential for allocating memory, determining the range of values, and defining the operations applicable to variables.</p>
+
+<p>C supports a variety of data types, each serving distinct purposes.</p>
+
+<h2 id="2-primary-data-types">2. Primary Data Types</h2>
+
+<h3 id="a-integer-types">a. Integer Types:</h3>
+
+<ul>
+<li><strong>int:</strong> Represents integer values.</li>
+<li><strong>char:</strong> Represents single characters or small integers.</li>
+<li><strong>short:</strong> Represents short integers.</li>
+<li><strong>long:</strong> Represents long integers.</li>
+<li><strong>long long:</strong> Represents very long integers.</li>
+</ul>
+
+<p>Example:</p>
+
+<pre class="language-c"><code>int age = 25;
+char grade = 'A';
+</code></pre>
+
+<h3 id="b-floating-point-types">b. Floating-Point Types:</h3>
+
+<ul>
+<li><strong>float:</strong> Represents single-precision floating-point numbers.</li>
+<li><strong>double:</strong> Represents double-precision floating-point numbers.</li>
+<li><strong>long double:</strong> Represents extended-precision floating-point numbers.</li>
+</ul>
+
+<p>Example:</p>
+
+<pre class="language-c"><code>float pi = 3.14159;
+double salary = 50000.50;
+</code></pre>
+
+<h3 id="c-void-type">c. Void Type:</h3>
+
+<ul>
+<li><strong>void:</strong> Represents the absence of a data type. Used in function return types and function parameters when a function does not return any value.</li>
+</ul>
+
+<p>Example:</p>
+
+<pre class="language-c"><code>void printMessage() {
+    printf("Hello, World!\n");
+}
+</code></pre>
+
+<h2 id="3-derived-data-types">3. Derived Data Types</h2>
+
+<h3 id="a-arrays">a. Arrays:</h3>
+
+<p>Arrays allow the grouping of elements of the same data type under a single name.</p>
+
+<p>Example:</p>
+
+<pre class="language-c"><code>int numbers[5] = {1, 2, 3, 4, 5};
+</code></pre>
+
+<h3 id="b-pointers">b. Pointers:</h3>
+
+<p>Pointers store memory addresses and are used to manipulate data indirectly.</p>
+
+<p>Example:</p>
+
+<pre class="language-c"><code>int *ptr;
+int num = 10;
+ptr = &amp;num; // Pointer now holds the address of num
+</code></pre>
+
+<h3 id="c-structures">c. Structures:</h3>
+
+<p>Structures enable the creation of user-defined data types by grouping different data types under a single name.</p>
+
+<p>Example:</p>
+
+<pre class="language-c"><code>struct Point {
+    int x;
+    int y;
+};
+struct Point p1 = {3, 5};
+</code></pre>
+
+<h3 id="d-union">d. Union:</h3>
+
+<p>A union is similar to a structure but allows the storage of only one member at a time.</p>
+
+<p>Example:</p>
+
+<pre class="language-c"><code>union Data {
+    int i;
+    float f;
+    char c;
+};
+</code></pre>
+
+<h2 id="4-user-defined-data-types">4. User-Defined Data Types</h2>
+
+<h3 id="a-typedef">a. typedef:</h3>
+
+<p>The <code>typedef</code> keyword is used to create user-defined data types, providing an alias for existing data types.</p>
+
+<p>Example:</p>
+
+<pre class="language-c"><code>typedef unsigned long long int UserID;
+UserID myID = 123456789;
+</code></pre>
+
+<h2 id="5-conclusion">5. Conclusion</h2>
+
+<p>Understanding C data types is foundational for writing robust and efficient programs.</p>
+
+<p>By choosing the appropriate data type for variables and structures, programmers can optimize memory usage, enhance code readability, and ensure the accurate representation of data.</p>
+
+<p>Whether working with integers, floating-point numbers, arrays, or user-defined structures, a solid grasp of C data types empowers developers to create reliable and high-performance software.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

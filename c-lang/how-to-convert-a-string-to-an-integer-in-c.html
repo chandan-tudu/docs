@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Convert A String To An Integer In C?</title>
+<meta name="description" content="Various methods for string to integer conversion in C, covering standard library functions, custom implementations, and best practices." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-convert-a-string-to-an-integer-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to convert a string to an integer in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to convert a string to an integer in C?" loading="lazy" width="900" height="500"></div>
+<p>Converting a string to an integer is a common operation in C programming, especially when dealing with user input or external data.</p>
+
+<p>The process involves parsing a sequence of characters representing a numerical value and converting it to its integer equivalent.</p>
+
+<p>In this comprehensive guide, we'll explore various methods for string to integer conversion in C, covering standard library functions, custom implementations, and best practices.</p>
+
+<p><strong>Table of Contents #</strong></p>
+
+<ol>
+<li><a href="#1-introduction-to-string-to-integer-conversion">Introduction to String to Integer Conversion</a></li>
+<li><a href="#2-using-standard-library-functions">Using Standard Library Functions</a>
+
+<ul>
+<li><a href="#2-1-atoi-function">atoi Function</a></li>
+<li><a href="#2-2-strtol-function">strtol Function</a></li>
+</ul></li>
+<li><a href="#3-custom-string-to-integer-conversion">Custom String to Integer Conversion</a></li>
+<li><a href="#4-handling-errors-and-edge-cases">Handling Errors and Edge Cases</a>
+
+<ul>
+<li><a href="#4-1-overflow-and-underflow">Overflow and Underflow</a></li>
+<li><a href="#4-2-invalid-character-handling">Invalid Character Handling</a></li>
+</ul></li>
+<li><a href="#5-conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="1-introduction-to-string-to-integer-conversion">1. Introduction to String to Integer Conversion</h2>
+
+<p>Converting a string to an integer is a crucial task in C programming, often required for tasks like processing user input, reading configuration files, or handling external data.</p>
+
+<p>The goal is to extract the numerical value encoded in a string and store it as an integer for further processing.</p>
+
+<h2 id="2-using-standard-library-functions">2. Using Standard Library Functions</h2>
+
+<h3 id="2-1-atoi-function">2.1 <code>atoi</code> Function</h3>
+
+<p>The <code>atoi</code> (ASCII to Integer) function is a standard library function that converts a string of digits to an integer. It stops conversion when it encounters the first non-digit character.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    char str[] = "12345";
+    int result = atoi(str);
+
+    printf("Converted integer: %d\n", result);
+
+    return 0;
+}
+</code></pre>
+
+<h3 id="2-2-strtol-function">2.2 <code>strtol</code> Function</h3>
+
+<p>The <code>strtol</code> (String to Long) function is a more versatile function that allows better error handling.</p>
+
+<p>It can convert a string to a long integer and provides a pointer to the first invalid character.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    char str[] = "12345";
+    char *endptr;
+    long result = strtol(str, &amp;endptr, 10);
+
+    if (*endptr != '\0') {
+        printf("Conversion failed. Invalid character: %c\n", *endptr);
+    } else {
+        printf("Converted integer: %ld\n", result);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="3-custom-string-to-integer-conversion">3. Custom String to Integer Conversion</h2>
+
+<p>While standard library functions are convenient, understanding the process allows for custom implementations.</p>
+
+<p>Here's a simple function that converts a string to an integer:</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int customAtoi(const char *str) {
+    int result = 0;
+    int sign = 1;  // Positive by default
+
+    // Handle optional sign
+    if (*str == '-') {
+        sign = -1;
+        ++str;
+    } else if (*str == '+') {
+        ++str;
+    }
+
+    // Process each digit
+    while (*str &gt;= '0' &amp;&amp; *str &lt;= '9') {
+        result = result * 10 + (*str - '0');
+        ++str;
+    }
+
+    return sign * result;
+}
+
+int main() {
+    char str[] = "-9876";
+    int result = customAtoi(str);
+
+    printf("Converted integer: %d\n", result);
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="4-handling-errors-and-edge-cases">4. Handling Errors and Edge Cases</h2>
+
+<p>String to integer conversion may encounter various errors, such as invalid characters, overflow, or underflow.</p>
+
+<p>It's essential to handle these situations to ensure robust and reliable code.</p>
+
+<h3 id="4-1-overflow-and-underflow">4.1 Overflow and Underflow</h3>
+
+<p>When converting a large string to an integer, there is a risk of overflow. It's crucial to check the result against the limits of the <code>int</code> data type.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;limits.h&gt;
+
+int safeAtoi(const char *str) {
+    long result = 0;
+    int sign = 1;
+
+    if (*str == '-') {
+        sign = -1;
+        ++str;
+    } else if (*str == '+') {
+        ++str;
+    }
+
+    while (*str &gt;= '0' &amp;&amp; *str &lt;= '9') {
+        result = result * 10 + (*str - '0');
+
+        // Check for overflow
+        if (result &gt; INT_MAX) {
+            fprintf(stderr, "Overflow occurred. Cannot convert.\n");
+            return sign == 1 ? INT_MAX : INT_MIN;
+        }
+
+        ++str;
+    }
+
+    return sign * (int)result;
+}
+
+int main() {
+    char str[] = "2147483648";  // One more than INT_MAX
+    int result = safeAtoi(str);
+
+    printf("Converted integer: %d\n", result);
+
+    return 0;
+}
+</code></pre>
+
+<h3 id="4-2-invalid-character-handling">4.2 Invalid Character Handling</h3>
+
+<p>When encountering an invalid character in the string, it's essential to handle the error appropriately.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int safeAtoi(const char *str) {
+    long result = 0;
+    int sign = 1;
+
+    if (*str == '-') {
+        sign = -1;
+        ++str;
+    } else if (*str == '+') {
+        ++str;
+    }
+
+    while (*str &gt;= '0' &amp;&amp; *str &lt;= '9') {
+        result = result * 10 + (*str - '0');
+        ++str;
+    }
+
+    // Check for characters other than digits
+    if (*str != '\0') {
+        fprintf(stderr, "Conversion failed. Invalid character: %c\n", *str);
+        return 0;  // Return an error value
+    }
+
+    // Check for overflow
+    if (result &gt; INT_MAX) {
+        fprintf(stderr, "Overflow occurred. Cannot convert.\n");
+        return sign == 1 ? INT_MAX : INT_MIN;
+    }
+
+    return sign * (int)result;
+}
+
+int main() {
+    char str[] = "123abc";
+    int result = safeAtoi(str);
+
+    if (result != 0) {
+        printf("Converted integer: %d\n", result);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="5-conclusion">5. Conclusion</h2>
+
+<p>Converting a string to an integer is a common task in C programming, and there are multiple approaches to achieve this.</p>
+
+<p>Standard library functions like <code>atoi</code> and <code>strtol</code> provide convenient solutions, while custom implementations offer more control and understanding of the process.</p>
+
+<p>When performing string to integer conversion, it's crucial to handle errors and edge cases to ensure the reliability and robustness of the code.</p>
+
+<p>By mastering the techniques presented in this guide, C programmers can confidently and accurately convert strings to integers in various programming scenarios.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

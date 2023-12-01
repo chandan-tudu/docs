@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to implement a queue in C?</title>
+<meta name="description" content="The implementation of queues in C, covering the basics of queues, operations, and a practical example to illustrate their usage." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-implement-a-queue-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to implement a queue in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to implement a queue in C?" loading="lazy" width="900" height="500"></div>
+<p>Queues are fundamental data structures that follow the First-In-First-Out (FIFO) principle, making them suitable for scenarios where the order of processing matters.</p>
+
+<p>This comprehensive guide explores the implementation of queues in C, covering the basics of queues, operations, and a practical example to illustrate their usage.</p>
+
+<h2 id="1-introduction-to-queues">1. Introduction to Queues</h2>
+
+<p>A queue is a linear data structure that follows the FIFO principle. Elements are added at the rear (enqueue) and removed from the front (dequeue). This ensures that the first element added is the first to be processed.</p>
+
+<h2 id="2-basic-operations-on-queues">2. Basic Operations on Queues</h2>
+
+<h3 id="2-1-enqueue-operation">2.1. Enqueue Operation</h3>
+
+<p>Enqueue adds an element to the rear of the queue.</p>
+
+<pre class="language-c"><code>void enqueue(int data);
+</code></pre>
+
+<h3 id="2-2-dequeue-operation">2.2. Dequeue Operation</h3>
+
+<p>Dequeue removes an element from the front of the queue.</p>
+
+<pre class="language-c"><code>int dequeue();
+</code></pre>
+
+<h3 id="2-3-front-operation">2.3. Front Operation</h3>
+
+<p>Front retrieves the front element without removing it.</p>
+
+<pre class="language-c"><code>int front();
+</code></pre>
+
+<h3 id="2-4-is-empty-operation">2.4. Is Empty Operation</h3>
+
+<p>Is Empty checks if the queue is empty.</p>
+
+<pre class="language-c"><code>int is_empty();
+</code></pre>
+
+<h3 id="2-5-is-full-operation-optional-">2.5. Is Full Operation (Optional)</h3>
+
+<p>For a fixed-size queue, Is Full checks if the queue has reached its capacity.</p>
+
+<pre class="language-c"><code>int is_full();
+</code></pre>
+
+<h2 id="3-implementation-of-a-queue-in-c">3. Implementation of a Queue in C</h2>
+
+<p>Let's implement a basic queue using an array:</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX_SIZE 100
+
+struct Queue {
+    int items[MAX_SIZE];
+    int front;
+    int rear;
+};
+
+// Function to initialize an empty queue
+void initialize(struct Queue* q) {
+    q-&gt;front = -1;
+    q-&gt;rear = -1;
+}
+
+// Function to check if the queue is empty
+int is_empty(struct Queue* q) {
+    return (q-&gt;front == -1 &amp;&amp; q-&gt;rear == -1);
+}
+
+// Function to check if the queue is full
+int is_full(struct Queue* q) {
+    return (q-&gt;rear == MAX_SIZE - 1);
+}
+
+// Function to add an element to the rear of the queue
+void enqueue(struct Queue* q, int value) {
+    if (is_full(q)) {
+        printf("Queue is full. Cannot enqueue.\n");
+        return;
+    }
+
+    if (is_empty(q)) {
+        q-&gt;front = 0;
+        q-&gt;rear = 0;
+    } else {
+        q-&gt;rear++;
+    }
+
+    q-&gt;items[q-&gt;rear] = value;
+    printf("%d enqueued to the queue.\n", value);
+}
+
+// Function to remove an element from the front of the queue
+int dequeue(struct Queue* q) {
+    int removed;
+
+    if (is_empty(q)) {
+        printf("Queue is empty. Cannot dequeue.\n");
+        return -1;  // Return an error value
+    } else if (q-&gt;front == q-&gt;rear) {
+        removed = q-&gt;items[q-&gt;front];
+        q-&gt;front = -1;
+        q-&gt;rear = -1;
+    } else {
+        removed = q-&gt;items[q-&gt;front];
+        q-&gt;front++;
+    }
+
+    printf("%d dequeued from the queue.\n", removed);
+    return removed;
+}
+
+// Function to retrieve the front element without removing it
+int front(struct Queue* q) {
+    if (is_empty(q)) {
+        printf("Queue is empty.\n");
+        return -1;  // Return an error value
+    }
+
+    return q-&gt;items[q-&gt;front];
+}
+
+// Function to display the elements of the queue
+void display(struct Queue* q) {
+    if (is_empty(q)) {
+        printf("Queue is empty.\n");
+        return;
+    }
+
+    printf("Queue elements: ");
+    for (int i = q-&gt;front; i &lt;= q-&gt;rear; i++) {
+        printf("%d ", q-&gt;items[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    struct Queue myQueue;
+    initialize(&amp;myQueue);
+
+    enqueue(&amp;myQueue, 10);
+    enqueue(&amp;myQueue, 20);
+    enqueue(&amp;myQueue, 30);
+
+    display(&amp;myQueue);
+
+    int frontElement = front(&amp;myQueue);
+    printf("Front element: %d\n", frontElement);
+
+    int dequeued = dequeue(&amp;myQueue);
+    printf("Dequeued element: %d\n", dequeued);
+
+    display(&amp;myQueue);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, we've implemented a queue using an array and provided functions for basic operations.</p>
+
+<p>The <code>initialize</code> function sets the initial state of the queue, and the <code>display</code> function shows the elements currently in the queue.</p>
+
+<h2 id="4-conclusion">4. Conclusion</h2>
+
+<p>Queues are versatile data structures with applications ranging from task scheduling to printer queues.</p>
+
+<p>Understanding the basics of queues and their implementation in C enables programmers to efficiently handle scenarios where the order of processing is crucial.</p>
+
+<p>By incorporating enqueue, dequeue, and other operations, C developers can create robust queue-based solutions, contributing to the effectiveness and efficiency of their programs.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
