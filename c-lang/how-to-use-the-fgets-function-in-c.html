@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to use the 'fgets' function in C?</title>
+<meta name="description" content="Details of the fgets function, understand its syntax, usage, and explore some practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-use-the-fgets-function-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to use the 'fgets' function in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to use the &#039;fgets&#039; function in C?" loading="lazy" width="900" height="500"></div>
+<p>In C programming, handling input from users or external files is a common task. The <code>fgets</code> function plays a crucial role in reading strings, including spaces, from a specified stream.</p>
+
+<p>In this comprehensive guide, we will delve into the details of the <code>fgets</code> function, understand its syntax, usage, and explore some practical examples.</p>
+
+<p><strong>Table of Contents #</strong></p>
+
+<ol>
+<li><a href="#introduction-to-fgets">Introduction to <code>fgets</code></a>
+
+<ul>
+<li><a href="#syntax">Syntax</a></li>
+<li><a href="#return-value">Return Value</a></li>
+</ul></li>
+<li><a href="#using-fgets-for-keyboard-input">Using <code>fgets</code> for Keyboard Input</a>
+
+<ul>
+<li><a href="#basic-example">Basic Example</a></li>
+</ul></li>
+<li><a href="#using-fgets-for-file-input">Using <code>fgets</code> for File Input</a>
+
+<ul>
+<li><a href="#file-input-example">File Input Example</a></li>
+</ul></li>
+<li><a href="#handling-newline-characters">Handling Newline Characters</a>
+
+<ul>
+<li><a href="#removing-newline-character">Removing Newline Character</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction-to-fgets">Introduction to "fgets"</h2>
+
+<p>The <code>fgets</code> function is used to read a string from a specified stream (typically a file or standard input) up to a specified number of characters or until a newline character (<code>'\n'</code>) is encountered, whichever comes first.</p>
+
+<p>This function is part of the C Standard Library (<code>stdio.h</code>), making it a standard and portable way to handle string input.</p>
+
+<h3 id="syntax">Syntax:</h3>
+
+<pre class="language-c"><code>char *fgets(char *str, int size, FILE *stream);
+</code></pre>
+
+<ul>
+<li><code>str</code>: Pointer to the character array (buffer) where the string will be stored.</li>
+<li><code>size</code>: Maximum number of characters to be read, including the null-terminator.</li>
+<li><code>stream</code>: Pointer to the <code>FILE</code> object, representing the stream from which to read the string.</li>
+</ul>
+
+<h3 id="return-value">Return Value:</h3>
+
+<ul>
+<li>If successful, the function returns the same pointer passed as <code>str</code>.</li>
+<li>If an error occurs or if the end-of-file (EOF) is reached before any characters are read, it returns a <code>NULL</code> pointer.</li>
+</ul>
+
+<h2 id="using-fgets-for-keyboard-input">Using <code>fgets</code> for Keyboard Input</h2>
+
+<p>Let's start with a basic example demonstrating the use of <code>fgets</code> to get input from the keyboard:</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    char buffer[100]; // Buffer to store the input string
+
+    // Prompt the user for input
+    printf("Enter a string: ");
+
+    // Use fgets to read input from standard input (keyboard)
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+        // Print the input string
+        printf("You entered: %s", buffer);
+    } else {
+        printf("Error reading input.\n");
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>We declare a character array <code>buffer</code> to store the input string.</li>
+<li>We use <code>printf</code> to display a prompt to the user.</li>
+<li><code>fgets</code> is then used to read the input from the keyboard (<code>stdin</code>).</li>
+</ul>
+
+<h2 id="using-fgets-for-file-input">Using <code>fgets</code> for File Input</h2>
+
+<p>The <code>fgets</code> function is also commonly used for reading strings from files. Here's an example of reading lines from a file:</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file = fopen("sample.txt", "r"); // Open the file for reading
+    if (file == NULL) {
+        perror("Error opening file");
+        return 1;
+    }
+
+    char buffer[100];
+
+    // Read and print each line from the file
+    while (fgets(buffer, sizeof(buffer), file) != NULL) {
+        printf("Line from file: %s", buffer);
+    }
+
+    // Close the file
+    fclose(file);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>We open a file named "sample.txt" for reading using <code>fopen</code>.</li>
+<li><code>fgets</code> is used inside a loop to read each line from the file until the end-of-file is reached.</li>
+<li>The file is closed using <code>fclose</code>.</li>
+</ul>
+
+<h2 id="handling-newline-characters">Handling Newline Characters</h2>
+
+<p>One thing to note is that <code>fgets</code> includes the newline character (<code>'\n'</code>) in the string if it is encountered before reaching the specified size.</p>
+
+<p>To remove the newline character, you can use the <code>strcspn</code> function:</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char buffer[100];
+
+    printf("Enter a string: ");
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+        // Remove the newline character if present
+        buffer[strcspn(buffer, "\n")] = '\0';
+
+        printf("You entered: %s\n", buffer);
+    } else {
+        printf("Error reading input.\n");
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, <code>strcspn(buffer, "\n")</code> returns the position of the newline character in the string, and we replace it with the null-terminator (<code>'\0'</code>).</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The <code>fgets</code> function in C is a versatile tool for handling string input from various sources.</p>
+
+<p>Whether you're reading input from the keyboard or processing data from files, understanding how to use <code>fgets</code> is crucial. This guide has covered the syntax, usage, and practical examples of the <code>fgets</code> function.</p>
+
+<p>Incorporating this knowledge into your C programming skills will enable you to effectively handle string input in a variety of scenarios.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

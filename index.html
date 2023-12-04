@@ -67,6 +67,35 @@
             width: 33.3333%;
         }
     }
+
+    .gdpr-msg{
+    border-top: 2px solid #ddd;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    padding: 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.gdpr-msg a{
+    display: inline-block;
+    margin:0 10px;
+}
+.gdpr-msg button{
+    cursor: pointer;
+    background: #222;
+    color: #f7f1ff;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: .8em;
+}
+.gdpr-msg button:hover{
+    background: #000;
+}
 </style>
 </head>
 <body>
@@ -120,5 +149,42 @@
             <li><a href="https://www.devbabu.com/contact-us/">Contact</a></li>
         </ul>
     </footer>
+    <div class="footer" id="footer"></div>
+    <script>
+        const bodyEl = document.querySelector('body');
+        const createEl = (type, attr = {}) => {
+    const el = document.createElement(type);
+    for (i in attr) {
+        el.setAttribute(i, attr[i]);
+    }
+    return el;
+};
+        // GDPR Consent
+
+if(document.cookie.indexOf('DevBDocsCookie=1')){
+    const consentDiv = createEl('div',{
+        class:'gdpr-msg'
+    });
+    const privacyLink = createEl('a',{
+                href:'https://www.devbabu.com/privacy-policy/'
+            });
+            privacyLink.innerText = 'Privacy'
+            const acceptBtn = createEl('button')
+            acceptBtn.innerText = "Accept"
+            acceptBtn.addEventListener('click', () => {
+                document.cookie = "DevBDocsCookie=1; max-age=" + 60*60*24*30;
+                if(document.cookie){
+                    consentDiv.style.display = "none";
+                }else{
+                    alert("Cookie Can't be set!");
+                }
+            })
+
+    consentDiv.innerText = "We use cookies to ensure that we give you the best experience on our website.";
+    consentDiv.appendChild(privacyLink);
+    consentDiv.appendChild(acceptBtn);
+    bodyEl.insertAdjacentElement('beforeend', consentDiv);
+}
+    </script>
 </body>
 </html>

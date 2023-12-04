@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to sort an array in C?</title>
+<meta name="description" content="Different sorting algorithms and demonstrate how to implement them in the C programming language." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-sort-an-array-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to sort an array in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to sort an array in C?" loading="lazy" width="900" height="500"></div>
+<p>Sorting an array is a fundamental operation in computer science and programming. It is crucial for tasks like searching, data analysis, and improving the efficiency of various algorithms.</p>
+
+<p>In this article, we'll explore different sorting algorithms and demonstrate how to implement them in the C programming language.</p>
+
+<p><strong>Table of Contents #</strong></p>
+
+<ol>
+<li><a href="#1-bubble-sort">Bubble Sort</a></li>
+<li><a href="#2-selection-sort">Selection Sort</a></li>
+<li><a href="#3-insertion-sort">Insertion Sort</a></li>
+<li><a href="#4-quick-sort">Quick Sort</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="1-bubble-sort">1. Bubble Sort:</h2>
+
+<p>Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The process is repeated until the list is sorted.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+void bubbleSort(int arr[], int size) {
+    for (int i = 0; i &lt; size - 1; i++) {
+        for (int j = 0; j &lt; size - i - 1; j++) {
+            if (arr[j] &gt; arr[j + 1]) {
+                // Swap arr[j] and arr[j+1]
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {64, 25, 12, 22, 11};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    bubbleSort(arr, size);
+
+    printf("Sorted array: ");
+    for (int i = 0; i &lt; size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="2-selection-sort">2. Selection Sort:</h2>
+
+<p>Selection sort is an in-place comparison sorting algorithm. It works by dividing the input list into a sorted and an unsorted region.</p>
+
+<p>The algorithm repeatedly selects the smallest (or largest, depending on sorting order) element from the unsorted region and swaps it with the first element of the unsorted region.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+void selectionSort(int arr[], int size) {
+    for (int i = 0; i &lt; size - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j &lt; size; j++) {
+            if (arr[j] &lt; arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        // Swap arr[i] and arr[minIndex]
+        int temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+}
+
+int main() {
+    int arr[] = {64, 25, 12, 22, 11};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    selectionSort(arr, size);
+
+    printf("Sorted array: ");
+    for (int i = 0; i &lt; size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="3-insertion-sort">3. Insertion Sort:</h2>
+
+<p>Insertion sort builds the final sorted array one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+void insertionSort(int arr[], int size) {
+    for (int i = 1; i &lt; size; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        // Move elements of arr[0..i-1] that are greater than key
+        // to one position ahead of their current position
+        while (j &gt;= 0 &amp;&amp; arr[j] &gt; key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+
+        arr[j + 1] = key;
+    }
+}
+
+int main() {
+    int arr[] = {64, 25, 12, 22, 11};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    insertionSort(arr, size);
+
+    printf("Sorted array: ");
+    for (int i = 0; i &lt; size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="4-quick-sort">4. Quick Sort:</h2>
+
+<p>Quick sort is an efficient in-place sorting algorithm. It is a divide-and-conquer algorithm that works by selecting a 'pivot' element and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+void swap(int* a, int* b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];  // Pivot (last element)
+    int i = (low - 1);      // Index of smaller element
+
+    for (int j = low; j &lt;= high - 1; j++) {
+        if (arr[j] &lt; pivot) {
+            i++;
+            swap(&amp;arr[i], &amp;arr[j]);
+        }
+    }
+    swap(&amp;arr[i + 1], &amp;arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low &lt; high) {
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+    int arr[] = {64, 25, 12, 22, 11};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    quickSort(arr, 0, size - 1);
+
+    printf("Sorted array: ");
+    for (int i = 0; i &lt; size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Sorting is a fundamental operation in computer science, and understanding different sorting algorithms is crucial for writing efficient programs.</p>
+
+<p>In this article, we explored several sorting algorithms—Bubble Sort, Selection Sort, Insertion Sort, and Quick Sort—and provided C implementations for each.</p>
+
+<p>While these are just a few examples, there are many other sorting algorithms with different trade-offs in terms of time and space complexity.</p>
+
+<p>Depending on the specific requirements of your application, you may choose one algorithm over another.</p>
+
+<p>Each sorting algorithm has its strengths and weaknesses, and the best choice often depends on the characteristics of the data you are working with.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to check if a number is prime in C?</title>
+<meta name="description" content="Different methods to check if a number is prime in the C programming language." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-check-if-a-number-is-prime-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How to check if a number is prime in C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to check if a number is prime in C?" loading="lazy" width="900" height="500"></div>
+<p>Prime numbers are integers greater than 1 that have no positive divisors other than 1 and themselves. In this article, we will explore different methods to check if a number is prime in the C programming language.</p>
+
+<h2 id="method-1-brute-force-approach">Method 1: Brute Force Approach</h2>
+
+<p>The most straightforward method to check if a number is prime is to use a brute-force approach.</p>
+
+<p>We can iterate from 2 to the square root of the number and check if the number is divisible by any of these values.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;math.h&gt;
+
+bool isPrime(int n) {
+    if (n &lt;= 1) {
+        return false;
+    }
+
+    for (int i = 2; i &lt;= sqrt(n); i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &amp;num);
+
+    if (isPrime(num)) {
+        printf("%d is a prime number.\n", num);
+    } else {
+        printf("%d is not a prime number.\n", num);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>This code defines a function <code>isPrime</code> that takes an integer <code>n</code> as input and returns <code>true</code> if it is prime and <code>false</code> otherwise.</p>
+
+<p>The <code>main</code> function takes user input and calls the <code>isPrime</code> function to determine whether the entered number is prime.</p>
+
+<h2 id="method-2-optimized-brute-force">Method 2: Optimized Brute Force</h2>
+
+<p>While the brute-force approach is simple, it can be optimized to reduce unnecessary iterations.</p>
+
+<p>For instance, we can skip even numbers greater than 2 since they are divisible by 2.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;math.h&gt;
+
+bool isPrime(int n) {
+    if (n &lt;= 1) {
+        return false;
+    }
+
+    if (n == 2) {
+        return true;
+    }
+
+    if (n % 2 == 0) {
+        return false;
+    }
+
+    for (int i = 3; i &lt;= sqrt(n); i += 2) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &amp;num);
+
+    if (isPrime(num)) {
+        printf("%d is a prime number.\n", num);
+    } else {
+        printf("%d is not a prime number.\n", num);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>This optimized version eliminates the need to check even divisors greater than 2, significantly reducing the number of iterations.</p>
+
+<h2 id="method-3-sieve-of-eratosthenes">Method 3: Sieve of Eratosthenes</h2>
+
+<p>The Sieve of Eratosthenes is an ancient algorithm for finding all prime numbers up to a given limit.</p>
+
+<p>While it's commonly used for generating a list of primes, we can adapt it to check if a single number is prime.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;stdlib.h&gt;
+
+bool isPrime(int n) {
+    if (n &lt;= 1) {
+        return false;
+    }
+
+    // Create an array to store prime flags
+    bool* primes = (bool*)malloc((n + 1) * sizeof(bool));
+
+    // Initialize all elements as true
+    for (int i = 0; i &lt;= n; i++) {
+        primes[i] = true;
+    }
+
+    // Mark non-prime numbers
+    for (int p = 2; p * p &lt;= n; p++) {
+        if (primes[p] == true) {
+            for (int i = p * p; i &lt;= n; i += p) {
+                primes[i] = false;
+            }
+        }
+    }
+
+    // Check if n is prime
+    bool result = primes[n];
+
+    // Free the allocated memory
+    free(primes);
+
+    return result;
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &amp;num);
+
+    if (isPrime(num)) {
+        printf("%d is a prime number.\n", num);
+    } else {
+        printf("%d is not a prime number.\n", num);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>This method uses the Sieve of Eratosthenes algorithm to efficiently find prime numbers up to the given input.</p>
+
+<p>While it may be overkill for checking primality of a single number, it's useful when dealing with multiple numbers.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this article, we explored different methods to check if a number is prime in the C programming language.</p>
+
+<p>The brute-force approach is the most straightforward, but we can optimize it by skipping unnecessary iterations or employ more advanced algorithms like the Sieve of Eratosthenes for better performance.</p>
+
+<p>The choice of method depends on the specific requirements of your application, and understanding these different approaches allows you to make informed decisions based on the context in which you are working.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

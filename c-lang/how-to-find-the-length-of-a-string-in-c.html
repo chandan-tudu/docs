@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Find The Length Of A String In C?</title>
+<meta name="description" content="Learn How to find the length of a string in C programming." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-find-the-length-of-a-string-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Find The Length Of A String In C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to find the length of a string in C?" loading="lazy" width="900" height="500"></div>
+<p>Determining the length of a string is a fundamental operation in C programming. The C Standard Library provides several functions to accomplish this task, and in this comprehensive guide, we will explore different methods to find the length of a string in C. We'll cover manual counting, using the <code>strlen</code> function, and understanding the null-terminator concept.</p>
+
+<h2 id="1-manual-counting-method">1. Manual Counting Method</h2>
+
+<p>The most straightforward way to find the length of a string is to manually count the characters until the null-terminator (<code>'\0'</code>) is encountered. The null-terminator marks the end of the string in C.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int stringLength(const char *str) {
+    int length = 0;
+
+    // Iterate through each character until null-terminator is found
+    while (str[length] != '\0') {
+        length++;
+    }
+
+    return length;
+}
+
+int main() {
+    // Example usage
+    const char *sampleString = "Hello, World!";
+    int length = stringLength(sampleString);
+
+    printf("Length of the string: %d\n", length);
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, the <code>stringLength</code> function manually counts the characters in the string until the null-terminator is encountered.</p>
+
+<h2 id="2-using-the-strlen-function">2. Using the <code>strlen</code> Function</h2>
+
+<p>C provides a standard library function, <code>strlen</code>, which returns the length of a given string. This function is defined in the <code>string.h</code> header.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    // Example usage
+    const char *sampleString = "Hello, World!";
+    int length = strlen(sampleString);
+
+    printf("Length of the string: %d\n", length);
+
+    return 0;
+}
+</code></pre>
+
+<p>Here, the <code>strlen</code> function automatically calculates the length of the string up to the null-terminator.</p>
+
+<h2 id="3-understanding-the-null-terminator">3. Understanding the Null-Terminator</h2>
+
+<p>In C, strings are represented as arrays of characters terminated by a null character (<code>'\0'</code>). The length of a string is the count of characters in the array until the null-terminator is reached.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    // Example usage
+    const char *sampleString = "Hello, World!";
+
+    // Calculate the length manually
+    int length = 0;
+    while (sampleString[length] != '\0') {
+        length++;
+    }
+
+    printf("Length of the string: %d\n", length);
+
+    return 0;
+}
+</code></pre>
+
+<p>Understanding the null-terminator concept is crucial for working with strings in C. The string's length is precisely the number of characters before the null-terminator.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this comprehensive guide, we explored various methods to find the length of a string in C.</p>
+
+<p>Whether you prefer manual counting, using the <code>strlen</code> function, or understanding the null-terminator concept, each approach achieves the same result.</p>
+
+<p>The <code>strlen</code> function is a convenient and standard way, while manual counting provides a deeper understanding of how strings work in C.</p>
+
+<p>Incorporating these techniques into your C programming skills will empower you to effectively manipulate and analyze strings in diverse applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

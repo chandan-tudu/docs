@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Implement A Hash Table In C?</title>
+<meta name="description" content="Fundamental concepts of hash tables and implement a simple version in C." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/how-to-implement-a-hash-table-in-c.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Implement A Hash Table In C?</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of How to implement a hash table in C?" loading="lazy" width="900" height="500"></div>
+<p>A hash table is a powerful data structure that allows efficient insertion, deletion, and retrieval of key-value pairs.</p>
+
+<p>It uses a hash function to map keys to indices in an array, providing constant-time average complexity for these operations.</p>
+
+<p>In this comprehensive guide, we will explore the fundamental concepts of hash tables and implement a simple version in C.</p>
+
+<p><strong>Table of Contents #</strong></p>
+
+<ol>
+<li><a href="#understanding-hash-tables">Understanding Hash Tables</a></li>
+<li><a href="#designing-a-basic-hash-table-structure">Designing a Basic Hash Table Structure</a></li>
+<li><a href="#hash-function">Hash Function</a></li>
+<li><a href="#insertion-into-the-hash-table">Insertion into the Hash Table</a></li>
+<li><a href="#searching-in-the-hash-table">Searching in the Hash Table</a></li>
+<li><a href="#deletion-from-the-hash-table">Deletion from the Hash Table</a></li>
+<li><a href="#testing-the-hash-table">Testing the Hash Table</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="understanding-hash-tables">Understanding Hash Tables</h2>
+
+<p>A hash table consists of an array of buckets, each associated with a unique index. The keys are hashed using a hash function, and the resulting hash code determines the index where the corresponding value will be stored.</p>
+
+<p>Collision handling is a crucial aspect of hash tables, as multiple keys may hash to the same index.</p>
+
+<p>Common collision resolution techniques include chaining (linked lists in each bucket) or open addressing.</p>
+
+<h2 id="designing-a-basic-hash-table-structure">Designing a Basic Hash Table Structure</h2>
+
+<p>Let's start by designing a basic hash table structure in C. For simplicity, we'll use chaining to handle collisions.</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+// Define a structure for key-value pairs
+struct KeyValuePair {
+    char* key;
+    int value;
+    struct KeyValuePair* next; // Pointer to the next key-value pair in case of collisions
+};
+
+// Define the HashTable structure
+struct HashTable {
+    int size;
+    struct KeyValuePair** table; // Array of pointers to key-value pairs (buckets)
+};
+
+// Function to create a new key-value pair
+struct KeyValuePair* createKeyValuePair(const char* key, int value) {
+    struct KeyValuePair* pair = (struct KeyValuePair*)malloc(sizeof(struct KeyValuePair));
+    pair-&gt;key = strdup(key);
+    pair-&gt;value = value;
+    pair-&gt;next = NULL;
+    return pair;
+}
+
+// Function to create a new hash table
+struct HashTable* createHashTable(int size) {
+    struct HashTable* hashTable = (struct HashTable*)malloc(sizeof(struct HashTable));
+    hashTable-&gt;size = size;
+    hashTable-&gt;table = (struct KeyValuePair**)calloc(size, sizeof(struct KeyValuePair*));
+    return hashTable;
+}
+</code></pre>
+
+<p>In this design, <code>KeyValuePair</code> represents a key-value pair, and <code>HashTable</code> represents the hash table itself.</p>
+
+<p>The <code>createKeyValuePair</code> function creates a new key-value pair, and <code>createHashTable</code> initializes a new hash table with a specified size.</p>
+
+<h2 id="hash-function">Hash Function</h2>
+
+<p>A hash function takes a key and returns an index within the range of the hash table size. A simple hash function for strings could sum the ASCII values of characters, but for demonstration purposes, we'll use a basic one that calculates the modulo of the string length.</p>
+
+<pre class="language-c"><code>// Function to calculate the hash code for a key
+int hashCode(const char* key, int tableSize) {
+    int hash = 0;
+    for (int i = 0; key[i] != '\0'; i++) {
+        hash += key[i];
+    }
+    return hash % tableSize;
+}
+</code></pre>
+
+<h2 id="insertion-into-the-hash-table">Insertion into the Hash Table</h2>
+
+<p>The <code>insert</code> function adds a key-value pair to the hash table. If a collision occurs, it adds the new pair to the linked list in the corresponding bucket.</p>
+
+<pre class="language-c"><code>// Function to insert a key-value pair into the hash table
+void insert(struct HashTable* hashTable, const char* key, int value) {
+    int index = hashCode(key, hashTable-&gt;size);
+    struct KeyValuePair* pair = createKeyValuePair(key, value);
+
+    // If the bucket is empty, insert the new pair
+    if (hashTable-&gt;table[index] == NULL) {
+        hashTable-&gt;table[index] = pair;
+    } else {
+        // Handle collision by chaining
+        struct KeyValuePair* current = hashTable-&gt;table[index];
+        while (current-&gt;next != NULL) {
+            current = current-&gt;next;
+        }
+        current-&gt;next = pair;
+    }
+}
+</code></pre>
+
+<h2 id="searching-in-the-hash-table">Searching in the Hash Table</h2>
+
+<p>The <code>search</code> function finds the value associated with a given key in the hash table. If the key is not found, it returns a special value (e.g., -1).</p>
+
+<pre class="language-c"><code>// Function to search for a key in the hash table and return its value
+int search(struct HashTable* hashTable, const char* key) {
+    int index = hashCode(key, hashTable-&gt;size);
+    struct KeyValuePair* current = hashTable-&gt;table[index];
+
+    // Traverse the linked list in the bucket
+    while (current != NULL) {
+        if (strcmp(current-&gt;key, key) == 0) {
+            return current-&gt;value; // Key found
+        }
+        current = current-&gt;next;
+    }
+
+    return -1; // Key not found
+}
+</code></pre>
+
+<h2 id="deletion-from-the-hash-table">Deletion from the Hash Table</h2>
+
+<p>The <code>delete</code> function removes a key-value pair from the hash table based on the given key.</p>
+
+<pre class="language-c"><code>// Function to delete a key-value pair from the hash table
+void delete(struct HashTable* hashTable, const char* key) {
+    int index = hashCode(key, hashTable-&gt;size);
+    struct KeyValuePair* current = hashTable-&gt;table[index];
+    struct KeyValuePair* prev = NULL;
+
+    // Traverse the linked list in the bucket
+    while (current != NULL) {
+        if (strcmp(current-&gt;key, key) == 0) {
+            // Key found, remove the pair
+            if (prev == NULL) {
+                // If it's the first in the list
+                hashTable-&gt;table[index] = current-&gt;next;
+            } else {
+                prev-&gt;next = current-&gt;next;
+            }
+
+            free(current-&gt;key);
+            free(current);
+            return;
+        }
+
+        prev = current;
+        current = current-&gt;next;
+    }
+}
+</code></pre>
+
+<h2 id="testing-the-hash-table">Testing the Hash Table</h2>
+
+<p>Now, let's test our hash table implementation with a simple example:</p>
+
+<pre class="language-c"><code>int main() {
+    struct HashTable* hashTable = createHashTable(10);
+
+    // Insert key-value pairs
+    insert(hashTable, "apple", 5);
+    insert(hashTable, "banana", 8);
+    insert(hashTable, "orange", 12);
+
+    // Search for values
+    printf("Value for 'apple': %d\n", search(hashTable, "apple"));
+    printf("Value for 'banana': %d\n", search(hashTable, "banana"));
+    printf("Value for 'orange': %d\n", search(hashTable, "orange"));
+    printf("Value for 'grape': %d\n", search(hashTable, "grape"));
+
+    // Delete a key-value pair
+
+
+    delete(hashTable, "banana");
+
+    // Attempt to search for the deleted key
+    printf("Value for 'banana' after deletion: %d\n", search(hashTable, "banana"));
+
+    return 0;
+}
+</code></pre>
+
+<p>In this example, we create a hash table, insert key-value pairs, search for values, delete a key-value pair, and attempt to search for the deleted key.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Implementing a hash table in C involves designing a structure for key-value pairs, creating a hash function, and handling collisions.</p>
+
+<p>The choice of collision resolution strategy (chaining, open addressing) depends on the specific requirements of your application.</p>
+
+<p>Understanding the principles behind hash tables is crucial for developing efficient and scalable solutions in various programming scenarios.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

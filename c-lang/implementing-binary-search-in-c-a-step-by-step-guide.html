@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Implementing Binary Search in C: A Step-by-Step Guide</title>
+<meta name="description" content="Step-by-step process of implementing binary search in the C programming language." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/c-lang/implementing-binary-search-in-c-a-step-by-step-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">C-LANG</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Implementing Binary Search in C: A Step-by-Step Guide</h1>
+</div>
+<div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/c-lang.jpg" alt="Post Thumbnail of Implementing Binary Search in C: A Step-by-Step Guide" loading="lazy" width="900" height="500"></div>
+<p>Binary search is a powerful algorithm for efficiently finding a specific value within a sorted array. It is significantly faster than linear search, especially for large datasets.</p>
+
+<p>In this article, we will explore the step-by-step process of implementing binary search in the C programming language.</p>
+
+<h2 id="understanding-binary-search">Understanding Binary Search</h2>
+
+<p>Binary search works by repeatedly dividing the search space in half. It compares the target value to the middle element of the array and eliminates half of the remaining elements based on the comparison. The process continues until the target is found or the search space is empty.</p>
+
+<p>Here is the general algorithm for binary search:</p>
+
+<ol>
+<li><strong>Initialize:</strong> Set the lower bound (<code>low</code>) to the first index, the upper bound (<code>high</code>) to the last index, and the middle index (<code>mid</code>) to the middle of the array.</li>
+<li><strong>Compare:</strong> Compare the middle element to the target value.
+
+<ul>
+<li>If they are equal, the target is found, and its index is returned.</li>
+<li>If the middle element is greater than the target, update the <code>high</code> index to <code>mid - 1</code> (search the left half).</li>
+<li>If the middle element is less than the target, update the <code>low</code> index to <code>mid + 1</code> (search the right half).</li>
+</ul></li>
+<li><strong>Repeat:</strong> Repeat steps 1 and 2 until the target is found or the <code>low</code> index is greater than the <code>high</code> index.</li>
+</ol>
+
+<h2 id="implementation-in-c">Implementation in C</h2>
+
+<p>Let's implement binary search in C with a simple example:</p>
+
+<pre class="language-c"><code>#include &lt;stdio.h&gt;
+
+int binarySearch(int arr[], int size, int target) {
+    int low = 0;
+    int high = size - 1;
+
+    while (low &lt;= high) {
+        int mid = low + (high - low) / 2;
+
+        // Check if the target is equal to the middle element
+        if (arr[mid] == target) {
+            return mid; // Target found
+        }
+
+        // If the target is greater, ignore the left half
+        if (arr[mid] &lt; target) {
+            low = mid + 1;
+        }
+
+        // If the target is smaller, ignore the right half
+        else {
+            high = mid - 1;
+        }
+    }
+
+    return -1; // Target not found
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int target = 7;
+
+    int result = binarySearch(arr, size, target);
+
+    if (result != -1) {
+        printf("Element %d found at index %d.\n", target, result);
+    } else {
+        printf("Element %d not found in the array.\n", target);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>This code defines a function <code>binarySearch</code> that takes a sorted array, its size, and a target value as input.</p>
+
+<p>The <code>main</code> function demonstrates the usage by searching for a target value in a sorted array.</p>
+
+<h2 id="key-points-to-note">Key Points to Note</h2>
+
+<ol>
+<li><p><strong>Precondition: Sorted Array</strong></p>
+
+<ul>
+<li>Binary search assumes that the input array is sorted. If the array is unsorted, the algorithm won't work correctly.</li>
+</ul></li>
+<li><p><strong>Mid Calculation</strong></p>
+
+<ul>
+<li>The calculation of the middle index (<code>mid</code>) is crucial. Using <code>(low + high) / 2</code> can lead to integer overflow for large arrays. The expression <code>(low + (high - low) / 2)</code> is a safer alternative.</li>
+</ul></li>
+<li><p><strong>Loop Conditions</strong></p>
+
+<ul>
+<li>The loop condition is <code>low &lt;= high</code>. This ensures that the search space is not exhausted, and the algorithm continues until the target is found or the search space is empty.</li>
+</ul></li>
+<li><p><strong>Returning -1 for Not Found</strong></p>
+
+<ul>
+<li>The <code>binarySearch</code> function returns -1 if the target is not found. This is a common convention in C to indicate that the search was unsuccessful.</li>
+</ul></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Binary search is a powerful and efficient algorithm for finding a target value in a sorted array.</p>
+
+<p>By dividing the search space in half at each step, it achieves a time complexity of O(log n), making it significantly faster than linear search for large datasets.</p>
+
+<p>Understanding the principles behind binary search and implementing it in C allows programmers to harness its efficiency in various applications, from searching in databases to optimizing algorithms in computer science.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
