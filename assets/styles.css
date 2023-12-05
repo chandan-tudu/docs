@@ -222,6 +222,7 @@ pre:not([class*=language-]){
 .img {
     overflow: hidden;
     margin: 2rem 0;
+    display:none;
 }
 /* img {
     max-width: 100%;
