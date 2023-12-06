@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Global Keyword: A Deep Dive</title>
+<meta name="description" content="The syntax, usage, and considerations associated with the global keyword in Python." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-global-keyword-a-deep-dive.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Global Keyword: A Deep Dive</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python Global Keyword: A Deep Dive" loading="lazy" width="900" height="500"></div> -->
+<p>In Python, the <code>global</code> keyword is a powerful tool that allows you to work with global variables within functions.</p>
+
+<p>It signals to the interpreter that a variable declared within a function should refer to the global variable of the same name, rather than creating a new local variable.</p>
+
+<p>This guide will explore the syntax, usage, and considerations associated with the <code>global</code> keyword in Python.</p>
+
+<h2 id="declaring-global-variables-">Declaring Global Variables:</h2>
+
+<p>In Python, a variable declared outside any function or block of code is considered a global variable.</p>
+
+<p>Global variables can be accessed and modified from any part of the code.</p>
+
+<pre class="language-python"><code># Global variable
+global_variable = 10
+
+def example_function():
+    # Accessing the global variable
+    print("Global variable:", global_variable)
+
+example_function()
+</code></pre>
+
+<p>In this example, <code>global_variable</code> is a global variable, and the function <code>example_function</code> can access it without any special keywords.</p>
+
+<h2 id="using-the-global-keyword-">Using the Global Keyword:</h2>
+
+<p>When you want to modify the value of a global variable within a function, you need to use the <code>global</code> keyword to indicate that you are referring to the global variable, not creating a new local variable.</p>
+
+<h3 id="syntax-of-the-global-keyword-">Syntax of the Global Keyword:</h3>
+
+<pre class="language-python"><code>global variable_name
+</code></pre>
+
+<h3 id="example-of-using-the-global-keyword-">Example of Using the Global Keyword:</h3>
+
+<pre class="language-python"><code># Modifying a global variable within a function
+global_variable = 10
+
+def modify_global_variable():
+    # Using the global keyword to modify the global variable
+    global global_variable
+    global_variable = 20
+    print("Modified global variable:", global_variable)
+
+modify_global_variable()
+print("Global variable outside the function:", global_variable)
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code>Modified global variable: 20
+Global variable outside the function: 20
+</code></pre>
+
+<p>In this example, the <code>modify_global_variable</code> function uses the <code>global</code> keyword to modify the value of the global variable <code>global_variable</code>.</p>
+
+<h2 id="considerations-and-best-practices-">Considerations and Best Practices:</h2>
+
+<ol>
+<li><p><strong>Avoid Excessive Use of Global Variables:</strong>
+While global variables offer flexibility, it's generally advisable to limit their use. Excessive reliance on global variables can make code harder to understand and maintain.</p></li>
+<li><p><strong>Use Descriptive Variable Names:</strong>
+When using global variables, choose descriptive and unique names to avoid naming conflicts and enhance code readability.</p></li>
+<li><p><strong>Consider Alternatives:</strong>
+In some cases, using function parameters or returning values from functions might be a cleaner and more modular approach than relying heavily on global variables.</p></li>
+<li><p><strong>Be Mindful of Scope:</strong>
+Understand the scope of your variables. Variables declared within a function without the <code>global</code> keyword are local to that function and do not affect global variables with the same name.</p></li>
+</ol>
+
+<h2 id="advanced-usage-nested-functions-and-closures-">Advanced Usage: Nested Functions and Closures:</h2>
+
+<p>The <code>global</code> keyword is also relevant when working with nested functions and closures, where variables from outer functions can be accessed and modified within inner functions.</p>
+
+<pre class="language-python"><code># Using global keyword in nested functions
+def outer_function():
+    outer_variable = 10
+
+    def inner_function():
+        # Using the global keyword to access the outer variable
+        global outer_variable
+        outer_variable = 20
+        print("Inner function - outer variable:", outer_variable)
+
+    inner_function()
+    print("Outer function - outer variable:", outer_variable)
+
+outer_function()
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code>Inner function - outer variable: 20
+Outer function - outer variable: 20
+</code></pre>
+
+<p>In this example, the <code>inner_function</code> accesses the <code>outer_variable</code> from the outer function using the <code>global</code> keyword.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The <code>global</code> keyword in Python plays a crucial role in managing global variables within functions.</p>
+
+<p>By using the <code>global</code> keyword, you can indicate whether a variable declared within a function refers to a global variable with the same name.</p>
+
+<p>While global variables offer flexibility, it's essential to use them judiciously and consider alternative approaches to maintain clean, readable, and modular code.</p>
+
+<p>Understanding the scope and usage of the <code>global</code> keyword will empower you to navigate the complexities of variable access and modification in Python. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

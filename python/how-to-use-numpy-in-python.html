@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Use Numpy In Python?</title>
+<meta name="description" content="Fundamentals of NumPy, covering array creation, manipulation, mathematical operations, and more." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/how-to-use-numpy-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Use Numpy In Python?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to use NumPy in Python?" loading="lazy" width="900" height="500"></div> -->
+<p>NumPy, short for Numerical Python, is a powerful library in Python for numerical and mathematical operations.</p>
+
+<p>It provides support for large, multi-dimensional arrays and matrices, along with an extensive collection of high-level mathematical functions to operate on these arrays.</p>
+
+<p>In this comprehensive guide, we'll explore the fundamentals of NumPy, covering array creation, manipulation, mathematical operations, and more.</p>
+
+<h2 id="installing-numpy-">Installing NumPy:</h2>
+
+<p>Before diving into NumPy, ensure that it is installed in your Python environment. You can install it using the following command:</p>
+
+<pre class="language-bash"><code>pip install numpy
+</code></pre>
+
+<h2 id="numpy-basics-">NumPy Basics:</h2>
+
+<h3 id="importing-numpy-">Importing NumPy:</h3>
+
+<p>Once installed, you can import NumPy into your Python script or Jupyter notebook:</p>
+
+<pre class="language-python"><code>import numpy as np
+</code></pre>
+
+<p>The common convention is to import NumPy with the alias <code>np</code> for brevity.</p>
+
+<h3 id="creating-numpy-arrays-">Creating NumPy Arrays:</h3>
+
+<p>NumPy arrays are the fundamental data structure in NumPy, providing a way to represent and manipulate numerical data efficiently.</p>
+
+<h4 id="1-creating-arrays-from-lists-">1. Creating Arrays from Lists:</h4>
+
+<pre class="language-python"><code>import numpy as np
+
+# 1D array
+arr_1d = np.array([1, 2, 3])
+
+# 2D array (matrix)
+arr_2d = np.array([[1, 2, 3], [4, 5, 6]])
+
+# 3D array
+arr_3d = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+</code></pre>
+
+<h4 id="2-using-numpy-functions-">2. Using NumPy Functions:</h4>
+
+<pre class="language-python"><code>import numpy as np
+
+# Create an array of zeros
+zeros_arr = np.zeros((2, 3))
+
+# Create an array of ones
+ones_arr = np.ones((3, 4))
+
+# Create an identity matrix
+identity_matrix = np.eye(3)
+</code></pre>
+
+<h3 id="array-attributes-">Array Attributes:</h3>
+
+<p>NumPy arrays have several attributes that provide information about their shape, size, and data type.</p>
+
+<pre class="language-python"><code>import numpy as np
+
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+print("Shape:", arr.shape)         # Output: (2, 3)
+print("Number of Dimensions:", arr.ndim)  # Output: 2
+print("Data Type:", arr.dtype)     # Output: int64
+print("Size:", arr.size)           # Output: 6
+</code></pre>
+
+<h2 id="array-indexing-and-slicing-">Array Indexing and Slicing:</h2>
+
+<h3 id="indexing-">Indexing:</h3>
+
+<p>NumPy arrays are zero-indexed, and you can access individual elements using indexing:</p>
+
+<pre class="language-python"><code>import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+
+# Accessing the first element
+print(arr[0])  # Output: 1
+
+# Accessing the last element
+print(arr[-1])  # Output: 5
+</code></pre>
+
+<h3 id="slicing-">Slicing:</h3>
+
+<p>You can slice NumPy arrays to extract subarrays:</p>
+
+<pre class="language-python"><code>import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+
+# Slicing to get a subarray
+subarr = arr[1:4]
+
+print(subarr)  # Output: [2, 3, 4]
+</code></pre>
+
+<h2 id="mathematical-operations-">Mathematical Operations:</h2>
+
+<p>NumPy provides a wide range of mathematical functions for array operations. These functions are optimized for performance and operate element-wise.</p>
+
+<pre class="language-python"><code>import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+
+# Element-wise addition
+result_addition = arr + 2
+
+# Element-wise multiplication
+result_multiply = arr * 3
+
+# Element-wise square root
+result_sqrt = np.sqrt(arr)
+
+print("Original Array:", arr)
+print("After Addition:", result_addition)
+print("After Multiplication:", result_multiply)
+print("Square Root:", result_sqrt)
+</code></pre>
+
+<h2 id="linear-algebra-with-numpy-">Linear Algebra with NumPy:</h2>
+
+<p>NumPy is widely used in linear algebra operations, making it a powerful tool for scientific computing.</p>
+
+<h3 id="matrix-multiplication-">Matrix Multiplication:</h3>
+
+<pre class="language-python"><code>import numpy as np
+
+matrix_a = np.array([[1, 2], [3, 4]])
+matrix_b = np.array([[5, 6], [7, 8]])
+
+result_matrix_mult = np.dot(matrix_a, matrix_b)
+
+print("Matrix A:")
+print(matrix_a)
+
+print("Matrix B:")
+print(matrix_b)
+
+print("Result of Matrix Multiplication:")
+print(result_matrix_mult)
+</code></pre>
+
+<h3 id="transposing-a-matrix-">Transposing a Matrix:</h3>
+
+<pre class="language-python"><code>import numpy as np
+
+matrix = np.array([[1, 2, 3], [4, 5, 6]])
+
+transposed_matrix = np.transpose(matrix)
+
+print("Original Matrix:")
+print(matrix)
+
+print("Transposed Matrix:")
+print(transposed_matrix)
+</code></pre>
+
+<h2 id="random-sampling-with-numpy-">Random Sampling with NumPy:</h2>
+
+<p>NumPy provides functions for random sampling, allowing you to generate arrays with random values.</p>
+
+<h3 id="generating-random-numbers-">Generating Random Numbers:</h3>
+
+<pre class="language-python"><code>import numpy as np
+
+# Generate random numbers from a uniform distribution
+random_uniform = np.random.rand(3, 4)
+
+# Generate random integers within a specified range
+random_integers = np.random.randint(low=1, high=10, size=(2, 3))
+
+print("Random Numbers (Uniform Distribution):")
+print(random_uniform)
+
+print("Random Integers:")
+print(random_integers)
+</code></pre>
+
+<h3 id="shuffling-arrays-">Shuffling Arrays:</h3>
+
+<pre class="language-python"><code>import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+
+# Shuffle the array in-place
+np.random.shuffle(arr)
+
+print("Shuffled Array:")
+print(arr)
+</code></pre>
+
+<h2 id="broadcasting-">Broadcasting:</h2>
+
+<p>NumPy allows broadcasting, a powerful mechanism that enables operations on arrays of different shapes and sizes.</p>
+
+<pre class="language-python"><code>import numpy as np
+
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+# Broadcasting: Adding a scalar to each element
+result_broadcasting = arr
+
+ + 10
+
+print("Original Array:")
+print(arr)
+
+print("Result after Broadcasting:")
+print(result_broadcasting)
+</code></pre>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>NumPy is an indispensable library for numerical and scientific computing in Python.</p>
+
+<p>Its ability to handle large arrays efficiently, perform mathematical operations, and support linear algebra makes it a go-to tool for data scientists, engineers, and researchers.</p>
+
+<p>By mastering the basics of NumPy, you empower yourself to tackle a wide range of computational tasks and unlock the full potential of Python for scientific and numerical computing.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

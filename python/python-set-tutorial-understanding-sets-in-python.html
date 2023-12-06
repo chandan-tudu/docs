@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Set Tutorial: Understanding Sets In Python</title>
+<meta name="description" content="This tutorial will guide you through the fundamentals of sets in Python, covering basic operations, methods, and practical use cases." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-set-tutorial-understanding-sets-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Set Tutorial: Understanding Sets In Python</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python Set Tutorial: Understanding Sets in Python" loading="lazy" width="900" height="500"></div> -->
+<p>In Python, a set is a versatile and unordered collection of unique elements. Sets are defined by enclosing a comma-separated sequence of elements within curly braces <code>{}</code>.</p>
+
+<p>This tutorial will guide you through the fundamentals of sets in Python, covering basic operations, methods, and practical use cases.</p>
+
+<h2 id="creating-sets-in-python-">Creating Sets in Python:</h2>
+
+<pre class="language-python"><code># Creating a set with integers
+my_set = {1, 2, 3, 4, 5}
+
+# Creating a set with mixed data types
+mixed_set = {1, 2, 'apple', 3.14, (5, 6)}
+
+# Creating an empty set
+empty_set = set()
+
+# Creating a set from a list
+list_to_set = set([1, 2, 3, 4, 5])
+</code></pre>
+
+<h2 id="basic-operations-on-sets-">Basic Operations on Sets:</h2>
+
+<h3 id="1-adding-elements-">1. Adding Elements:</h3>
+
+<pre class="language-python"><code>my_set.add(6)  # Adds the element 6 to the set
+my_set.update([7, 8, 9])  # Adds multiple elements to the set
+</code></pre>
+
+<h3 id="2-removing-elements-">2. Removing Elements:</h3>
+
+<pre class="language-python"><code>my_set.remove(3)  # Removes the element 3 from the set
+my_set.discard(10)  # Removes the element 10 if present, without raising an error
+my_set.pop()  # Removes and returns an arbitrary element from the set
+</code></pre>
+
+<h3 id="3-set-operations-">3. Set Operations:</h3>
+
+<pre class="language-python"><code>set1 = {1, 2, 3, 4, 5}
+set2 = {4, 5, 6, 7, 8}
+
+union_set = set1 | set2  # Union of two sets
+intersection_set = set1 &amp; set2  # Intersection of two sets
+difference_set = set1 - set2  # Set of elements in set1 but not in set2
+symmetric_difference_set = set1 ^ set2  # Set of elements in either set, but not both
+</code></pre>
+
+<h3 id="4-set-methods-">4. Set Methods:</h3>
+
+<pre class="language-python"><code>my_set.clear()  # Removes all elements from the set
+copy_of_set = my_set.copy()  # Creates a shallow copy of the set
+set_length = len(my_set)  # Returns the number of elements in the set
+</code></pre>
+
+<h2 id="practical-use-cases-">Practical Use Cases:</h2>
+
+<h3 id="1-removing-duplicates-from-a-list-">1. Removing Duplicates from a List:</h3>
+
+<pre class="language-python"><code>my_list = [1, 2, 2, 3, 4, 4, 5]
+
+# Using set to remove duplicates
+unique_elements = list(set(my_list))
+</code></pre>
+
+<h3 id="2-checking-common-elements-">2. Checking Common Elements:</h3>
+
+<pre class="language-python"><code>users_online = {'Alice', 'Bob', 'Charlie'}
+users_recently_logged_in = {'Bob', 'Eve', 'Alice'}
+
+# Finding common users
+common_users = users_online.intersection(users_recently_logged_in)
+</code></pre>
+
+<h3 id="3-set-comprehension-">3. Set Comprehension:</h3>
+
+<pre class="language-python"><code>squares = {x**2 for x in range(1, 6)}
+
+# Result: {1, 4, 9, 16, 25}
+</code></pre>
+
+<h2 id="sets-vs-other-data-types-">Sets vs. Other Data Types:</h2>
+
+<ul>
+<li><p><strong>Lists vs. Sets:</strong></p>
+
+<ul>
+<li>Lists allow duplicate elements and maintain order.</li>
+<li>Sets are unordered and do not allow duplicates.</li>
+</ul></li>
+<li><p><strong>Dictionaries vs. Sets:</strong></p>
+
+<ul>
+<li>Dictionaries store key-value pairs.</li>
+<li>Sets store individual elements without associated values.</li>
+</ul></li>
+</ul>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Sets in Python offer a powerful and efficient way to handle collections of unique elements.</p>
+
+<p>With their built-in methods and straightforward syntax, sets simplify tasks such as removing duplicates, performing set operations, and checking for common elements.</p>
+
+<p>Understanding how to work with sets expands your toolkit for data manipulation in Python, making your code more concise and expressive.</p>
+
+<p>As you explore more complex data structures and algorithms, the versatile nature of sets will prove to be a valuable asset in your Python programming journey. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

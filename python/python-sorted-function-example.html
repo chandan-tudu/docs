@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Sorted() Function Example</title>
+<meta name="description" content="The sorted() function, exploring its syntax, customization options, and practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-sorted-function-example.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Sorted() Function Example</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python sorted() function example" loading="lazy" width="900" height="500"></div> -->
+<p>In Python, the <code>sorted()</code> function is a versatile tool for sorting iterable objects.</p>
+
+<p>It provides a convenient way to arrange elements in ascending or descending order, facilitating a wide range of applications from simple lists to more complex data structures.</p>
+
+<p>In this article, we'll delve into the <code>sorted()</code> function, exploring its syntax, customization options, and practical examples.</p>
+
+<h2 id="basic-syntax-">Basic Syntax:</h2>
+
+<p>The basic syntax of the <code>sorted()</code> function is as follows:</p>
+
+<pre class="language-python"><code>sorted(iterable, key=None, reverse=False)
+</code></pre>
+
+<ul>
+<li><code>iterable</code>: The iterable (e.g., a list, tuple, or string) to be sorted.</li>
+<li><code>key</code>: A function that generates a key for each element, used for custom sorting.</li>
+<li><code>reverse</code>: If <code>True</code>, the iterable is sorted in descending order; if <code>False</code> (default), it is sorted in ascending order.</li>
+</ul>
+
+<h2 id="simple-examples-">Simple Examples:</h2>
+
+<h3 id="sorting-a-list-">Sorting a List:</h3>
+
+<pre class="language-python"><code>numbers = [5, 2, 8, 1, 3]
+sorted_numbers = sorted(numbers)
+
+print("Original List:", numbers)
+print("Sorted List:", sorted_numbers)
+</code></pre>
+
+<p>In this example, the <code>sorted()</code> function is applied to a list of numbers, resulting in a new list with elements sorted in ascending order.</p>
+
+<h3 id="sorting-a-string-">Sorting a String:</h3>
+
+<pre class="language-python"><code>text = "python"
+sorted_text = sorted(text)
+
+print("Original String:", text)
+print("Sorted String:", ''.join(sorted_text))
+</code></pre>
+
+<p>Here, the characters of the string "python" are sorted alphabetically using <code>sorted()</code>, and the result is joined into a new string.</p>
+
+<h2 id="custom-sorting-with-the-key-parameter-">Custom Sorting with the <code>key</code> Parameter:</h2>
+
+<p>The <code>key</code> parameter allows you to specify a custom function to determine the sorting order.</p>
+
+<p>For instance, you can sort a list of strings based on their lengths.</p>
+
+<pre class="language-python"><code>words = ["apple", "banana", "kiwi", "orange"]
+sorted_words = sorted(words, key=len)
+
+print("Original List:", words)
+print("Sorted List by Length:", sorted_words)
+</code></pre>
+
+<p>In this example, the <code>len</code> function is used as the key to sort the list of words based on their lengths.</p>
+
+<h2 id="sorting-in-descending-order-">Sorting in Descending Order:</h2>
+
+<p>To sort in descending order, set the <code>reverse</code> parameter to <code>True</code>.</p>
+
+<pre class="language-python"><code>numbers = [5, 2, 8, 1, 3]
+sorted_numbers_desc = sorted(numbers, reverse=True)
+
+print("Original List:", numbers)
+print("Sorted List (Descending):", sorted_numbers_desc)
+</code></pre>
+
+<p>Here, the <code>sorted()</code> function is used to sort a list of numbers in descending order.</p>
+
+<h2 id="sorting-tuples-and-sets-">Sorting Tuples and Sets:</h2>
+
+<p>The <code>sorted()</code> function is not limited to lists; it can also be applied to tuples and sets.</p>
+
+<pre class="language-python"><code>my_tuple = (10, 5, 8, 2, 7)
+sorted_tuple = sorted(my_tuple)
+
+my_set = {3, 1, 4, 1, 5, 9, 2}
+sorted_set = sorted(my_set)
+
+print("Original Tuple:", my_tuple)
+print("Sorted Tuple:", sorted_tuple)
+
+print("Original Set:", my_set)
+print("Sorted Set:", sorted_set)
+</code></pre>
+
+<p>In this example, both a tuple and a set are sorted using the <code>sorted()</code> function.</p>
+
+<h2 id="practical-example-with-dictionaries-">Practical Example with Dictionaries:</h2>
+
+<p>The <code>sorted()</code> function can be applied to dictionaries, considering either keys or values for sorting.</p>
+
+<pre class="language-python"><code>my_dict = {"apple": 5, "banana": 2, "kiwi": 8, "orange": 1, "melon": 3}
+sorted_dict_by_key = dict(sorted(my_dict.items()))
+sorted_dict_by_value = dict(sorted(my_dict.items(), key=lambda x: x[1]))
+
+print("Original Dictionary:", my_dict)
+print("Sorted Dictionary by Key:", sorted_dict_by_key)
+print("Sorted Dictionary by Value:", sorted_dict_by_value)
+</code></pre>
+
+<p>Here, the dictionary is sorted by keys in the first case and by values in the second case using the <code>key</code> parameter.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The <code>sorted()</code> function in Python is a powerful tool for sorting iterable objects, providing flexibility and customization options.</p>
+
+<p>Whether you're working with simple lists, strings, tuples, sets, or dictionaries, the <code>sorted()</code> function allows you to arrange elements in the desired order.</p>
+
+<p>Understanding its syntax and parameters empowers you to tailor the sorting process to fit your specific needs.</p>
+
+<p>Experiment with different use cases and embrace the versatility of the <code>sorted()</code> function in your Python projects. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

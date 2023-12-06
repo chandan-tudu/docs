@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Regular Expressions: A Comprehensive Guide</title>
+<meta name="description" content="Python regular expressions, covering syntax, common patterns, and how to use the re module to work with regex in your Python programs." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-regular-expressions-a-comprehensive-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Regular Expressions: A Comprehensive Guide</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python Regular Expressions: A Comprehensive Guide" loading="lazy" width="900" height="500"></div> -->
+<p>Regular expressions, often abbreviated as regex or regexp, are a powerful tool for working with text data in Python.</p>
+
+<p>A regular expression is a sequence of characters that forms a search pattern, allowing you to match, locate, and manipulate text.</p>
+
+<p>In this tutorial, we'll explore the fundamentals of Python regular expressions, covering syntax, common patterns, and how to use the <code>re</code> module to work with regex in your Python programs.</p>
+
+<h2 id="the-re-module-">The <code>re</code> Module:</h2>
+
+<p>In Python, regular expressions are supported through the built-in <code>re</code> module. Before using regular expressions, you need to import this module.</p>
+
+<pre class="language-python"><code>import re
+</code></pre>
+
+<h2 id="basic-patterns-and-functions-">Basic Patterns and Functions:</h2>
+
+<h3 id="1-matching-strings-">1. Matching Strings:</h3>
+
+<p>The <code>re.match()</code> function is used to determine if the regular expression matches at the beginning of the string.</p>
+
+<pre class="language-python"><code>import re
+
+pattern = r"Hello"
+text = "Hello, World!"
+
+match = re.match(pattern, text)
+
+if match:
+    print("Pattern found!")
+else:
+    print("Pattern not found.")
+</code></pre>
+
+<h3 id="2-searching-for-patterns-">2. Searching for Patterns:</h3>
+
+<p>The <code>re.search()</code> function searches for the first occurrence of the pattern in the string.</p>
+
+<pre class="language-python"><code>import re
+
+pattern = r"World"
+text = "Hello, World!"
+
+search_result = re.search(pattern, text)
+
+if search_result:
+    print("Pattern found!")
+else:
+    print("Pattern not found.")
+</code></pre>
+
+<h3 id="3-finding-all-matches-">3. Finding All Matches:</h3>
+
+<p>To find all occurrences of a pattern in a string, use the <code>re.findall()</code> function.</p>
+
+<pre class="language-python"><code>import re
+
+pattern = r"\d+"  # Match one or more digits
+text = "There are 123 apples and 456 oranges."
+
+matches = re.findall(pattern, text)
+
+print("Matches:", matches)
+</code></pre>
+
+<p>In this example, the pattern <code>\d+</code> matches one or more digits. The result is a list of all digit sequences found in the text.</p>
+
+<h2 id="common-patterns-and-special-characters-">Common Patterns and Special Characters:</h2>
+
+<h3 id="1-character-classes-">1. Character Classes:</h3>
+
+<p>Character classes allow you to match any one of a set of characters.</p>
+
+<ul>
+<li><code>[abc]</code>: Matches either 'a', 'b', or 'c'.</li>
+<li><code>[^abc]</code>: Matches any character except 'a', 'b', or 'c'.</li>
+<li><code>[a-z]</code>: Matches any lowercase letter.</li>
+</ul>
+
+<h3 id="2-quantifiers-">2. Quantifiers:</h3>
+
+<p>Quantifiers define the number of occurrences of a character or a group.</p>
+
+<ul>
+<li><code>*</code>: Matches 0 or more occurrences.</li>
+<li><code>+</code>: Matches 1 or more occurrences.</li>
+<li><code>?</code>: Matches 0 or 1 occurrence.</li>
+<li><code>{n}</code>: Matches exactly n occurrences.</li>
+<li><code>{n,}</code>: Matches n or more occurrences.</li>
+<li><code>{n, m}</code>: Matches between n and m occurrences.</li>
+</ul>
+
+<h3 id="3-anchors-">3. Anchors:</h3>
+
+<p>Anchors are used to specify the position of a match within the string.</p>
+
+<ul>
+<li><code>^</code>: Matches the start of a string.</li>
+<li><code>$</code>: Matches the end of a string.</li>
+</ul>
+
+<h3 id="4-special-characters-">4. Special Characters:</h3>
+
+<p>Certain characters have special meanings in regular expressions.</p>
+
+<ul>
+<li><code>.</code>: Matches any character except a newline.</li>
+<li><code>\</code>: Escapes a special character, allowing it to be treated as a literal.</li>
+</ul>
+
+<h2 id="grouping-and-capturing-">Grouping and Capturing:</h2>
+
+<p>You can use parentheses to group expressions and capture parts of the matched text.</p>
+
+<pre class="language-python"><code>import re
+
+pattern = r"(\d{2})-(\d{2})-(\d{4})"
+text = "Date of birth: 12-31-1990"
+
+match = re.search(pattern, text)
+
+if match:
+    day, month, year = match.groups()
+    print(f"Day: {day}, Month: {month}, Year: {year}")
+</code></pre>
+
+<p>In this example, the pattern <code>(\d{2})-(\d{2})-(\d{4})</code> captures the day, month, and year components of a date.</p>
+
+<h2 id="the-re-module-functions-">The <code>re</code> Module Functions:</h2>
+
+<h3 id="1-re-match-">1. <code>re.match()</code>:</h3>
+
+<p>Checks for a match only at the beginning of the string.</p>
+
+<pre class="language-python"><code>import re
+
+pattern = r"Hello"
+text = "Hello, World!"
+
+match = re.match(pattern, text)
+
+if match:
+    print("Pattern found!")
+else:
+    print("Pattern not found.")
+</code></pre>
+
+<h3 id="2-re-search-">2. <code>re.search()</code>:</h3>
+
+<p>Searches for the pattern anywhere in the string.</p>
+
+<pre class="language-python"><code>import re
+
+pattern = r"World"
+text = "Hello, World!"
+
+search_result = re.search(pattern, text)
+
+if search_result:
+    print("Pattern found!")
+else:
+    print("Pattern not found.")
+</code></pre>
+
+<h3 id="3-re-findall-">3. <code>re.findall()</code>:</h3>
+
+<p>Finds all occurrences of the pattern in the string and returns them as a list.</p>
+
+<pre class="language-python"><code>import re
+
+pattern = r"\d+"  # Match one or more digits
+text = "There are 123 apples and 456 oranges."
+
+matches = re.findall(pattern, text)
+
+print("Matches:", matches)
+</code></pre>
+
+<h3 id="4-re-finditer-">4. <code>re.finditer()</code>:</h3>
+
+<p>Finds all occurrences of the pattern in the string and returns them as an iterator.</p>
+
+<pre class="language-python"><code>import re
+
+pattern = r"\d+"  # Match one or more digits
+text = "There are 123 apples and 456 oranges."
+
+match_iterator = re.finditer(pattern, text)
+
+for match in match_iterator:
+    print("Match:", match.group())
+</code></pre>
+
+<h3 id="5-re-sub-">5. <code>re.sub()</code>:</h3>
+
+<p>Substitutes occurrences of the pattern with a specified string.</p>
+
+<pre class="language-python"><code>import re
+
+pattern = r"\d+"  # Match one or more digits
+text = "There are 123 apples and 456 oranges."
+
+result = re.sub(pattern, "X", text)
+
+print("Original Text:", text)
+print("Result after substitution:", result)
+</code></pre>
+
+<p>In this example, all digit sequences in the text are replaced with the letter "X".</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Regular expressions in Python are a powerful tool for pattern matching and text manipulation.</p>
+
+<p>By understanding the syntax, common patterns, and the functions provided by the <code>re</code> module, you can harness the full capabilities of regular expressions in your Python programs.</p>
+
+<p>Whether you're validating input, extracting information, or transforming text, regular expressions provide a flexible and efficient solution. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

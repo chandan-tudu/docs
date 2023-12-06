@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python If Statements Explained With Examples</title>
+<meta name="description" content="In this guide, we'll explore the syntax of the if statement and provide examples to illustrate how it is used in Python." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-if-statements-explained-with-examples.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python If Statements Explained With Examples</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python if Statements Explained with Examples" loading="lazy" width="900" height="500"></div> -->
+<p>The <code>if</code> statement is a fundamental element of Python's control flow, allowing developers to make decisions based on conditions.</p>
+
+<p>In this guide, we'll explore the syntax of the <code>if</code> statement and provide examples to illustrate how it is used in Python.</p>
+
+<h2 id="anatomy-of-the-if-statement-">Anatomy of the <code>if</code> Statement:</h2>
+
+<p>The basic structure of an <code>if</code> statement in Python is as follows:</p>
+
+<pre class="language-python"><code>if condition:
+    # Code to execute if the condition is True
+</code></pre>
+
+<p>The code block following the <code>if</code> statement is indented and executed only if the specified condition evaluates to <code>True</code>.</p>
+
+<h2 id="example-1-checking-a-condition">Example 1: Checking a Condition</h2>
+
+<p>Let's consider a simple example where we check if a variable <code>x</code> is greater than 10:</p>
+
+<pre class="language-python"><code>x = 15
+
+if x &gt; 10:
+    print("x is greater than 10")
+</code></pre>
+
+<p>In this example, the condition <code>x &gt; 10</code> is <code>True</code>, so the indented code block is executed, resulting in the output: <code>x is greater than 10</code>.</p>
+
+<h2 id="example-2-handling-multiple-conditions-with-elif-and-else-">Example 2: Handling Multiple Conditions with <code>elif</code> and <code>else</code></h2>
+
+<p>You can extend the <code>if</code> statement to handle multiple conditions using <code>elif</code> (short for "else if") and <code>else</code>. In this example, we'll classify a number into different categories:</p>
+
+<pre class="language-python"><code>number = 7
+
+if number &gt; 0:
+    print("Number is positive")
+elif number == 0:
+    print("Number is zero")
+else:
+    print("Number is negative")
+</code></pre>
+
+<p>Depending on the value of <code>number</code>, one of the three code blocks will be executed.</p>
+
+<h2 id="example-3-nested-if-statements">Example 3: Nested <code>if</code> Statements</h2>
+
+<p>You can nest <code>if</code> statements to handle more complex logic. Here's an example that checks both the value and the parity of a number:</p>
+
+<pre class="language-python"><code>num = 12
+
+if num &gt; 0:
+    print("Number is positive")
+
+    if num % 2 == 0:
+        print("Number is even")
+    else:
+        print("Number is odd")
+
+else:
+    print("Number is not positive")
+</code></pre>
+
+<p>In this nested example, the outer <code>if</code> statement checks if the number is positive. If true, it then checks whether the number is even or odd within the nested <code>if</code> statement.</p>
+
+<h2 id="example-4-ternary-conditional-operator">Example 4: Ternary Conditional Operator</h2>
+
+<p>Python supports a concise ternary conditional operator for inline <code>if</code> statements. It provides a compact way to express simple conditional assignments:</p>
+
+<pre class="language-python"><code>value = 15
+
+result = "Greater than 10" if value &gt; 10 else "Less than or equal to 10"
+print(result)
+</code></pre>
+
+<p>In this example, the value of <code>result</code> is assigned based on the condition.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Understanding and mastering the <code>if</code> statement is crucial for writing dynamic and responsive Python programs.</p>
+
+<p>Whether you're making simple comparisons or handling complex nested conditions, the <code>if</code> statement empowers you to control the flow of your code.</p>
+
+<p>Experiment with these examples, and as you become more comfortable with <code>if</code> statements, you'll gain a valuable tool for building sophisticated and logic-driven applications in Python.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

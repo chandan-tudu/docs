@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python "namedtuples" Tutorial</title>
+<meta name="description" content="The syntax, creation, and usage of namedtuples, highlighting their advantages in various scenarios." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-namedtuples-tutorial.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python "namedtuples" Tutorial</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python namedtuples tutorial" loading="lazy" width="900" height="500"></div> -->
+<p>Namedtuples in Python provide an elegant and efficient way to create lightweight, immutable data structures with named fields.</p>
+
+<p>They are part of the <code>collections</code> module and offer the convenience of tuples while adding the ability to access elements by name.</p>
+
+<p>In this tutorial, we'll explore the syntax, creation, and usage of namedtuples, highlighting their advantages in various scenarios.</p>
+
+<h2 id="introduction-to-namedtuples-">Introduction to Namedtuples:</h2>
+
+<p>A namedtuple is a subclass of a tuple, and each namedtuple type is defined by a class created using the <code>namedtuple()</code> factory function.</p>
+
+<p>Namedtuples have named fields, making the code more readable and self-documenting.</p>
+
+<h3 id="creating-a-namedtuple-">Creating a Namedtuple:</h3>
+
+<pre class="language-python"><code>from collections import namedtuple
+
+# Define a namedtuple type named 'Person' with fields 'name' and 'age'
+Person = namedtuple('Person', ['name', 'age'])
+
+# Create an instance of the Person namedtuple
+person = Person(name='Alice', age=30)
+
+print("Person:", person)
+</code></pre>
+
+<p>In this example, we define a namedtuple type named <code>Person</code> with fields <code>name</code> and <code>age</code>. We then create an instance of the <code>Person</code> namedtuple with values 'Alice' and 30.</p>
+
+<h3 id="accessing-named-fields-">Accessing Named Fields:</h3>
+
+<pre class="language-python"><code># Access named fields of the namedtuple
+print("Name:", person.name)
+print("Age:", person.age)
+</code></pre>
+
+<p>Named fields can be accessed using dot notation, making the code more expressive and self-explanatory.</p>
+
+<h2 id="advantages-of-namedtuples-">Advantages of Namedtuples:</h2>
+
+<h3 id="1-improved-readability-">1. Improved Readability:</h3>
+
+<p>Namedtuples enhance code readability by providing meaningful names for each field, making the code more self-documenting.</p>
+
+<pre class="language-python"><code># Without namedtuple
+point = (10, 20)
+
+# With namedtuple
+Point = namedtuple('Point', ['x', 'y'])
+point = Point(x=10, y=20)
+</code></pre>
+
+<h3 id="2-immutability-">2. Immutability:</h3>
+
+<p>Namedtuples are immutable, meaning their values cannot be modified after creation. This immutability ensures data integrity and prevents accidental changes.</p>
+
+<pre class="language-python"><code># Attempting to modify a namedtuple raises an AttributeError
+person.age = 31  # Raises AttributeError
+</code></pre>
+
+<h3 id="3-memory-efficiency-">3. Memory Efficiency:</h3>
+
+<p>Namedtuples are memory-efficient because they are implemented in C and do not store field names in each instance. This results in a smaller memory footprint compared to using dictionaries.</p>
+
+<pre class="language-python"><code># Using a dictionary
+person_dict = {'name': 'Bob', 'age': 25}
+
+# Using a namedtuple
+Person = namedtuple('Person', ['name', 'age'])
+person_namedtuple = Person(name='Bob', age=25)
+</code></pre>
+
+<h3 id="4-compatibility-with-regular-tuples-">4. Compatibility with Regular Tuples:</h3>
+
+<p>Namedtuples are fully compatible with regular tuples. You can use them in places where a regular tuple is expected, and they can be easily converted to regular tuples.</p>
+
+<pre class="language-python"><code>regular_tuple = tuple(person)
+print("Regular Tuple:", regular_tuple)
+</code></pre>
+
+<h2 id="practical-use-cases-">Practical Use Cases:</h2>
+
+<h3 id="1-representing-records-">1. Representing Records:</h3>
+
+<p>Namedtuples are ideal for representing records, such as rows in a database or entries in a log file.</p>
+
+<pre class="language-python"><code># Define a namedtuple for log entries
+LogEntry = namedtuple('LogEntry', ['timestamp', 'message'])
+
+# Sample log entry
+log_entry = LogEntry(timestamp='2023-01-01 12:00:00', message='Application started')
+</code></pre>
+
+<h3 id="2-configurations-">2. Configurations:</h3>
+
+<p>Namedtuples can be used to represent configurations with named parameters.</p>
+
+<pre class="language-python"><code># Define a namedtuple for application configuration
+Config = namedtuple('Config', ['debug', 'verbose'])
+
+# Sample configuration
+config = Config(debug=True, verbose=False)
+</code></pre>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Namedtuples in Python provide an elegant solution for creating structured, immutable data types with named fields.</p>
+
+<p>Their simplicity, readability, and compatibility with regular tuples make them a valuable tool for various scenarios, including representing records, configurations, and other structured data.</p>
+
+<p>By incorporating namedtuples into your Python projects, you can write cleaner, more expressive code that is easy to understand and maintain. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

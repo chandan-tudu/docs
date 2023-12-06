@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Parsing Json In Python: A Step-by-step Guide</title>
+<meta name="description" content="In this step-by-step guide, we'll explore how to parse JSON in Python and handle various scenarios." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/parsing-json-in-python-a-step-by-step-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Parsing Json In Python: A Step-by-step Guide</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Parsing JSON in Python: A Step-by-Step Guide" loading="lazy" width="900" height="500"></div> -->
+<p>JSON (JavaScript Object Notation) is a popular data interchange format, and Python's <code>json</code> module makes it easy to parse JSON data.</p>
+
+<p>Parsing JSON involves converting a JSON-formatted string into a Python object, such as a dictionary or a list.</p>
+
+<p>In this step-by-step guide, we'll explore how to parse JSON in Python and handle various scenarios.</p>
+
+<h2 id="prerequisites-">Prerequisites:</h2>
+
+<p>Before we begin, make sure you have Python installed on your system. If not, you can download and install Python from the official <a href="https://www.python.org/downloads/">Python website</a>.</p>
+
+<h2 id="parsing-json-using-the-json-module-">Parsing JSON using the <code>json</code> Module:</h2>
+
+<p>The <code>json</code> module in Python provides two methods for parsing JSON data:</p>
+
+<ol>
+<li><p><strong><code>json.loads()</code> (Load String):</strong> This method is used to parse a JSON-formatted string into a Python object.</p></li>
+<li><p><strong><code>json.load()</code> (Load):</strong> This method is used to parse JSON data from a file or a file-like object.</p></li>
+</ol>
+
+<p>Let's explore both methods with examples.</p>
+
+<h3 id="1-parsing-json-from-a-string-json-loads-">1. Parsing JSON from a String (<code>json.loads()</code>):</h3>
+
+<pre class="language-python"><code>import json
+
+# JSON-formatted string
+json_string = '''
+{
+  "name": "John Doe",
+  "age": 30,
+  "city": "New York",
+  "is_student": false,
+  "grades": [85, 90, 78],
+  "address": {
+    "street": "123 Main St",
+    "zip_code": "10001"
+  },
+  "contact": null
+}
+'''
+
+# Parse JSON string into a Python object
+python_object = json.loads(json_string)
+
+# Display the parsed object
+print(python_object)
+</code></pre>
+
+<p>In this example, the <code>json.loads()</code> method is used to parse the JSON-formatted string <code>json_string</code> into a Python object.</p>
+
+<h3 id="2-parsing-json-from-a-file-json-load-">2. Parsing JSON from a File (<code>json.load()</code>):</h3>
+
+<pre class="language-python"><code>import json
+
+# JSON file path
+json_file_path = 'example.json'
+
+# Read JSON data from a file into a Python object
+with open(json_file_path, 'r') as file:
+    python_object_from_file = json.load(file)
+
+# Display the parsed object
+print(python_object_from_file)
+</code></pre>
+
+<p>In this example, the <code>json.load()</code> method reads JSON data from the file specified by <code>json_file_path</code> into a Python object.</p>
+
+<h2 id="handling-nested-json-">Handling Nested JSON:</h2>
+
+<p>JSON often contains nested structures, such as objects within objects or arrays within objects. Parsing nested JSON requires accessing the appropriate keys or indices.</p>
+
+<p>Let's consider an example of nested JSON:</p>
+
+<pre class="language-python"><code>import json
+
+# Nested JSON-formatted string
+nested_json_string = '''
+{
+  "name": "John Doe",
+  "age": 30,
+  "address": {
+    "street": "123 Main St",
+    "city": "New York",
+    "zipcode": "10001"
+  },
+  "grades": [
+    {"subject": "Math", "score": 90},
+    {"subject": "English", "score": 85}
+  ]
+}
+'''
+
+# Parse nested JSON string into a Python object
+nested_python_object = json.loads(nested_json_string)
+
+# Access nested values
+print("Name:", nested_python_object["name"])
+print("City:", nested_python_object["address"]["city"])
+print("Math Score:", nested_python_object["grades"][0]["score"])
+</code></pre>
+
+<p>In this example, we parse a JSON string with nested structures and access specific values within the Python object.</p>
+
+<h2 id="error-handling-">Error Handling:</h2>
+
+<p>When parsing JSON, it's essential to handle potential errors, especially if the JSON data is malformed or unexpected.</p>
+
+<pre class="language-python"><code>import json
+
+# Malformed JSON string (missing closing bracket)
+malformed_json_string = '{"name": "John Doe", "age": 30, "city": "New York"'
+
+try:
+    # Attempt to parse the malformed JSON string
+    parsed_object = json.loads(malformed_json_string)
+    print(parsed_object)
+except json.JSONDecodeError as e:
+    # Handle JSON decoding error
+    print(f"Error decoding JSON: {e}")
+</code></pre>
+
+<p>In this example, we intentionally provide a malformed JSON string to demonstrate error handling using <code>json.JSONDecodeError</code>.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Parsing JSON in Python is a fundamental skill for working with data interchange formats, web APIs, and configuration files. The <code>json</code> module provides convenient methods for parsing JSON data into Python objects.</p>
+
+<p>By understanding the basics of parsing JSON, handling nested structures, and addressing potential errors, you can confidently integrate JSON parsing into your Python projects.</p>
+
+<p>As you work with JSON in various scenarios, refer to the <a href="https://docs.python.org/3/library/json.html">official documentation</a> for additional details and advanced features. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

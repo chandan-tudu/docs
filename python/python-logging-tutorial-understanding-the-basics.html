@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Logging Tutorial: Understanding The Basics</title>
+<meta name="description" content="Fundamentals of Python logging, covering basic concepts, configuration, and usage." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-logging-tutorial-understanding-the-basics.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Logging Tutorial: Understanding The Basics</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python Logging Tutorial: Understanding the Basics" loading="lazy" width="900" height="500"></div> -->
+<p>Logging is a crucial aspect of software development, providing a systematic way to record messages, warnings, and errors during the execution of a program.</p>
+
+<p>In Python, the built-in <code>logging</code> module facilitates this process, offering a flexible and extensible logging framework.</p>
+
+<p>In this tutorial, we'll explore the fundamentals of Python logging, covering basic concepts, configuration, and usage.</p>
+
+<h2 id="basic-concepts-">Basic Concepts:</h2>
+
+<h3 id="1-logging-levels-">1. Logging Levels:</h3>
+
+<p>The <code>logging</code> module defines several logging levels:</p>
+
+<ul>
+<li><code>DEBUG</code>: Detailed information, typically useful for debugging.</li>
+<li><code>INFO</code>: General information about the program's execution.</li>
+<li><code>WARNING</code>: Indicates a potential issue that does not prevent the program from running.</li>
+<li><code>ERROR</code>: Indicates a more severe issue that may prevent the program from continuing.</li>
+<li><code>CRITICAL</code>: Indicates a critical error that may lead to a program's termination.</li>
+</ul>
+
+<h3 id="2-loggers-">2. Loggers:</h3>
+
+<p>A logger is an object that emits log messages. Each logger is identified by a name, and loggers form a hierarchy based on their names.</p>
+
+<h3 id="3-handlers-">3. Handlers:</h3>
+
+<p>Handlers define where log messages go. They send log messages to different outputs, such as the console, files, or external services.</p>
+
+<h3 id="4-formatters-">4. Formatters:</h3>
+
+<p>Formatters specify the layout of log messages. They define how log messages are formatted before being emitted.</p>
+
+<h2 id="basic-logging-example-">Basic Logging Example:</h2>
+
+<p>Let's start with a simple example to demonstrate the basic usage of the <code>logging</code> module.</p>
+
+<pre class="language-python"><code>import logging
+
+# Configure the logging system
+logging.basicConfig(level=logging.DEBUG)
+
+# Create a logger
+logger = logging.getLogger(__name__)
+
+# Log messages
+logger.debug("This is a debug message.")
+logger.info("This is an info message.")
+logger.warning("This is a warning message.")
+logger.error("This is an error message.")
+logger.critical("This is a critical message.")
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>We configure the logging system using <code>basicConfig</code> to set the logging level to <code>DEBUG</code>.</li>
+<li>We create a logger named <code>__name__</code> (which is typically the module name).</li>
+<li>We log messages of different levels using the logger.</li>
+</ul>
+
+<p>The output will include all messages because the logging level is set to <code>DEBUG</code>.</p>
+
+<h2 id="configuring-logging-">Configuring Logging:</h2>
+
+<p>The <code>basicConfig</code> function is a convenient way to configure logging for simple cases. However, for more complex setups, you may want to use a configuration file or programmatically configure logging. Here's an example of configuring logging programmatically:</p>
+
+<pre class="language-python"><code>import logging
+
+# Create a logger
+logger = logging.getLogger(__name__)
+
+# Create a file handler and set its level to DEBUG
+file_handler = logging.FileHandler('app.log')
+file_handler.setLevel(logging.DEBUG)
+
+# Create a formatter and set it for the handler
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+
+# Add the handler to the logger
+logger.addHandler(file_handler)
+
+# Log messages
+logger.debug("This is a debug message.")
+logger.info("This is an info message.")
+</code></pre>
+
+<p>In this example, we:</p>
+
+<ul>
+<li>Create a <code>FileHandler</code> to log messages to a file named <code>app.log</code>.</li>
+<li>Set the handler's level to <code>DEBUG</code>.</li>
+<li>Create a formatter to specify the log message's layout, including the timestamp, logger name, log level, and message.</li>
+<li>Set the formatter for the file handler.</li>
+<li>Add the file handler to the logger.</li>
+</ul>
+
+<h2 id="using-different-handlers-">Using Different Handlers:</h2>
+
+<p>The <code>logging</code> module provides various handlers for different purposes. Here's an example using a <code>StreamHandler</code> to log messages to the console:</p>
+
+<pre class="language-python"><code>import logging
+
+# Create a logger
+logger = logging.getLogger(__name__)
+
+# Create a stream handler and set its level to INFO
+stream_handler = logging.StreamHandler()
+stream_handler.setLevel(logging.INFO)
+
+# Create a formatter and set it for the handler
+formatter = logging.Formatter('%(levelname)s - %(message)s')
+stream_handler.setFormatter(formatter)
+
+# Add the handler to the logger
+logger.addHandler(stream_handler)
+
+# Log messages
+logger.debug("This is a debug message.")
+logger.info("This is an info message.")
+logger.warning("This is a warning message.")
+</code></pre>
+
+<p>In this example, we:</p>
+
+<ul>
+<li>Create a <code>StreamHandler</code> to log messages to the console.</li>
+<li>Set the handler's level to <code>INFO</code>.</li>
+<li>Create a simplified formatter for the stream handler.</li>
+<li>Set the formatter for the stream handler.</li>
+<li>Add the stream handler to the logger.</li>
+</ul>
+
+<p>Now, only messages with a level of <code>INFO</code> or higher will be displayed on the console.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Python's <code>logging</code> module provides a robust framework for managing and capturing log messages.</p>
+
+<p>By understanding the basic concepts, configuring logging, and using different handlers, you can tailor the logging behavior to suit your application's needs.</p>
+
+<p>Whether you're building a small script or a large-scale application, incorporating effective logging practices ensures better code maintainability and easier debugging.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

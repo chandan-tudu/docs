@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exploring Python Data Types: A Comprehensive Guide</title>
+<meta name="description" content="In this guide, we'll explore the fundamental data types in Python and how to use them." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/exploring-python-data-types-a-comprehensive-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Exploring Python Data Types: A Comprehensive Guide</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Exploring Python Data Types: A Comprehensive Guide" loading="lazy" width="900" height="500"></div> -->
+<p>Python, a versatile and high-level programming language, supports a variety of data types that enable developers to work with different kinds of data.</p>
+
+<p>Understanding these data types is crucial for writing effective and efficient Python code. In this guide, we'll explore the fundamental data types in Python and how to use them.</p>
+
+<p><strong>Table of Contents #</strong></p>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#numeric-types">Numeric Types</a>
+
+<ul>
+<li><a href="#integers-int">Integers (<code>int</code>)</a></li>
+<li><a href="#floating-point-numbers-float">Floating-Point Numbers (<code>float</code>)</a></li>
+<li><a href="#complex-numbers-complex">Complex Numbers (<code>complex</code>)</a></li>
+</ul></li>
+<li><a href="#text-type">Text Type</a>
+
+<ul>
+<li><a href="#strings-str">Strings (<code>str</code>)</a></li>
+</ul></li>
+<li><a href="#sequence-types">Sequence Types</a>
+
+<ul>
+<li><a href="#lists-list">Lists (<code>list</code>)</a></li>
+<li><a href="#tuples-tuple">Tuples (<code>tuple</code>)</a></li>
+<li><a href="#strings-as-sequences">Strings as Sequences</a></li>
+</ul></li>
+<li><a href="#mapping-type">Mapping Type</a>
+
+<ul>
+<li><a href="#dictionaries-dict">Dictionaries (<code>dict</code>)</a></li>
+</ul></li>
+<li><a href="#set-types">Set Types</a>
+
+<ul>
+<li><a href="#sets-set">Sets (<code>set</code>)</a></li>
+</ul></li>
+<li><a href="#boolean-type">Boolean Type</a>
+
+<ul>
+<li><a href="#boolean-bool">Boolean (<code>bool</code>)</a></li>
+</ul></li>
+<li><a href="#none-type">None Type</a>
+
+<ul>
+<li><a href="#none-nonetype">None (<code>NoneType</code>)</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="numeric-types">1. Numeric Types:</h2>
+
+<h3 id="integers-int">1.1. Integers (<code>int</code>):</h3>
+
+<p>Integers represent whole numbers without any decimal points. They can be positive or negative.</p>
+
+<pre class="language-python"><code>age = 25
+temperature = -10
+</code></pre>
+
+<h3 id="floating-point-numbers-float">1.2. Floating-Point Numbers (<code>float</code>):</h3>
+
+<p>Floating-point numbers represent real numbers and include decimal points.</p>
+
+<pre class="language-python"><code>pi = 3.14
+salary = 50000.50
+</code></pre>
+
+<h3 id="complex-numbers-complex">1.3. Complex Numbers (<code>complex</code>):</h3>
+
+<p>Complex numbers have a real and an imaginary part.</p>
+
+<pre class="language-python"><code>z = 3 + 4j
+</code></pre>
+
+<h2 id="text-type">2. Text Type:</h2>
+
+<h3 id="strings-str">2.1. Strings (<code>str</code>):</h3>
+
+<p>Strings are sequences of characters enclosed in single or double quotes.</p>
+
+<pre class="language-python"><code>name = "John"
+message = 'Hello, Python!'
+</code></pre>
+
+<h2 id="3-sequence-types">3. Sequence Types:</h2>
+
+<h3 id="lists-list">3.1. Lists (<code>list</code>):</h3>
+
+<p>Lists are ordered and mutable sequences, allowing you to store and manipulate multiple values.</p>
+
+<pre class="language-python"><code>fruits = ['apple', 'banana', 'orange']
+numbers = [1, 2, 3, 4, 5]
+</code></pre>
+
+<h3 id="tuples-tuple">3.2. Tuples (<code>tuple</code>):</h3>
+
+<p>Tuples are similar to lists but are immutable, meaning their elements cannot be changed after creation.</p>
+
+<pre class="language-python"><code>coordinates = (3, 4)
+colors = ('red', 'green', 'blue')
+</code></pre>
+
+<h3 id="strings-as-sequences">3.3. Strings as Sequences:</h3>
+
+<p>Strings can also be treated as sequences, allowing for indexing and slicing.</p>
+
+<pre class="language-python"><code>word = "Python"
+first_letter = word[0]  # 'P'
+substring = word[1:4]  # 'yth'
+</code></pre>
+
+<h2 id="4-mapping-type">4. Mapping Type:</h2>
+
+<h3 id="dictionaries-dict">4.1. Dictionaries (<code>dict</code>):</h3>
+
+<p>Dictionaries are unordered collections of key-value pairs.</p>
+
+<pre class="language-python"><code>person = {'name': 'John', 'age': 25, 'city': 'New York'}
+</code></pre>
+
+<h2 id="set-types">5. Set Types:</h2>
+
+<h3 id="sets-set">5.1. Sets (<code>set</code>):</h3>
+
+<p>Sets are unordered and contain unique elements.</p>
+
+<pre class="language-python"><code>unique_numbers = {1, 2, 3, 4, 5}
+</code></pre>
+
+<h2 id="boolean-type">6. Boolean Type:</h2>
+
+<h3 id="boolean-bool">6.1. Boolean (<code>bool</code>):</h3>
+
+<p>Booleans represent truth values, either <code>True</code> or <code>False</code>.</p>
+
+<pre class="language-python"><code>is_student = True
+has_license = False
+</code></pre>
+
+<h2 id="none-type">7. None Type:</h2>
+
+<h3 id="none-nonetype">7.1. None (<code>NoneType</code>):</h3>
+
+<p>The <code>None</code> type represents the absence of a value or a null value.</p>
+
+<pre class="language-python"><code>result = None
+</code></pre>
+
+<h2 id="conclusion">Conclusion:</h2>
+
+<p>Python's rich set of data types allows developers to handle diverse data scenarios efficiently.</p>
+
+<p>Whether you're working with numbers, text, sequences, or mappings, understanding the characteristics and use cases of each data type is essential for writing clean and effective Python code.</p>
+
+<p>As you progress in your Python journey, mastering these data types will empower you to tackle a wide range of programming challenges.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

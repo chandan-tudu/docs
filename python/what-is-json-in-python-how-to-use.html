@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What Is Json In Python & How To Use?</title>
+<meta name="description" content="Basics of JSON, how to work with JSON in Python, and common use cases." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/what-is-json-in-python-how-to-use.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>What Is Json In Python & How To Use?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of What is JSON in Python &amp;amp; How to Use?" loading="lazy" width="900" height="500"></div> -->
+<p>JSON (JavaScript Object Notation) is a lightweight data interchange format widely used for data exchange between a server and a web application, as well as for configuration files and data storage.</p>
+
+<p>In Python, the <code>json</code> module provides a convenient way to encode Python objects as JSON and decode JSON back into Python objects.</p>
+
+<p>In this comprehensive guide, we'll explore the basics of JSON, how to work with JSON in Python, and common use cases.</p>
+
+<h2 id="what-is-json-">What is JSON?</h2>
+
+<p>JSON is a text format that is easy for humans to read and write. It consists of key-value pairs and supports various data types, including objects, arrays, strings, numbers, booleans, and null.</p>
+
+<p>JSON is language-agnostic, meaning it can be used with any programming language that supports text data interchange.</p>
+
+<p>Here's an example of a simple JSON object:</p>
+
+<pre class="language-json"><code>{
+    "name": "John Doe",
+    "age": 30,
+    "city": "New York",
+    "is_student": false,
+    "grades": [85, 90, 78],
+    "address": {
+        "street": "123 Main St",
+        "zip_code": "10001"
+    },
+    "contact": null
+}
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><code>"name"</code>, <code>"age"</code>, <code>"city"</code>, <code>"is_student"</code>, <code>"grades"</code>, <code>"address"</code>, and <code>"contact"</code> are keys.</li>
+<li><code>"John Doe"</code>, <code>30</code>, <code>"New York"</code>, <code>false</code>, <code>[85, 90, 78]</code>, <code>{"street": "123 Main St", "zip_code": "10001"}</code>, and <code>null</code> are corresponding values.</li>
+</ul>
+
+<h2 id="working-with-json-in-python-">Working with JSON in Python:</h2>
+
+<h3 id="1-encoding-serialization-">1. Encoding (Serialization):</h3>
+
+<p>To convert a Python object to a JSON-formatted string, you can use the <code>json.dumps()</code> function.</p>
+
+<pre class="language-python"><code>import json
+
+# Python object (dictionary)
+data = {
+    "name": "John Doe",
+    "age": 30,
+    "city": "New York",
+    "is_student": False,
+    "grades": [85, 90, 78],
+    "address": {
+        "street": "123 Main St",
+        "zip_code": "10001"
+    },
+    "contact": None
+}
+
+# Convert Python object to JSON string
+json_string = json.dumps(data, indent=2)  # indent for pretty printing
+print(json_string)
+</code></pre>
+
+<p>In this example, <code>json.dumps()</code> serializes the Python dictionary <code>data</code> into a JSON-formatted string.</p>
+
+<h3 id="2-decoding-deserialization-">2. Decoding (Deserialization):</h3>
+
+<p>To convert a JSON string back into a Python object, you can use the <code>json.loads()</code> function.</p>
+
+<pre class="language-python"><code># JSON string
+json_string = '''
+{
+  "name": "John Doe",
+  "age": 30,
+  "city": "New York",
+  "is_student": false,
+  "grades": [85, 90, 78],
+  "address": {
+    "street": "123 Main St",
+    "zip_code": "10001"
+  },
+  "contact": null
+}
+'''
+
+# Convert JSON string to Python object
+python_object = json.loads(json_string)
+print(python_object)
+</code></pre>
+
+<p>Here, <code>json.loads()</code> deserializes the JSON string into a Python object.</p>
+
+<h3 id="3-reading-and-writing-json-to-from-files-">3. Reading and Writing JSON to/from Files:</h3>
+
+<p>You can also read and write JSON data directly to/from files.</p>
+
+<h4 id="writing-json-to-a-file-">Writing JSON to a File:</h4>
+
+<pre class="language-python"><code># Write JSON to a file
+with open('data.json', 'w') as file:
+    json.dump(data, file, indent=2)
+</code></pre>
+
+<h4 id="reading-json-from-a-file-">Reading JSON from a File:</h4>
+
+<pre class="language-python"><code># Read JSON from a file
+with open('data.json', 'r') as file:
+    loaded_data = json.load(file)
+
+print(loaded_data)
+</code></pre>
+
+<p>These examples use <code>json.dump()</code> to write Python objects to a file in JSON format and <code>json.load()</code> to read JSON data from a file into a Python object.</p>
+
+<h2 id="common-use-cases-">Common Use Cases:</h2>
+
+<h3 id="1-web-apis-">1. Web APIs:</h3>
+
+<p>JSON is a common format for data exchange in web APIs. When interacting with a web API in Python, you often receive JSON responses that need to be decoded into Python objects.</p>
+
+<pre class="language-python"><code>import requests
+
+# Make a request to a JSON API
+response = requests.get('https://jsonplaceholder.typicode.com/todos/1')
+todo_data = response.json()
+
+print(todo_data)
+</code></pre>
+
+<h3 id="2-configuration-files-">2. Configuration Files:</h3>
+
+<p>JSON is used for configuration files due to its simplicity and readability.</p>
+
+<pre class="language-python"><code># Read configuration from a JSON file
+with open('config.json', 'r') as file:
+    config = json.load(file)
+
+print(config)
+</code></pre>
+
+<h3 id="3-data-storage-">3. Data Storage:</h3>
+
+<p>Storing data in JSON format is common for simple data storage needs.</p>
+
+<pre class="language-python"><code># Store data in JSON format
+data_to_store = {'key': 'value'}
+with open('data_storage.json', 'w') as file:
+    json.dump(data_to_store, file, indent=2)
+</code></pre>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Understanding JSON in Python is essential for working with data interchange formats, web APIs, and configuration files.</p>
+
+<p>The <code>json</code> module in Python provides a straightforward way to encode and decode JSON data.</p>
+
+<p>Whether you're interacting with web APIs, reading and writing configuration files, or storing data, JSON is a versatile and widely used format in the Python ecosystem.</p>
+
+<p>With the knowledge gained from this guide, you'll be well-equipped to handle JSON data in your Python projects. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

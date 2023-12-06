@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Ternary Operator Example: A Practical Guide</title>
+<meta name="description" content="The syntax and usage of the ternary operator in Python with practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-ternary-operator-example-a-practical-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Ternary Operator Example: A Practical Guide</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python ternary operator example: A Practical Guide" loading="lazy" width="900" height="500"></div> -->
+<p>The Python ternary operator, also known as the conditional expression, provides a concise way to write simple conditional statements in a single line.</p>
+
+<p>It's a powerful tool for enhancing code readability by condensing conditional expressions.</p>
+
+<p>In this guide, we'll explore the syntax and usage of the ternary operator in Python with practical examples.</p>
+
+<h2 id="syntax-of-the-ternary-operator-">Syntax of the Ternary Operator:</h2>
+
+<p>The syntax of the ternary operator is as follows:</p>
+
+<pre class="language-python"><code>value_if_true if condition else value_if_false
+</code></pre>
+
+<ul>
+<li><strong>condition:</strong> The expression to evaluate. If it's true, the value before <code>if</code> is returned; otherwise, the value after <code>else</code> is returned.</li>
+</ul>
+
+<h2 id="basic-example-of-the-ternary-operator-">Basic Example of the Ternary Operator:</h2>
+
+<p>Let's start with a basic example where we use the ternary operator to assign a value based on a condition:</p>
+
+<pre class="language-python"><code># Example: Assigning a value based on a condition
+x = 10
+y = 20
+
+max_value = x if x &gt; y else y
+
+print("The maximum value is:", max_value)
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code>The maximum value is: 20
+</code></pre>
+
+<p>In this example, the ternary operator compares the values of <code>x</code> and <code>y</code>. If <code>x</code> is greater than <code>y</code>, the value of <code>x</code> is assigned to <code>max_value</code>; otherwise, the value of <code>y</code> is assigned.</p>
+
+<h2 id="ternary-operator-with-multiple-conditions-">Ternary Operator with Multiple Conditions:</h2>
+
+<p>You can chain multiple ternary operators to handle more complex conditions:</p>
+
+<pre class="language-python"><code># Example: Chaining ternary operators
+x = 15
+result = "Even" if x % 2 == 0 else "Odd" if x % 3 == 0 else "Neither"
+
+print("The result is:", result)
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code>The result is: Odd
+</code></pre>
+
+<p>In this example, the ternary operators check if <code>x</code> is even, then if <code>x</code> is divisible by 3, and finally, it returns "Neither" if none of the conditions are met.</p>
+
+<h2 id="ternary-operator-in-list-comprehension-">Ternary Operator in List Comprehension:</h2>
+
+<p>The ternary operator is often used in list comprehensions to create concise and readable code. Here's an example that filters even numbers from a list:</p>
+
+<pre class="language-python"><code># Example: Using ternary operator in list comprehension
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+even_numbers = [num for num in numbers if num % 2 == 0]
+
+print("Even numbers:", even_numbers)
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code>Even numbers: [2, 4, 6, 8]
+</code></pre>
+
+<p>In this example, the ternary operator is used to filter even numbers from the list <code>numbers</code> in a single line.</p>
+
+<h2 id="ternary-operator-in-function-arguments-">Ternary Operator in Function Arguments:</h2>
+
+<p>You can also use the ternary operator when specifying default values or arguments in function calls:</p>
+
+<pre class="language-python"><code># Example: Using ternary operator in function arguments
+def greet(name=None):
+    name = name if name else "Guest"
+    print(f"Hello, {name}!")
+
+greet()
+greet("Alice")
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code>Hello, Guest!
+Hello, Alice!
+</code></pre>
+
+<p>In this example, the ternary operator is used to assign a default value ("Guest") to the <code>name</code> variable if it is <code>None</code>.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The Python ternary operator is a concise and expressive way to write conditional expressions in a single line, enhancing the readability of your code.</p>
+
+<p>Whether you're assigning values, chaining conditions, using it in list comprehensions, or specifying default values in function arguments, the ternary operator provides a powerful and compact syntax.</p>
+
+<p>Understanding how to leverage the ternary operator will make your Python code more elegant and efficient. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

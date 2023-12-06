@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Create A Class In Python?</title>
+<meta name="description" content="In this step-by-step guide, we'll walk through the process of creating a class in Python." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/how-to-create-a-class-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Create A Class In Python?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to create a class in Python?" loading="lazy" width="900" height="500"></div> -->
+<p>In Python, a class is a blueprint for creating objects. It defines the structure and behavior of objects that will be instantiated from it.</p>
+
+<p>Creating a class involves defining attributes and methods that characterize the objects.</p>
+
+<p>In this step-by-step guide, we'll walk through the process of creating a class in Python.</p>
+
+<h2 id="1-defining-a-simple-class-">1. Defining a Simple Class:</h2>
+
+<p>Let's start with a basic example of a <code>Person</code> class. The class will have attributes for the person's name and age, as well as a method to display information.</p>
+
+<pre class="language-python"><code>class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def display_info(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+</code></pre>
+
+<ul>
+<li>The <code>__init__</code> method is a special method (constructor) that initializes the object's attributes.</li>
+<li>The <code>display_info</code> method displays information about the person.</li>
+</ul>
+
+<h2 id="2-creating-an-object-instance-">2. Creating an Object (Instance):</h2>
+
+<p>Once the class is defined, you can create objects (instances) of that class. Each object represents a specific instance of the class.</p>
+
+<pre class="language-python"><code># Creating instances of the Person class
+person1 = Person("Alice", 25)
+person2 = Person("Bob", 30)
+
+# Accessing attributes and calling methods
+print(person1.name)        # Output: Alice
+print(person2.age)         # Output: 30
+
+person1.display_info()     # Output: Name: Alice, Age: 25
+person2.display_info()     # Output: Name: Bob, Age: 30
+</code></pre>
+
+<ul>
+<li><code>person1</code> and <code>person2</code> are instances of the <code>Person</code> class.</li>
+<li>The attributes <code>name</code> and <code>age</code> are accessed using dot notation.</li>
+<li>The <code>display_info</code> method is called on each instance to display information.</li>
+</ul>
+
+<h2 id="3-adding-more-methods-and-attributes-">3. Adding More Methods and Attributes:</h2>
+
+<p>You can extend the class by adding more methods and attributes to enhance its functionality.</p>
+
+<pre class="language-python"><code>class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.is_adult = age &gt;= 18
+
+    def display_info(self):
+        print(f"Name: {self.name}, Age: {self.age}, Adult: {self.is_adult}")
+
+    def have_birthday(self):
+        self.age += 1
+        self.is_adult = self.age &gt;= 18
+        print(f"Happy Birthday, {self.name}! You are now {self.age} years old.")
+
+# Creating an instance
+person = Person("Charlie", 17)
+
+# Calling methods
+person.display_info()      # Output: Name: Charlie, Age: 17, Adult: False
+person.have_birthday()     # Output: Happy Birthday, Charlie! You are now 18 years old.
+person.display_info()      # Output: Name: Charlie, Age: 18, Adult: True
+</code></pre>
+
+<ul>
+<li>We added a new attribute <code>is_adult</code> based on the age.</li>
+<li>The <code>have_birthday</code> method increments the age and updates the <code>is_adult</code> attribute.</li>
+</ul>
+
+<h2 id="4-class-variables-and-methods-">4. Class Variables and Methods:</h2>
+
+<p>Class variables are shared among all instances of a class, and class methods are defined using the <code>@classmethod</code> decorator.</p>
+
+<pre class="language-python"><code>class Dog:
+    # Class variable
+    total_dogs = 0
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Dog.total_dogs += 1
+
+    @classmethod
+    def display_total_dogs(cls):
+        print(f"Total dogs: {cls.total_dogs}")
+
+# Creating instances
+dog1 = Dog("Buddy", 3)
+dog2 = Dog("Max", 5)
+
+# Accessing class variable and calling class method
+print(Dog.total_dogs)          # Output: 2
+Dog.display_total_dogs()       # Output: Total dogs: 2
+</code></pre>
+
+<ul>
+<li><code>total_dogs</code> is a class variable, shared among all instances.</li>
+<li><code>display_total_dogs</code> is a class method that accesses the class variable.</li>
+</ul>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Creating a class in Python involves defining attributes, methods, and potentially class variables and methods.</p>
+
+<p>Classes provide a structured way to model and organize code, promoting reusability and maintainability.</p>
+
+<p>As you delve deeper into object-oriented programming, you'll discover more advanced features and patterns that enhance the flexibility and power of your classes.</p>
+
+<p>Practice and experimentation with classes are key to mastering this fundamental aspect of Python programming.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

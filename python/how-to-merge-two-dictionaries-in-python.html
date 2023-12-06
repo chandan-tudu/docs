@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Merge Two Dictionaries In Python?</title>
+<meta name="description" content="Various methods for merging dictionaries, covering both Python 3.5 and later versions." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/how-to-merge-two-dictionaries-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Merge Two Dictionaries In Python?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to merge two dictionaries in Python?" loading="lazy" width="900" height="500"></div> -->
+<p>Merging dictionaries is a common operation in Python, and there are multiple approaches to combine the key-value pairs from two dictionaries.</p>
+
+<p>In this guide, we'll explore various methods for merging dictionaries, covering both Python 3.5 and later versions.</p>
+
+<h2 id="method-1-using-the-update-method">Method 1: Using the <code>update()</code> Method</h2>
+
+<p>The <code>update()</code> method is a straightforward way to merge two dictionaries. It updates the dictionary with elements from another dictionary or from an iterable of key-value pairs.</p>
+
+<pre class="language-python"><code># Example dictionaries to merge
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+
+# Using update() to merge dictionaries
+dict1.update(dict2)
+
+# Display the merged dictionary
+print("Merged Dictionary:", dict1)
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code>Merged Dictionary: {'a': 1, 'b': 3, 'c': 4}
+</code></pre>
+
+<p>In this example, the values from <code>dict2</code> have updated the corresponding values in <code>dict1</code>.</p>
+
+<p>If there are common keys, the values from the second dictionary overwrite the values in the first dictionary.</p>
+
+<h2 id="method-2-using-dictionary-unpacking-">Method 2: Using Dictionary Unpacking (<code>**</code>)</h2>
+
+<p>Dictionary unpacking, introduced in Python 3.5, provides a concise way to merge dictionaries using the <code>**</code> operator.</p>
+
+<pre class="language-python"><code># Example dictionaries to merge
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+
+# Using dictionary unpacking to merge dictionaries
+merged_dict = {**dict1, **dict2}
+
+# Display the merged dictionary
+print("Merged Dictionary:", merged_dict)
+</code></pre>
+
+<p>The output will be the same as in the previous example:</p>
+
+<pre><code>Merged Dictionary: {'a': 1, 'b': 3, 'c': 4}
+</code></pre>
+
+<p>Here, the <code>**dict1</code> unpacks the key-value pairs from <code>dict1</code>, and <code>**dict2</code> unpacks the key-value pairs from <code>dict2</code>. The resulting dictionary contains the merged key-value pairs.</p>
+
+<h2 id="method-3-using-dict-constructor">Method 3: Using <code>dict()</code> Constructor</h2>
+
+<p>The <code>dict()</code> constructor can be used to merge dictionaries by passing iterable key-value pairs as arguments.</p>
+
+<pre class="language-python"><code># Example dictionaries to merge
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+
+# Using dict() constructor to merge dictionaries
+merged_dict = dict(list(dict1.items()) + list(dict2.items()))
+
+# Display the merged dictionary
+print("Merged Dictionary:", merged_dict)
+</code></pre>
+
+<p>The output will be the same as in the previous examples:</p>
+
+<pre><code>Merged Dictionary: {'a': 1, 'b': 3, 'c': 4}
+</code></pre>
+
+<p>In this method, the <code>items()</code> method is used to obtain the key-value pairs from each dictionary, and the <code>+</code> operator concatenates the two lists of key-value pairs.</p>
+
+<h2 id="method-4-using-dictionary-comprehension">Method 4: Using Dictionary Comprehension</h2>
+
+<p>Dictionary comprehension can also be employed to merge dictionaries, providing a concise and expressive syntax.</p>
+
+<pre class="language-python"><code># Example dictionaries to merge
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+
+# Using dictionary comprehension to merge dictionaries
+merged_dict = {key: value for d in [dict1, dict2] for key, value in d.items()}
+
+# Display the merged dictionary
+print("Merged Dictionary:", merged_dict)
+</code></pre>
+
+<p>The output will be the same as in the previous examples:</p>
+
+<pre><code>Merged Dictionary: {'a': 1, 'b': 3, 'c': 4}
+</code></pre>
+
+<p>In this example, the nested comprehension iterates over the dictionaries, extracting key-value pairs using <code>items()</code>.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Merging dictionaries in Python can be achieved through various methods, each offering different levels of simplicity and readability.</p>
+
+<p>Whether you prefer the classic <code>update()</code> method, the concise dictionary unpacking, the <code>dict()</code> constructor, or the expressive dictionary comprehension, understanding these approaches empowers you to choose the most suitable method for your specific scenario.</p>
+
+<p>As you work with dictionaries in your Python projects, the ability to merge and combine key-value pairs efficiently becomes a valuable skill. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

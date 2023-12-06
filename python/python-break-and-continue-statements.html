@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Break And Continue Statements</title>
+<meta name="description" content="The syntax, usage, and practical examples of the break and continue statements in Python." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-break-and-continue-statements.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Break And Continue Statements</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python break and continue statements" loading="lazy" width="900" height="500"></div> -->
+<p>In Python, the <code>break</code> and <code>continue</code> statements are powerful tools for controlling the flow of execution within loops.</p>
+
+<p>They allow you to alter the normal progression of a loop based on certain conditions, providing flexibility and control.</p>
+
+<p>In this guide, we'll explore the syntax, usage, and practical examples of the <code>break</code> and <code>continue</code> statements in Python.</p>
+
+<h2 id="the-break-statement-">The Break Statement:</h2>
+
+<p>The <code>break</code> statement is used to exit a loop prematurely, skipping the remaining iterations.</p>
+
+<p>It is commonly employed when a specific condition is met, and there is no need to continue the loop.</p>
+
+<h3 id="syntax-of-the-break-statement-">Syntax of the Break Statement:</h3>
+
+<pre class="language-python"><code>for variable in iterable:
+    # loop body
+    if condition:
+        break  # exit the loop
+</code></pre>
+
+<h3 id="example-of-the-break-statement-">Example of the Break Statement:</h3>
+
+<pre class="language-python"><code># Using break to exit a loop based on a condition
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+for number in numbers:
+    if number == 6:
+        break
+    print(number)
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code>1
+2
+3
+4
+5
+</code></pre>
+
+<p>In this example, the loop is exited when the <code>number</code> variable is equal to 6. The <code>print(number)</code> statement is not executed for numbers after 6.</p>
+
+<h2 id="the-continue-statement-">The Continue Statement:</h2>
+
+<p>The <code>continue</code> statement is used to skip the rest of the code inside a loop for the current iteration and move on to the next iteration.</p>
+
+<p>It is handy when you want to avoid the execution of certain statements based on a condition.</p>
+
+<h3 id="syntax-of-the-continue-statement-">Syntax of the Continue Statement:</h3>
+
+<pre class="language-python"><code>for variable in iterable:
+    # loop body
+    if condition:
+        continue  # skip the rest of the loop body for this iteration
+</code></pre>
+
+<h3 id="example-of-the-continue-statement-">Example of the Continue Statement:</h3>
+
+<pre class="language-python"><code># Using continue to skip printing even numbers
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+for number in numbers:
+    if number % 2 == 0:
+        continue
+    print(number)
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code>1
+3
+5
+7
+9
+</code></pre>
+
+<p>In this example, the <code>print(number)</code> statement is skipped for even numbers due to the <code>continue</code> statement.</p>
+
+<h2 id="practical-use-cases-">Practical Use Cases:</h2>
+
+<h3 id="example-1-searching-for-an-element">Example 1: Searching for an Element</h3>
+
+<pre class="language-python"><code># Using break to exit a loop when an element is found
+target = 7
+numbers = [2, 5, 8, 3, 7, 1, 9, 4, 6]
+
+for number in numbers:
+    if number == target:
+        print(f"Element {target} found!")
+        break
+else:
+    print(f"Element {target} not found.")
+</code></pre>
+
+<p>In this example, the loop searches for the target element (7). If found, it prints a message and exits the loop using <code>break</code>.</p>
+
+<h3 id="example-2-skipping-expensive-calculations">Example 2: Skipping Expensive Calculations</h3>
+
+<pre class="language-python"><code># Using continue to skip expensive calculations for certain items
+items = [1, 2, 3, 4, 5]
+threshold = 3
+
+for item in items:
+    if item &gt; threshold:
+        continue
+    # Perform expensive calculation only for items below the threshold
+    result = item * 2
+    print(f"Result for item {item}: {result}")
+</code></pre>
+
+<p>Here, the <code>continue</code> statement is used to skip the expensive calculation for items that exceed a certain threshold.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The <code>break</code> and <code>continue</code> statements in Python provide ways to control the flow of execution within loops, making your code more flexible and efficient.</p>
+
+<p>Whether you need to exit a loop prematurely based on a condition (<code>break</code>) or skip certain statements for specific iterations (<code>continue</code>), these statements empower you to tailor the behavior of your loops.</p>
+
+<p>As you encounter various programming scenarios, the judicious use of <code>break</code> and <code>continue</code> can significantly enhance the readability and performance of your Python code. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

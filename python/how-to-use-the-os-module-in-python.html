@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Use The OS Module In Python?</title>
+<meta name="description" content="The key features of the os module and demonstrate how to use its functions effectively." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/how-to-use-the-os-module-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Use The OS Module In Python?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to use the os module in Python?" loading="lazy" width="900" height="500"></div> -->
+<p>The <code>os</code> module in Python is a powerful library that provides a way to interact with the operating system.</p>
+
+<p>Whether you need to manipulate file paths, execute system commands, or access environment variables, the <code>os</code> module offers a wide range of functions for system-related operations.</p>
+
+<p>In this article, we'll explore the key features of the <code>os</code> module and demonstrate how to use its functions effectively.</p>
+
+<h2 id="importing-the-os-module">Importing the <code>os</code> Module:</h2>
+
+<p>To get started, you need to import the <code>os</code> module in your Python script or interactive session.</p>
+
+<pre class="language-python"><code>import os
+</code></pre>
+
+<p>Now, let's dive into some of the most commonly used functions provided by the <code>os</code> module.</p>
+
+<h2 id="1-working-with-file-paths">1. Working with File Paths:</h2>
+
+<h3 id="-os-path-join"><code>os.path.join()</code>:</h3>
+
+<p>The <code>os.path.join()</code> function is used to join one or more path components intelligently.</p>
+
+<p>This is particularly useful for constructing file paths in a system-independent manner.</p>
+
+<pre class="language-python"><code>import os
+
+path = os.path.join("folder", "subfolder", "file.txt")
+print("Joined Path:", path)
+</code></pre>
+
+<h3 id="-os-path-abspath"><code>os.path.abspath()</code>:</h3>
+
+<p>The <code>os.path.abspath()</code> function returns the absolute version of a path. It resolves any symbolic links and returns an absolute path.</p>
+
+<pre class="language-python"><code>import os
+
+relative_path = "folder/file.txt"
+absolute_path = os.path.abspath(relative_path)
+print("Absolute Path:", absolute_path)
+</code></pre>
+
+<h2 id="2-listing-directory-contents">2. Listing Directory Contents:</h2>
+
+<h3 id="-os-listdir"><code>os.listdir()</code>:</h3>
+
+<p>The <code>os.listdir()</code> function returns a list containing the names of the entries in a specified directory.</p>
+
+<pre class="language-python"><code>import os
+
+directory_path = "/path/to/directory"
+files = os.listdir(directory_path)
+
+print("Files in Directory:", files)
+</code></pre>
+
+<h2 id="3-file-and-directory-operations">3. File and Directory Operations:</h2>
+
+<h3 id="-os-mkdir"><code>os.mkdir()</code>:</h3>
+
+<p>The <code>os.mkdir()</code> function is used to create a new directory. It takes the directory path as an argument.</p>
+
+<pre class="language-python"><code>import os
+
+new_directory = "/path/to/new_directory"
+os.mkdir(new_directory)
+print("New Directory Created:", new_directory)
+</code></pre>
+
+<h3 id="-os-remove-and-os-rmdir"><code>os.remove()</code> and <code>os.rmdir()</code>:</h3>
+
+<p>The <code>os.remove()</code> function is used to remove (delete) a file, while the <code>os.rmdir()</code> function is used to remove an empty directory.</p>
+
+<pre class="language-python"><code>import os
+
+file_to_delete = "/path/to/file.txt"
+os.remove(file_to_delete)
+print("File Deleted:", file_to_delete)
+
+empty_directory_to_delete = "/path/to/empty_directory"
+os.rmdir(empty_directory_to_delete)
+print("Empty Directory Deleted:", empty_directory_to_delete)
+</code></pre>
+
+<h2 id="4-executing-system-commands">4. Executing System Commands:</h2>
+
+<h3 id="-os-system"><code>os.system()</code>:</h3>
+
+<p>The <code>os.system()</code> function allows you to execute shell commands. It runs the command specified as a string in a subshell.</p>
+
+<pre class="language-python"><code>import os
+
+# Example: List files in the current directory using the 'ls' command on Unix-like systems
+os.system("ls")
+</code></pre>
+
+<h2 id="5-environment-variables">5. Environment Variables:</h2>
+
+<h3 id="-os-environ"><code>os.environ</code>:</h3>
+
+<p>The <code>os.environ</code> dictionary provides a way to access and modify environment variables.</p>
+
+<pre class="language-python"><code>import os
+
+# Get the value of the HOME environment variable
+home_directory = os.environ.get("HOME")
+print("Home Directory:", home_directory)
+</code></pre>
+
+<h2 id="conclusion">Conclusion:</h2>
+
+<p>The <code>os</code> module in Python is a versatile tool for interacting with the operating system.</p>
+
+<p>Whether you're working with file paths, directories, system commands, or environment variables, the <code>os</code> module provides a wide range of functions to simplify these tasks.</p>
+
+<p>Familiarizing yourself with the functions mentioned in this article will empower you to navigate and manipulate the system in your Python programs.</p>
+
+<p>As always, refer to the official <a href="https://docs.python.org/3/library/os.html" rel="noopener noreferrer nofollow" target="_blank">Python documentation</a> for a comprehensive list of functions and detailed information. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

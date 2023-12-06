@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Sqlite Tutorial: Getting Started With Sqlite In Python</title>
+<meta name="description" content="Here we'll cover the basics of using SQLite in Python, including creating databases, executing SQL queries, and working with data." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-sqlite-tutorial-getting-started-with-sqlite-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Sqlite Tutorial: Getting Started With Sqlite In Python</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python SQLite Tutorial: Getting Started with SQLite in Python" loading="lazy" width="900" height="500"></div> -->
+<p>SQLite is a lightweight, serverless, and self-contained relational database engine that is widely used for embedded systems and small to medium-scale applications.</p>
+
+<p>Python's built-in <code>sqlite3</code> module provides a convenient way to interact with SQLite databases.</p>
+
+<p>In this tutorial, we'll cover the basics of using SQLite in Python, including creating databases, executing SQL queries, and working with data.</p>
+
+<h2 id="prerequisites">Prerequisites:</h2>
+
+<p>Before getting started, ensure that you have Python installed on your system. Additionally, since SQLite is a C library, you don't need to install it separately; it comes bundled with Python.</p>
+
+<h2 id="creating-a-sqlite-database">Creating a SQLite Database:</h2>
+
+<p>To get started with SQLite in Python, you first need to create a database. In SQLite, a database is simply a file. Let's create a new SQLite database and connect to it.</p>
+
+<pre class="language-python"><code>import sqlite3
+
+# Connect to an SQLite database (or create one if it doesn't exist)
+connection = sqlite3.connect('example.db')
+</code></pre>
+
+<p>In this example, <code>example.db</code> is the name of the SQLite database file. If the file doesn't exist, SQLite will create it.</p>
+
+<h2 id="creating-a-table">Creating a Table:</h2>
+
+<p>Once connected to the database, you can create tables to organize your data. In SQLite, tables are created using SQL statements.</p>
+
+<p>Let's create a simple <code>users</code> table:</p>
+
+<pre class="language-python"><code># Create a cursor object to execute SQL queries
+cursor = connection.cursor()
+
+# Execute a query to create a users table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL
+    )
+''')
+
+# Commit the changes to the database
+connection.commit()
+</code></pre>
+
+<p>In this example, the <code>users</code> table has three columns: <code>id</code> (integer and primary key), <code>username</code> (text), and <code>email</code> (text). The <code>IF NOT EXISTS</code> clause ensures that the table is created only if it doesn't already exist.</p>
+
+<h2 id="inserting-data">Inserting Data:</h2>
+
+<p>Now that we have a table, let's insert some data into it.</p>
+
+<pre class="language-python"><code># Insert data into the users table
+cursor.execute("INSERT INTO users (username, email) VALUES (?, ?)", ('john_doe', 'john@example.com'))
+
+# Commit the changes to the database
+connection.commit()
+</code></pre>
+
+<p>Here, we use a parameterized query to insert data into the <code>users</code> table.</p>
+
+<p>The <code>?</code> placeholders are filled with the actual values provided in the tuple (<code>('john_doe', 'john@example.com')</code>).</p>
+
+<h2 id="querying-data">Querying Data:</h2>
+
+<p>You can retrieve data from the database using SELECT queries. Here's an example of retrieving all users from the <code>users</code> table:</p>
+
+<pre class="language-python"><code># Query all users
+cursor.execute("SELECT * FROM users")
+
+# Fetch all rows
+rows = cursor.fetchall()
+
+# Display the results
+for row in rows:
+    print(row)
+</code></pre>
+
+<p>The <code>execute</code> method is used to execute a SELECT query, and <code>fetchall</code> retrieves all rows as a list. The loop then prints each row.</p>
+
+<h2 id="updating-and-deleting-data">Updating and Deleting Data:</h2>
+
+<p>You can also update or delete data in the database using UPDATE and DELETE queries.</p>
+
+<pre class="language-python"><code># Update the email of a user
+cursor.execute("UPDATE users SET email = ? WHERE username = ?", ('new_email@example.com', 'john_doe'))
+
+# Delete a user
+cursor.execute("DELETE FROM users WHERE username = ?", ('john_doe',))
+
+# Commit the changes to the database
+connection.commit()
+</code></pre>
+
+<p>Here, we update the email of a user and then delete the user with the username 'john_doe'.</p>
+
+<h2 id="closing-the-connection">Closing the Connection:</h2>
+
+<p>After performing your operations, it's essential to close the connection to the database.</p>
+
+<pre class="language-python"><code># Close the connection
+connection.close()
+</code></pre>
+
+<p>Closing the connection ensures that any changes made are persisted to the database.</p>
+
+<h2 id="conclusion">Conclusion:</h2>
+
+<p>This Python SQLite tutorial covers the basics of using SQLite with Python, from creating a database to executing SQL queries.</p>
+
+<p>SQLite is a great choice for small to medium-sized projects or applications that don't require the complexities of a full-fledged database server.</p>
+
+<p>As you explore more advanced topics, you may want to dive into features like transactions, error handling, and using SQLite with asynchronous programming.</p>
+
+<p>The <code>sqlite3</code> module documentation is a valuable resource for more in-depth information: <a href="https://docs.python.org/3/library/sqlite3.html" rel="noopener noreferrer nofollow">SQLite3 Python Documentation</a>. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

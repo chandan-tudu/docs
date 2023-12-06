@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Decorators Tutorial: Enhancing Functionality With Style</title>
+<meta name="description" content="In this tutorial, we'll explore the basics of Python decorators, how to create and use them, and various use cases." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-decorators-tutorial-enhancing-functionality-with-style.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Decorators Tutorial: Enhancing Functionality With Style</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python Decorators Tutorial: Enhancing Functionality with Style" loading="lazy" width="900" height="500"></div> -->
+<p>Python decorators are a powerful and flexible feature that allows you to modify or extend the behavior of functions or methods.</p>
+
+<p>Decorators provide a clean and concise way to wrap functions, making them a valuable tool for code organization and reuse.</p>
+
+<p>In this tutorial, we'll explore the basics of Python decorators, how to create and use them, and various use cases.</p>
+
+<h2 id="understanding-decorators-">Understanding Decorators:</h2>
+
+<p>In Python, a decorator is a special type of function that is used to modify the behavior of another function. Decorators are applied using the <code>@decorator_name</code> syntax.</p>
+
+<p>They are often used to add functionality such as logging, timing, or access control to functions without modifying their code directly.</p>
+
+<h2 id="creating-a-simple-decorator-">Creating a Simple Decorator:</h2>
+
+<p>Let's start by creating a basic decorator that logs information about the execution of a function.</p>
+
+<pre class="language-python"><code>def simple_decorator(func):
+    def wrapper():
+        print(f"Calling {func.__name__}")
+        func()
+        print(f"{func.__name__} called")
+
+    return wrapper
+
+@simple_decorator
+def say_hello():
+    print("Hello!")
+
+# Calling the decorated function
+say_hello()
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><code>simple_decorator</code> is a decorator function that takes another function (<code>func</code>) as an argument.</li>
+<li>It defines a nested function <code>wrapper</code> that adds logging statements before and after calling the original function.</li>
+<li>The <code>@simple_decorator</code> syntax is used to decorate the <code>say_hello</code> function.</li>
+</ul>
+
+<h2 id="decorating-functions-with-parameters-">Decorating Functions with Parameters:</h2>
+
+<p>Decorators can be applied to functions with parameters using <code>*args</code> and <code>**kwargs</code> to handle variable-length argument lists.</p>
+
+<pre class="language-python"><code>def param_decorator(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__} with args: {args}, kwargs: {kwargs}")
+        result = func(*args, **kwargs)
+        print(f"{func.__name__} called with result: {result}")
+        return result
+
+    return wrapper
+
+@param_decorator
+def add_numbers(a, b):
+    return a + b
+
+# Calling the decorated function
+result = add_numbers(3, 5)
+# Output: Calling add_numbers with args: (3, 5), kwargs: {}
+#         add_numbers called with result: 8
+</code></pre>
+
+<p>Here, the <code>param_decorator</code> handles functions with any number of positional and keyword arguments.</p>
+
+<h2 id="chaining-multiple-decorators-">Chaining Multiple Decorators:</h2>
+
+<p>You can apply multiple decorators to a single function, forming a chain of decorators.</p>
+
+<pre class="language-python"><code>def uppercase_decorator(func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        return result.upper()
+
+    return wrapper
+
+def exclamation_decorator(func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        return f"{result}!"
+
+    return wrapper
+
+@exclamation_decorator
+@uppercase_decorator
+def greet(name):
+    return f"Hello, {name}"
+
+# Calling the decorated function
+result = greet("Alice")
+# Output: HELLO, ALICE!
+</code></pre>
+
+<p>In this example, the <code>greet</code> function is first processed by <code>uppercase_decorator</code> and then by <code>exclamation_decorator</code>. The decorators are applied from bottom to top.</p>
+
+<h2 id="decorators-with-arguments-">Decorators with Arguments:</h2>
+
+<p>Decorators themselves can take arguments, allowing for more dynamic behavior.</p>
+
+<pre class="language-python"><code>def repeat_decorator(n):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(n):
+                result = func(*args, **kwargs)
+                print(f"Result: {result}")
+            return result
+
+        return wrapper
+
+    return decorator
+
+@repeat_decorator(3)
+def square(x):
+    return x ** 2
+
+# Calling the decorated function
+result = square(4)
+# Output: Result: 16
+#         Result: 16
+#         Result: 16
+</code></pre>
+
+<p>In this example, <code>repeat_decorator</code> takes an argument <code>n</code> and returns a decorator.</p>
+
+<p>The returned decorator (<code>decorator</code>) takes the original function (<code>func</code>) as an argument and defines the <code>wrapper</code> function.</p>
+
+<h2 id="real-world-use-cases-">Real-World Use Cases:</h2>
+
+<h3 id="1-logging-">1. Logging:</h3>
+
+<p>Decorators can be used to log information about function calls, making it useful for debugging or performance monitoring.</p>
+
+<pre class="language-python"><code>def log_function_call(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__} with args: {args}, kwargs: {kwargs}")
+        result = func(*args, **kwargs)
+        print(f"{func.__name__} called with result: {result}")
+        return result
+
+    return wrapper
+
+@log_function_call
+def complex_computation(x, y):
+    # Some computationally expensive operations
+    result = x * y
+    return result
+
+# Calling the decorated function
+result = complex_computation(3, 5)
+</code></pre>
+
+<h3 id="2-timing-">2. Timing:</h3>
+
+<p>Decorators can measure the time taken by a function to execute, helping in performance analysis.</p>
+
+<pre class="language-python"><code>import time
+
+def timing_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"{func.__name__} took {end_time - start_time:.2f} seconds to execute")
+        return result
+
+    return wrapper
+
+@timing_decorator
+def slow_function():
+    # Simulating a slow function
+    time.sleep(2)
+    return "Done"
+
+# Calling the decorated function
+result = slow_function()
+</code></pre>
+
+<h3 id="3-authorization-">3. Authorization:</h3>
+
+<p>Decorators can be used for access control by checking whether a user has the necessary permissions.</p>
+
+<pre class="language-python"><code>def require_admin(func):
+    def wrapper(user_role):
+        if user_role == "admin":
+            return func(user_role)
+        else:
+            raise PermissionError("Admin permission required")
+
+    return wrapper
+
+@require_admin
+def admin_dashboard(user_role):
+    return f"Welcome, {user_role}! Admin functionality here."
+
+# Calling the decorated function
+result = admin_dashboard("admin")
+</code></pre>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Python decorators provide a clean and elegant way to extend the functionality of functions.</p>
+
+<p>Whether it's logging, timing, access control, or any other aspect, decorators offer a modular and reusable approach.</p>
+
+<p>By understanding how to create and apply decorators, you can enhance the readability and maintainability of your code while keeping the individual functions focused on their core logic.</p>
+
+<p>As you delve deeper into Python, decorators become an invaluable tool in your programming arsenal.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

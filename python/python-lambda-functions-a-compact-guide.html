@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Lambda Functions: A Compact Guide</title>
+<meta name="description" content="In this guide, we'll explore the syntax and various use cases of Python lambda functions." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-lambda-functions-a-compact-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Lambda Functions: A Compact Guide</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python Lambda Functions: A Compact Guide" loading="lazy" width="900" height="500"></div> -->
+<p>Lambda functions, also known as anonymous functions, are a concise and powerful feature in Python that allows you to create small, unnamed functions on the fly.</p>
+
+<p>Lambda functions are particularly useful when you need a quick function for a short period and don't want to formally define a full function using the <code>def</code> keyword.</p>
+
+<p>In this guide, we'll explore the syntax and various use cases of Python lambda functions.</p>
+
+<h2 id="syntax-of-lambda-functions-">Syntax of Lambda Functions:</h2>
+
+<p>The syntax of a lambda function is straightforward:</p>
+
+<pre class="language-python"><code>lambda arguments: expression
+</code></pre>
+
+<ul>
+<li><code>lambda</code>: Keyword indicating the creation of a lambda function.</li>
+<li><code>arguments</code>: Parameters the lambda function takes.</li>
+<li><code>expression</code>: Single expression defining the function's behavior.</li>
+</ul>
+
+<h2 id="example-1-basic-lambda-function">Example 1: Basic Lambda Function</h2>
+
+<p>Let's start with a simple example of a lambda function that adds two numbers:</p>
+
+<pre class="language-python"><code>add = lambda x, y: x + y
+result = add(3, 4)
+print(result)  # Output: 7
+</code></pre>
+
+<p>In this example, the lambda function <code>lambda x, y: x + y</code> takes two arguments (<code>x</code> and <code>y</code>) and returns their sum.</p>
+
+<h2 id="example-2-lambda-function-in-a-higher-order-function">Example 2: Lambda Function in a Higher-Order Function</h2>
+
+<p>Lambda functions are often used with higher-order functions like <code>map()</code>, <code>filter()</code>, and <code>sorted()</code>:</p>
+
+<pre class="language-python"><code>numbers = [1, 4, 2, 7, 5]
+
+# Using lambda with map to square each number
+squared_numbers = list(map(lambda x: x**2, numbers))
+print(squared_numbers)  # Output: [1, 16, 4, 49, 25]
+
+# Using lambda with filter to select even numbers
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # Output: [4, 2]
+
+# Using lambda with sorted to sort numbers in descending order
+sorted_numbers = sorted(numbers, key=lambda x: -x)
+print(sorted_numbers)  # Output: [7, 5, 4, 2, 1]
+</code></pre>
+
+<p>In these examples, lambda functions are used to define the behavior for mapping, filtering, and sorting operations.</p>
+
+<h2 id="example-3-lambda-function-as-an-argument">Example 3: Lambda Function as an Argument</h2>
+
+<p>Lambda functions are useful as arguments in functions that accept other functions, like <code>sorted()</code>:</p>
+
+<pre class="language-python"><code>students = [
+    {"name": "Alice", "grade": 88},
+    {"name": "Bob", "grade": 95},
+    {"name": "Charlie", "grade": 90}
+]
+
+# Sorting students by grade using lambda as the key function
+sorted_students = sorted(students, key=lambda student: student["grade"], reverse=True)
+print(sorted_students)
+# Output: [{'name': 'Bob', 'grade': 95}, {'name': 'Charlie', 'grade': 90}, {'name': 'Alice', 'grade': 88}]
+</code></pre>
+
+<p>Here, the lambda function defines the sorting criteria based on the "grade" key in the student dictionaries.</p>
+
+<h2 id="example-4-lambda-function-in-calculations">Example 4: Lambda Function in Calculations</h2>
+
+<p>Lambda functions are handy for one-off calculations or transformations:</p>
+
+<pre class="language-python"><code># Celsius to Fahrenheit conversion
+celsius_to_fahrenheit = lambda celsius: (celsius * 9/5) + 32
+temperature_celsius = 25
+temperature_fahrenheit = celsius_to_fahrenheit(temperature_celsius)
+print(temperature_fahrenheit)  # Output: 77.0
+</code></pre>
+
+<p>In this example, the lambda function <code>lambda celsius: (celsius * 9/5) + 32</code> converts Celsius to Fahrenheit.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Lambda functions in Python are a concise and expressive way to create small, throwaway functions without the need for a formal function definition.</p>
+
+<p>They shine in scenarios where a short, simple function is required, especially as arguments to higher-order functions or for quick calculations.</p>
+
+<p>While lambda functions have their use cases, it's essential to strike a balance and choose clarity over brevity when the code becomes more complex.</p>
+
+<p>Incorporate lambda functions judiciously into your Python code, and you'll find them to be a valuable tool in your programming arsenal.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

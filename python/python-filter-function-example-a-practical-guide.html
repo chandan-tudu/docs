@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Filter() Function Example: A Practical Guide</title>
+<meta name="description" content="The syntax of the filter() function and showcase various examples to illustrate its practical usage." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-filter-function-example-a-practical-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Filter() Function Example: A Practical Guide</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python filter() function example: A Practical Guide" loading="lazy" width="900" height="500"></div> -->
+<p>The <code>filter()</code> function in Python is a built-in function that allows you to filter elements of an iterable based on a specified function.</p>
+
+<p>It provides a concise and expressive way to select a subset of elements that meet certain criteria.</p>
+
+<p>In this guide, we'll explore the syntax of the <code>filter()</code> function and showcase various examples to illustrate its practical usage.</p>
+
+<h2 id="understanding-the-filter-function-">Understanding the <code>filter()</code> Function:</h2>
+
+<h3 id="syntax-">Syntax:</h3>
+
+<p>The syntax of the <code>filter()</code> function is as follows:</p>
+
+<pre class="language-python"><code>filter(function, iterable)
+</code></pre>
+
+<ul>
+<li><code>function</code>: A function that tests if each element of an iterable returns <code>True</code> or <code>False</code>.</li>
+<li><code>iterable</code>: The iterable to be filtered.</li>
+</ul>
+
+<h3 id="return-value-">Return Value:</h3>
+
+<p>The <code>filter()</code> function returns an iterator containing the elements from the iterable for which the function returns <code>True</code>.</p>
+
+<h2 id="examples-of-filter-function-usage-">Examples of <code>filter()</code> Function Usage:</h2>
+
+<h3 id="example-1-filtering-even-numbers">Example 1: Filtering Even Numbers</h3>
+
+<pre class="language-python"><code># Define a list of numbers
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Use filter() to select even numbers
+even_numbers = filter(lambda x: x % 2 == 0, numbers)
+
+# Convert the filter object to a list for display
+result_list = list(even_numbers)
+
+# Display the filtered even numbers
+print(result_list)
+</code></pre>
+
+<p>In this example, the <code>filter()</code> function applies the lambda function to each element in the <code>numbers</code> list, selecting only the even numbers. The output will be <code>[2, 4, 6, 8, 10]</code>.</p>
+
+<h3 id="example-2-filtering-positive-numbers">Example 2: Filtering Positive Numbers</h3>
+
+<pre class="language-python"><code># Define a list of numbers
+numbers = [-5, 2, -8, 10, -3, 7, 0, -1]
+
+# Use filter() to select positive numbers
+positive_numbers = filter(lambda x: x &gt; 0, numbers)
+
+# Convert the filter object to a list for display
+result_list = list(positive_numbers)
+
+# Display the filtered positive numbers
+print(result_list)
+</code></pre>
+
+<p>In this example, the <code>filter()</code> function selects only the positive numbers from the <code>numbers</code> list, resulting in <code>[2, 10, 7]</code>.</p>
+
+<h3 id="example-3-filtering-non-empty-strings">Example 3: Filtering Non-Empty Strings</h3>
+
+<pre class="language-python"><code># Define a list of strings
+strings = ['', 'hello', '', 'world', 'python', '']
+
+# Use filter() to select non-empty strings
+non_empty_strings = filter(lambda s: s != '', strings)
+
+# Convert the filter object to a list for display
+result_list = list(non_empty_strings)
+
+# Display the filtered non-empty strings
+print(result_list)
+</code></pre>
+
+<p>Here, the <code>filter()</code> function removes empty strings from the <code>strings</code> list, resulting in <code>['hello', 'world', 'python']</code>.</p>
+
+<h3 id="example-4-filtering-prime-numbers">Example 4: Filtering Prime Numbers</h3>
+
+<pre class="language-python"><code># Define a list of numbers
+numbers = [2, 3, 5, 7, 11, 13, 16, 17, 19, 23]
+
+# Define a function to check if a number is prime
+def is_prime(num):
+    if num &lt; 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+# Use filter() to select prime numbers
+prime_numbers = filter(is_prime, numbers)
+
+# Convert the filter object to a list for display
+result_list = list(prime_numbers)
+
+# Display the filtered prime numbers
+print(result_list)
+</code></pre>
+
+<p>In this example, the <code>filter()</code> function uses the <code>is_prime</code> function to select only the prime numbers from the <code>numbers</code> list.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The <code>filter()</code> function in Python provides a convenient and efficient way to extract elements from an iterable based on a specified condition.</p>
+
+<p>Whether you are working with numbers, strings, or custom data types, the flexibility of the <code>filter()</code> function allows you to tailor your filtering criteria.</p>
+
+<p>By exploring and understanding these examples, you can leverage the power of the <code>filter()</code> function in your Python projects to streamline the process of selecting elements that meet specific requirements. Happy filtering!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

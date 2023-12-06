@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Use Asyncio In Python?</title>
+<meta name="description" content="The basics of using asyncio in Python, covering coroutines, the event loop, and practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/how-to-use-asyncio-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Use Asyncio In Python?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to use asyncio in Python?" loading="lazy" width="900" height="500"></div> -->
+<p>Asynchronous programming in Python has become increasingly popular, especially with the introduction of the <code>asyncio</code> module.</p>
+
+<p><code>asyncio</code> provides a framework for writing asynchronous code using coroutines, allowing developers to efficiently handle I/O-bound and network-bound operations.</p>
+
+<p>In this comprehensive guide, we'll explore the basics of using <code>asyncio</code> in Python, covering coroutines, the event loop, and practical examples.</p>
+
+<h2 id="key-concepts-">Key Concepts:</h2>
+
+<h3 id="1-coroutines-">1. Coroutines:</h3>
+
+<p>Coroutines are special types of functions that can be paused and resumed during execution.</p>
+
+<p>They are defined using the <code>async def</code> syntax and often use the <code>await</code> keyword to pause execution until an asynchronous operation completes.</p>
+
+<h3 id="2-event-loop-">2. Event Loop:</h3>
+
+<p>The event loop is the heart of <code>asyncio</code>. It manages the execution of coroutines and allows tasks to run concurrently.</p>
+
+<p>The event loop continually checks for and dispatches events or tasks in a program.</p>
+
+<h3 id="3-await-keyword-">3. <code>await</code> Keyword:</h3>
+
+<p>The <code>await</code> keyword is used inside coroutines to indicate that the program should await the completion of an asynchronous operation before proceeding.</p>
+
+<h2 id="getting-started-with-asyncio-">Getting Started with <code>asyncio</code>:</h2>
+
+<h3 id="1-simple-coroutine-example-">1. Simple Coroutine Example:</h3>
+
+<pre class="language-python"><code>import asyncio
+
+async def simple_coroutine():
+    print("Start Coroutine")
+    await asyncio.sleep(2)  # Simulate a non-blocking operation
+    print("End Coroutine")
+
+# Create an event loop
+loop = asyncio.get_event_loop()
+
+# Run the coroutine
+loop.run_until_complete(simple_coroutine())
+</code></pre>
+
+<p>In this example, <code>asyncio.sleep(2)</code> simulates a non-blocking operation, allowing the event loop to execute other tasks while waiting for the sleep to complete.</p>
+
+<h3 id="2-multiple-coroutines-">2. Multiple Coroutines:</h3>
+
+<pre class="language-python"><code>import asyncio
+
+async def coroutine_one():
+    print("Coroutine One: Start")
+    await asyncio.sleep(2)
+    print("Coroutine One: End")
+
+async def coroutine_two():
+    print("Coroutine Two: Start")
+    await asyncio.sleep(1)
+    print("Coroutine Two: End")
+
+# Create an event loop
+loop = asyncio.get_event_loop()
+
+# Run coroutines concurrently
+loop.run_until_complete(asyncio.gather(coroutine_one(), coroutine_two()))
+</code></pre>
+
+<p>Here, <code>asyncio.gather()</code> allows running multiple coroutines concurrently.</p>
+
+<h2 id="asynchronous-i-o-with-asyncio-">Asynchronous I/O with <code>asyncio</code>:</h2>
+
+<h3 id="1-fetching-data-from-urls-">1. Fetching Data from URLs:</h3>
+
+<pre class="language-python"><code>import asyncio
+import aiohttp
+
+async def fetch_data(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            print(f"Fetching data from {url}")
+            data = await response.text()
+            print(f"Data from {url} received")
+
+async def main():
+    tasks = [fetch_data("https://example.com"), fetch_data("https://example.org")]
+    await asyncio.gather(*tasks)
+
+# Create an event loop
+loop = asyncio.get_event_loop()
+
+# Run the main asynchronous function
+loop.run_until_complete(main())
+</code></pre>
+
+<p>In this example, <code>aiohttp</code> is used for asynchronous HTTP requests. The <code>fetch_data</code> coroutine demonstrates fetching data from multiple URLs concurrently.</p>
+
+<h3 id="2-asynchronous-file-i-o-">2. Asynchronous File I/O:</h3>
+
+<pre class="language-python"><code>import asyncio
+
+async def write_to_file(filename, content):
+    print(f"Writing to {filename}")
+    async with asyncio.open(filename, 'w') as file:
+        await file.write(content)
+    print(f"Write to {filename} complete")
+
+async def main():
+    content_one = "Content for File One"
+    content_two = "Content for File Two"
+
+    tasks = [
+        write_to_file("file_one.txt", content_one),
+        write_to_file("file_two.txt", content_two)
+    ]
+
+    await asyncio.gather(*tasks)
+
+# Create an event loop
+loop = asyncio.get_event_loop()
+
+# Run the main asynchronous function
+loop.run_until_complete(main())
+</code></pre>
+
+<p>In this example, asynchronous file I/O is demonstrated using the <code>asyncio.open()</code> function.</p>
+
+<h2 id="error-handling-with-asyncio-">Error Handling with <code>asyncio</code>:</h2>
+
+<pre class="language-python"><code>import asyncio
+
+async def my_coroutine():
+    print("Start Coroutine")
+    try:
+        # Simulate an operation that may raise an exception
+        await asyncio.sleep(2)
+        raise ValueError("Simulated Error")
+    except ValueError as e:
+        print(f"Caught an error: {e}")
+    print("End Coroutine")
+
+# Create an event loop
+loop = asyncio.get_event_loop()
+
+# Run the coroutine
+loop.run_until_complete(my_coroutine())
+</code></pre>
+
+<p>Here, the <code>try</code> and <code>except</code> blocks handle errors that might occur within the coroutine.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p><code>asyncio</code> in Python provides a powerful framework for asynchronous programming, enabling developers to write efficient and concurrent code.</p>
+
+<p>Understanding coroutines, the event loop, and the <code>await</code> keyword is key to leveraging the capabilities of <code>asyncio</code>.</p>
+
+<p>Asynchronous I/O operations, network requests, and error handling are common scenarios where <code>asyncio</code> shines. As you delve into asynchronous programming, explore additional features and tools provided by <code>asyncio</code> and related libraries.</p>
+
+<p>The <a href="https://docs.python.org/3/library/asyncio.html" rel="noopener noreferrer nofollow" target="_blank">official documentation</a> is a valuable resource for in-depth information and advanced topics. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

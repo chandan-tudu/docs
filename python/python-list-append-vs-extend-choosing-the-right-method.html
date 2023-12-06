@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python List Append() Vs Extend(): Choosing The Right Method</title>
+<meta name="description" content="The differences between append() and extend(), how they work, and when to use each method." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-list-append-vs-extend-choosing-the-right-method.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python List Append() Vs Extend(): Choosing The Right Method</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python List append() vs extend(): Choosing the Right Method" loading="lazy" width="900" height="500"></div> -->
+<p>In Python, lists are versatile data structures that allow you to store and manipulate collections of items.</p>
+
+<p>Two commonly used methods for adding elements to a list are <code>append()</code> and <code>extend()</code>.</p>
+
+<p>While both methods are used for list modification, they serve distinct purposes.</p>
+
+<p>In this article, we'll explore the differences between <code>append()</code> and <code>extend()</code>, how they work, and when to use each method.</p>
+
+<h2 id="1-append-method-">1. <code>append()</code> Method:</h2>
+
+<h3 id="syntax-">Syntax:</h3>
+
+<pre class="language-python"><code>list_name.append(element)
+</code></pre>
+
+<h3 id="functionality-">Functionality:</h3>
+
+<ul>
+<li>Adds a single element to the end of the list.</li>
+<li>If the element is itself a list, it is appended as a single item, creating a nested list.</li>
+</ul>
+
+<h3 id="example-">Example:</h3>
+
+<pre class="language-python"><code>my_list = [1, 2, 3]
+my_list.append(4)
+
+print(my_list)  # Output: [1, 2, 3, 4]
+</code></pre>
+
+<p>In this example, the <code>append()</code> method adds the element <code>4</code> to the end of the list.</p>
+
+<pre class="language-python"><code>my_list = [1, 2, 3]
+my_list.append([4, 5])
+
+print(my_list)  # Output: [1, 2, 3, [4, 5]]
+</code></pre>
+
+<p>Here, the <code>append()</code> method treats the list <code>[4, 5]</code> as a single element and appends it to the original list.</p>
+
+<h2 id="2-extend-method-">2. <code>extend()</code> Method:</h2>
+
+<h3 id="syntax-">Syntax:</h3>
+
+<pre class="language-python"><code>list_name.extend(iterable)
+</code></pre>
+
+<h3 id="functionality-">Functionality:</h3>
+
+<ul>
+<li>Appends elements from the iterable to the end of the list.</li>
+<li>If the iterable is a list, its elements are added individually, not as a single item.</li>
+</ul>
+
+<h3 id="example-">Example:</h3>
+
+<pre class="language-python"><code>my_list = [1, 2, 3]
+my_list.extend([4, 5])
+
+print(my_list)  # Output: [1, 2, 3, 4, 5]
+</code></pre>
+
+<p>In this example, the <code>extend()</code> method appends the elements <code>4</code> and <code>5</code> individually to the original list.</p>
+
+<h2 id="key-differences-">Key Differences:</h2>
+
+<h3 id="1-type-of-elements-added-">1. Type of Elements Added:</h3>
+
+<ul>
+<li><code>append()</code>: Adds a single element, which can be of any data type, including a list.</li>
+<li><code>extend()</code>: Adds elements from an iterable (e.g., list, tuple, string).</li>
+</ul>
+
+<h3 id="2-handling-nested-lists-">2. Handling Nested Lists:</h3>
+
+<ul>
+<li><code>append()</code>: Treats a list as a single element, adding it to the end of the list.</li>
+<li><code>extend()</code>: Adds elements individually from the iterable, allowing the flattening of nested lists.</li>
+</ul>
+
+<h3 id="3-modification-in-place-">3. Modification In-Place:</h3>
+
+<p>Both <code>append()</code> and <code>extend()</code> modify the original list in-place, meaning they directly alter the content of the list without creating a new one.</p>
+
+<h2 id="when-to-use-each-method-">When to Use Each Method:</h2>
+
+<ul>
+<li>Use <code>append()</code> when you want to add a single element (including a list as a single element) to the end of the list.</li>
+<li>Use <code>extend()</code> when you want to add elements from an iterable (like another list) individually to the end of the list.</li>
+</ul>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Understanding the distinctions between <code>append()</code> and <code>extend()</code> is crucial for effective list manipulation in Python.</p>
+
+<p>Whether you need to add a single element or extend a list with elements from another iterable, choosing the right method ensures the desired behavior.</p>
+
+<p>Incorporate these methods judiciously based on your specific use case to write clean and efficient Python code. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

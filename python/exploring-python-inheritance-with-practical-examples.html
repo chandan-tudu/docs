@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exploring Python Inheritance With Practical Examples</title>
+<meta name="description" content="In this article, we'll explore Python inheritance through practical examples." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/exploring-python-inheritance-with-practical-examples.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Exploring Python Inheritance With Practical Examples</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Exploring Python Inheritance with Practical Examples" loading="lazy" width="900" height="500"></div> -->
+<p>Inheritance is a fundamental concept in object-oriented programming that allows a new class (subclass/derived class) to inherit attributes and methods from an existing class (base class/parent class).</p>
+
+<p>Python supports inheritance, providing a powerful mechanism for code reuse and building relationships between classes. In this article, we'll explore Python inheritance through practical examples.</p>
+
+<h2 id="1-basic-inheritance-">1. Basic Inheritance:</h2>
+
+<p>Let's start with a simple example involving a base class <code>Vehicle</code> and a derived class <code>Car</code>. The <code>Car</code> class inherits attributes and methods from the <code>Vehicle</code> class.</p>
+
+<pre class="language-python"><code>class Vehicle:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def display_info(self):
+        print(f"{self.year} {self.make} {self.model}")
+
+# Car class inherits from Vehicle
+class Car(Vehicle):
+    def __init__(self, make, model, year, num_doors):
+        # Call the constructor of the base class
+        super().__init__(make, model, year)
+        self.num_doors = num_doors
+
+    def display_info(self):
+        # Override the display_info method in the base class
+        print(f"{self.year} {self.make} {self.model} ({self.num_doors} doors)")
+
+# Create instances of Car
+car1 = Car("Toyota", "Camry", 2022, 4)
+car2 = Car("Tesla", "Model 3", 2022, 2)
+
+# Call display_info method
+car1.display_info()  # Output: 2022 Toyota Camry (4 doors)
+car2.display_info()  # Output: 2022 Tesla Model 3 (2 doors)
+</code></pre>
+
+<ul>
+<li>The <code>Car</code> class inherits from the <code>Vehicle</code> class.</li>
+<li>The <code>super()</code> function is used to call the constructor of the base class.</li>
+<li>The <code>display_info</code> method is overridden in the <code>Car</code> class.</li>
+</ul>
+
+<h2 id="2-multiple-inheritance-">2. Multiple Inheritance:</h2>
+
+<p>Python allows a class to inherit from multiple base classes. Here's an example with classes <code>Engine</code> and <code>ElectricVehicle</code> combined with the previous <code>Vehicle</code> class.</p>
+
+<pre class="language-python"><code>class Engine:
+    def start(self):
+        print("Engine started")
+
+    def stop(self):
+        print("Engine stopped")
+
+class ElectricVehicle(Vehicle, Engine):
+    def __init__(self, make, model, year, battery_capacity):
+        # Call constructors of base classes
+        Vehicle.__init__(self, make, model, year)
+        Engine.__init__(self)
+        self.battery_capacity = battery_capacity
+
+    def display_info(self):
+        print(f"{self.year} {self.make} {self.model} (Battery: {self.battery_capacity} kWh)")
+
+# Create an ElectricVehicle instance
+electric_car = ElectricVehicle("Nissan", "Leaf", 2022, 40)
+
+# Call methods
+electric_car.display_info()  # Output: 2022 Nissan Leaf (Battery: 40 kWh)
+electric_car.start()         # Output: Engine started
+electric_car.stop()          # Output: Engine stopped
+</code></pre>
+
+<ul>
+<li>The <code>ElectricVehicle</code> class inherits from both <code>Vehicle</code> and <code>Engine</code>.</li>
+<li>The constructors of the base classes are called explicitly using <code>Vehicle.__init__(self, make, model, year)</code> and <code>Engine.__init__(self)</code>.</li>
+</ul>
+
+<h2 id="3-method-resolution-order-mro-">3. Method Resolution Order (MRO):</h2>
+
+<p>In cases of multiple inheritance, Python follows the C3 linearization algorithm to determine the method resolution order (MRO).</p>
+
+<p>The <code>__mro__</code> attribute can be used to inspect the MRO.</p>
+
+<pre class="language-python"><code>class A:
+    def show(self):
+        print("A")
+
+class B(A):
+    def show(self):
+        print("B")
+
+class C(A):
+    def show(self):
+        print("C")
+
+class D(B, C):
+    pass
+
+# Create an instance of D
+d_instance = D()
+
+# Call the show method
+d_instance.show()  # Output: B
+
+# Print the method resolution order
+print(D.__mro__)  # Output: (&lt;class '__main__.D'&gt;, &lt;class '__main__.B'&gt;, &lt;class '__main__.C'&gt;, &lt;class '__main__.A'&gt;, &lt;class 'object'&gt;)
+</code></pre>
+
+<ul>
+<li>The <code>D</code> class inherits from both <code>B</code> and <code>C</code>.</li>
+<li>The <code>show</code> method is called based on the MRO, which is <code>D -&gt; B -&gt; C -&gt; A -&gt; object</code>.</li>
+</ul>
+
+<h2 id="4-inheriting-from-built-in-classes-">4. Inheriting from Built-in Classes:</h2>
+
+<p>You can also inherit from built-in classes like <code>list</code> or <code>dict</code> to create custom classes with specific behaviors.</p>
+
+<pre class="language-python"><code>class CustomList(list):
+    def display_info(self):
+        print(f"Custom List: {self}")
+
+# Create an instance of CustomList
+custom_list = CustomList([1, 2, 3])
+
+# Call methods
+custom_list.append(4)
+custom_list.display_info()  # Output: Custom List: [1, 2, 3, 4]
+</code></pre>
+
+<ul>
+<li>The <code>CustomList</code> class inherits from the built-in <code>list</code> class.</li>
+<li>It adds a custom method <code>display_info</code> to display information about the list.</li>
+</ul>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Inheritance is a powerful feature in Python that allows classes to reuse and extend the functionality of other classes.</p>
+
+<p>It promotes code reusability, enhances modularity, and facilitates the creation of more specialized classes.</p>
+
+<p>Understanding the concepts of inheritance, method overriding, and method resolution order is crucial for effective object-oriented programming in Python.</p>
+
+<p>As you design and structure your programs, consider the relationships between classes and how inheritance can be leveraged to build a cohesive and scalable codebase.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

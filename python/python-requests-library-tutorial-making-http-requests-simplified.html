@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Requests Library Tutorial: Making Http Requests Simplified</title>
+<meta name="description" content="Basics of the requests library, covering common use cases and advanced features." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-requests-library-tutorial-making-http-requests-simplified.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Requests Library Tutorial: Making Http Requests Simplified</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python Requests Library Tutorial: Making HTTP Requests Simplified" loading="lazy" width="900" height="500"></div> -->
+<p>The <code>requests</code> library in Python is a powerful and user-friendly tool for making HTTP requests.</p>
+
+<p>Whether you're interacting with web APIs, fetching data from a website, or sending data to a server, the <code>requests</code> library provides a simple and elegant interface.</p>
+
+<p>In this tutorial, we'll explore the basics of the <code>requests</code> library, covering common use cases and advanced features.</p>
+
+<h2 id="installing-the-requests-library-">Installing the <code>requests</code> Library:</h2>
+
+<p>Before you start using the <code>requests</code> library, you need to install it. You can do this using <code>pip</code>, the package installer for Python.</p>
+
+<p>Open your terminal or command prompt and run the following command:</p>
+
+<pre class="language-bash"><code>pip install requests
+</code></pre>
+
+<p>Now that you have the <code>requests</code> library installed, let's dive into some examples.</p>
+
+<h2 id="making-a-simple-get-request-">Making a Simple GET Request:</h2>
+
+<p>The most basic operation with the <code>requests</code> library is making a GET request to a URL. Here's a simple example:</p>
+
+<pre class="language-python"><code>import requests
+
+# URL for the GET request
+url = 'https://jsonplaceholder.typicode.com/posts/1'
+
+# Make a GET request
+response = requests.get(url)
+
+# Check if the request was successful (status code 200)
+if response.status_code == 200:
+    # Print the response content (usually in JSON format)
+    print(response.json())
+else:
+    print(f"Request failed with status code: {response.status_code}")
+</code></pre>
+
+<p>In this example, we make a GET request to a URL using <code>requests.get(url)</code>. If the request is successful (status code 200), we print the response content, which is often in JSON format.</p>
+
+<h2 id="passing-parameters-in-get-requests-">Passing Parameters in GET Requests:</h2>
+
+<p>You can pass parameters in a GET request using the <code>params</code> parameter. This is useful for adding query parameters to the URL.</p>
+
+<pre class="language-python"><code>import requests
+
+# URL with parameters
+url = 'https://jsonplaceholder.typicode.com/posts'
+params = {'userId': 1}
+
+# Make a GET request with parameters
+response = requests.get(url, params=params)
+
+# Check if the request was successful
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Request failed with status code: {response.status_code}")
+</code></pre>
+
+<p>In this example, the <code>params</code> dictionary is added to the URL, resulting in a request to <code>'https://jsonplaceholder.typicode.com/posts?userId=1'</code>.</p>
+
+<h2 id="making-post-requests-">Making POST Requests:</h2>
+
+<p>To send data to a server, you can use a POST request. The data to be sent is typically included in the request body.</p>
+
+<pre class="language-python"><code>import requests
+
+# URL for the POST request
+url = 'https://jsonplaceholder.typicode.com/posts'
+
+# Data to be sent in the request body
+data = {'title': 'foo', 'body': 'bar', 'userId': 1}
+
+# Make a POST request with data
+response = requests.post(url, json=data)
+
+# Check if the request was successful
+if response.status_code == 201:
+    print(response.json())
+else:
+    print(f"Request failed with status code: {response.status_code}")
+</code></pre>
+
+<p>In this example, we use <code>requests.post(url, json=data)</code> to send a POST request with JSON data. The status code 201 indicates a successful creation.</p>
+
+<h2 id="handling-authentication-">Handling Authentication:</h2>
+
+<p>If a server requires authentication, you can include credentials in your request.</p>
+
+<pre class="language-python"><code>import requests
+from requests.auth import HTTPBasicAuth
+
+# URL requiring authentication
+url = 'https://api.example.com/data'
+
+# Credentials
+username = 'your_username'
+password = 'your_password'
+
+# Make a GET request with authentication
+response = requests.get(url, auth=HTTPBasicAuth(username, password))
+
+# Check if the request was successful
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Request failed with status code: {response.status_code}")
+</code></pre>
+
+<p>Here, we use <code>requests.get(url, auth=HTTPBasicAuth(username, password))</code> to include HTTP basic authentication in the request.</p>
+
+<h2 id="handling-timeouts-">Handling Timeouts:</h2>
+
+<p>You can set a timeout for a request to avoid waiting indefinitely.</p>
+
+<pre class="language-python"><code>import requests
+
+# URL for the request
+url = 'https://jsonplaceholder.typicode.com/posts/1'
+
+# Set timeout in seconds
+timeout = 5
+
+# Make a GET request with a timeout
+try:
+    response = requests.get(url, timeout=timeout)
+    response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
+    print(response.json())
+except requests.exceptions.RequestException as e:
+    print(f"Request failed: {e}")
+</code></pre>
+
+<p>In this example, <code>timeout=5</code> sets a timeout of 5 seconds for the request. If the request takes longer than 5 seconds, a <code>requests.exceptions.Timeout</code> exception will be raised.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The <code>requests</code> library in Python simplifies the process of making HTTP requests. In this tutorial, we covered the basics of making GET and POST requests, passing parameters, handling authentication, and setting timeouts.</p>
+
+<p>The <code>requests</code> library is versatile and well-documented, making it a go-to choice for many Python developers working with web APIs and HTTP requests.</p>
+
+<p>As you explore more advanced features, refer to the <a href="https://docs.python-requests.org/en/master/">official documentation</a> for detailed information. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

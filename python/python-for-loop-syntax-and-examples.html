@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python For Loop Syntax And Examples</title>
+<meta name="description" content="In this guide, we'll explore the syntax of the if statement and provide examples to illustrate how it is used in Python." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-for-loop-syntax-and-examples.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python For Loop Syntax And Examples</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python for Loop Syntax and Examples" loading="lazy" width="900" height="500"></div> -->
+<p>The <code>for</code> loop in Python is a versatile and powerful construct that allows you to iterate over a sequence of elements.</p>
+
+<p>It is a fundamental tool for repetitive tasks and makes it easy to process each item in a collection, such as a list or a string.</p>
+
+<p>In this guide, we'll delve into the syntax of the <code>for</code> loop and provide examples to illustrate its usage.</p>
+
+<h2 id="syntax-of-the-for-loop-">Syntax of the <code>for</code> Loop:</h2>
+
+<p>The basic syntax of a <code>for</code> loop in Python is as follows:</p>
+
+<pre class="language-python"><code>for variable in iterable:
+    # Code to execute in each iteration
+</code></pre>
+
+<ul>
+<li><code>variable</code>: Represents the current element in the iteration.</li>
+<li><code>iterable</code>: Refers to the collection of elements over which the loop iterates.</li>
+</ul>
+
+<p>The code block inside the <code>for</code> loop is indented and executed in each iteration, with the <code>variable</code> taking on the value of each element in the <code>iterable</code> sequentially.</p>
+
+<h2 id="example-1-iterating-over-a-list">Example 1: Iterating over a List</h2>
+
+<p>Let's start with a simple example of iterating over a list of numbers and printing each element:</p>
+
+<pre class="language-python"><code>numbers = [1, 2, 3, 4, 5]
+
+for num in numbers:
+    print(num)
+</code></pre>
+
+<p>In this example, the <code>for</code> loop iterates over the list <code>numbers</code>, and in each iteration, the variable <code>num</code> takes on the value of the current element. The <code>print(num)</code> statement then outputs each number in the list.</p>
+
+<h2 id="example-2-iterating-over-a-string">Example 2: Iterating over a String</h2>
+
+<p>The <code>for</code> loop is not limited to lists; it can iterate over other iterable objects, such as strings. In this example, we iterate over a string and print each character:</p>
+
+<pre class="language-python"><code>message = "Hello, Python!"
+
+for char in message:
+    print(char)
+</code></pre>
+
+<p>Here, the <code>for</code> loop iterates over the string <code>message</code>, and the variable <code>char</code> takes on the value of each character in the string.</p>
+
+<h2 id="example-3-iterating-over-a-range">Example 3: Iterating over a Range</h2>
+
+<p>The <code>range()</code> function is often used with <code>for</code> loops to generate a sequence of numbers. Here's an example of using <code>range()</code> to print numbers from 1 to 5:</p>
+
+<pre class="language-python"><code>for i in range(1, 6):
+    print(i)
+</code></pre>
+
+<p>The <code>range(1, 6)</code> generates numbers from 1 to 5 (inclusive), and the <code>for</code> loop iterates over this sequence.</p>
+
+<h2 id="example-4-iterating-over-a-dictionary">Example 4: Iterating over a Dictionary</h2>
+
+<p>When iterating over a dictionary, the <code>for</code> loop can iterate over keys, values, or key-value pairs. Here's an example of iterating over keys and values:</p>
+
+<pre class="language-python"><code>person = {"name": "John", "age": 30, "city": "New York"}
+
+for key in person:
+    print(f"{key}: {person[key]}")
+</code></pre>
+
+<p>In this example, the <code>for</code> loop iterates over the keys of the <code>person</code> dictionary, and the <code>print()</code> statement outputs each key-value pair.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The <code>for</code> loop is a fundamental building block in Python programming, providing a convenient way to iterate over collections of data.</p>
+
+<p>Whether you're working with lists, strings, ranges, or dictionaries, mastering the <code>for</code> loop opens the door to efficient and expressive code.</p>
+
+<p>Experiment with these examples and incorporate <code>for</code> loops into your programs to leverage the power of iteration in Python.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

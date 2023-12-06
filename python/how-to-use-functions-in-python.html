@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Use Functions In Python?</title>
+<meta name="description" content="The syntax of functions in Python, how to define and call them, and various concepts related to function usage." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/how-to-use-functions-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Use Functions In Python?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to use functions in Python?" loading="lazy" width="900" height="500"></div> -->
+<p>Functions in Python are a cornerstone of modular and efficient programming. They allow you to encapsulate a block of code, making it reusable and promoting a modular and organized code structure.</p>
+
+<p>In this guide, we'll explore the syntax of functions in Python, how to define and call them, and various concepts related to function usage.</p>
+
+<h2 id="1-defining-a-function-">1. Defining a Function:</h2>
+
+<p>The syntax for defining a function in Python is as follows:</p>
+
+<pre class="language-python"><code>def function_name(parameters):
+    # Code to execute
+    return result  # Optional
+</code></pre>
+
+<ul>
+<li><code>function_name</code>: Descriptive name for your function.</li>
+<li><code>parameters</code>: Input values that the function accepts.</li>
+<li><code>return</code>: Optional statement that specifies the value the function sends back.</li>
+</ul>
+
+<p>Let's look at a simple example:</p>
+
+<pre class="language-python"><code>def greet(name):
+    return f"Hello, {name}!"
+</code></pre>
+
+<p>This function, named <code>greet</code>, takes a <code>name</code> parameter and returns a greeting message.</p>
+
+<h2 id="2-calling-a-function-">2. Calling a Function:</h2>
+
+<p>Once a function is defined, you can call it by using its name and passing the required arguments:</p>
+
+<pre class="language-python"><code>result = greet("Alice")
+print(result)  # Output: Hello, Alice!
+</code></pre>
+
+<p>In this example, the <code>greet</code> function is called with the argument "Alice," and the result is printed.</p>
+
+<h2 id="3-default-parameters-">3. Default Parameters:</h2>
+
+<p>You can assign default values to parameters, making them optional when calling the function:</p>
+
+<pre class="language-python"><code>def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+</code></pre>
+
+<p>Now, if you call <code>greet("Bob")</code>, it uses the default greeting "Hello." You can also provide a custom greeting, such as <code>greet("Bob", "Hi")</code>.</p>
+
+<h2 id="4-variable-number-of-arguments-">4. Variable Number of Arguments:</h2>
+
+<p>Python allows you to define functions with a variable number of arguments using <code>*args</code> (for positional arguments) and <code>**kwargs</code> (for keyword arguments):</p>
+
+<pre class="language-python"><code>def multi_sum(*args):
+    return sum(args)
+
+result = multi_sum(1, 2, 3, 4)
+print(result)  # Output: 10
+</code></pre>
+
+<p>In this example, the <code>multi_sum</code> function can accept any number of arguments.</p>
+
+<h2 id="5-returning-multiple-values-">5. Returning Multiple Values:</h2>
+
+<p>A function can return multiple values using tuples:</p>
+
+<pre class="language-python"><code>def rectangle_info(length, width):
+    area = length * width
+    perimeter = 2 * (length + width)
+    return area, perimeter
+
+area, perimeter = rectangle_info(4, 5)
+print(f"Area: {area}, Perimeter: {perimeter}")
+</code></pre>
+
+<h2 id="6-lambda-functions-">6. Lambda Functions:</h2>
+
+<p>Lambda functions are anonymous functions defined using the <code>lambda</code> keyword. They are often used for short, simple operations:</p>
+
+<pre class="language-python"><code>square = lambda x: x**2
+result = square(4)
+print(result)  # Output: 16
+</code></pre>
+
+<h2 id="7-docstrings-">7. Docstrings:</h2>
+
+<p>Documenting functions using docstrings is a good practice. It provides information about the function's purpose, parameters, and return values:</p>
+
+<pre class="language-python"><code>def power(base, exponent):
+    """
+    Calculate the power of a number.
+
+    Parameters:
+    base (int): The base number.
+    exponent (int): The exponent.
+
+    Returns:
+    int: The result of base raised to the power of exponent.
+    """
+    return base ** exponent
+</code></pre>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Functions are a powerful feature of Python that enhances code modularity, reusability, and readability.</p>
+
+<p>Whether you're defining simple functions, using default parameters, or exploring advanced concepts like lambda functions, understanding how to use functions is essential for writing clean and efficient Python code.</p>
+
+<p>Incorporate these concepts into your programming practice, and you'll find yourself building more modular and maintainable Python applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

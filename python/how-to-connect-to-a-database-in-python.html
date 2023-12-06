@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Connect To A Database In Python?</title>
+<meta name="description" content="Different ways to connect to databases using Python, covering both relational databases (such as MySQL and SQLite) and NoSQL databases (such as MongoDB)." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/how-to-connect-to-a-database-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Connect To A Database In Python?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to connect to a database in Python?" loading="lazy" width="900" height="500"></div> -->
+<p>Connecting to a database is a crucial step in many applications, allowing Python developers to interact with databases, retrieve data, and perform various database operations.</p>
+
+<p>In this comprehensive guide, we'll explore different ways to connect to databases using Python, covering both relational databases (such as MySQL and SQLite) and NoSQL databases (such as MongoDB).</p>
+
+<h2 id="connecting-to-relational-databases-">1. Connecting to Relational Databases:</h2>
+
+<h3 id="using-sqlite3-sqlite-">Using <code>sqlite3</code> (SQLite):</h3>
+
+<p>SQLite is a lightweight, serverless, and self-contained relational database engine. Python comes with the built-in <code>sqlite3</code> module, making it easy to work with SQLite databases.</p>
+
+<pre class="language-python"><code>import sqlite3
+
+# Connect to an SQLite database (or create one if it doesn't exist)
+connection = sqlite3.connect('example.db')
+
+# Create a cursor object to execute SQL queries
+cursor = connection.cursor()
+
+# Execute a simple query to create a table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL
+    )
+''')
+
+# Insert data into the table
+cursor.execute("INSERT INTO users (username, email) VALUES (?, ?)", ('john_doe', 'john@example.com'))
+
+# Commit the changes and close the connection
+connection.commit()
+connection.close()
+</code></pre>
+
+<h3 id="using-mysql-connector-mysql-">Using <code>mysql-connector</code> (MySQL):</h3>
+
+<p>For MySQL databases, you can use the <code>mysql-connector</code> library to connect and interact with the database.</p>
+
+<pre class="language-python"><code>import mysql.connector
+
+# Connect to a MySQL database
+connection = mysql.connector.connect(
+    host="localhost",
+    user="username",
+    password="password",
+    database="dbname"
+)
+
+# Create a cursor object
+cursor = connection.cursor()
+
+# Execute a query to create a table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL
+    )
+''')
+
+# Insert data into the table
+cursor.execute("INSERT INTO users (username, email) VALUES (%s, %s)", ('john_doe', 'john@example.com'))
+
+# Commit the changes and close the connection
+connection.commit()
+connection.close()
+</code></pre>
+
+<h2 id="connecting-to-nosql-databases-">2. Connecting to NoSQL Databases:</h2>
+
+<h3 id="using-pymongo-mongodb-">Using <code>pymongo</code> (MongoDB):</h3>
+
+<p>MongoDB is a popular NoSQL database, and <code>pymongo</code> is the official Python driver for MongoDB.</p>
+
+<pre class="language-python"><code>from pymongo import MongoClient
+
+# Connect to a MongoDB database
+client = MongoClient('mongodb://localhost:27017/')
+
+# Access a specific database
+db = client['mydatabase']
+
+# Access a collection within the database
+users_collection = db['users']
+
+# Insert a document into the collection
+user_data = {'username': 'john_doe', 'email': 'john@example.com'}
+result = users_collection.insert_one(user_data)
+
+print(f"Inserted document ID: {result.inserted_id}")
+</code></pre>
+
+<h2 id="using-orm-object-relational-mapping-">3. Using ORM (Object-Relational Mapping):</h2>
+
+<p>ORMs provide a higher-level abstraction, allowing developers to interact with databases using Python objects. SQLAlchemy is a popular ORM that supports multiple databases.</p>
+
+<h3 id="using-sqlalchemy-">Using <code>SQLAlchemy</code>:</h3>
+
+<pre class="language-python"><code>from sqlalchemy import create_engine, Column, Integer, String, text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+# Define the database connection URL
+db_url = "sqlite:///example.db"  # SQLite example
+
+# Create an SQLAlchemy engine
+engine = create_engine(db_url, echo=True)
+
+# Create a base class for declarative class definitions
+Base = declarative_base()
+
+# Define a User class as a declarative base
+class User(Base):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True)
+    username = Column(String, nullable=False)
+    email = Column(String, nullable=False)
+
+# Create the table in the database
+Base.metadata.create_all(engine)
+
+# Create a session to interact with the database
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# Insert data into the table using ORM
+new_user = User(username='john_doe', email='john@example.com')
+session.add(new_user)
+session.commit()
+</code></pre>
+
+<h2 id="conclusion-">4. Conclusion:</h2>
+
+<p>Connecting to databases in Python involves selecting the appropriate library or ORM for the type of database you're working with.</p>
+
+<p>Whether it's a relational database like MySQL or SQLite, or a NoSQL database like MongoDB, Python provides robust tools and libraries for database interaction.</p>
+
+<p>Consider the specific needs of your project, the type of database you're working with, and the preferred style of interaction (SQL queries or ORM) when choosing the method for connecting to a database.</p>
+
+<p>With the examples and libraries provided in this guide, you'll be well-equipped to integrate database functionality into your Python applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

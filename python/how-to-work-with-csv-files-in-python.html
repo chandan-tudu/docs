@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Work With Csv Files In Python?</title>
+<meta name="description" content="Learn how to read from and write to CSV files using Python's built-in csv module." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/how-to-work-with-csv-files-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Work With Csv Files In Python?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to work with CSV files in Python?" loading="lazy" width="900" height="500"></div> -->
+<p>CSV (Comma-Separated Values) is a widely used file format for storing tabular data, and Python provides excellent tools for working with CSV files.</p>
+
+<p>In this comprehensive guide, we'll explore how to read from and write to CSV files using Python's built-in <code>csv</code> module.</p>
+
+<p>Whether you need to process data, analyze information, or perform data manipulation tasks, understanding how to work with CSV files in Python is a valuable skill.</p>
+
+<h2 id="key-concepts-">Key Concepts:</h2>
+
+<h3 id="1-csv-basics-">1. CSV Basics:</h3>
+
+<ul>
+<li>CSV files are plain text files where each line represents a row of data, and values within each row are separated by commas (or other delimiters).</li>
+<li>The first row often contains column headers, providing names for each column.</li>
+</ul>
+
+<h3 id="2-python-csv-module-">2. <strong>Python <code>csv</code> Module:</strong></h3>
+
+<ul>
+<li>Python's <code>csv</code> module provides functionality for both reading from and writing to CSV files.</li>
+<li>It supports different dialects, allowing flexibility in handling variations in CSV formats.</li>
+</ul>
+
+<h3 id="3-reading-csv-files-">3. <strong>Reading CSV Files:</strong></h3>
+
+<ul>
+<li>Use <code>csv.reader</code> to read data from a CSV file line by line.</li>
+<li>Accessing values is done by iterating through rows and columns.</li>
+</ul>
+
+<h3 id="4-writing-to-csv-files-">4. Writing to CSV Files:</h3>
+
+<ul>
+<li>Use <code>csv.writer</code> to write data to a CSV file.</li>
+<li>Write rows by providing lists of values.</li>
+</ul>
+
+<h2 id="reading-csv-files-in-python-">Reading CSV Files in Python:</h2>
+
+<h3 id="1-reading-csv-data-">1. <strong>Reading CSV Data:</strong></h3>
+
+<pre class="language-python"><code>import csv
+
+# Open CSV file for reading
+with open('example.csv', 'r') as file:
+    # Create a CSV reader
+    csv_reader = csv.reader(file)
+
+    # Iterate through rows and print values
+    for row in csv_reader:
+        print(row)
+</code></pre>
+
+<h3 id="2-reading-csv-with-headers-">2. Reading CSV with Headers:</h3>
+
+<pre class="language-python"><code>import csv
+
+# Open CSV file for reading
+with open('example_with_headers.csv', 'r') as file:
+    # Create a CSV reader with headers
+    csv_reader = csv.DictReader(file)
+
+    # Access values using column headers
+    for row in csv_reader:
+        print(row['Name'], row['Age'])
+</code></pre>
+
+<h2 id="writing-to-csv-files-in-python-">Writing to CSV Files in Python:</h2>
+
+<h3 id="1-writing-csv-data-">1. Writing CSV Data:</h3>
+
+<pre class="language-python"><code>import csv
+
+# Open CSV file for writing
+with open('output.csv', 'w', newline='') as file:
+    # Create a CSV writer
+    csv_writer = csv.writer(file)
+
+    # Write rows to the CSV file
+    csv_writer.writerow(['Name', 'Age', 'City'])
+    csv_writer.writerow(['John Doe', 30, 'New York'])
+    csv_writer.writerow(['Jane Smith', 25, 'San Francisco'])
+</code></pre>
+
+<h3 id="2-writing-csv-with-headers-">2. Writing CSV with Headers:</h3>
+
+<pre class="language-python"><code>import csv
+
+# Open CSV file for writing
+with open('output_with_headers.csv', 'w', newline='') as file:
+    # Specify column headers
+    fieldnames = ['Name', 'Age', 'City']
+
+    # Create a CSV writer with headers
+    csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+    # Write header row
+    csv_writer.writeheader()
+
+    # Write rows to the CSV file
+    csv_writer.writerow({'Name': 'John Doe', 'Age': 30, 'City': 'New York'})
+    csv_writer.writerow({'Name': 'Jane Smith', 'Age': 25, 'City': 'San Francisco'})
+</code></pre>
+
+<h2 id="advanced-csv-handling-in-python-">Advanced CSV Handling in Python:</h2>
+
+<h3 id="1-custom-delimiters-">1. Custom Delimiters:</h3>
+
+<ul>
+<li><p>The <code>csv</code> module supports custom delimiters and quoting characters. For example, when working with tab-separated values:</p>
+
+<pre class="language-python"><code>import csv
+
+# Open TSV file for reading
+with open('example.tsv', 'r') as file:
+    # Create a CSV reader with tab delimiter
+    tsv_reader = csv.reader(file, delimiter='\t')
+
+    # Iterate through rows and print values
+    for row in tsv_reader:
+        print(row)
+</code></pre></li>
+</ul>
+
+<h3 id="2-csv-dialects-">2. CSV Dialects:</h3>
+
+<ul>
+<li><p>The <code>csv</code> module supports different CSV dialects, such as 'excel', 'excel-tab', and 'unix'. You can use <code>csv.register_dialect</code> to define custom dialects.</p>
+
+<pre class="language-python"><code>import csv
+
+# Register a custom CSV dialect
+csv.register_dialect('pipe', delimiter='|', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+# Open pipe-delimited file for reading
+with open('example_pipe.csv', 'r') as file:
+    # Create a CSV reader with custom dialect
+    pipe_reader = csv.reader(file, dialect='pipe')
+
+    # Iterate through rows and print values
+    for row in pipe_reader:
+        print(row)
+</code></pre></li>
+</ul>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Working with CSV files in Python is a fundamental skill for data scientists, analysts, and developers dealing with tabular data.</p>
+
+<p>The <code>csv</code> module provides a straightforward and versatile interface for reading from and writing to CSV files.</p>
+
+<p>As you explore more complex data manipulation tasks, consider using additional libraries like <code>pandas</code> for more advanced data processing capabilities.</p>
+
+<p>The ability to efficiently handle CSV files is a valuable tool in your Python programming toolkit. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

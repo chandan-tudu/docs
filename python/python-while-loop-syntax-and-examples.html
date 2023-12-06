@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python While Loop Syntax And Examples</title>
+<meta name="description" content="In this guide, we'll explore the syntax of the while loop and provide examples to illustrate its usage." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-while-loop-syntax-and-examples.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python While Loop Syntax And Examples</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python while Loop Syntax and Examples" loading="lazy" width="900" height="500"></div> -->
+<p>The <code>while</code> loop in Python is a powerful construct that allows you to execute a block of code repeatedly as long as a specified condition remains true.</p>
+
+<p>This provides a flexible way to implement loops when the exact number of iterations is unknown beforehand.</p>
+
+<p>In this guide, we'll explore the syntax of the <code>while</code> loop and provide examples to illustrate its usage.</p>
+
+<h2 id="syntax-of-the-while-loop-">Syntax of the <code>while</code> Loop:</h2>
+
+<p>The basic syntax of a <code>while</code> loop in Python is as follows:</p>
+
+<pre class="language-python"><code>while condition:
+    # Code to execute as long as the condition is True
+</code></pre>
+
+<ul>
+<li><code>condition</code>: Represents the expression that is evaluated before each iteration. The loop continues as long as this condition remains true.</li>
+</ul>
+
+<p>The code block inside the <code>while</code> loop is indented and executed repeatedly until the specified condition evaluates to <code>False</code>.</p>
+
+<h2 id="example-1-simple-while-loop">Example 1: Simple <code>while</code> Loop</h2>
+
+<p>Let's start with a basic example where a <code>while</code> loop is used to print numbers from 1 to 5:</p>
+
+<pre class="language-python"><code>count = 1
+
+while count &lt;= 5:
+    print(count)
+    count += 1
+</code></pre>
+
+<p>In this example, the <code>while</code> loop continues to execute as long as the condition <code>count &lt;= 5</code> remains true.</p>
+
+<p>The <code>print(count)</code> statement outputs the current value of <code>count</code>, and <code>count += 1</code> increments the value of <code>count</code> in each iteration.</p>
+
+<h2 id="example-2-infinite-loop-with-while-true-">Example 2: Infinite Loop with <code>while True</code></h2>
+
+<p>An interesting use of the <code>while</code> loop is to create an infinite loop using <code>while True</code>.</p>
+
+<p>Here's an example where the loop continues until the user enters a specific value:</p>
+
+<pre class="language-python"><code>user_input = ""
+
+while user_input != "exit":
+    user_input = input("Enter a value (type 'exit' to stop): ")
+    print(f"You entered: {user_input}")
+</code></pre>
+
+<p>In this example, the loop continues as long as the <code>user_input</code> is not equal to "exit". The user is prompted to enter a value, and the program prints the entered value.</p>
+
+<h2 id="example-3-while-loop-with-break-">Example 3: <code>while</code> Loop with <code>break</code></h2>
+
+<p>The <code>break</code> statement can be used to exit a <code>while</code> loop prematurely based on a certain condition.</p>
+
+<p>Here's an example where the loop stops when a specific number is reached:</p>
+
+<pre class="language-python"><code>count = 1
+
+while True:
+    print(count)
+    count += 1
+
+    if count &gt; 5:
+        break
+</code></pre>
+
+<p>In this example, the loop condition is <code>True</code>, creating an infinite loop. However, the <code>if count &gt; 5: break</code> statement is used to exit the loop when <code>count</code> exceeds 5.</p>
+
+<h2 id="example-4-while-loop-with-continue-">Example 4: <code>while</code> Loop with <code>continue</code></h2>
+
+<p>The <code>continue</code> statement is used to skip the rest of the code inside the loop for the current iteration and move to the next one. Here's an example where even numbers are skipped:</p>
+
+<pre class="language-python"><code>number = 1
+
+while number &lt;= 10:
+    if number % 2 == 0:
+        number += 1
+        continue
+
+    print(number)
+    number += 1
+</code></pre>
+
+<p>In this example, if <code>number</code> is even, the <code>continue</code> statement skips the <code>print(number)</code> statement, and the loop moves on to the next iteration.</p>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The <code>while</code> loop is a valuable tool in Python for creating dynamic and flexible loops.</p>
+
+<p>Whether you're iterating until a certain condition is met or implementing infinite loops with user input, the <code>while</code> loop provides a versatile solution.</p>
+
+<p>Experiment with these examples, and as you become familiar with the <code>while</code> loop, you'll gain a powerful tool for controlling the flow of your Python programs.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

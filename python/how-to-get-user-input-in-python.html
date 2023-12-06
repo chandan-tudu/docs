@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Get User Input In Python?</title>
+<meta name="description" content="The basics of getting user input, handling different data types, and incorporating user interaction into your Python scripts." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/how-to-get-user-input-in-python.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Get User Input In Python?</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of How to get user input in Python?" loading="lazy" width="900" height="500"></div> -->
+<p>User input is a fundamental aspect of interactive programming, allowing your Python scripts to respond dynamically to user responses. The <code>input()</code> function is the primary tool for collecting user input in Python.</p>
+
+<p>In this tutorial, we'll explore the basics of getting user input, handling different data types, and incorporating user interaction into your Python scripts.</p>
+
+<h2 id="the-input-function">The <code>input()</code> Function:</h2>
+
+<p>The <code>input()</code> function is a built-in function in Python that reads a line from the standard input (usually the keyboard) and returns it as a string.</p>
+
+<pre class="language-python"><code># Basic usage of input()
+user_input = input("Enter something: ")
+print("You entered:", user_input)
+</code></pre>
+
+<ul>
+<li>In this example, the <code>input()</code> function displays the prompt "Enter something:" and waits for the user to input text.</li>
+<li>The entered text is then assigned to the variable <code>user_input</code>, and the script prints the user's input.</li>
+</ul>
+
+<h2 id="handling-different-data-types">Handling Different Data Types:</h2>
+
+<p>While <code>input()</code> always returns a string, you can convert the input to other data types based on your requirements.</p>
+
+<h3 id="converting-to-integer">Converting to Integer:</h3>
+
+<pre class="language-python"><code># Converting input to integer
+user_age = int(input("Enter your age: "))
+print("Your age:", user_age)
+</code></pre>
+
+<h3 id="converting-to-float">Converting to Float:</h3>
+
+<pre class="language-python"><code># Converting input to float
+user_height = float(input("Enter your height in meters: "))
+print("Your height:", user_height)
+</code></pre>
+
+<h3 id="converting-to-other-types">Converting to Other Types:</h3>
+
+<p>You can use specific conversion functions (<code>int()</code>, <code>float()</code>, etc.) based on the desired data type.</p>
+
+<pre class="language-python"><code># Converting input to boolean
+user_choice = input("Enter True or False: ").lower()  # Convert to lowercase for case-insensitivity
+boolean_value = user_choice == 'true'
+print("Boolean Value:", boolean_value)
+</code></pre>
+
+<h2 id="validating-user-input">Validating User Input:</h2>
+
+<p>It's a good practice to validate user input to ensure it meets the expected criteria.</p>
+
+<p>For example, when expecting a numeric input, you might want to handle cases where the user enters non-numeric characters.</p>
+
+<pre class="language-python"><code># Validating numeric input
+while True:
+    try:
+        user_number = float(input("Enter a number: "))
+        break  # Break the loop if conversion is successful
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+print("Your number:", user_number)
+</code></pre>
+
+<p>In this example, the script uses a <code>try-except</code> block to catch a <code>ValueError</code> if the user enters a non-numeric input. The loop continues until the user provides a valid numeric input.</p>
+
+<h2 id="enhancing-user-interaction">Enhancing User Interaction:</h2>
+
+<p>You can create more engaging user interactions by incorporating user input into your scripts' logic.</p>
+
+<pre class="language-python"><code># Interactive script based on user input
+user_name = input("Enter your name: ")
+greeting = f"Hello, {user_name}! How are you today?"
+print(greeting)
+
+user_mood = input("Enter your mood: ")
+if 'happy' in user_mood.lower():
+    print("That's great to hear!")
+elif 'sad' in user_mood.lower():
+    print("I hope things get better soon.")
+else:
+    print("Interesting. Let me know if there's anything I can do.")
+</code></pre>
+
+<p>This script collects the user's name, generates a greeting, asks for their mood, and responds accordingly. It showcases how user input can drive the flow of your script.</p>
+
+<h2 id="conclusion">Conclusion:</h2>
+
+<p>Getting user input in Python is a straightforward process using the <code>input()</code> function.</p>
+
+<p>By understanding how to handle different data types, validate input, and integrate user interaction into your scripts, you can create more dynamic and engaging programs.</p>
+
+<p>Whether you're building simple scripts or interactive applications, mastering user input is a key skill in the Python programming journey. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

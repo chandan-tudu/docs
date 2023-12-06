@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Time Module Tutorial: A Comprehensive Guide</title>
+<meta name="description" content="In this tutorial, we'll explore the key features of the time module, covering its various functions and use cases." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/python/python-time-module-tutorial-a-comprehensive-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PYTHON</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Python Time Module Tutorial: A Comprehensive Guide</h1>
+</div>
+<!-- <div class="img"><img src="https://source.unsplash.com//900x500" alt="Post Thumbnail of Python time module tutorial: A Comprehensive Guide" loading="lazy" width="900" height="500"></div> -->
+<p>The <code>time</code> module in Python is a versatile library that provides functionality for working with time-related tasks.</p>
+
+<p>Whether you need to measure the execution time of code, create delays, or format timestamps, the <code>time</code> module has you covered.</p>
+
+<p>In this tutorial, we'll explore the key features of the <code>time</code> module, covering its various functions and use cases.</p>
+
+<h2 id="basic-time-functions-">Basic Time Functions:</h2>
+
+<h3 id="1-time-current-time-in-seconds">1. <code>time()</code>: Current Time in Seconds</h3>
+
+<p>The <code>time()</code> function returns the current time in seconds since the epoch (January 1, 1970).</p>
+
+<pre class="language-python"><code>import time
+
+current_time = time.time()
+print("Current Time:", current_time)
+</code></pre>
+
+<h3 id="2-ctime-current-time-as-a-string">2. <code>ctime()</code>: Current Time as a String</h3>
+
+<p>The <code>ctime()</code> function returns the current time in a human-readable string format.</p>
+
+<pre class="language-python"><code>import time
+
+current_time_string = time.ctime()
+print("Current Time (String):", current_time_string)
+</code></pre>
+
+<h3 id="3-sleep-introducing-delays">3. <code>sleep()</code>: Introducing Delays</h3>
+
+<p>The <code>sleep()</code> function suspends the execution of the program for a specified number of seconds.</p>
+
+<pre class="language-python"><code>import time
+
+print("Start")
+time.sleep(3)
+print("End")
+</code></pre>
+
+<p>This code introduces a 3-second delay between the "Start" and "End" print statements.</p>
+
+<h2 id="working-with-struct-time-">Working with Struct Time:</h2>
+
+<p>The <code>struct_time</code> object represents a point in time and is often returned by functions such as <code>localtime()</code> and <code>gmtime()</code>.</p>
+
+<h3 id="4-localtime-local-time-representation">4. <code>localtime()</code>: Local Time Representation</h3>
+
+<p>The <code>localtime()</code> function converts the current time in seconds to the local time.</p>
+
+<pre class="language-python"><code>import time
+
+local_time = time.localtime()
+print("Local Time:", local_time)
+</code></pre>
+
+<h3 id="5-gmtime-utc-time-representation">5. <code>gmtime()</code>: UTC Time Representation</h3>
+
+<p>The <code>gmtime()</code> function converts the current time in seconds to Coordinated Universal Time (UTC).</p>
+
+<pre class="language-python"><code>import time
+
+utc_time = time.gmtime()
+print("UTC Time:", utc_time)
+</code></pre>
+
+<h3 id="6-strftime-formatting-time">6. <code>strftime()</code>: Formatting Time</h3>
+
+<p>The <code>strftime()</code> function allows you to format a <code>struct_time</code> object into a string.</p>
+
+<pre class="language-python"><code>import time
+
+current_time = time.localtime()
+formatted_time = time.strftime("%Y-%m-%d %H:%M:%S", current_time)
+print("Formatted Time:", formatted_time)
+</code></pre>
+
+<h2 id="performance-measurement-">Performance Measurement:</h2>
+
+<h3 id="7-measuring-code-execution-time">7. Measuring Code Execution Time</h3>
+
+<p>You can use the <code>time()</code> function to measure the execution time of a piece of code.</p>
+
+<pre class="language-python"><code>import time
+
+start_time = time.time()
+
+# Code to be measured
+for _ in range(1000000):
+    pass
+
+end_time = time.time()
+
+execution_time = end_time - start_time
+print("Execution Time:", execution_time)
+</code></pre>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The <code>time</code> module in Python is a powerful tool for handling time-related tasks. Whether you're working with timestamps, creating delays, or measuring code execution time, the functions provided by the <code>time</code> module offer flexibility and precision.</p>
+
+<p>By incorporating these functions into your Python projects, you can effectively manage and manipulate time-related information.</p>
+
+<p>As you delve deeper into Python development, a solid understanding of the <code>time</code> module will prove invaluable. Happy coding!</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
