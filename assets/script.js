@@ -62,10 +62,34 @@ const logo = createEl('a', {
 logo.innerText = 'DevBabu.Com';
 
 const themeBtn = createEl('button', { class: 'theme-switch' });
+
+const searchForm = createEl('form',{
+    method:'GET',
+    class:'searchForm',
+    action:'https:www.devbabu.com/'
+});
+
+const searchInput = createEl('input',{
+    type:'search',
+    name:'s',
+    required:true,
+    autocomplete:'off',
+    placeholder:'Search...'
+});
+
+const searchSubmit = createEl('input',{
+    type:'submit',
+    value:'Search'
+});
+
+searchForm.appendChild(searchInput)
+searchForm.appendChild(searchSubmit)
 themeBtn.innerHTML = moon;
 navbar.appendChild(logo);
 navbar.appendChild(themeBtn);
 header.appendChild(navbar);
+
+header.insertAdjacentElement('afterend',searchForm)
 
 const changeTheme = () => {
     if (rootEl.hasAttribute('dark-theme')) {
