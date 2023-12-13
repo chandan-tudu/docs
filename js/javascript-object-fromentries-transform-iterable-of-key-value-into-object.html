@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript Object.fromentries(): Transform Iterable Of Key-value Into Object</title>
+<meta name="description" content="JavaScript Object.fromEntries(): transform an iterable of key-value pairs into an object." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/javascript-object-fromentries-transform-iterable-of-key-value-into-object.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>JavaScript Object.fromentries(): Transform Iterable Of Key-value Into Object</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of JavaScript Object.fromEntries(): transform iterable of key-value into object" loading="lazy" width="900" height="500"></div> -->
+<p>In the realm of JavaScript, the language constantly evolves to provide developers with more expressive and efficient tools. One such addition in ECMAScript 2019 (ES10) is the <code>Object.fromEntries()</code> method.</p>
+
+<p>This method serves as a counterpart to <code>Object.entries()</code> and offers a convenient way to create an object from an iterable of key-value pairs.</p>
+
+<p>In this article, we will explore the intricacies of <code>Object.fromEntries()</code> and understand how it enhances object manipulation in JavaScript.</p>
+
+<h2 id="the-basics-of-object-fromentries-">The Basics of <code>Object.fromEntries()</code></h2>
+
+<p>The primary purpose of <code>Object.fromEntries()</code> is to transform an iterable of key-value pairs into an object. The iterable can be an array, a Map, or any other data structure that supports the key-value pair structure.</p>
+
+<p>Here is a simple example using an array of key-value pairs:</p>
+
+<pre class="language-javascript"><code>const keyValuePairs = [
+    ['name', 'John'],
+    ['age', 30],
+    ['city', 'New York'],
+];
+
+const myObject = Object.fromEntries(keyValuePairs);
+console.log(myObject);
+// Output: { name: 'John', age: 30, city: 'New York' }
+</code></pre>
+
+<p>In this example, <code>Object.fromEntries()</code> takes an array of key-value pairs and constructs an object with properties corresponding to each pair.</p>
+
+<h2 id="use-cases-and-practical-applications">Use Cases and Practical Applications</h2>
+
+<h3 id="1-converting-map-to-object-">1. Converting Map to Object:</h3>
+
+<p><code>Object.fromEntries()</code> is particularly useful when working with Map objects. While Maps and objects share similarities, converting between them was not as straightforward before the introduction of this method.</p>
+
+<pre class="language-javascript"><code>const myMap = new Map([
+    ['fruit', 'apple'],
+    ['color', 'red'],
+    ['quantity', 3],
+]);
+
+const myObject = Object.fromEntries(myMap);
+console.log(myObject);
+// Output: { fruit: 'apple', color: 'red', quantity: 3 }
+</code></pre>
+
+<p>Now, with a single line of code, you can effortlessly convert a Map into an object.</p>
+
+<h3 id="2-filtering-and-transforming-object-properties-">2. Filtering and Transforming Object Properties:</h3>
+
+<p>Suppose you have an object, and you want to create a new object by filtering or transforming its properties.</p>
+
+<p><code>Object.entries()</code> combined with <code>Object.fromEntries()</code> provides an elegant solution.</p>
+
+<pre class="language-javascript"><code>const originalObject = {
+    name: 'Alice',
+    age: 25,
+    country: 'Wonderland',
+    isAdmin: true,
+};
+
+const filteredObject = Object.fromEntries(
+    Object.entries(originalObject).filter(([key, value]) =&gt; key !== 'isAdmin')
+);
+
+console.log(filteredObject);
+// Output: { name: 'Alice', age: 25, country: 'Wonderland' }
+</code></pre>
+
+<p>In this example, properties with the key 'isAdmin' are filtered out, creating a new object without that property.</p>
+
+<h3 id="3-parsing-query-parameters-">3. Parsing Query Parameters:</h3>
+
+<p>When dealing with URL query parameters, <code>Object.fromEntries()</code> can be used to convert an array of key-value pairs into an object.</p>
+
+<pre class="language-javascript"><code>const queryString = 'name=John&amp;age=30&amp;city=New York';
+
+const queryParams = Object.fromEntries(
+    new URLSearchParams(queryString).entries()
+);
+
+console.log(queryParams);
+// Output: { name: 'John', age: '30', city: 'New York' }
+</code></pre>
+
+<p>Here, <code>URLSearchParams</code> is used to parse the query string, and <code>Object.fromEntries()</code> converts it into an object.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><code>Object.fromEntries()</code> is a versatile addition to JavaScript, offering a concise and expressive way to create objects from iterables of key-value pairs.</p>
+
+<p>Whether you're transforming Maps, filtering object properties, or parsing query parameters, this method streamlines the code and enhances readability.</p>
+
+<p>As the JavaScript language continues to evolve, understanding and leveraging new features like <code>Object.fromEntries()</code> contributes to writing more efficient and maintainable code.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

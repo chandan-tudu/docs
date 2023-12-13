@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript Window.location Cheatsheet</title>
+<meta name="description" content="This cheatsheet serves as a quick reference guide for working with window.location in various scenarios." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/javascript-window-location-cheatsheet.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>JavaScript Window.location Cheatsheet</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of JavaScript window.location Cheatsheet" loading="lazy" width="900" height="500"></div> -->
+<p>The <code>window.location</code> object in JavaScript provides valuable information about the current URL and allows developers to manipulate it to navigate the browser or extract specific details.</p>
+
+<p>This cheatsheet serves as a quick reference guide for working with <code>window.location</code> in various scenarios.</p>
+
+<h2 id="1-accessing-components-of-the-url-">1. Accessing Components of the URL:</h2>
+
+<h3 id="getting-the-full-url-">Getting the Full URL:</h3>
+
+<pre class="language-javascript"><code>const fullURL = window.location.href;
+console.log(fullURL);
+</code></pre>
+
+<h3 id="getting-the-host-domain-and-port-">Getting the Host (domain and port):</h3>
+
+<pre class="language-javascript"><code>const host = window.location.host;
+console.log(host);
+</code></pre>
+
+<h3 id="getting-the-domain-">Getting the Domain:</h3>
+
+<pre class="language-javascript"><code>const domain = window.location.hostname;
+console.log(domain);
+</code></pre>
+
+<h3 id="getting-the-path-">Getting the Path:</h3>
+
+<pre class="language-javascript"><code>const path = window.location.pathname;
+console.log(path);
+</code></pre>
+
+<h3 id="getting-the-protocol-">Getting the Protocol:</h3>
+
+<pre class="language-javascript"><code>const protocol = window.location.protocol;
+console.log(protocol);
+</code></pre>
+
+<h3 id="getting-query-parameters-">Getting Query Parameters:</h3>
+
+<pre class="language-javascript"><code>const queryParams = window.location.search;
+console.log(queryParams);
+</code></pre>
+
+<h2 id="2-navigating-the-browser-">2. Navigating the Browser:</h2>
+
+<h3 id="redirecting-to-a-new-url-">Redirecting to a New URL:</h3>
+
+<pre class="language-javascript"><code>window.location.href = 'https://example.com';
+</code></pre>
+
+<h3 id="reloading-the-page-">Reloading the Page:</h3>
+
+<pre class="language-javascript"><code>window.location.reload();
+</code></pre>
+
+<h3 id="forward-and-backward-navigation-">Forward and Backward Navigation:</h3>
+
+<pre class="language-javascript"><code>// Go back one page in the browser history
+window.history.back();
+
+// Go forward one page in the browser history
+window.history.forward();
+</code></pre>
+
+<h2 id="3-modifying-the-url-">3. Modifying the URL:</h2>
+
+<h3 id="changing-the-hash-fragment-identifier-">Changing the Hash (Fragment Identifier):</h3>
+
+<pre class="language-javascript"><code>window.location.hash = '#section1';
+</code></pre>
+
+<h3 id="modifying-query-parameters-">Modifying Query Parameters:</h3>
+
+<pre class="language-javascript"><code>const newParams = '?page=2&amp;category=javascript';
+window.location.search = newParams;
+</code></pre>
+
+<h3 id="changing-the-path-">Changing the Path:</h3>
+
+<pre class="language-javascript"><code>window.location.pathname = '/newPath';
+</code></pre>
+
+<h2 id="4-extracting-url-information-">4. Extracting URL Information:</h2>
+
+<h3 id="parsing-the-query-parameters-">Parsing the Query Parameters:</h3>
+
+<pre class="language-javascript"><code>const params = new URLSearchParams(window.location.search);
+console.log(params.get('paramName'));
+</code></pre>
+
+<h3 id="checking-if-the-url-contains-a-specific-string-">Checking if the URL contains a specific string:</h3>
+
+<pre class="language-javascript"><code>const containsString = window.location.href.includes('example');
+console.log(containsString);
+</code></pre>
+
+<h3 id="extracting-fragments-">Extracting Fragments:</h3>
+
+<pre class="language-javascript"><code>const fragment = window.location.hash.substring(1);
+console.log(fragment);
+</code></pre>
+
+<h2 id="5-working-with-cookies-">5. Working with Cookies:</h2>
+
+<h3 id="redirecting-based-on-cookie-">Redirecting Based on Cookie:</h3>
+
+<pre class="language-javascript"><code>const userLoggedIn = document.cookie.includes('loggedIn=true');
+
+if (!userLoggedIn) {
+    window.location.href = '/login';
+}
+</code></pre>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>The <code>window.location</code> object in JavaScript is a powerful tool for manipulating and navigating the browser's URL.</p>
+
+<p>This cheatsheet provides a quick reference for common scenarios, whether you need to extract specific components of the URL, navigate to a new page, or modify the URL dynamically.</p>
+
+<p>Understanding these techniques empowers developers to create more dynamic and interactive web applications.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

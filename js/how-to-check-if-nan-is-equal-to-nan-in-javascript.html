@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Check If NaN Is Equal To NaN In JavaScript</title>
+<meta name="description" content="Explore different ways to check if NaN is equal to NaN in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/how-to-check-if-nan-is-equal-to-nan-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Check If NaN Is Equal To NaN In JavaScript</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of How to Check if NaN is equal to NaN in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>JavaScript's handling of NaN (Not a Number) can be a source of confusion, especially when it comes to equality comparisons.</p>
+
+<p>In this article, we'll delve into the peculiarities of NaN and explore different ways to check if NaN is equal to NaN in JavaScript.</p>
+
+<h2 id="the-nan-conundrum-">The NaN Conundrum:</h2>
+
+<p>NaN represents the result of an operation that cannot produce a meaningful result, such as dividing zero by zero.</p>
+
+<p>However, NaN has some unique characteristics that make it tricky to work with, particularly in equality comparisons.</p>
+
+<pre class="language-javascript"><code>const result = 0 / 0;
+console.log(result); // Outputs: NaN
+</code></pre>
+
+<p>The surprising aspect is that NaN is not equal to itself, unlike other values.</p>
+
+<pre class="language-javascript"><code>console.log(NaN === NaN); // Outputs: false
+</code></pre>
+
+<h2 id="1-using-isnan-function-">1. Using <code>isNaN()</code> Function:</h2>
+
+<p>JavaScript provides the <code>isNaN()</code> function to specifically check for NaN values.</p>
+
+<pre class="language-javascript"><code>const result = 0 / 0;
+console.log(isNaN(result)); // Outputs: true
+</code></pre>
+
+<p>However, <code>isNaN()</code> has a quirk—it also returns <code>true</code> for values that are not actually NaN but are not coercible to a numeric value.</p>
+
+<pre class="language-javascript"><code>console.log(isNaN('hello')); // Outputs: true
+</code></pre>
+
+<p>To address this, you can use <code>Number.isNaN()</code>, introduced in ECMAScript 2015 (ES6), which only returns <code>true</code> for actual NaN values.</p>
+
+<pre class="language-javascript"><code>console.log(Number.isNaN(result)); // Outputs: true
+console.log(Number.isNaN('hello')); // Outputs: false
+</code></pre>
+
+<h2 id="2-using-a-custom-equality-function-">2. Using a Custom Equality Function:</h2>
+
+<p>To check if NaN is equal to NaN without relying on <code>isNaN()</code> or <code>Number.isNaN()</code>, you can create a custom equality function.</p>
+
+<pre class="language-javascript"><code>function isNaNCustom(value) {
+    return value !== value;
+}
+
+const result = 0 / 0;
+console.log(isNaNCustom(result)); // Outputs: true
+</code></pre>
+
+<p>This method exploits the fact that NaN is the only JavaScript value not equal to itself, making it suitable for a custom isNaN check.</p>
+
+<h2 id="3-using-object-is-">3. Using <code>Object.is()</code>:</h2>
+
+<p>The <code>Object.is()</code> method was introduced in ECMAScript 2015 (ES6) to provide a more robust equality comparison, including handling NaN.</p>
+
+<pre class="language-javascript"><code>const result = 0 / 0;
+console.log(Object.is(result, NaN)); // Outputs: true
+</code></pre>
+
+<p><code>Object.is()</code> behaves similarly to strict equality (<code>===</code>) but with a few key differences, such as treating -0 and +0 as unequal and correctly handling NaN comparisons.</p>
+
+<h2 id="considerations-">Considerations:</h2>
+
+<ol>
+<li><p><strong>Use of <code>isNaN()</code>:</strong> Be cautious when using <code>isNaN()</code> for NaN checks, as it may return unexpected results for non-numeric values.</p></li>
+<li><p><strong>Compatibility:</strong> If you need to support older JavaScript environments, be aware that some methods, such as <code>Number.isNaN()</code> and <code>Object.is()</code>, might not be available.</p></li>
+<li><p><strong>Semantic Differences:</strong> Understand the semantic differences between <code>isNaN()</code> and <code>Object.is()</code> when choosing an approach. <code>Object.is()</code> is more predictable in certain scenarios.</p></li>
+<li><p><strong>Readability:</strong> Choose the method that aligns with the readability goals of your codebase and your specific NaN-checking requirements.</p></li>
+</ol>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>NaN in JavaScript introduces some quirks when it comes to equality comparisons. While <code>isNaN()</code> and <code>Number.isNaN()</code> provide dedicated methods for NaN checks, developers should be aware of their limitations.</p>
+
+<p>Creating a custom equality function or using <code>Object.is()</code> offers alternative approaches, each with its own trade-offs.</p>
+
+<p>By understanding the nuances of NaN and choosing an appropriate method, developers can navigate the complexities of NaN equality comparisons in JavaScript effectively.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

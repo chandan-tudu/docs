@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Padding Strings With PadEnd Method In JavaScript</title>
+<meta name="description" content="In this guide, we'll explore the syntax, use cases, and examples of the padEnd method in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/padding-strings-with-padend-method-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Padding Strings With PadEnd Method In JavaScript</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Padding Strings with padEnd Method in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>JavaScript provides several string manipulation methods to enhance the way we work with text data.</p>
+
+<p>The <code>padEnd</code> method is a valuable addition, enabling you to easily add padding to the end of a string.</p>
+
+<p>In this guide, we'll explore the syntax, use cases, and examples of the <code>padEnd</code> method in JavaScript.</p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ol>
+<li><a href="#understanding-the-padend-method">Understanding the <code>padEnd</code> Method</a></li>
+<li><a href="#examples-of-using-padend">Examples of Using <code>padEnd</code></a>
+
+<ul>
+<li><a href="#basic-padding">Basic Padding</a></li>
+<li><a href="#custom-padding-character">Custom Padding Character</a></li>
+<li><a href="#real-world-scenario-formatting-dates">Real-world Scenario: Formatting Dates</a></li>
+<li><a href="#aligning-text-in-a-table">Aligning Text in a Table</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="understanding-the-padend-method">Understanding the <code>padEnd</code> Method</h2>
+
+<p>The <code>padEnd</code> method is designed to pad the end of a string with a specified character (or characters) until the resulting string reaches a specified length.</p>
+
+<p>Here's the basic syntax of the <code>padEnd</code> method:</p>
+
+<pre class="language-javascript"><code>string.padEnd(targetLength [, padString]);
+</code></pre>
+
+<ul>
+<li><code>targetLength</code>: The length of the resulting string.</li>
+<li><code>padString</code> (optional): The string to pad with. If not provided, the space character (" ") is used by default.</li>
+</ul>
+
+<h2 id="examples-of-using-padend">Examples of Using <code>padEnd</code></h2>
+
+<h3 id="basic-padding">Basic Padding</h3>
+
+<pre class="language-javascript"><code>const originalString = 'Hello';
+
+const paddedString = originalString.padEnd(10);
+
+console.log(paddedString);
+// Output: 'Hello     '
+</code></pre>
+
+<p>In this example, the <code>padEnd</code> method pads the original string with spaces until the total length reaches 10 characters.</p>
+
+<h3 id="custom-padding-character">Custom Padding Character</h3>
+
+<p>You can specify a custom padding character by providing the <code>padString</code> parameter.</p>
+
+<pre class="language-javascript"><code>const originalString = 'Hello';
+
+const paddedString = originalString.padEnd(10, '*');
+
+console.log(paddedString);
+// Output: 'Hello*****'
+</code></pre>
+
+<p>Here, the <code>padEnd</code> method uses the asterisk (&#42;) as the padding character.</p>
+
+<h3 id="real-world-scenario-formatting-dates">Real-world Scenario: Formatting Dates</h3>
+
+<p>The <code>padEnd</code> method is particularly useful when formatting dates or other data where consistent string length is essential.</p>
+
+<pre class="language-javascript"><code>const year = '2022';
+const month = '01';
+const day = '15';
+
+const formattedDate = `${year}-${month}-${day}`.padEnd(10, '0');
+
+console.log(formattedDate);
+// Output: '2022-01-15'
+</code></pre>
+
+<p>In this example, the <code>padEnd</code> method ensures that both month and day components are two characters long, using '0' as the padding character.</p>
+
+<h3 id="aligning-text-in-a-table">Aligning Text in a Table</h3>
+
+<p>The <code>padEnd</code> method can be handy for aligning text in a table, ensuring columns have consistent width.</p>
+
+<pre class="language-javascript"><code>const headers = ['Name', 'Age', 'City'];
+const data = [
+    ['Alice', 28, 'New York'],
+    ['Bob', 35, 'San Francisco'],
+];
+
+const table = data.map((row) =&gt;
+    row
+        .map((cell, index) =&gt; cell.toString().padEnd(headers[index].length))
+        .join(' | ')
+);
+
+console.log(headers.join(' | '));
+console.log('-'.repeat(headers.join(' | ').length));
+table.forEach((row) =&gt; console.log(row));
+</code></pre>
+
+<p>In this example, the <code>padEnd</code> method ensures that each cell in the table has padding, creating a neatly formatted output.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The <code>padEnd</code> method in JavaScript provides a convenient way to pad strings with a specified character or characters, ensuring consistent string length.</p>
+
+<p>Whether you're formatting dates, aligning text in a table, or handling any scenario where padding is necessary, the <code>padEnd</code> method proves to be a valuable tool in your JavaScript toolkit.</p>
+
+<p>Understanding its syntax and exploring practical examples will empower you to use this method effectively in your string manipulation tasks.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

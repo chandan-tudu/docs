@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript Array.flatMap(): Map Each Array Element Then Flatten</title>
+<meta name="description" content="Learn How to use JavaScript Array.flatMap(): Map Each Array Element Then Flatten." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/javascript-array-flatmap-map-each-array-element-then-flatten.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>JavaScript Array.flatMap(): Map Each Array Element Then Flatten</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of JavaScript Array.flatMap(): map each array element then flatten" loading="lazy" width="900" height="500"></div> -->
+<p>JavaScript has evolved over the years, introducing new and powerful methods to streamline common tasks. One such addition to the Array prototype is the <code>flatMap()</code> method.</p>
+
+<p>Introduced in ECMAScript 2019 (ES10), <code>flatMap()</code> combines the functionality of <code>map()</code> and <code>flat()</code> into a single, concise operation.</p>
+
+<p>In this comprehensive guide, we'll explore the intricacies of <code>Array.flatMap()</code> and its applications in modern JavaScript development.</p>
+
+<h2 id="understanding-array-flatmap-">Understanding <code>Array.flatMap()</code></h2>
+
+<p>The primary purpose of <code>flatMap()</code> is to map each element of an array using a provided function and then flatten the resulting array by one level.</p>
+
+<p>The mapping function receives each element as an argument and is expected to return an array. The final result is a flattened array containing the mapped elements.</p>
+
+<p>Here's a simple example to illustrate the basic usage:</p>
+
+<pre class="language-javascript"><code>const numbers = [1, 2, 3, 4];
+
+const doubledAndFlattened = numbers.flatMap((num) =&gt; [num * 2]);
+
+console.log(doubledAndFlattened);
+// Output: [2, 4, 6, 8]
+</code></pre>
+
+<p>In this example, the mapping function multiplies each number by 2, and <code>flatMap()</code> flattens the resulting array.</p>
+
+<h2 id="use-cases-and-practical-applications">Use Cases and Practical Applications</h2>
+
+<h3 id="1-flattening-and-mapping-arrays-of-arrays-">1. Flattening and Mapping Arrays of Arrays:</h3>
+
+<p><code>flatMap()</code> is particularly useful when working with arrays of arrays. It efficiently flattens the nested arrays while applying the mapping function.</p>
+
+<pre class="language-javascript"><code>const matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+];
+
+const flattenedAndSquared = matrix.flatMap((row) =&gt; row.map((num) =&gt; num ** 2));
+
+console.log(flattenedAndSquared);
+// Output: [1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre>
+
+<p>Here, <code>flatMap()</code> is used to both flatten the matrix and square each element.</p>
+
+<h3 id="2-removing-or-handling-unwanted-elements-">2. Removing or Handling Unwanted Elements:</h3>
+
+<p>When mapping elements, you might encounter scenarios where you want to exclude certain values.</p>
+
+<p><code>flatMap()</code> allows you to achieve this by returning an empty array for unwanted elements.</p>
+
+<pre class="language-javascript"><code>const mixedData = [1, 'two', 3, 'four', 5];
+
+const onlyNumbers = mixedData.flatMap((element) =&gt;
+    typeof element === 'number' ? [element] : []
+);
+
+console.log(onlyNumbers);
+// Output: [1, 3, 5]
+</code></pre>
+
+<p>In this example, only numeric elements are included in the resulting array.</p>
+
+<h3 id="3-creating-and-flattening-arrays-dynamically-">3. Creating and Flattening Arrays Dynamically:</h3>
+
+<p><code>flatMap()</code> can be employed to dynamically generate and flatten arrays based on certain conditions.</p>
+
+<pre class="language-javascript"><code>const words = ['hello', 'world'];
+
+const repeatedAndFlattened = words.flatMap((word) =&gt;
+    word.split('').map((char) =&gt; char.repeat(2))
+);
+
+console.log(repeatedAndFlattened);
+// Output: ['hh', 'ee', 'll', 'll', 'oo', 'ww', 'oo', 'rr', 'll', 'dd']
+</code></pre>
+
+<p>Here, the mapping function dynamically creates arrays of repeated characters, which are then flattened.</p>
+
+<h3 id="4-handling-asynchronous-operations-">4. Handling Asynchronous Operations:</h3>
+
+<p><code>flatMap()</code> can be useful when dealing with asynchronous operations, such as promises. It can flatten arrays after mapping each element asynchronously.</p>
+
+<pre class="language-javascript"><code>const asyncNumbers = [1, 2, 3];
+
+const asyncDoubled = asyncNumbers.flatMap(async (num) =&gt; {
+    const doubled = await doubleAsync(num);
+    return [doubled];
+});
+
+async function doubleAsync(num) {
+    return new Promise((resolve) =&gt; setTimeout(() =&gt; resolve(num * 2), 1000));
+}
+
+(async () =&gt; {
+    console.log(await Promise.all(asyncDoubled));
+    // Output: [2, 4, 6]
+})();
+</code></pre>
+
+<p>In this example, <code>asyncDoubled</code> is an array of promises, and <code>Promise.all()</code> is used to await their resolution.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><code>Array.flatMap()</code> is a powerful addition to JavaScript, providing a concise and expressive way to map and flatten arrays.</p>
+
+<p>Whether you're working with nested arrays, filtering unwanted elements, or handling asynchronous operations, <code>flatMap()</code> simplifies complex tasks into a single, readable operation.</p>
+
+<p>By incorporating this method into your JavaScript toolkit, you can enhance the efficiency and readability of your code, making it more expressive and maintainable.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

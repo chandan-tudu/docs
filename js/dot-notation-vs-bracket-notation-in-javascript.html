@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dot Notation Vs Bracket Notation In JavaScript</title>
+<meta name="description" content="Explore the characteristics of dot notation and bracket notation, along with situations where one might be preferred over the other." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/dot-notation-vs-bracket-notation-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Dot Notation Vs Bracket Notation In JavaScript</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of Dot Notation vs Bracket Notation in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>In JavaScript, when working with objects, there are two primary ways to access properties: dot notation (<code>.</code>) and bracket notation (<code>[]</code>).</p>
+
+<p>While both methods achieve the same goal, there are subtle differences and use cases that developers should be aware of.</p>
+
+<p>In this article, we'll explore the characteristics of dot notation and bracket notation, along with situations where one might be preferred over the other.</p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ol>
+<li><a href="#dot-notation">Dot Notation</a></li>
+<li><a href="#bracket-notation">Bracket Notation</a></li>
+<li><a href="#when-to-use-dot-notation">When to Use Dot Notation</a></li>
+<li><a href="#when-to-use-bracket-notation">When to Use Bracket Notation</a></li>
+<li><a href="#key-takeaways">Key Takeaways</a></li>
+</ol>
+
+<h2 id="dot-notation">1. Dot Notation</h2>
+
+<p>Dot notation is a concise and straightforward way to access properties of an object. It involves using a dot followed by the property name.</p>
+
+<pre class="language-javascript"><code>const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 30,
+};
+
+console.log(person.firstName); // Output: 'John'
+console.log(person.age); // Output: 30
+</code></pre>
+
+<h3 id="characteristics-of-dot-notation">Characteristics of Dot Notation</h3>
+
+<ul>
+<li><strong>Syntax:</strong> Uses the dot (<code>.</code>) followed by the property name.</li>
+<li><strong>Use Cases:</strong> Ideal for straightforward property access when the property name is a valid identifier.</li>
+</ul>
+
+<h2 id="bracket-notation">2. Bracket Notation</h2>
+
+<p>Bracket notation involves using square brackets (<code>[]</code>) to access properties. The property name is enclosed within the brackets as a string.</p>
+
+<pre class="language-javascript"><code>const person = {
+    'first-name': 'John',
+    'last-name': 'Doe',
+    age: 30,
+};
+
+console.log(person['first-name']); // Output: 'John'
+console.log(person['age']); // Output: 30
+</code></pre>
+
+<h3 id="characteristics-of-bracket-notation">Characteristics of Bracket Notation</h3>
+
+<ul>
+<li><strong>Syntax:</strong> Uses square brackets (<code>[]</code>) with the property name as a string.</li>
+<li><strong>Use Cases:</strong> Useful when the property name contains special characters, spaces, or when it is determined dynamically.</li>
+</ul>
+
+<h2 id="when-to-use-dot-notation">3. When to Use Dot Notation</h2>
+
+<ol>
+<li><p><strong>When the Property Name is a Valid Identifier:</strong></p>
+
+<pre class="language-javascript"><code>const car = {
+    make: 'Toyota',
+    model: 'Camry',
+};
+
+console.log(car.make); // Output: 'Toyota'
+</code></pre></li>
+<li><p><strong>For Simplicity and Readability:</strong></p>
+
+<pre class="language-javascript"><code>const point = {
+    x: 10,
+    y: 20,
+};
+
+console.log(point.x + point.y); // Output: 30
+</code></pre></li>
+</ol>
+
+<h2 id="when-to-use-bracket-notation">4. When to Use Bracket Notation</h2>
+
+<ol>
+<li><p><strong>Dynamic Property Access:</strong></p>
+
+<pre class="language-javascript"><code>const propertyName = 'make';
+const car = {
+    make: 'Toyota',
+    model: 'Camry',
+};
+
+console.log(car[propertyName]); // Output: 'Toyota'
+</code></pre></li>
+<li><p><strong>Special Characters or Spaces in Property Names:</strong></p>
+
+<pre class="language-javascript"><code>const person = {
+    'first-name': 'John',
+    'last-name': 'Doe',
+};
+
+console.log(person['first-name']); // Output: 'John'
+</code></pre></li>
+<li><p><strong>Reserved Keywords as Property Names:</strong></p>
+
+<pre class="language-javascript"><code>const data = {
+    class: 'A',
+    function: 'B',
+};
+
+console.log(data['class']); // Output: 'A'
+console.log(data['function']); // Output: 'B'
+</code></pre></li>
+</ol>
+
+<h2 id="key-takeaways">5. Key Takeaways</h2>
+
+<ul>
+<li>Both dot notation and bracket notation can be used to access object properties in JavaScript.</li>
+<li>Dot notation is concise and ideal for straightforward property access with valid identifiers.</li>
+<li>Bracket notation is versatile and useful for dynamic property access, special characters, spaces, or reserved keywords.</li>
+<li>The choice between dot notation and bracket notation depends on the specific use case and the nature of the property names.</li>
+</ul>
+
+<p>Understanding when to use each notation allows developers to write more readable, flexible, and maintainable code in JavaScript. It's essential to choose the notation that best aligns with the requirements of the task at hand.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

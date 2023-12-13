@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Check For NaN In JavaScript</title>
+<meta name="description" content="In this article, we'll explore these methods and discuss best practices for handling NaN checks." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/how-to-check-for-nan-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Check For NaN In JavaScript</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of How to Check for NaN in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Dealing with <code>NaN</code> (Not a Number) is a common task in JavaScript, especially when working with numeric operations. JavaScript provides specific methods and practices to check whether a value is <code>NaN</code>.</p>
+
+<p>In this article, we'll explore these methods and discuss best practices for handling <code>NaN</code> checks.</p>
+
+<h2 id="1-using-isnan-function">1. Using <code>isNaN()</code> Function</h2>
+
+<p>The most straightforward way to check for <code>NaN</code> in JavaScript is by using the built-in <code>isNaN()</code> function.</p>
+
+<pre class="language-javascript"><code>const myValue = 42;
+
+if (isNaN(myValue)) {
+    console.log('It is NaN!');
+} else {
+    console.log('It is not NaN.');
+}
+</code></pre>
+
+<p>The <code>isNaN()</code> function returns <code>true</code> if the provided value is <code>NaN</code>; otherwise, it returns <code>false</code>.</p>
+
+<p>It's important to note that <code>isNaN()</code> is not exclusive to checking for <code>NaN</code>; it also returns <code>true</code> for other non-numeric values.</p>
+
+<pre class="language-javascript"><code>console.log(isNaN('Hello')); // Output: true
+</code></pre>
+
+<p>To overcome this limitation, you can use the <code>Number.isNaN()</code> method introduced in ECMAScript 6 (ES6).</p>
+
+<h2 id="2-using-number-isnan-">2. Using <code>Number.isNaN()</code></h2>
+
+<p>The <code>Number.isNaN()</code> method is a more robust alternative to <code>isNaN()</code> for specifically checking <code>NaN</code> values.</p>
+
+<pre class="language-javascript"><code>const myValue = 42;
+
+if (Number.isNaN(myValue)) {
+    console.log('It is NaN!');
+} else {
+    console.log('It is not NaN.');
+}
+</code></pre>
+
+<p>Unlike <code>isNaN()</code>, <code>Number.isNaN()</code> does not perform any type coercion and only returns <code>true</code> if the provided value is exactly <code>NaN</code>.</p>
+
+<pre class="language-javascript"><code>console.log(Number.isNaN('Hello')); // Output: false
+</code></pre>
+
+<h2 id="3-using-strict-equality-">3. Using Strict Equality (<code>===</code>)</h2>
+
+<p>Another way to check for <code>NaN</code> is by using strict equality (<code>===</code>) with itself. Since <code>NaN</code> is the only value not equal to itself, this method works.</p>
+
+<pre class="language-javascript"><code>const myValue = 42;
+
+if (myValue !== myValue) {
+    console.log('It is NaN!');
+} else {
+    console.log('It is not NaN.');
+}
+</code></pre>
+
+<p>This method, while effective, is less commonly used compared to <code>isNaN()</code> or <code>Number.isNaN()</code>.</p>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<ul>
+<li><p><strong>Prefer <code>Number.isNaN()</code>:</strong> When specifically checking for <code>NaN</code>, <code>Number.isNaN()</code> is the recommended method as it avoids type coercion.</p></li>
+<li><p><strong>Be Aware of <code>isNaN()</code> Caveats:</strong> If using <code>isNaN()</code>, be cautious of its behavior with non-numeric values and consider whether it fits your use case.</p></li>
+<li><p><strong>Use Strict Equality for Simplicity:</strong> While less common, using strict equality (<code>===</code>) with itself is a simple way to check for <code>NaN</code>.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Checking for <code>NaN</code> in JavaScript is a crucial aspect of handling numeric operations. The choice between <code>isNaN()</code>, <code>Number.isNaN()</code>, or strict equality (<code>===</code>) depends on the specific use case and desired behavior.</p>
+
+<p>By understanding the differences between these methods and following best practices, you can confidently handle <code>NaN</code> checks in your JavaScript code.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

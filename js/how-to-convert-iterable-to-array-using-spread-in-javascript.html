@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Convert Iterable To Array Using Spread In JavaScript</title>
+<meta name="description" content="How to leverage the spread syntax to convert iterables, such as strings or other iterable objects, into arrays." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/how-to-convert-iterable-to-array-using-spread-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Convert Iterable To Array Using Spread In JavaScript</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of how to convert Iterable to Array using Spread in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>JavaScript provides a versatile set of tools for working with data, and one common operation is converting iterable objects into arrays.</p>
+
+<p>The spread syntax (<code>...</code>) is a concise and powerful feature that makes this conversion straightforward.</p>
+
+<p>In this article, we'll explore how to leverage the spread syntax to convert iterables, such as strings or other iterable objects, into arrays.</p>
+
+<p><strong>Table of Contents:</strong></p>
+
+<ol>
+<li><a href="#1-converting-a-string-to-an-array">Converting a String to an Array</a></li>
+<li><a href="#2-converting-a-set-to-an-array">Converting a Set to an Array</a></li>
+<li><a href="#3-converting-arguments-to-an-array">Converting Arguments to an Array</a></li>
+<li><a href="#4-combining-arrays">Combining Arrays</a></li>
+<li><a href="#5-converting-nodelist-to-an-array">Converting NodeList to an Array</a></li>
+</ol>
+
+<h2 id="understanding-iterables-in-javascript">Understanding Iterables in JavaScript</h2>
+
+<p>Before diving into converting iterables to arrays, let's briefly understand what iterables are.</p>
+
+<p>An iterable is an object that can be iterated over, meaning it can be looped through using constructs like <code>for...of</code> or the spread syntax.</p>
+
+<p>Examples of iterables include arrays, strings, maps, sets, and more.</p>
+
+<h2 id="using-spread-syntax-to-convert-iterables-to-arrays">Using Spread Syntax to Convert Iterables to Arrays</h2>
+
+<p>The spread syntax (<code>...</code>) in JavaScript provides an elegant way to expand elements from an iterable into a new array. Let's explore this with various examples:</p>
+
+<h3 id="1-converting-a-string-to-an-array">1. Converting a String to an Array</h3>
+
+<pre class="language-javascript"><code>const myString = 'Hello, World!';
+const stringArray = [...myString];
+
+console.log(stringArray);
+// Output: ['H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd', '!']
+</code></pre>
+
+<p>In this example, each character of the string is spread into a new array, resulting in an array of individual characters.</p>
+
+<h3 id="2-converting-a-set-to-an-array">2. Converting a Set to an Array</h3>
+
+<pre class="language-javascript"><code>const mySet = new Set([1, 2, 3, 4, 5]);
+const setArray = [...mySet];
+
+console.log(setArray);
+// Output: [1, 2, 3, 4, 5]
+</code></pre>
+
+<p>The spread syntax works seamlessly with sets, transforming the set into an array of its elements.</p>
+
+<h3 id="3-converting-arguments-to-an-array">3. Converting Arguments to an Array</h3>
+
+<p>JavaScript functions have a special <code>arguments</code> object that is iterable. You can convert it to an array using the spread syntax.</p>
+
+<pre class="language-javascript"><code>function getArgumentsArray() {
+    return [...arguments];
+}
+
+const argsArray = getArgumentsArray(1, 'two', { three: 3 });
+
+console.log(argsArray);
+// Output: [1, 'two', { three: 3 }]
+</code></pre>
+
+<p>In this example, the spread syntax transforms the <code>arguments</code> object into an array.</p>
+
+<h3 id="4-combining-arrays">4. Combining Arrays</h3>
+
+<p>You can use the spread syntax to combine multiple arrays into a new one.</p>
+
+<pre class="language-javascript"><code>const array1 = [1, 2, 3];
+const array2 = ['a', 'b', 'c'];
+const combinedArray = [...array1, ...array2];
+
+console.log(combinedArray);
+// Output: [1, 2, 3, 'a', 'b', 'c']
+</code></pre>
+
+<p>Here, the spread syntax concatenates the elements of <code>array1</code> and <code>array2</code> into a new array.</p>
+
+<h3 id="5-converting-nodelist-to-an-array">5. Converting NodeList to an Array</h3>
+
+<p>When working with the DOM, you might encounter NodeList objects, which are iterable but not true arrays. The spread syntax allows you to convert them easily.</p>
+
+<pre class="language-javascript"><code>const nodeList = document.querySelectorAll('p');
+const paragraphArray = [...nodeList];
+
+console.log(paragraphArray);
+// Output: Array of &lt;p&gt; elements in the document
+</code></pre>
+
+<p>In this example, the spread syntax transforms a NodeList of <code>&lt;p&gt;</code> elements into an array.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The spread syntax in JavaScript provides a concise and powerful way to convert iterables into arrays.</p>
+
+<p>Whether you are working with strings, sets, or other iterable objects, the spread syntax simplifies the process of transforming data structures.</p>
+
+<p>This technique not only enhances code readability but also contributes to the flexibility and expressiveness of JavaScript.</p>
+
+<p>The next time you find yourself needing to convert an iterable to an array, remember the spread syntax as a convenient and effective tool in your JavaScript toolkit.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

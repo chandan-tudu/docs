@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The String StartsWith Method In JavaScript</title>
+<meta name="description" content="In this guide, we'll delve into the syntax, use cases, and examples of the startsWith method in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/the-string-startswith-method-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>The String StartsWith Method In JavaScript</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of the string startsWith Method in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>JavaScript provides a plethora of string manipulation methods, and among them is the <code>startsWith</code> method.</p>
+
+<p>This method is especially handy when you need to check if a string begins with a specific sequence of characters.</p>
+
+<p>In this guide, we'll delve into the syntax, use cases, and examples of the <code>startsWith</code> method in JavaScript.</p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ol>
+<li><a href="#understanding-the-startswith-method">Understanding the <code>startsWith</code> Method</a></li>
+<li><a href="#examples-of-using-startswith">Examples of Using <code>startsWith</code></a>
+
+<ul>
+<li><a href="#basic-usage">Basic Usage</a></li>
+<li><a href="#case-sensitivity">Case-Sensitivity</a></li>
+<li><a href="#specifying-starting-position">Specifying Starting Position</a></li>
+<li><a href="#real-world-scenario-checking-url-protocol">Real-world Scenario: Checking URL Protocol</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="understanding-the-startswith-method">Understanding the <code>startsWith</code> Method</h2>
+
+<p>The <code>startsWith</code> method is a built-in function in JavaScript that allows you to determine whether a string starts with a particular substring.</p>
+
+<p>It returns a boolean value (<code>true</code> or `false), making it a useful tool for conditional checks.</p>
+
+<p>Here's the basic syntax of the <code>startsWith</code> method:</p>
+
+<pre class="language-javascript"><code>string.startsWith(searchString[, position]);
+</code></pre>
+
+<ul>
+<li><code>searchString</code>: The substring to search for at the beginning of the string.</li>
+<li><code>position</code> (optional): The position in the string to begin searching. If not specified, the default is <code>0</code>.</li>
+</ul>
+
+<h2 id="examples-of-using-startswith">Examples of Using <code>startsWith</code></h2>
+
+<h3 id="basic-usage">Basic Usage</h3>
+
+<pre class="language-javascript"><code>const myString = 'Hello, World!';
+
+console.log(myString.startsWith('Hello'));
+// Output: true
+</code></pre>
+
+<p>In this example, the <code>startsWith</code> method returns <code>true</code> because the string "Hello, World!" does indeed start with the substring "Hello."</p>
+
+<h3 id="case-sensitivity">Case-Sensitivity</h3>
+
+<p>The <code>startsWith</code> method is case-sensitive, meaning the case of the characters must match.</p>
+
+<pre class="language-javascript"><code>const myString = 'Hello, World!';
+
+console.log(myString.startsWith('hello'));
+// Output: false
+</code></pre>
+
+<p>In this case, the method returns <code>false</code> because "hello" is not the same as "Hello."</p>
+
+<h3 id="specifying-starting-position">Specifying Starting Position</h3>
+
+<p>You can use the optional <code>position</code> parameter to specify the position in the string to start the search.</p>
+
+<pre class="language-javascript"><code>const myString = 'Hello, World!';
+
+console.log(myString.startsWith('World', 7));
+// Output: true
+</code></pre>
+
+<p>Here, the search starts at position 7, and since the substring "World" is found at that position, the method returns <code>true</code>.</p>
+
+<h3 id="real-world-scenario-checking-url-protocol">Real-world Scenario: Checking URL Protocol</h3>
+
+<p>A practical use case for the <code>startsWith</code> method is checking the protocol of a URL.</p>
+
+<pre class="language-javascript"><code>const url = 'https://www.example.com';
+
+if (url.startsWith('https://')) {
+    console.log('This is a secure connection.');
+} else {
+    console.log('This is not a secure connection.');
+}
+</code></pre>
+
+<p>In this example, the code checks if the URL starts with "https://" to determine whether it's a secure connection.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The <code>startsWith</code> method in JavaScript offers a straightforward way to check if a string begins with a specified substring.</p>
+
+<p>Its versatility and ease of use make it a valuable tool for various scenarios, from basic conditional checks to more complex string manipulation tasks.</p>
+
+<p>By understanding its syntax and exploring practical examples, you can confidently leverage the <code>startsWith</code> method in your JavaScript projects, enhancing the efficiency and robustness of your code.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

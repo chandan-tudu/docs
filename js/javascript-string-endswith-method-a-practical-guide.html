@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript String EndsWith Method: A Practical Guide</title>
+<meta name="description" content="In this guide, we'll explore the syntax and various use cases of the endsWith method." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/javascript-string-endswith-method-a-practical-guide.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>JavaScript String EndsWith Method: A Practical Guide</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of JavaScript String endsWith Method: A Practical Guide" loading="lazy" width="900" height="500"></div> -->
+<p>The <code>endsWith</code> method in JavaScript is a handy function that allows you to determine whether a string ends with a specified sequence of characters.</p>
+
+<p>It's particularly useful in scenarios where you need to perform conditional checks on the tail end of a string.</p>
+
+<p>In this guide, we'll explore the syntax and various use cases of the <code>endsWith</code> method.</p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ol>
+<li><a href="#understanding-the-endswith-method">Understanding the <code>endsWith</code> Method</a></li>
+<li><a href="#examples-of-using-endswith">Examples of Using <code>endsWith</code></a>
+
+<ul>
+<li><a href="#basic-usage">Basic Usage</a></li>
+<li><a href="#case-sensitivity">Case-Sensitivity</a></li>
+<li><a href="#specifying-length">Specifying Length</a></li>
+<li><a href="#real-world-scenario-file-extension-check">Real-world Scenario: File Extension Check</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="understanding-the-endswith-method">Understanding the <code>endsWith</code> Method</h2>
+
+<p>The <code>endsWith</code> method is a built-in function for strings in JavaScript. It checks whether a string ends with the specified substring and returns a boolean value (true or false).</p>
+
+<p>Here's the basic syntax of the <code>endsWith</code> method:</p>
+
+<pre class="language-javascript"><code>string.endsWith(searchString[, length]);
+</code></pre>
+
+<ul>
+<li><code>searchString</code>: The substring to search for at the end of the string.</li>
+<li><code>length</code> (optional): If provided, it indicates the length of the string to consider.</li>
+</ul>
+
+<h2 id="examples-of-using-endswith">Examples of Using <code>endsWith</code></h2>
+
+<h3 id="basic-usage">Basic Usage</h3>
+
+<pre class="language-javascript"><code>const myString = 'Hello, World!';
+
+console.log(myString.endsWith('World!'));
+// Output: true
+</code></pre>
+
+<p>In this example, the <code>endsWith</code> method returns <code>true</code> because the string "Hello, World!" does end with the substring "World!".</p>
+
+<h3 id="case-sensitivity">Case-Sensitivity</h3>
+
+<p>The <code>endsWith</code> method is case-sensitive, so make sure the case matches when performing checks.</p>
+
+<pre class="language-javascript"><code>const myString = 'Hello, World!';
+
+console.log(myString.endsWith('world!'));
+// Output: false
+</code></pre>
+
+<p>In this case, the method returns <code>false</code> because "world!" is not the same as "World!".</p>
+
+<h3 id="specifying-length">Specifying Length</h3>
+
+<p>You can also use the optional <code>length</code> parameter to limit the portion of the string to consider.</p>
+
+<pre class="language-javascript"><code>const myString = 'Hello, World!';
+
+console.log(myString.endsWith('Hello', 5));
+// Output: true
+</code></pre>
+
+<p>In this example, only the first 5 characters of the string are considered, and since it ends with "Hello," the method returns <code>true</code>.</p>
+
+<h3 id="real-world-scenario-file-extension-check">Real-world Scenario: File Extension Check</h3>
+
+<p>The <code>endsWith</code> method is often used in real-world scenarios, such as checking file extensions.</p>
+
+<pre class="language-javascript"><code>const fileName = 'example.txt';
+
+if (fileName.endsWith('.txt')) {
+    console.log('This is a text file.');
+} else {
+    console.log('This is not a text file.');
+}
+</code></pre>
+
+<p>In this example, the code checks if the file name ends with ".txt" to determine whether it's a text file.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The <code>endsWith</code> method in JavaScript provides a straightforward and efficient way to check whether a string ends with a specific substring.</p>
+
+<p>Its versatility makes it useful in various scenarios, from simple checks to more complex conditional logic in your applications.</p>
+
+<p>By understanding its syntax and exploring practical examples, you can leverage the <code>endsWith</code> method to enhance the robustness of your JavaScript code.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Pad A String With Padstart And Padend In JavaScript</title>
+<meta name="description" content="In this guide, we will explore how to use padStart and padEnd effectively in JavaScript." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/how-to-pad-a-string-with-padstart-and-padend-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">Javascript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Pad A String With Padstart And Padend In JavaScript</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of How to Pad a String with padStart and padEnd in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>Manipulating strings is a common task in JavaScript, and ECMAScript 2017 (ES8) introduced two methods, <code>padStart</code> and <code>padEnd</code>, to simplify the process of padding strings.</p>
+
+<p>These methods make it easy to add characters to the beginning or end of a string until it reaches a specified length.</p>
+
+<p>In this guide, we will explore how to use <code>padStart</code> and <code>padEnd</code> effectively in JavaScript.</p>
+
+<h2 id="the-basics-of-padstart-and-padend-">The Basics of "padStart" and "padEnd"</h2>
+
+<p>The <code>padStart</code> and <code>padEnd</code> methods are built-in string methods in JavaScript designed to pad a string with a specified character until it reaches a certain length. Here's a brief overview of each:</p>
+
+<h3 id="1-padstart-method">1. "padStart" Method</h3>
+
+<p>The <code>padStart</code> method pads a string at the beginning (left side) with a specified character until the string reaches the desired length.</p>
+
+<pre class="language-javascript"><code>const originalString = 'hello';
+const paddedString = originalString.padStart(8, ' ');
+console.log(paddedString); // Output: "   hello"
+</code></pre>
+
+<p>In the example above, the original string "hello" is padded with spaces at the beginning until it reaches a length of 8 characters.</p>
+
+<h3 id="2-padend-method">2. "padEnd" Method</h3>
+
+<p>On the other hand, <code>padEnd</code> pads a string at the end (right side) with a specified character until the string reaches the desired length.</p>
+
+<pre class="language-javascript"><code>const originalString = 'hello';
+const paddedString = originalString.padEnd(8, '-');
+console.log(paddedString); // Output: "hello---"
+</code></pre>
+
+<p>In this example, the original string "hello" is padded with hyphens at the end until it reaches a length of 8 characters.</p>
+
+<h2 id="specifying-the-padding-character">Specifying the Padding Character</h2>
+
+<p>Both <code>padStart</code> and <code>padEnd</code> allow you to specify the padding character. This character can be any string, including a single character or multiple characters.</p>
+
+<pre class="language-javascript"><code>const originalString = '123';
+const paddedString = originalString.padStart(5, '0');
+console.log(paddedString); // Output: "00123"
+</code></pre>
+
+<p>In this example, the original string "123" is padded with zeros at the beginning until it reaches a length of 5 characters.</p>
+
+<h2 id="handling-edge-cases">Handling Edge Cases</h2>
+
+<p>When working with <code>padStart</code> and <code>padEnd</code>, it's essential to consider edge cases, such as when the specified length is less than the original string length.</p>
+
+<pre class="language-javascript"><code>const originalString = 'hello';
+const paddedString = originalString.padStart(3, '*');
+console.log(paddedString); // Output: "hello"
+</code></pre>
+
+<p>In this case, the original string "hello" remains unchanged because the specified length is less than the length of the original string.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The <code>padStart</code> and <code>padEnd</code> methods provide a convenient way to pad strings in JavaScript, offering flexibility in specifying the padding character and handling edge cases.</p>
+
+<p>Whether you need to align strings in a column or format them for display, these methods can be valuable additions to your string manipulation toolkit.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Set Default Parameters In JavaScript</title>
+<meta name="description" content="Explore different methods for setting default parameters in JavaScript functions." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/js/how-to-set-default-parameters-in-javascript.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">JavaScript</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Set Default Parameters In JavaScript</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/JavaScript.jpg" alt="Post Thumbnail of How to set Default Parameters in JavaScript" loading="lazy" width="900" height="500"></div> -->
+<p>JavaScript functions often require parameters to operate, and providing default values for these parameters can enhance the flexibility and usability of your code.</p>
+
+<p>In this article, we'll explore different methods for setting default parameters in JavaScript functions, covering various scenarios and use cases.</p>
+
+<h2 id="1-using-the-logical-or-operator-">1. Using the Logical OR (<code>||</code>) Operator:</h2>
+
+<p>The logical OR (<code>||</code>) operator is a concise and widely used method for setting default parameter values.</p>
+
+<p>It leverages the fact that if the left operand is truthy, it is returned; otherwise, the right operand is returned.</p>
+
+<pre class="language-javascript"><code>function greetUser(name) {
+    name = name || 'Guest';
+    console.log(`Hello, ${name}!`);
+}
+
+greetUser(); // Output: Hello, Guest!
+greetUser('Alice'); // Output: Hello, Alice!
+</code></pre>
+
+<p>In this example, if <code>name</code> is falsy (e.g., <code>undefined</code> or <code>null</code>), the default value <code>'Guest'</code> is assigned.</p>
+
+<h2 id="2-using-the-conditional-ternary-operator-">2. Using the Conditional (Ternary) Operator:</h2>
+
+<p>The conditional (ternary) operator provides a more explicit way to set default values by using a conditional expression.</p>
+
+<pre class="language-javascript"><code>function greetUser(name) {
+    const userName = name ? name : 'Guest';
+    console.log(`Hello, ${userName}!`);
+}
+
+greetUser(); // Output: Hello, Guest!
+greetUser('Bob'); // Output: Hello, Bob!
+</code></pre>
+
+<p>This method offers a clear alternative to the logical OR operator, making the intention more explicit.</p>
+
+<h2 id="3-using-default-function-parameters-es6-and-later-">3. Using Default Function Parameters (ES6 and Later):</h2>
+
+<p>ECMAScript 2015 (ES6) introduced default function parameters, allowing you to set default values directly in the function declaration.</p>
+
+<pre class="language-javascript"><code>function greetUser(name = 'Guest') {
+    console.log(`Hello, ${name}!`);
+}
+
+greetUser(); // Output: Hello, Guest!
+greetUser('Eve'); // Output: Hello, Eve!
+</code></pre>
+
+<p>This approach is concise and promotes a clean and readable function signature.</p>
+
+<h2 id="4-combining-logical-or-and-default-function-parameters-">4. Combining Logical OR and Default Function Parameters:</h2>
+
+<p>Combining the logical OR operator with default function parameters provides a way to handle both cases with a single line of code.</p>
+
+<pre class="language-javascript"><code>function greetUser(name = 'Guest') {
+    name = name || 'Guest';
+    console.log(`Hello, ${name}!`);
+}
+
+greetUser(); // Output: Hello, Guest!
+greetUser('Charlie'); // Output: Hello, Charlie!
+</code></pre>
+
+<p>This method allows for flexibility in handling various scenarios.</p>
+
+<h2 id="5-using-object-destructuring-with-default-values-">5. Using Object Destructuring with Default Values:</h2>
+
+<p>For functions with multiple parameters, object destructuring with default values offers a concise way to set defaults.</p>
+
+<pre class="language-javascript"><code>function printDetails({ name = 'Guest', age = 25 }) {
+    console.log(`Name: ${name}, Age: ${age}`);
+}
+
+printDetails({ name: 'Alice', age: 30 }); // Output: Name: Alice, Age: 30
+printDetails({}); // Output: Name: Guest, Age: 25
+</code></pre>
+
+<p>This technique is particularly useful when dealing with functions that receive complex objects.</p>
+
+<h2 id="considerations-">Considerations:</h2>
+
+<ol>
+<li><p><strong>Compatibility:</strong> When using ECMAScript features like default function parameters, be aware of the JavaScript environment's compatibility.</p></li>
+<li><p><strong>Default Values Order:</strong> Default values follow the order of the function parameter list. Ensure the correct order to avoid unexpected behavior.</p></li>
+<li><p><strong>Readability:</strong> Choose a method that aligns with the readability goals of your codebase. Default function parameters are often favored for their clarity.</p></li>
+<li><p><strong>Consistency:</strong> Maintain a consistent approach within your codebase to ensure clarity and ease of maintenance.</p></li>
+</ol>
+
+<h2 id="conclusion-">Conclusion:</h2>
+
+<p>Setting default parameters in JavaScript functions is a valuable practice for creating more flexible and resilient code.</p>
+
+<p>Whether using the logical OR operator, the conditional operator, default function parameters, or a combination of these techniques, the key is to choose an approach that aligns with the specific requirements and readability goals of your codebase.</p>
+
+<p>By understanding these methods and their considerations, developers can write functions that gracefully handle various scenarios while promoting clean and expressive code.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
