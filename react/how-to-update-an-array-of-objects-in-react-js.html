@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Update An Array Of Objects In React JS</title>
+<meta name="description" content="The steps to update an array of objects in a React component and provide a practical example." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/react/how-to-update-an-array-of-objects-in-react-js.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">REACT</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Update An Array Of Objects In React JS</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/react.jpg" alt="Post Thumbnail of How To Update an array of objects in React JS" loading="lazy" width="900" height="500"></div> -->
+<p>React, a popular JavaScript library for building user interfaces, makes it easy to manage and update state within a component.</p>
+
+<p>When dealing with complex data structures like an array of objects, efficiently updating and rendering the UI is crucial.</p>
+
+<p>In this guide, we'll explore the steps to <strong>update an array of objects in a React component</strong> and provide a practical example.</p>
+
+<h2 id="understanding-state-in-react">Understanding State in React</h2>
+
+<p>In React, state is a fundamental concept that represents the data a component needs to render.</p>
+
+<p>Components can have state, which can be modified using the <code>useState</code> hook in functional components or the <code>this.setState</code> method in class components.</p>
+
+<p>Let's consider a scenario where we have an array of objects representing items:</p>
+
+<pre class="language-jsx"><code>const [items, setItems] = useState([
+    { id: 1, name: 'Item 1' },
+    { id: 2, name: 'Item 2' },
+    // ... more items
+]);
+</code></pre>
+
+<p>In this example, <code>items</code> is the state variable, and <code>setItems</code> is the function used to update its value.</p>
+
+<h2 id="updating-an-object-in-the-array">Updating an Object in the Array</h2>
+
+<p>To update an object in the array, we need to create a new array where the desired object is replaced or modified.</p>
+
+<p>We can achieve this using the <code>map</code> function, which iterates over each element in the array.</p>
+
+<p>Here's a function that updates an object based on its <code>id</code>:</p>
+
+<pre class="language-jsx"><code>const updateItem = (id, newName) =&gt; {
+    setItems((prevItems) =&gt;
+        prevItems.map((item) =&gt;
+            item.id === id ? { ...item, name: newName } : item
+        )
+    );
+};
+</code></pre>
+
+<p>In this function:</p>
+
+<ul>
+<li><code>prevItems</code> is the previous state array.</li>
+<li><code>map</code> iterates over each item in the array.</li>
+<li>The ternary operator checks if the item's <code>id</code> matches the provided <code>id</code>. If true, a new object with the updated <code>name</code> is created; otherwise, the existing object is used.</li>
+</ul>
+
+<h2 id="practical-example">Practical Example</h2>
+
+<p>Let's put this knowledge into practice with a simple React component:</p>
+
+<pre class="language-jsx"><code>import { useState } from 'react';
+
+const ItemList = () =&gt; {
+    const [items, setItems] = useState([
+        { id: 1, name: 'Item 1' },
+        { id: 2, name: 'Item 2' },
+        // ... more items
+    ]);
+
+    const updateItem = (id, newName) =&gt; {
+        setItems((prevItems) =&gt;
+            prevItems.map((item) =&gt;
+                item.id === id ? { ...item, name: newName } : item
+            )
+        );
+    };
+
+    return (
+        &lt;div&gt;
+            {items.map((item) =&gt; (
+                &lt;div key={item.id}&gt;
+                    {item.id}: {item.name}
+                &lt;/div&gt;
+            ))}
+
+            &lt;button onClick={() =&gt; updateItem(1, 'Updated Item 1')}&gt;
+                Update Item 1
+            &lt;/button&gt;
+        &lt;/div&gt;
+    );
+};
+
+export default ItemList;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>The component renders a list of items with their ids and names.</li>
+<li>The <code>updateItem</code> function is called when a button is clicked, updating the name of the item with <code>id</code> 1.</li>
+<li>The component re-renders with the updated state, reflecting the changes in the UI.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Updating an array of objects in React involves creating a new array with the desired modifications.</p>
+
+<p>Leveraging the <code>map</code> function and the spread operator helps ensure immutability and efficient state management.</p>
+
+<p>Understanding these concepts is crucial for building robust and scalable React applications.</p>
+
+<p>This guide provides a foundation for updating arrays of objects in React, but keep in mind that the specific implementation may vary based on the application's requirements and complexity.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

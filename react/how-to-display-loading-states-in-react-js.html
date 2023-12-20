@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Display Loading States In React.js</title>
+<meta name="description" content="Different techniques for implementing loading states in React.js components." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/react/how-to-display-loading-states-in-react-js.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">REACT</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Display Loading States In React.js</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/react.jpg" alt="Post Thumbnail of How to Display Loading States in React.js" loading="lazy" width="900" height="500"></div> -->
+<p>Loading states are a crucial aspect of user experience in React.js applications, especially when dealing with asynchronous operations such as data fetching.</p>
+
+<p>Displaying a loading indicator informs users that something is happening behind the scenes and enhances the overall usability of your application.</p>
+
+<p>In this guide, we'll explore different techniques for <strong>implementing loading states in React.js</strong> components.</p>
+
+<p><strong>Table of Contents #</strong></p>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#basic-loading-state-with-state-variable">Basic Loading State with State Variable</a></li>
+<li><a href="#loading-spinner-component">Loading Spinner Component</a></li>
+<li><a href="#higher-order-component-hoc-for-loading-states">Higher-Order Component (HOC) for Loading States</a></li>
+<li><a href="#using-react-suspense">Using React Suspense</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="basic-loading-state-with-state-variable">Basic Loading State with State Variable</h2>
+
+<p>A common approach is to use a state variable to track whether data is currently being loaded. Let's look at a simple example:</p>
+
+<pre class="language-jsx"><code>import { useState, useEffect } from 'react';
+
+const MyComponent = () =&gt; {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() =&gt; {
+        const fetchData = async () =&gt; {
+            try {
+                // Simulating an asynchronous operation, like fetching data from an API
+                await new Promise((resolve) =&gt; setTimeout(resolve, 2000));
+                setData('Fetched data');
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            } finally {
+                // Set loading to false when the operation is complete
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []); // Empty dependency array means the effect runs once after the initial render
+
+    return &lt;div&gt;{loading ? &lt;p&gt;Loading...&lt;/p&gt; : &lt;p&gt;Data: {data}&lt;/p&gt;}&lt;/div&gt;;
+};
+
+export default MyComponent;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>The <code>loading</code> state variable is initially set to <code>true</code>.</li>
+<li>During the asynchronous operation (simulated with a <code>setTimeout</code>), the loading state is maintained.</li>
+<li>When the operation is complete (regardless of success or failure), the loading state is set to <code>false</code>.</li>
+</ul>
+
+<h2 id="loading-spinner-component">Loading Spinner Component</h2>
+
+<p>To enhance the user experience, you can replace the simple text-based loading indicator with a loading spinner component.</p>
+
+<p>Here's an example using a popular library called <code>react-spinners</code>:</p>
+
+<pre class="language-bash"><code>npm install react-spinners
+</code></pre>
+
+<pre class="language-jsx"><code>import { useState, useEffect } from 'react';
+import { RingLoader } from 'react-spinners';
+
+const MyComponent = () =&gt; {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() =&gt; {
+        const fetchData = async () =&gt; {
+            try {
+                // Simulating an asynchronous operation
+                await new Promise((resolve) =&gt; setTimeout(resolve, 2000));
+                setData('Fetched data');
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    return (
+        &lt;div&gt;
+            {loading ? (
+                &lt;div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '100vh',
+                    }}
+                &gt;
+                    &lt;RingLoader loading={loading} color="#36D7B7" size={150} /&gt;
+                &lt;/div&gt;
+            ) : (
+                &lt;p&gt;Data: {data}&lt;/p&gt;
+            )}
+        &lt;/div&gt;
+    );
+};
+
+export default MyComponent;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>The <code>RingLoader</code> component from <code>react-spinners</code> is used to display a loading spinner.</li>
+<li>The spinner is conditionally rendered based on the <code>loading</code> state.</li>
+</ul>
+
+<h2 id="higher-order-component-hoc-for-loading-states">Higher-Order Component (HOC) for Loading States</h2>
+
+<p>To abstract the loading state logic and make it reusable across components, you can create a higher-order component (HOC). Here's a basic example:</p>
+
+<pre class="language-jsx"><code>import { useState, useEffect } from 'react';
+import { RingLoader } from 'react-spinners';
+
+const withLoading = (WrappedComponent) =&gt; {
+    return (props) =&gt; {
+        const [loading, setLoading] = useState(true);
+
+        useEffect(() =&gt; {
+            const fetchData = async () =&gt; {
+                try {
+                    // Simulating an asynchronous operation
+                    await new Promise((resolve) =&gt; setTimeout(resolve, 2000));
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                } finally {
+                    setLoading(false);
+                }
+            };
+
+            fetchData();
+        }, []);
+
+        return (
+            &lt;div&gt;
+                {loading ? (
+                    &lt;div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            height: '100vh',
+                        }}
+                    &gt;
+                        &lt;RingLoader
+                            loading={loading}
+                            color="#36D7B7"
+                            size={150}
+                        /&gt;
+                    &lt;/div&gt;
+                ) : (
+                    &lt;WrappedComponent {...props} /&gt;
+                )}
+            &lt;/div&gt;
+        );
+    };
+};
+
+const MyComponent = () =&gt; {
+    return (
+        &lt;div&gt;
+            &lt;p&gt;Data: Fetched data&lt;/p&gt;
+        &lt;/div&gt;
+    );
+};
+
+export default withLoading(MyComponent);
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>The <code>withLoading</code> HOC encapsulates the loading state logic.</li>
+<li>The loading state is managed within the HOC, and the wrapped component (<code>MyComponent</code> in this case) is rendered conditionally based on the loading state.</li>
+</ul>
+
+<h2 id="using-react-suspense">Using React Suspense</h2>
+
+<p>React Suspense is a feature that allows components to suspend rendering while waiting for something, such as data to be loaded.</p>
+
+<p>While it's typically associated with the new React concurrent mode and server-rendered applications, you can use it in simpler scenarios as well.</p>
+
+<pre class="language-jsx"><code>import { Suspense } from 'react';
+
+const MyComponent = () =&gt; {
+    // Simulating data fetching using a promise
+    const fetchData = () =&gt;
+        new Promise((resolve) =&gt;
+            setTimeout(() =&gt; resolve('Fetched data'), 2000)
+        );
+
+    // Wrap the component with Suspense and specify a fallback UI
+    return (
+        &lt;Suspense fallback={&lt;p&gt;Loading...&lt;/p&gt;}&gt;
+            &lt;DataComponent fetchData={fetchData} /&gt;
+        &lt;/Suspense&gt;
+    );
+};
+
+const DataComponent = ({ fetchData }) =&gt; {
+    const data = fetchData();
+    return &lt;p&gt;Data: {data}&lt;/p&gt;;
+};
+
+export default MyComponent;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li>The <code>DataComponent</code> represents the part of your application that requires data fetching.</li>
+<li>The <code>Suspense</code> component is used to wrap the component that may suspend rendering (<code>DataComponent</code>).</li>
+<li>The <code>fallback</code> prop specifies what to render while waiting for the data to be fetched.</li>
+</ul>
+
+<p>Note: React Suspense is most effective when used in combination with asynchronous rendering features, such as those provided by concurrent mode.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Implementing loading states in React.js is essential for creating a smooth and responsive user experience.</p>
+
+<p>Whether using a basic state variable, incorporating a loading spinner, or abstracting the logic into a higher-order component, the goal is to keep users informed about ongoing operations.</p>
+
+<p>Choose the approach that best fits your application's structure and requirements, and consider using libraries like <code>react-spinners</code> or features like React Suspense for more advanced scenarios.</p>
+
+<p>With proper loading state management, you can enhance the perceived performance of your React applications and provide users with a more engaging and user-friendly interface.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>

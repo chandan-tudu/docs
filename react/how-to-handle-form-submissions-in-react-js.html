@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How To Handle Form Submissions In React.js</title>
+<meta name="description" content="In this comprehensive guide, we'll explore the key concepts and provide a step-by-step example." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/react/how-to-handle-form-submissions-in-react-js.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">REACT</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>How To Handle Form Submissions In React.js</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/react.jpg" alt="Post Thumbnail of How To Handle Form Submissions in React.js" loading="lazy" width="900" height="500"></div> -->
+<p>In React.js, <strong>handling form submissions</strong> involves managing form state, capturing user input, and performing actions when the form is submitted.</p>
+
+<p>In this comprehensive guide, we'll explore the key concepts and provide a step-by-step example.</p>
+
+<h2 id="setting-up-a-basic-form-component">Setting Up a Basic Form Component</h2>
+
+<p>Let's start by creating a simple React component that includes a form:</p>
+
+<pre class="language-jsx"><code>import { useState } from 'react';
+
+const MyForm = () =&gt; {
+    // State to manage form data
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+    });
+
+    // Event handler for form input changes
+    const handleInputChange = (e) =&gt; {
+        const { name, value } = e.target;
+        setFormData((prevData) =&gt; ({ ...prevData, [name]: value }));
+    };
+
+    // Event handler for form submission
+    const handleSubmit = (e) =&gt; {
+        e.preventDefault();
+        // Perform actions with form data (e.g., send to server, update state, etc.)
+        console.log('Form submitted with data:', formData);
+    };
+
+    return (
+        &lt;form onSubmit={handleSubmit}&gt;
+            &lt;label&gt;
+                Username:
+                &lt;input
+                    type="text"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleInputChange}
+                /&gt;
+            &lt;/label&gt;
+            &lt;br /&gt;
+            &lt;label&gt;
+                Email:
+                &lt;input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                /&gt;
+            &lt;/label&gt;
+            &lt;br /&gt;
+            &lt;button type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/form&gt;
+    );
+};
+
+export default MyForm;
+</code></pre>
+
+<p>In this example:</p>
+
+<ul>
+<li><code>formData</code> is the state that manages form data.</li>
+<li><code>handleInputChange</code> is an event handler that updates the state when form inputs change.</li>
+<li><code>handleSubmit</code> is an event handler for the form's submission. It prevents the default form submission behavior, allowing us to perform custom actions.</li>
+</ul>
+
+<h2 id="controlled-components-and-form-data">Controlled Components and Form Data</h2>
+
+<p>React follows the concept of controlled components, where form elements like <code>input</code>, <code>textarea</code>, and <code>select</code> maintain their state in the React component's state. This ensures that React is the single source of truth for the form data.</p>
+
+<p>In the example above, the input elements are controlled components because their values are derived from the <code>formData</code> state.</p>
+
+<h2 id="preventing-default-form-submission">Preventing Default Form Submission</h2>
+
+<p>In the <code>handleSubmit</code> function, <code>e.preventDefault()</code> is called to prevent the default form submission behavior, which would cause a page reload.</p>
+
+<p>Instead, we can handle the form submission within the React application, allowing for a smoother user experience.</p>
+
+<h2 id="performing-actions-on-form-submission">Performing Actions on Form Submission</h2>
+
+<p>Inside the <code>handleSubmit</code> function, you can perform various actions, such as:</p>
+
+<ul>
+<li>Sending the form data to a server (e.g., making an API request).</li>
+<li>Updating the component's state based on the form data.</li>
+<li>Navigating to another page or route within the application.</li>
+</ul>
+
+<p>For example, you might use the <code>fetch</code> API to send form data to a server:</p>
+
+<pre class="language-jsx"><code>const handleSubmit = async (e) =&gt; {
+    e.preventDefault();
+    try {
+        const response = await fetch('https://api.example.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        const data = await response.json();
+        console.log('Server response:', data);
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
+};
+</code></pre>
+
+<h2 id="validation-and-error-handling">Validation and Error Handling</h2>
+
+<p>In a real-world scenario, you would likely need to implement form validation and error handling to ensure that the submitted data meets the required criteria.</p>
+
+<p>This might involve checking the length of a username, validating email formats, or ensuring that required fields are not empty.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Handling form submissions in React involves managing form data, updating state on input changes, preventing default form submission, and performing actions based on the submitted data.</p>
+
+<p>By understanding these key concepts and applying best practices, you can create robust and interactive forms in your React applications.</p>
+
+<p>This guide provides a foundational overview, and you can customize the example based on your specific requirements and the complexity of your application.</p>
+
+<p>As you become more familiar with React form handling, you'll be better equipped to create dynamic and user-friendly forms.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
