@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="CAJSXz1q9IoKgvnzjtqfn7KaJhAJMC9sCywfxWYum7s" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Understanding The PHP __debugInfo() Method And How To Use</title>
+<meta name="description" content="PHP's __debugInfo() method, its purpose, usage, and how it enhances the debugging experience." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://www.devbabu.com/docs/php/understanding-the-php-debuginfo-method-and-how-to-use.html">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<meta name="msapplication-TileImage" content="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/styles.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.css" />
+</head>
+<body>
+<div class="header" id="header"></div>
+<div class="nav-links">
+<ul>
+<li><a href="./index.html">PHP</a></li>
+</ul>
+</div>
+<article class="article-container">
+<div class="box">
+<h1>Understanding The PHP __debugInfo() Method And How To Use</h1>
+</div>
+<!-- <div class="img"><img src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs-images@latest/php.jpg" alt="Post Thumbnail of Understanding the PHP __debugInfo() Method and How to use" loading="lazy" width="900" height="500"></div> -->
+
+<p>The <code>__debugInfo()</code> method is a <strong>magic method in PHP introduced in PHP 5.6.0</strong>. It provides a mechanism for <strong>customizing the debugging output</strong> when an object is used in contexts like <code>var_dump()</code> or <code>print_r()</code>.</p>
+
+<p>The method is <strong>called automatically when an object is being debugged</strong>, allowing developers to control which information is presented during debugging.</p>
+
+<p>The method signature is as follows:</p>
+
+<pre class="language-php"><code>public function __debugInfo()
+{
+    // Custom logic to provide an array of debug information
+    return [
+        'property1' =&gt; $this-&gt;property1,
+        'property2' =&gt; $this-&gt;property2,
+        // ...additional properties
+    ];
+}
+</code></pre>
+
+<h2 id="how----debuginfo-works">How &#95;&#95;debugInfo() Works</h2>
+
+<p>When an object is used in a debugging context, PHP checks for the existence of the <code>__debugInfo()</code> method.</p>
+
+<p>If the method is present, it is automatically invoked, and the returned array is used to display debug information for the object.</p>
+
+<pre class="language-php"><code>class Example
+{
+    public $property1;
+    public $property2;
+
+    public function __construct($prop1, $prop2)
+    {
+        $this-&gt;property1 = $prop1;
+        $this-&gt;property2 = $prop2;
+    }
+
+    public function __debugInfo()
+    {
+        return [
+            'property1' =&gt; $this-&gt;property1,
+            'property2' =&gt; strtoupper($this-&gt;property2),
+        ];
+    }
+}
+
+$example = new Example('value1', 'value2');
+
+var_dump($example);
+</code></pre>
+
+<p>In this example, the <code>__debugInfo()</code> method is defined in the <code>Example</code> class. When <code>var_dump($example)</code> is called, PHP automatically invokes <code>__debugInfo()</code> to customize the displayed debug information.</p>
+
+<h2 id="use-cases">Use Cases</h2>
+
+<h3 id="1-displaying-relevant-information">1. Displaying Relevant Information</h3>
+
+<p>The primary use case of the <code>__debugInfo()</code> method is to display relevant information for debugging purposes.</p>
+
+<p>This can include transforming or formatting property values to make them more meaningful during debugging.</p>
+
+<pre class="language-php"><code>class UserProfile
+{
+    public $username;
+    public $email;
+
+    public function __debugInfo()
+    {
+        return [
+            'username' =&gt; $this-&gt;username,
+            'email' =&gt; $this-&gt;email,
+            'hashedEmail' =&gt; md5($this-&gt;email),
+        ];
+    }
+}
+
+$user = new UserProfile();
+$user-&gt;username = 'john_doe';
+$user-&gt;email = 'john@example.com';
+
+var_dump($user);
+</code></pre>
+
+<p>In this example, the <code>__debugInfo()</code> method is used to include a hashed version of the email address for additional security during debugging.</p>
+
+<h3 id="2-omitting-sensitive-information">2. Omitting Sensitive Information</h3>
+
+<p>The <code>__debugInfo()</code> method can be employed to omit sensitive information from the debugging output, providing a more secure and privacy-conscious approach.</p>
+
+<pre class="language-php"><code>class Customer
+{
+    public $name;
+    public $email;
+    private $creditCardNumber;
+
+    public function __debugInfo()
+    {
+        return [
+            'name' =&gt; $this-&gt;name,
+            'email' =&gt; $this-&gt;email,
+            // Omit credit card information
+        ];
+    }
+}
+
+$customer = new Customer();
+$customer-&gt;name = 'Alice';
+$customer-&gt;email = 'alice@example.com';
+$customer-&gt;creditCardNumber = '1234-5678-9012-3456';
+
+var_dump($customer);
+</code></pre>
+
+<p>In this example, the <code>__debugInfo()</code> method is used to exclude the <code>creditCardNumber</code> property from the debugging output to avoid exposing sensitive information.</p>
+
+<h2 id="best-practices-and-considerations">Best Practices and Considerations</h2>
+
+<p>When using the <code>__debugInfo()</code> method, consider the following best practices and considerations:</p>
+
+<ul>
+<li><p><strong>Relevance</strong>: Include only relevant information that aids in debugging. Avoid cluttering the output with unnecessary details.</p></li>
+<li><p><strong>Privacy and Security</strong>: Omit sensitive information from the debugging output to enhance privacy and security.</p></li>
+<li><p><strong>Consistency</strong>: Ensure that the information returned by <code>__debugInfo()</code> is consistent with the actual state of the object.</p></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>PHP's <code>__debugInfo()</code> method provides a valuable tool for customizing the debugging output of objects, enhancing the developer's ability to inspect and understand their application's state.</p>
+
+<p>Whether it's displaying relevant information, formatting values, or omitting sensitive data, <code>__debugInfo()</code> allows developers to tailor the debugging experience.</p>
+
+<p>When used thoughtfully, this magic method becomes a crucial component in crafting modern and debuggable PHP applications.</p>
+
+<p>Understanding and leveraging <code>__debugInfo()</code> contributes to building more transparent, secure, and maintainable code in the realm of PHP development.</p>
+</article>
+<div class="footer" id="footer"></div>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/chandan-tudu/docs@latest/assets/ex.min.js"></script>
+</body></html>
