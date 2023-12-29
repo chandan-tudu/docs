@@ -86,10 +86,9 @@ searchForm.appendChild(searchInput)
 searchForm.appendChild(searchSubmit)
 themeBtn.innerHTML = moon;
 navbar.appendChild(logo);
+navbar.appendChild(searchForm)
 navbar.appendChild(themeBtn);
 header.appendChild(navbar);
-
-header.insertAdjacentElement('afterend',searchForm)
 
 const changeTheme = () => {
     if (rootEl.hasAttribute('dark-theme')) {
@@ -160,5 +159,3 @@ if(footer){
     footer.insertAdjacentElement('afterbegin',footerList)
     
 }
-
-
