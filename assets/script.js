@@ -135,6 +135,54 @@ if(document.cookie.indexOf('DevBDocsCookie=1')){
     bodyEl.insertAdjacentElement('beforeend', consentDiv);
 }
 
+// Add Related Post
+
+const postNumGen = (max,min = 0) =>{
+    if(max <= 10) return 0;
+    const maxNum = max - 10;
+    return Math.floor(Math.random() * (maxNum - min) ) + min;
+}
+const reGx = /\/docs\/([a-z0-9-]+)\//;
+const listPath = window.location.href.match(reGx);
+if(Array.isArray(listPath) && listPath.length > 1){
+    console.log(listPath[1]);
+
+    fetch(`https://www.devbabu.com/docs/${listPath[1]}/list.json`)
+.then(res => res.json())
+.then(data => {
+    if(Array.isArray(data) && data.length){
+        const relatedList = createEl('ul');
+        const startFrom = postNumGen(data.length);
+        const dataLength = data.length >= 10 ? 10 : data.length
+        console.log(startFrom);
+        for(let i = startFrom; i < (startFrom + dataLength); i++){
+            const link = createEl('a',{
+                href:data[i].link
+            });
+            link.innerText = data[i].title
+            const li = createEl('li');
+            li.appendChild(link)
+            relatedList.appendChild(li)
+        }
+
+        const sidebarEl = createEl('div',{
+            class:'sidebar'
+        });
+        const relatedTitle = createEl('h2')
+        relatedTitle.innerText = "Related Tutorials"
+        sidebarEl.appendChild(relatedTitle);
+        sidebarEl.appendChild(relatedList);
+        document.querySelector('.article-container').insertAdjacentElement('afterend',sidebarEl)
+    }
+    
+    
+})
+.catch(err => {})
+
+}
+
+// End of Related Post
+
 
 if(footer){
     const footerList = createEl('ul', { 
