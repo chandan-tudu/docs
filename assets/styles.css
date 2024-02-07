@@ -23,7 +23,7 @@
       var(--primary-lightness)
   );
   --light-font-color: hsl(var(--primary-hue), var(--primary-saturation), 90%);
-  --body-bg: hsl(var(--primary-hue), var(--primary-saturation), 99%);
+  --body-bg: hsl(var(--primary-hue), var(--primary-saturation), 98%);
   --light-bg: hsl(var(--primary-hue), var(--primary-saturation), 98%);
   --light-btn-bg: hsl(var(--primary-hue), var(--primary-saturation), 98%);
   --code-bg: hsl(var(--primary-hue), var(--primary-saturation), 13%);
@@ -65,11 +65,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 1rem;
-  background-image: url("https://cdn.jsdelivr.net/gh/chandan-tudu/shorts@latest/assets/shape.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: right;
-  background-size: cover;
+  /*
+      background-image: url('https://cdn.jsdelivr.net/gh/chandan-tudu/shorts@latest/assets/shape.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: right;
+      background-size: cover;*/
 }
 
 svg {
@@ -420,4 +421,4 @@ ul.post-list a:hover {
   .post-list {
     flex-direction: column;
   }
-}
+}/*# sourceMappingURL=style.css.map */
