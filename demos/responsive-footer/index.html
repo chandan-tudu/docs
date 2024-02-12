@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTML, CSS Responsive Footer</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 50px;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f7f7f7;
+}
+
+footer {
+    background-color: #111218;
+    color: #ccc;
+    padding: 40px 0;
+    border-radius: 5px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+        0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-content {
+    flex: 1;
+    padding: 0 40px;
+}
+
+.footer-content h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.footer-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-content ul li {
+    margin-bottom: 10px;
+}
+
+.footer-content ul li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-content ul li a:hover {
+    color: #ffffff;
+}
+
+.subscribe form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.subscribe input {
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.subscribe input[type="submit"] {
+    cursor: pointer;
+    background-image: linear-gradient(#f7f8fa, #e7e9ec);
+    box-shadow: rgba(255, 255, 255, 0.6) 0 1px 0 inset;
+    text-transform: uppercase;
+    font-size: 14px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+    footer {
+        padding: 20px 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .footer-content {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+        padding: 0 20px;
+    }
+}
+        </style>
+    </head>
+    <body>
+        <h1>HTML, CSS Responsive Footer</h1>
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <h3>Contact Us</h3>
+                    <p>
+                        <i class="fa-solid fa-envelope"></i> Email:
+                        example@example.com
+                    </p>
+                    <p><i class="fa-solid fa-phone"></i> Phone: 123-456-7890</p>
+                </div>
+                <div class="footer-content">
+                    <h3>Follow Us</h3>
+                    <ul class="social-links">
+                        <li>
+                            <a href="#">
+                                <i class="fa-brands fa-facebook"></i>
+                                Facebook</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#"
+                                ><i class="fa-brands fa-x-twitter"></i>
+                                Twitter</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#"
+                                ><i class="fa-brands fa-linkedin"></i>
+                                Linkedin</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#"
+                                ><i class="fa-brands fa-github"></i> GitHub</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-content">
+                    <h3>Newsletter</h3>
+                    <p>
+                        Enter your email address to subscribe to this blog and
+                        receive notifications of new posts by email. (Join
+                        20,575 other subscribers)
+                    </p>
+                    <div class="subscribe">
+                        <form action="">
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Your email"
+                                required
+                            />
+                            <input type="submit" value="Subscribe" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
