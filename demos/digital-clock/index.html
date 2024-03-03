@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simple Digital Clock</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
+            *,
+            *::after,
+            *::before {
+                box-sizing: border-box;
+            }
+            body {
+                background-color: #fff;
+                padding: 50px;
+            }
+            .clock {
+                background-color: #ddd;
+                border: 15px solid #1a1a1a;
+                border-radius: 50%;
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+                    0 2px 4px -2px rgb(0 0 0 / 0.1),
+                    inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+                height: 300px;
+                width: 300px;
+                margin: 0 auto;
+                padding: 5px;
+            }
+
+            .wrap {
+                background-color: white;
+                border-radius: 50%;
+                color: #1a1a1a;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                width: 100%;
+                height: 100%;
+                font-size: 42px;
+                font-weight: 800;
+            }
+            span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 60px;
+                font-family: "Montserrat", sans-serif;
+            }
+            sub {
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="clock">
+            <div class="wrap">
+                <span id="hour"></span>: <span id="minute"></span>:
+                <span id="seconds"></span><sub id="unit">am</sub>
+            </div>
+        </div>
+        <script>
+            const clock = document.querySelector(".clock");
+            const hour = document.getElementById("hour");
+            const minute = document.getElementById("minute");
+            const seconds = document.getElementById("seconds");
+            const unit = document.getElementById("unit");
+
+            setInterval(() => {
+                const now = new Date();
+                let hr = now.getHours();
+                let min = now.getMinutes();
+                let sec = now.getSeconds();
+
+                // adding AM || PM
+                if (hr >= 12) unit.innerText = "pm";
+
+                // For 12 hour clock
+                hr = hr % 12 || 12;
+
+                // spinning the seconds circular line
+                clock.style.background = `conic-gradient(#FF0582 ${
+                    sec * 6
+                }deg, #ddd ${sec * 6}deg)`;
+
+                // Add 0 for single digit like 1 => 01
+                if (hr < 10) hr = `0${hr}`;
+                if (min < 10) min = `0${min}`;
+                if (sec < 10) sec = `0${sec}`;
+
+                hour.innerText = hr;
+                minute.innerText = min;
+                seconds.innerText = sec;
+            }, 1000);
+        </script>
+    </body>
+</html>
